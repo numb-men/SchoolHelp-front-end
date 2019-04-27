@@ -1,0 +1,28 @@
+<script>
+	export default {
+		render(createElement) {
+		    return createElement('swiper', {
+		        style: {
+		            flex: 1
+		        },
+		        attrs: {
+		            indicatorDots: true,
+		            autoplay: true,
+		            interval: 2000,
+		            duration: 500
+		        }
+		    }, this.$slots.default)
+		}
+	}
+</script>
+
+<style>
+	.swiper {
+		height: 300upx;
+	}
+
+	.adds {
+		width: 100%;
+		height: 100%;
+	}
+</style>
