@@ -4,13 +4,15 @@
 			<div class="media-list">
 				<text class="media-title">{{data.title}}</text>
 				<text class="media-preview">的积分是上课点击返回司空见惯人生观和地方规划</text>
-				<text class="info-text-reward">${{data.comment_count}}</text>
 				<div class="media-foot">
-					<div v-if="showImg" class="image-section-left">
-						<image class="image-list1" v-if="data.image_url" :src="data.image_url"></image>
+					<div class="imgAndName">
+						<div v-if="showImg" class="image-section-left">
+							<image class="image-list1" v-if="data.image_url" :src="data.image_url"></image>
+						</div>
+						<text class="info-text">{{data.source}}</text>
 					</div>
-					<text class="info-text">{{data.source}}</text>
-					<text class="info-text-left">&#xe643;{{data.comment_count}} 评论{{data.comment_count}} {{data.datetime}}</text>
+					<text class="info-text-reward">${{data.comment_count}}</text>
+					<text class="info-text-left">浏览{{data.comment_count}} 评论{{data.comment_count}} {{data.datetime}}</text>
 				</div>
 			</div>
 		</div>
@@ -75,10 +77,9 @@
 	}
 
 	.info-text {
-		position: absolute;
+		/* position: absolute; */
 		text-align: left;
 		margin-top: 30px;
-		margin-left: 62px;
 		color: #999999;
 		font-size: 28px;
 	}
@@ -97,6 +98,13 @@
 		margin-left: 10px;
 		color: #FFCC00;
 		font-size: 28px;
+	}
+
+	.imgAndName {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
 	}
 
 	.image-section-left {

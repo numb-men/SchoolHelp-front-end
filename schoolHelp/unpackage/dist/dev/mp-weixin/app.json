@@ -6,7 +6,9 @@
     "pages/ucenter/ucenter",
     "pages/exapplication/exapplication",
     "pages/exapplication/questionnaire/questionnaire",
-    "pages/ucenter/login/login"
+    "pages/ucenter/login/login",
+    "pages/ucenter/reg/reg",
+    "pages/ucenter/pwd/pwd"
   ],
   "subPackages": [],
   "window": {
