@@ -201,10 +201,10 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
         return;
       }
-      if (this.password.length < 6 || this.password.length > 16) {
+      if (this.password.length < 8) {
         uni.showToast({
           icon: 'none',
-          title: '密码最短为 6 个字符，最长不超过16个字符' });
+          title: '密码最短为 8 个字符' });
 
         return;
       }
@@ -221,20 +221,49 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
          * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
          */
       var data = {
-        account: this.account,
-        password: this.password };
+        that: this,
+        account: that.account,
+        password: that.password };
 
-      var validUser = _service.default.getUsers().some(function (user) {
-        return data.account === user.account && data.password === user.password;
-      });
-      if (validUser) {
-        this.toMain(this.account);
-      } else {
-        uni.showToast({
-          icon: 'none',
-          title: '用户账号或密码不正确' });
+      // const validUser = service.getUsers().some(function(user) {
+      // 	return data.account === user.account && data.password === user.password;
+      // });
+      // if (validUser) {
+      // 	this.toMain(this.account);
+      // } else {
+      // uni.showToast({
+      // 	icon: 'none',
+      // 	title: '用户账号或密码不正确',
+      // });
+      // }
+      uni.request({
+        url: 'http://127.0.0.1:8080/login', //仅为示例，并非真实接口地址。
+        method: 'GET',
+        data: {
+          phone: that.account,
+          password: that.password },
 
-      }
+        // header: {
+        // 	'custom-header': 'hello' //自定义请求头信息
+        // },
+        success: function success(res) {
+          if (res.data.code == 0) {
+            // this.toMain(this.account);
+            uni.showToast({
+              icon: 'none',
+              title: '登陆成功' });
+
+          } else {
+            uni.showToast({
+              icon: 'none',
+              title: '用户账号或密码不正确' });
+
+          }
+        },
+        fail: function fail(res) {
+          console.log(res, " at pages\\ucenter\\login\\login.vue:164");
+        } });
+
     },
     oauth: function oauth(value) {var _this2 = this;
       uni.login({
@@ -252,7 +281,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
         },
         fail: function fail(err) {
-          console.error('授权登录失败：' + JSON.stringify(err), " at pages\\ucenter\\login\\login.vue:155");
+          console.error('授权登录失败：' + JSON.stringify(err), " at pages\\ucenter\\login\\login.vue:184");
         } });
 
     },

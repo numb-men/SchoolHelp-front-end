@@ -2457,7 +2457,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8536,7 +8536,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8557,14 +8557,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8633,7 +8633,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -11614,10 +11614,10 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
         return;
       }
-      if (this.password.length < 6 || this.password.length > 16) {
+      if (this.password.length < 8) {
         uni.showToast({
           icon: 'none',
-          title: '密码最短为 6 个字符，最长不超过16个字符' });
+          title: '密码最短为 8 个字符' });
 
         return;
       }
@@ -11634,20 +11634,49 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
          * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
          */
       var data = {
-        account: this.account,
-        password: this.password };
+        that: this,
+        account: that.account,
+        password: that.password };
 
-      var validUser = _service.default.getUsers().some(function (user) {
-        return data.account === user.account && data.password === user.password;
-      });
-      if (validUser) {
-        this.toMain(this.account);
-      } else {
-        uni.showToast({
-          icon: 'none',
-          title: '用户账号或密码不正确' });
+      // const validUser = service.getUsers().some(function(user) {
+      // 	return data.account === user.account && data.password === user.password;
+      // });
+      // if (validUser) {
+      // 	this.toMain(this.account);
+      // } else {
+      // uni.showToast({
+      // 	icon: 'none',
+      // 	title: '用户账号或密码不正确',
+      // });
+      // }
+      uni.request({
+        url: 'http://127.0.0.1:8080/login', //仅为示例，并非真实接口地址。
+        method: 'GET',
+        data: {
+          phone: that.account,
+          password: that.password },
 
-      }
+        // header: {
+        // 	'custom-header': 'hello' //自定义请求头信息
+        // },
+        success: function success(res) {
+          if (res.data.code == 0) {
+            // this.toMain(this.account);
+            uni.showToast({
+              icon: 'none',
+              title: '登陆成功' });
+
+          } else {
+            uni.showToast({
+              icon: 'none',
+              title: '用户账号或密码不正确' });
+
+          }
+        },
+        fail: function fail(res) {
+          console.log(res, " at pages\\ucenter\\login\\login.vue:164");
+        } });
+
     },
     oauth: function oauth(value) {var _this2 = this;
       uni.login({
@@ -11665,7 +11694,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
         },
         fail: function fail(err) {
-          console.error('授权登录失败：' + JSON.stringify(err), " at pages\\ucenter\\login\\login.vue:155");
+          console.error('授权登录失败：' + JSON.stringify(err), " at pages\\ucenter\\login\\login.vue:184");
         } });
 
     },
