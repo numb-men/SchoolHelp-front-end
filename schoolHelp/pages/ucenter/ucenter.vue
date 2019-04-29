@@ -8,21 +8,21 @@
 			</view>
 		</view>
 		<view>
-			<div class="basicData">
-				<div class="basicDataItem"><text>0</text><text>我的关注</text>
+			<div class="basic-data">
+				<div class="basic-data-item"><text>0</text><text>我的关注</text>
 				</div>
-				<div class="basicDataItem"><text>0</text><text>我的收藏</text>
+				<div class="basic-data-item"><text>0</text><text>我的收藏</text>
 				</div>
-				<div class="basicDataItem"><text>0</text><text>我的帖子</text>
+				<div class="basic-data-item"><text>0</text><text>我的帖子</text>
 				</div>
-				<div class="basicDataItem"><text>0</text><text>我的评论</text>
+				<div class="basic-data-item"><text>0</text><text>我的评论</text>
 				</div>
-				<div class="basicDataItem"><text>0</text><text>我的积分</text>
+				<div class="basic-data-item"><text>0</text><text>我的积分</text>
 				</div>
 			</div>
 		</view>
 		<view class="center-list">
-			<view class="center-list-item border-bottom">
+			<view class="center-list-item border-bottom" @click="goSetting">
 				<text class="list-icon">&#xe60f;</text>
 				<text class="list-text">设置</text>
 				<text class="navigat-arrow">&#xe65e;</text>
@@ -45,7 +45,7 @@
 	export default {
 		data() {
 			return {
-				login: true,
+				login: false,
 				avatarUrl: '/static/logo.png',
 				uerInfo: {}
 			}
@@ -53,11 +53,15 @@
 		methods: {
 			goLogin() {
 				if (!this.login) {
-					console.log('点击前往登录');
 					uni.navigateTo({
 						url: 'login/login'
 					})
 				};
+			},
+			goSetting() {
+				uni.navigateTo({
+					url: 'setting/setting'
+				})
 			}
 		}
 	}
@@ -80,7 +84,7 @@
 		background-color: #f8f8f8;
 	}
 
-	.basicData {
+	.basic-data {
 		width: 100%;
 		margin: 5px;
 		display: flex;
@@ -90,7 +94,7 @@
 		justify-content: space-between;
 	}
 
-	.basicDataItem {
+	.basic-data-item {
 		width: 60px;
 		font-size: 80%;
 		text-align: center;

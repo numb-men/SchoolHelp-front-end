@@ -5,7 +5,11 @@
     "pages/ucenter/ucenter",
     "pages/exapplication/exapplication",
     "pages/exapplication/questionnaire/questionnaire",
-    "pages/ucenter/login/login"
+    "pages/ucenter/login/login",
+    "pages/ucenter/reg/reg",
+    "pages/ucenter/pwd/pwd",
+    "pages/ucenter/setting/setting",
+    "pages/ucenter/setting/about/about"
   ],
   "subPackages": [],
   "window": {
@@ -61,6 +65,6 @@
     "autoclose": false
   },
   "appname": "sh",
-  "compilerVersion": "1.9.3",
+  "compilerVersion": "1.9.4",
   "usingComponents": {}
 }

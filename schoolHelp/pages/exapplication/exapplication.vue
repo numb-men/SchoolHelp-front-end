@@ -8,11 +8,11 @@
 							<image class="exappImage" src="../../static/wenjuandiaocha.png" />
 							<p>问卷调查</p>
 						</div>
-						<div class="box-wrap-center">
+						<div class="box-wrap-left">
 							<image class="exappImage" src="../../static/kechengbiao.png" />
 							<p>课程表</p>
 						</div>
-						<div class="box-wrap-right">
+						<div class="box-wrap-left">
 							<image class="exappImage" src="../../static/kongjiaoshi.png" />
 							<p>空教室</p>
 						</div>
@@ -22,11 +22,11 @@
 							<image class="exappImage" src="../../static/zidongpingyi.png" />
 							<p>自动评议</p>
 						</div>
-						<div class="box-wrap-center">
+						<div class="box-wrap-left">
 							<image class="exappImage" src="../../static/kaoshianpai.png" />
 							<p>考试安排</p>
 						</div>
-						<div class="box-wrap-right">
+						<div class="box-wrap-left">
 							<image class="exappImage" src="../../static/kandianpu.png" />
 							<p>看店铺</p>
 						</div>
@@ -118,12 +118,13 @@
 	}
 
 	.box-wrap {
-		/* flex-direction: row; */
+		flex-direction: row;
 		width: 360px;
 		text-align: center;
 		background-color: #FFFFFF;
 		overflow: hidden;
-		/* justify-content: center; */
+		flex-wrap: nowrap;
+		justify-content: space-between;
 	}
 
 	.box-wrap-left {
@@ -133,7 +134,7 @@
 		height: 100px;
 		/* width: 30%;
 		padding-bottom: 25%; */
-		margin-left: 10px;
+		/* margin-left: 10px; */
 		margin-top: 5px;
 		/* margin: 0 auto; */
 		border-radius: 10%;

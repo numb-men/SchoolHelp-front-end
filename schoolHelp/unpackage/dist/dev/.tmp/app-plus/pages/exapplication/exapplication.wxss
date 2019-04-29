@@ -29,12 +29,22 @@ page {
 	max-height: 100%;
 }
 .box-wrap {
-	/* flex-direction: row; */
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
 	width: 360px;
 	text-align: center;
 	background-color: #FFFFFF;
 	overflow: hidden;
-	/* justify-content: center; */
+	-webkit-flex-wrap: nowrap;
+	    -ms-flex-wrap: nowrap;
+	        flex-wrap: nowrap;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
 }
 .box-wrap-left {
 	float: left;
@@ -43,7 +53,7 @@ page {
 	height: 100px;
 	/* width: 30%;
 	padding-bottom: 25%; */
-	margin-left: 10px;
+	/* margin-left: 10px; */
 	margin-top: 5px;
 	/* margin: 0 auto; */
 	border-radius: 10%;
