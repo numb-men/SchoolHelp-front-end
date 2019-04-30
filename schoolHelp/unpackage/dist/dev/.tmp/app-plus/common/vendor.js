@@ -256,33 +256,60 @@ var addUser = function addUser(userInfo) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 _vue.default.use(_vuex.default);
 
 var store = new _vuex.default.Store({
   state: {
-    /**
-            * 是否需要强制登录
-            */
-    forcedLogin: false,
-    hasLogin: false,
-    userName: "" },
+    uerInfo: {},
+    hasLogin: false },
 
   mutations: {
-    login: function login(state, userName) {
-      state.userName = userName || '新用户';
+    login: function login(state, provider) {
       state.hasLogin = true;
+      state.uerInfo.token = provider.data;
+      state.uerInfo.userName = provider.code;
+      uni.setStorage({
+        key: 'uerInfo',
+        data: provider });
+
     },
     logout: function logout(state) {
-      state.userName = "";
       state.hasLogin = false;
-    } } });var _default =
+      state.uerInfo = {};
+      uni.removeStorage({
+        key: 'uerInfo' });
+
+    } } });
 
 
 
+
+// const store = new Vuex.Store({
+//     state: {
+//         /**
+//          * 是否需要强制登录
+//          */
+//         forcedLogin: false,
+//         hasLogin: false,
+//         userName: ""
+//     },
+//     mutations: {
+//         login(state, userName) {
+//             state.userName = userName || '新用户';
+//             state.hasLogin = true;
+//         },
+//         logout(state) {
+//             state.userName = "";
+//             state.hasLogin = false;
+//         }
+//     }
+// })
+var _default =
 store;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

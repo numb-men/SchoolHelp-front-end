@@ -10,15 +10,33 @@
 </template>
 
 <script>
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex';
 	export default {
 		data() {
 			return {
 
 			}
 		},
+		computed: mapState(['hasLogin', 'uerInfo']),
 		methods: {
+			...mapMutations(['logout']),
 			logoOut() {
-
+				if (this.hasLogin) {
+					uni.showToast({
+						icon: 'none',
+						title: '注销成功',
+					});
+					this.logout();
+					uni.navigateBack();
+				} else {
+					uni.showToast({
+						icon: 'none',
+						title: '您尚未登录哟~',
+					});
+				}
 			},
 			gotoDevelop() {
 				uni.navigateTo({

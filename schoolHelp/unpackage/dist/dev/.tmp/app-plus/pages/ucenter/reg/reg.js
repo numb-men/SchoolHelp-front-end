@@ -80,7 +80,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../uniappWorkspace/schoolHelp/components/m-input.vue"));};var _default =
 
 
 
@@ -105,58 +105,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+{
+  components: {
+    mInput: mInput },
 
+  data: function data() {
+    return {
+      account: '',
+      password: '' };
 
-var _service = _interopRequireDefault(__webpack_require__(/*! ../../../service.js */ "../../../uniappWorkspace/schoolHelp/service.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../uniappWorkspace/schoolHelp/components/m-input.vue"));};var _default = { components: { mInput: mInput }, data: function data() {return { account: '', password: '', email: '' };}, methods: { register: function register() {var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
-      var regString = /[a-zA-Z]+/; //验证大小写26个字母任意字母最少出现1次。
+  },
+  methods: {
+    register: function register() {
+      var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
+      var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
       /**
        * 客户端对账号信息进行一些必要的校验。
-       */if (this.account.length != 11) {uni.showToast({ icon: 'none', title: '请检查手机号是否正确' });return;}if (!/^1(3|4|5|7|8)\d{9}$/.test(this.account)) {uni.showToast({ icon: 'none',
+       */
+      if (this.account.length != 11) {
+        uni.showToast({
+          icon: 'none',
+          title: '请检查手机号是否正确' });
+
+        return;
+      }
+      if (!/^1(3|4|5|7|8)\d{9}$/.test(this.account)) {
+        uni.showToast({
+          icon: 'none',
           title: '手机号只能为11位数字' });
 
         return;
       }
-      if (this.password.length < 6) {
+      if (this.password.length < 8) {
         uni.showToast({
           icon: 'none',
-          title: '密码最短为 6 个字符' });
+          title: '密码最短为 8 个字符' });
 
         return;
       }
-      if (this.password.length < 6 || this.password.length > 16) {
-        uni.showToast({
-          icon: 'none',
-          title: '密码最短为 6 个字符，最长不超过16个字符' });
-
-        return;
-      }
-      if (!(regNumber.test(this.password) && regString.test(this.password))) {
+      if (!regString.test(this.password)) {
         uni.showToast({
           icon: 'none',
           title: '密码必须为字母和数字的组合' });
@@ -170,17 +157,41 @@ var mInput = function mInput() {return __webpack_require__.e(/*! import() | comp
 
         return;
       }
-      var data = {
+      var regData = {
         account: this.account,
-        password: this.password,
-        email: this.email };
+        password: this.password };
 
-      _service.default.addUser(data);
-      uni.showToast({
-        title: '注册成功' });
 
-      uni.navigateBack({
-        delta: 1 });
+      uni.request({
+        url: 'http://24l687f160.qicp.vip:43882/register', //仅为示例，并非真实接口地址。
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' },
+
+        data: {
+          phone: regData.account,
+          password: regData.password },
+
+        success: function success(res) {
+          if (res.data.code === 0) {
+            uni.showToast({
+              icon: 'none',
+              title: '注册成功' });
+
+            uni.navigateBack();
+          } else {
+            uni.showModal({
+              content: "出现错误，请稍后再试！" + res.data.msg,
+              showCancel: false });
+
+          }
+        },
+        fail: function fail(res) {
+          uni.showModal({
+            content: "请求失败，请重试！",
+            showCancel: false });
+
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))

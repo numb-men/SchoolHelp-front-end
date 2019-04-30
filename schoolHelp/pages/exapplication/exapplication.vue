@@ -1,63 +1,50 @@
 <template>
-	<view>
-		<html>
-			<body>
-				<div class="wrapper">
-					<div class="box-wrap">
-						<div class="box-wrap-left" @click="gotoQuestionaire()">
-							<image class="exappImage" src="../../static/wenjuandiaocha.png" />
-							<p>问卷调查</p>
-						</div>
-						<div class="box-wrap-left">
-							<image class="exappImage" src="../../static/kechengbiao.png" />
-							<p>课程表</p>
-						</div>
-						<div class="box-wrap-left">
-							<image class="exappImage" src="../../static/kongjiaoshi.png" />
-							<p>空教室</p>
-						</div>
-					</div>
-					<div class="box-wrap">
-						<div class="box-wrap-left">
-							<image class="exappImage" src="../../static/zidongpingyi.png" />
-							<p>自动评议</p>
-						</div>
-						<div class="box-wrap-left">
-							<image class="exappImage" src="../../static/kaoshianpai.png" />
-							<p>考试安排</p>
-						</div>
-						<div class="box-wrap-left">
-							<image class="exappImage" src="../../static/kandianpu.png" />
-							<p>看店铺</p>
-						</div>
-					</div>
-					<div class="box-wrap">
-						<div class="box-wrap-left">
-							<image class="exappImage" src="../../static/biaobaiqiang.png" />
-							<p>表白墙</p>
-						</div>
-					</div>
-					<div class="push"></div>
-				</div>
-				<footer class="footer">
-					<view class="page-section swiper">
-						<view class="page-section-spacing">
-							<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-								<swiper-item>
-									<image src="../../static/add1.png" class="adds"></image>
-								</swiper-item>
-								<swiper-item>
-									<image src="../../static/add2.png" class="adds"></image>
-								</swiper-item>
-								<swiper-item>
-									<image src="../../static/add3.png" class="adds"></image>
-								</swiper-item>
-							</swiper>
-						</view>
-					</view>
-				</footer>
-			</body>
-		</html>
+	<view class="basicStyle">
+		<view class="box-wrap">
+			<view class="box-wrap-item" @click="gotoQuestionaire()">
+				<image class="exapp-image" src="../../static/wenjuandiaocha.png" />
+				<text style="display: block;">问卷调查</text>
+			</view>
+			<view class="box-wrap-item">
+				<image class="exapp-image" src="../../static/kechengbiao.png" />
+				<text style="display: block;">课程表</text>
+			</view>
+			<view class="box-wrap-item">
+				<image class="exapp-image" src="../../static/kongjiaoshi.png" />
+				<text style="display: block;">空教室</text>
+			</view>
+		</view>
+		<view class="box-wrap">
+			<div class="box-wrap-item">
+				<image class="exapp-image" src="../../static/zidongpingyi.png" />
+				<text style="display: block;">自动评议</text>
+			</div>
+			<div class="box-wrap-item">
+				<image class="exapp-image" src="../../static/kaoshianpai.png" />
+				<text style="display: block;">考试安排</text>
+			</div>
+			<div class="box-wrap-item">
+				<image class="exapp-image" src="../../static/kandianpu.png" />
+				<text style="display: block;">看店铺</text>
+			</div>
+		</view>
+		<view class="box-wrap">
+			<div class="box-wrap-item">
+				<image class="exapp-image" src="../../static/biaobaiqiang.png" />
+				<text style="display: block;">表白墙</text>
+			</div>
+		</view>
+		<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+			<swiper-item>
+				<image src="../../static/add1.png" class="adds"></image>
+			</swiper-item>
+			<swiper-item>
+				<image src="../../static/add2.png" class="adds"></image>
+			</swiper-item>
+			<swiper-item>
+				<image src="../../static/add3.png" class="adds"></image>
+			</swiper-item>
+		</swiper>
 	</view>
 </template>
 
@@ -82,23 +69,35 @@
 </script>
 
 <style>
-	.wrapper {
-		min-height: 100%;
-		margin-bottom: 70px;
-	}
-
-	body,
-	html {
+	.basicStyle {
+		width: 100%;
 		height: 100%;
-		margin: 0;
 	}
 
-	.footer,
-	.push {
-		height: 70px;
+	.box-wrap {
+		display: flex;
+		width: 100%;
+		text-align: center;
+		background-color: #FFFFFF;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+
+	.box-wrap-item {
+		border: 1px solid #CCCCCC;
+		width: 100px;
+		height: 100px;
+		margin-top: 5px;
+		border-radius: 10%;
+		background-color: FFFFFF;
+	}
+
+	.box-wrap-item:active {
+		background-color: #eeeeee;
 	}
 
 	.swiper {
+		margin-top: 100upx;
 		height: 300upx;
 	}
 
@@ -107,7 +106,7 @@
 		height: 100%;
 	}
 
-	.exappImage {
+	.exapp-image {
 		text-align: center;
 		border-radius: 30px;
 		margin-top: 2px;
@@ -115,68 +114,5 @@
 		height: 60px;
 		max-width: 100%;
 		max-height: 100%;
-	}
-
-	.box-wrap {
-		flex-direction: row;
-		width: 360px;
-		text-align: center;
-		background-color: #FFFFFF;
-		overflow: hidden;
-		flex-wrap: nowrap;
-		justify-content: space-between;
-	}
-
-	.box-wrap-left {
-		float: left;
-		border: 1px solid #CCCCCC;
-		width: 100px;
-		height: 100px;
-		/* width: 30%;
-		padding-bottom: 25%; */
-		/* margin-left: 10px; */
-		margin-top: 5px;
-		/* margin: 0 auto; */
-		border-radius: 10%;
-		background-color: FFFFFF;
-	}
-
-	.box-wrap-left:active {
-		background-color: #eeeeee;
-	}
-
-	.box-wrap-center {
-		float: left;
-		border: 1px solid #CCCCCC;
-		width: 100px;
-		height: 100px;
-		/* padding-bottom: 25%; */
-		margin-top: 5px;
-		margin-left: 17px;
-		/* margin: 0 auto; */
-		border-radius: 10%;
-		background-color: FFFFFF;
-	}
-
-	.box-wrap-center:active {
-		background-color: #eeeeee;
-	}
-
-	.box-wrap-right {
-		/* display: inline; */
-		float: right;
-		border: 1px solid #CCCCCC;
-		width: 100px;
-		height: 100px;
-		/* width: 30%;
-		padding-bottom: 25%; */
-		margin-right: 10px;
-		margin-top: 5px;
-		border-radius: 10%;
-		background-color: FFFFFF;
-	}
-
-	.box-wrap-right:active {
-		background-color: #eeeeee;
 	}
 </style>

@@ -1,5 +1,5 @@
 <template>
-	<view class="content">
+	<form class="content" @submit="bindLogin">
 		<view class="input-group">
 			<view class="input-row border">
 				<text class="title">手机号：</text>
@@ -11,7 +11,7 @@
 			</view>
 		</view>
 		<view class="btn-row">
-			<button type="primary" class="primary" @tap="bindLogin">登录</button>
+			<button type="primary" :loading="loading" class="primary" formType="submit">登录</button>
 		</view>
 		<view class="action-row">
 			<navigator url="../reg/reg">注册账号</navigator>
@@ -24,11 +24,10 @@
 				<image :src="provider.image" @tap="oauth(provider.value)"></image>
 			</view>
 		</view> -->
-	</view>
+	</form>
 </template>
 
 <script>
-	import service from '../../../service.js';
 	import {
 		mapState,
 		mapMutations
@@ -41,6 +40,7 @@
 		},
 		data() {
 			return {
+                loading: false,
 				providerList: [],
 				hasProvider: false,
 				account: '',
@@ -51,29 +51,31 @@
 		},
 		computed: mapState(['forcedLogin']),
 		methods: {
-			...mapMutations(['login']),
-			initProvider() {
-				const filters = ['weixin', 'qq', 'sinaweibo'];
-				uni.getProvider({
-					service: 'oauth',
-					success: (res) => {
-						if (res.provider && res.provider.length) {
-							for (let i = 0; i < res.provider.length; i++) {
-								if (~filters.indexOf(res.provider[i])) {
-									this.providerList.push({
-										value: res.provider[i],
-										image: '../../../static/img/' + res.provider[i] + '.png'
-									});
-								}
-							}
-							this.hasProvider = true;
-						}
-					},
-					fail: (err) => {
-						console.error('获取服务供应商失败：' + JSON.stringify(err));
-					}
-				});
-			},
+			/**
+			 * 第三方授权初始化
+			 */
+			// initProvider() {
+			// 	const filters = ['weixin', 'qq', 'sinaweibo'];
+			// 	uni.getProvider({
+			// 		service: 'oauth',
+			// 		success: (res) => {
+			// 			if (res.provider && res.provider.length) {
+			// 				for (let i = 0; i < res.provider.length; i++) {
+			// 					if (~filters.indexOf(res.provider[i])) {
+			// 						this.providerList.push({
+			// 							value: res.provider[i],
+			// 							image: '../../../static/img/' + res.provider[i] + '.png'
+			// 						});
+			// 					}
+			// 				}
+			// 				this.hasProvider = true;
+			// 			}
+			// 		},
+			// 		fail: (err) => {
+			// 			console.error('获取服务供应商失败：' + JSON.stringify(err));
+			// 		}
+			// 	});
+			// },
 			initPosition() {
 				/**
 				 * 使用 absolute 定位，并且设置 bottom 值进行定位。软键盘弹出时，底部会因为窗口变化而被顶上来。
@@ -83,11 +85,15 @@
 			},
 			bindLogin() {
 				var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
-				var regString = /[a-zA-Z]+/; //验证大小写26个字母任意字母最少出现1次。
+				var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/;//验证数字、字母至少出现一次，且只能为数字和字母的组合。
+				// var pages = getCurrentPages();
+				// var currPage = pages[pages.length - 1]; //当前页面
+				// var prevPage = pages[pages.length - 2]; //上一个页面
 				/**
 				 * 客户端对账号信息进行一些必要的校验。
 				 */
 				if (this.account.length != 11) {
+                    this.loading = false;
 					uni.showToast({
 						icon: 'none',
 						title: '请检查手机号是否正确'
@@ -95,6 +101,7 @@
 					return;
 				}
 				if (!(/^1(3|4|5|7|8)\d{9}$/.test(this.account))) {
+                    this.loading = false;
 					uni.showToast({
 						icon: 'none',
 						title: '手机号只能为11位数字'
@@ -102,13 +109,15 @@
 					return;
 				}
 				if (this.password.length < 8) {
+                    this.loading = false;
 					uni.showToast({
 						icon: 'none',
 						title: '密码最短为 8 个字符'
 					});
 					return;
 				}
-				if (!(regNumber.test(this.password) && regString.test(this.password))) {
+				if (!(regString.test(this.password))) {
+                    this.loading = false;
 					uni.showToast({
 						icon: 'none',
 						title: '密码必须为字母和数字的组合'
@@ -120,71 +129,60 @@
 				 * 检测用户账号密码是否在已注册的用户列表中
 				 * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
 				 */
-				const data = {
-					that: this,
-					account: that.account,
-					password: that.password
+				const loginData = {
+					account: this.account,
+					password: this.password
 				};
-				// const validUser = service.getUsers().some(function(user) {
-				// 	return data.account === user.account && data.password === user.password;
-				// });
-				// if (validUser) {
-				// 	this.toMain(this.account);
-				// } else {
-				// uni.showToast({
-				// 	icon: 'none',
-				// 	title: '用户账号或密码不正确',
-				// });
-				// }
 				uni.request({
-					url: 'http://127.0.0.1:8080/login', //仅为示例，并非真实接口地址。
+					url: 'http://24l687f160.qicp.vip:43882/login', //仅为示例，并非真实接口地址。
 					method: 'GET',
 					data: {
-						phone: that.account,
-						password: that.password
+						phone: loginData.account,
+						password: loginData.password
 					},
-					// header: {
-					// 	'custom-header': 'hello' //自定义请求头信息
-					// },
-					success: function(res) {
-						if (res.data.code == 0) {
-							// this.toMain(this.account);
+					success: (res) => {
+						if (res.data.code === 0) {
 							uni.showToast({
 								icon: 'none',
 								title: '登陆成功',
 							});
+							this.login(res.data);
+							uni.navigateBack();
 						} else {
-							uni.showToast({
-								icon: 'none',
-								title: '用户账号或密码不正确',
+							uni.showModal({
+								content: "用户名密码错误！",
+								showCancel: false
 							});
 						}
 					},
-					fail: function(res) {
-						console.log(res);
+					fail: (res) => {
+						uni.showModal({
+						    content: "请求失败，请重试！",
+						    showCancel: false
+						})
 					}
 				});
 			},
-			oauth(value) {
-				uni.login({
-					provider: value,
-					success: (res) => {
-						uni.getUserInfo({
-							provider: value,
-							success: (infoRes) => {
-								/**
-								 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
-								 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
-								 */
-								this.toMain(infoRes.userInfo.nickName);
-							}
-						});
-					},
-					fail: (err) => {
-						console.error('授权登录失败：' + JSON.stringify(err));
-					}
-				});
-			},
+			// oauth(value) {
+			// 	uni.login({
+			// 		provider: value,
+			// 		success: (res) => {
+			// 			uni.getUserInfo({
+			// 				provider: value,
+			// 				success: (infoRes) => {
+			// 					/**
+			// 					 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
+			// 					 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
+			// 					 */
+			// 					this.toMain(infoRes.userInfo.nickName);
+			// 				}
+			// 			});
+			// 		},
+			// 		fail: (err) => {
+			// 			console.error('授权登录失败：' + JSON.stringify(err));
+			// 		}
+			// 	});
+			// }, 
 			toMain(userName) {
 				this.login(userName);
 				/**
@@ -199,7 +197,8 @@
 					uni.navigateBack();
 				}
 
-			}
+			},
+			...mapMutations(['login'])
 		},
 		onReady() {
 			this.initPosition();

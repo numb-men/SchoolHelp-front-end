@@ -1112,15 +1112,17 @@ if( __WXML_GLOBAL__.ops_cached.$gwx_7)return __WXML_GLOBAL__.ops_cached.$gwx_7
 __WXML_GLOBAL__.ops_cached.$gwx_7=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
-Z([3,'content'])
-Z([3,'input-group'])
 Z([3,'__e'])
+Z([3,'content'])
+Z([[4],[[5],[[4],[[5],[[5],[1,'submit']],[[4],[[5],[[4],[[5],[[5],[1,'bindLogin']],[[4],[[5],[1,'$event']]]]]]]]]]])
+Z([3,'input-group'])
+Z(z[1])
 Z([3,'m-input'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'account']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
 Z([3,'请输入手机号'])
 Z([3,'number'])
 Z([[7],[3,'account']])
-Z(z[3])
+Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'password']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
 Z([3,'请输入密码'])
 Z([3,'password'])
@@ -1145,22 +1147,24 @@ if( __WXML_GLOBAL__.ops_cached.$gwx_9)return __WXML_GLOBAL__.ops_cached.$gwx_9
 __WXML_GLOBAL__.ops_cached.$gwx_9=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
-Z([3,'content'])
-Z([3,'input-group'])
 Z([3,'__e'])
+Z([3,'content'])
+Z([[4],[[5],[[4],[[5],[[5],[1,'submit']],[[4],[[5],[[4],[[5],[[5],[1,'register']],[[4],[[5],[1,'$event']]]]]]]]]]])
+Z([3,'input-group'])
+Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'account']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
 Z([3,'请输入账号'])
 Z([3,'text'])
 Z([[7],[3,'account']])
-Z(z[3])
+Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'password']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
 Z([3,'请输入密码'])
 Z([3,'password'])
 Z([[7],[3,'password']])
-Z(z[3])
+Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'checkPassword']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
-Z(z[10])
-Z(z[11])
+Z(z[12])
+Z(z[13])
 Z([[7],[3,'checkPassword']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_9);return __WXML_GLOBAL__.ops_cached.$gwx_9
 }
@@ -1185,8 +1189,8 @@ Z([3,'center'])
 Z([3,'__e'])
 Z([3,'logo'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[1,'goLogin']],[[4],[[5],[1,'$event']]]]]]]]]]])
-Z([[2,'?:'],[[2,'!'],[[7],[3,'login']]],[1,'logo-hover'],[1,'']])
-Z([[2,'!'],[[7],[3,'login']]])
+Z([[2,'?:'],[[2,'!'],[[7],[3,'hasLogins']]],[1,'logo-hover'],[1,'']])
+Z([[2,'!'],[[7],[3,'hasLogin']]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_12);return __WXML_GLOBAL__.ops_cached.$gwx_12
 }
 __WXML_GLOBAL__.ops_set.$gwx=z;
@@ -1260,17 +1264,17 @@ e_[x[5]]={f:m5,j:[],i:[],ti:[],ic:[]}
 d_[x[6]]={}
 var m6=function(e,s,r,gg){
 var z=gz$gwx_7()
-cs.push("./pages/ucenter/login/login.wxml:view:1:1")
-var tM=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
-cs.push("./pages/ucenter/login/login.wxml:view:1:38")
+cs.push("./pages/ucenter/login/login.wxml:form:1:1")
+var tM=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+cs.push("./pages/ucenter/login/login.wxml:view:1:117")
 var eN=_n('view')
-_rz(z,eN,'class',2,e,s,gg)
-cs.push("./pages/ucenter/login/login.wxml:m-input:1:134")
-var bO=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',3,'class',1,'data-event-opts',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+_rz(z,eN,'class',4,e,s,gg)
+cs.push("./pages/ucenter/login/login.wxml:m-input:1:213")
+var bO=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'class',1,'data-event-opts',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
 cs.pop()
 _(eN,bO)
-cs.push("./pages/ucenter/login/login.wxml:m-input:1:420")
-var oP=_mz(z,'m-input',['displayable',-1,'bind:input',9,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
+cs.push("./pages/ucenter/login/login.wxml:m-input:1:499")
+var oP=_mz(z,'m-input',['displayable',-1,'bind:input',11,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
 cs.pop()
 _(eN,oP)
 cs.pop()
@@ -1297,21 +1301,21 @@ e_[x[7]]={f:m7,j:[],i:[],ti:[],ic:[]}
 d_[x[8]]={}
 var m8=function(e,s,r,gg){
 var z=gz$gwx_9()
-cs.push("./pages/ucenter/reg/reg.wxml:view:1:1")
-var hU=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
-cs.push("./pages/ucenter/reg/reg.wxml:view:1:38")
+cs.push("./pages/ucenter/reg/reg.wxml:form:1:1")
+var hU=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+cs.push("./pages/ucenter/reg/reg.wxml:view:1:116")
 var oV=_n('view')
-_rz(z,oV,'class',2,e,s,gg)
-cs.push("./pages/ucenter/reg/reg.wxml:m-input:1:134")
-var cW=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',3,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
+_rz(z,oV,'class',4,e,s,gg)
+cs.push("./pages/ucenter/reg/reg.wxml:m-input:1:212")
+var cW=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
 cs.pop()
 _(oV,cW)
-cs.push("./pages/ucenter/reg/reg.wxml:m-input:1:406")
-var oX=_mz(z,'m-input',['displayable',-1,'bind:input',8,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
+cs.push("./pages/ucenter/reg/reg.wxml:m-input:1:484")
+var oX=_mz(z,'m-input',['displayable',-1,'bind:input',10,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
 cs.pop()
 _(oV,oX)
-cs.push("./pages/ucenter/reg/reg.wxml:m-input:1:686")
-var lY=_mz(z,'m-input',['displayable',-1,'bind:input',13,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
+cs.push("./pages/ucenter/reg/reg.wxml:m-input:1:764")
+var lY=_mz(z,'m-input',['displayable',-1,'bind:input',15,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
 cs.pop()
 _(oV,lY)
 cs.pop()
@@ -1343,7 +1347,7 @@ var o4=_mz(z,'view',['bindtap',2,'class',1,'data-event-opts',2,'hoverClass',3],[
 var x5=_v()
 _(o4,x5)
 if(_oz(z,6,e,s,gg)){x5.wxVkey=1
-cs.push("./pages/ucenter/ucenter.wxml:block:1:346")
+cs.push("./pages/ucenter/ucenter.wxml:block:1:435")
 cs.pop()
 }
 x5.wxXCkey=1
@@ -1497,17 +1501,41 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+
+
 {
-  onLaunch: function onLaunch() {
-    console.log('App Launch', " at App.vue:4");
-  },
   onShow: function onShow() {
     console.log('App Show', " at App.vue:7");
   },
   onHide: function onHide() {
     console.log('App Hide', " at App.vue:10");
-  } };exports.default = _default;
+  },
+  onLaunch: function onLaunch() {var _this = this;
+    uni.getStorage({
+      key: 'uerInfo',
+      success: function success(res) {
+        _this.login(res.data);
+        // 如果还需要重新校验或是想要刷新token的有效时间 就再联网请求一次
+        // uni.request({
+        // 	url: `${this.$serverUrl}/auth.php`,
+        // 	data: {
+        // 		"username": res.data.user_name
+        // 	},
+        // 	method: "POST",
+        // 	success: (e) => {
+        // 		if (e.data.code === 0) {
+        // 			this.login(e.data);
+        // 		}
+        // 	}
+        // })
+      } });
+
+  },
+  methods: _objectSpread({},
+  (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 
@@ -2049,33 +2077,60 @@ var addUser = function addUser(userInfo) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 _vue.default.use(_vuex.default);
 
 var store = new _vuex.default.Store({
   state: {
-    /**
-            * 是否需要强制登录
-            */
-    forcedLogin: false,
-    hasLogin: false,
-    userName: "" },
+    uerInfo: {},
+    hasLogin: false },
 
   mutations: {
-    login: function login(state, userName) {
-      state.userName = userName || '新用户';
+    login: function login(state, provider) {
       state.hasLogin = true;
+      state.uerInfo.token = provider.data;
+      state.uerInfo.userName = provider.code;
+      uni.setStorage({
+        key: 'uerInfo',
+        data: provider });
+
     },
     logout: function logout(state) {
-      state.userName = "";
       state.hasLogin = false;
-    } } });var _default =
+      state.uerInfo = {};
+      uni.removeStorage({
+        key: 'uerInfo' });
+
+    } } });
 
 
 
+
+// const store = new Vuex.Store({
+//     state: {
+//         /**
+//          * 是否需要强制登录
+//          */
+//         forcedLogin: false,
+//         hasLogin: false,
+//         userName: ""
+//     },
+//     mutations: {
+//         login(state, userName) {
+//             state.userName = userName || '新用户';
+//             state.hasLogin = true;
+//         },
+//         logout(state) {
+//             state.userName = "";
+//             state.hasLogin = false;
+//         }
+//     }
+// })
+var _default =
 store;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 
@@ -10951,71 +11006,103 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {
-      login: false,
-      avatarUrl: '/static/logo.png',
-      uerInfo: {} };
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-  },
-  methods: {
-    goLogin: function goLogin() {
-      if (!this.login) {
-        uni.navigateTo({
-          url: 'login/login' });
 
-      };
-    },
-    goSetting: function goSetting() {
-      uni.navigateTo({
-        url: 'setting/setting' });
 
-    } } };exports.default = _default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js"); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'uerInfo']), data: function data() {return {// login: false,
+      // avatarUrl: '/static/logo.png',
+      // userInfo: {
+      // 	name: ''
+      // }
+    };}, methods: { bindLogin: function bindLogin() {if (this.hasLogin) {this.logout();} else {uni.navigateTo({ url: 'login/login' });}}, goLogin: function goLogin() {if (!this.hasLogin) {uni.navigateTo({ url: 'login/login' });};}, goSetting: function goSetting() {uni.navigateTo({ url: 'setting/setting' });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
@@ -11161,19 +11248,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -11541,8 +11615,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _service = _interopRequireDefault(__webpack_require__(/*! ../../../service.js */ "../../../uniappWorkspace/schoolHelp/service.js"));
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../uniappWorkspace/schoolHelp/components/m-input.vue"));};var _default =
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../uniappWorkspace/schoolHelp/components/m-input.vue"));};var _default =
 
 
 
@@ -11554,6 +11627,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
   data: function data() {
     return {
+      loading: false,
       providerList: [],
       hasProvider: false,
       account: '',
@@ -11563,30 +11637,32 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
   },
   computed: (0, _vuex.mapState)(['forcedLogin']),
-  methods: _objectSpread({},
-  (0, _vuex.mapMutations)(['login']), {
-    initProvider: function initProvider() {var _this = this;
-      var filters = ['weixin', 'qq', 'sinaweibo'];
-      uni.getProvider({
-        service: 'oauth',
-        success: function success(res) {
-          if (res.provider && res.provider.length) {
-            for (var i = 0; i < res.provider.length; i++) {
-              if (~filters.indexOf(res.provider[i])) {
-                _this.providerList.push({
-                  value: res.provider[i],
-                  image: '../../../static/img/' + res.provider[i] + '.png' });
-
-              }
-            }
-            _this.hasProvider = true;
-          }
-        },
-        fail: function fail(err) {
-          console.error('获取服务供应商失败：' + JSON.stringify(err), " at pages\\ucenter\\login\\login.vue:73");
-        } });
-
-    },
+  methods: _objectSpread({
+    /**
+                            * 第三方授权初始化
+                            */
+    // initProvider() {
+    // 	const filters = ['weixin', 'qq', 'sinaweibo'];
+    // 	uni.getProvider({
+    // 		service: 'oauth',
+    // 		success: (res) => {
+    // 			if (res.provider && res.provider.length) {
+    // 				for (let i = 0; i < res.provider.length; i++) {
+    // 					if (~filters.indexOf(res.provider[i])) {
+    // 						this.providerList.push({
+    // 							value: res.provider[i],
+    // 							image: '../../../static/img/' + res.provider[i] + '.png'
+    // 						});
+    // 					}
+    // 				}
+    // 				this.hasProvider = true;
+    // 			}
+    // 		},
+    // 		fail: (err) => {
+    // 			console.error('获取服务供应商失败：' + JSON.stringify(err));
+    // 		}
+    // 	});
+    // },
     initPosition: function initPosition() {
       /**
                                             * 使用 absolute 定位，并且设置 bottom 值进行定位。软键盘弹出时，底部会因为窗口变化而被顶上来。
@@ -11594,13 +11670,17 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
                                             */
       this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
     },
-    bindLogin: function bindLogin() {
+    bindLogin: function bindLogin() {var _this = this;
       var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
-      var regString = /[a-zA-Z]+/; //验证大小写26个字母任意字母最少出现1次。
+      var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
+      // var pages = getCurrentPages();
+      // var currPage = pages[pages.length - 1]; //当前页面
+      // var prevPage = pages[pages.length - 2]; //上一个页面
       /**
        * 客户端对账号信息进行一些必要的校验。
        */
       if (this.account.length != 11) {
+        this.loading = false;
         uni.showToast({
           icon: 'none',
           title: '请检查手机号是否正确' });
@@ -11608,6 +11688,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         return;
       }
       if (!/^1(3|4|5|7|8)\d{9}$/.test(this.account)) {
+        this.loading = false;
         uni.showToast({
           icon: 'none',
           title: '手机号只能为11位数字' });
@@ -11615,13 +11696,15 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         return;
       }
       if (this.password.length < 8) {
+        this.loading = false;
         uni.showToast({
           icon: 'none',
           title: '密码最短为 8 个字符' });
 
         return;
       }
-      if (!(regNumber.test(this.password) && regString.test(this.password))) {
+      if (!regString.test(this.password)) {
+        this.loading = false;
         uni.showToast({
           icon: 'none',
           title: '密码必须为字母和数字的组合' });
@@ -11633,71 +11716,60 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
          * 检测用户账号密码是否在已注册的用户列表中
          * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
          */
-      var data = {
-        that: this,
-        account: that.account,
-        password: that.password };
+      var loginData = {
+        account: this.account,
+        password: this.password };
 
-      // const validUser = service.getUsers().some(function(user) {
-      // 	return data.account === user.account && data.password === user.password;
-      // });
-      // if (validUser) {
-      // 	this.toMain(this.account);
-      // } else {
-      // uni.showToast({
-      // 	icon: 'none',
-      // 	title: '用户账号或密码不正确',
-      // });
-      // }
       uni.request({
-        url: 'http://127.0.0.1:8080/login', //仅为示例，并非真实接口地址。
+        url: 'http://24l687f160.qicp.vip:43882/login', //仅为示例，并非真实接口地址。
         method: 'GET',
         data: {
-          phone: that.account,
-          password: that.password },
+          phone: loginData.account,
+          password: loginData.password },
 
-        // header: {
-        // 	'custom-header': 'hello' //自定义请求头信息
-        // },
         success: function success(res) {
-          if (res.data.code == 0) {
-            // this.toMain(this.account);
+          if (res.data.code === 0) {
             uni.showToast({
               icon: 'none',
               title: '登陆成功' });
 
+            _this.login(res.data);
+            uni.navigateBack();
           } else {
-            uni.showToast({
-              icon: 'none',
-              title: '用户账号或密码不正确' });
+            uni.showModal({
+              content: "用户名密码错误！",
+              showCancel: false });
 
           }
         },
         fail: function fail(res) {
-          console.log(res, " at pages\\ucenter\\login\\login.vue:164");
+          uni.showModal({
+            content: "请求失败，请重试！",
+            showCancel: false });
+
         } });
 
     },
-    oauth: function oauth(value) {var _this2 = this;
-      uni.login({
-        provider: value,
-        success: function success(res) {
-          uni.getUserInfo({
-            provider: value,
-            success: function success(infoRes) {
-              /**
-                                                 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
-                                                 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
-                                                 */
-              _this2.toMain(infoRes.userInfo.nickName);
-            } });
-
-        },
-        fail: function fail(err) {
-          console.error('授权登录失败：' + JSON.stringify(err), " at pages\\ucenter\\login\\login.vue:184");
-        } });
-
-    },
+    // oauth(value) {
+    // 	uni.login({
+    // 		provider: value,
+    // 		success: (res) => {
+    // 			uni.getUserInfo({
+    // 				provider: value,
+    // 				success: (infoRes) => {
+    // 					/**
+    // 					 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
+    // 					 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
+    // 					 */
+    // 					this.toMain(infoRes.userInfo.nickName);
+    // 				}
+    // 			});
+    // 		},
+    // 		fail: (err) => {
+    // 			console.error('授权登录失败：' + JSON.stringify(err));
+    // 		}
+    // 	});
+    // }, 
     toMain: function toMain(userName) {
       this.login(userName);
       /**
@@ -11712,7 +11784,8 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         uni.navigateBack();
       }
 
-    } }),
+    } },
+  (0, _vuex.mapMutations)(['login'])),
 
   onReady: function onReady() {
     this.initPosition();
@@ -11844,7 +11917,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../uniappWorkspace/schoolHelp/components/m-input.vue"));};var _default =
 
 
 
@@ -11869,58 +11942,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+{
+  components: {
+    mInput: mInput },
 
+  data: function data() {
+    return {
+      account: '',
+      password: '' };
 
-var _service = _interopRequireDefault(__webpack_require__(/*! ../../../service.js */ "../../../uniappWorkspace/schoolHelp/service.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../uniappWorkspace/schoolHelp/components/m-input.vue"));};var _default = { components: { mInput: mInput }, data: function data() {return { account: '', password: '', email: '' };}, methods: { register: function register() {var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
-      var regString = /[a-zA-Z]+/; //验证大小写26个字母任意字母最少出现1次。
+  },
+  methods: {
+    register: function register() {
+      var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
+      var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
       /**
        * 客户端对账号信息进行一些必要的校验。
-       */if (this.account.length != 11) {uni.showToast({ icon: 'none', title: '请检查手机号是否正确' });return;}if (!/^1(3|4|5|7|8)\d{9}$/.test(this.account)) {uni.showToast({ icon: 'none',
+       */
+      if (this.account.length != 11) {
+        uni.showToast({
+          icon: 'none',
+          title: '请检查手机号是否正确' });
+
+        return;
+      }
+      if (!/^1(3|4|5|7|8)\d{9}$/.test(this.account)) {
+        uni.showToast({
+          icon: 'none',
           title: '手机号只能为11位数字' });
 
         return;
       }
-      if (this.password.length < 6) {
+      if (this.password.length < 8) {
         uni.showToast({
           icon: 'none',
-          title: '密码最短为 6 个字符' });
+          title: '密码最短为 8 个字符' });
 
         return;
       }
-      if (this.password.length < 6 || this.password.length > 16) {
-        uni.showToast({
-          icon: 'none',
-          title: '密码最短为 6 个字符，最长不超过16个字符' });
-
-        return;
-      }
-      if (!(regNumber.test(this.password) && regString.test(this.password))) {
+      if (!regString.test(this.password)) {
         uni.showToast({
           icon: 'none',
           title: '密码必须为字母和数字的组合' });
@@ -11934,17 +11994,41 @@ var mInput = function mInput() {return __webpack_require__.e(/*! import() | comp
 
         return;
       }
-      var data = {
+      var regData = {
         account: this.account,
-        password: this.password,
-        email: this.email };
+        password: this.password };
 
-      _service.default.addUser(data);
-      uni.showToast({
-        title: '注册成功' });
 
-      uni.navigateBack({
-        delta: 1 });
+      uni.request({
+        url: 'http://24l687f160.qicp.vip:43882/register', //仅为示例，并非真实接口地址。
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' },
+
+        data: {
+          phone: regData.account,
+          password: regData.password },
+
+        success: function success(res) {
+          if (res.data.code === 0) {
+            uni.showToast({
+              icon: 'none',
+              title: '注册成功' });
+
+            uni.navigateBack();
+          } else {
+            uni.showModal({
+              content: "出现错误，请稍后再试！" + res.data.msg,
+              showCancel: false });
+
+          }
+        },
+        fail: function fail(res) {
+          uni.showModal({
+            content: "请求失败，请重试！",
+            showCancel: false });
+
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
@@ -12241,33 +12325,51 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+
+
+
 {
   data: function data() {
     return {};
 
 
   },
-  methods: {
+  computed: (0, _vuex.mapState)(['hasLogin', 'uerInfo']),
+  methods: _objectSpread({},
+  (0, _vuex.mapMutations)(['logout']), {
     logoOut: function logoOut() {
+      if (this.hasLogin) {
+        uni.showToast({
+          icon: 'none',
+          title: '注销成功' });
 
+        this.logout();
+        uni.navigateBack();
+      } else {
+        uni.showToast({
+          icon: 'none',
+          title: '您尚未登录哟~' });
+
+      }
     },
     gotoDevelop: function gotoDevelop() {
       uni.navigateTo({
         url: 'about/about' });
 
-    } } };exports.default = _default;
+    } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),

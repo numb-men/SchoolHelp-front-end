@@ -1,10 +1,12 @@
 <template>
 	<view class="center">
-		<view class="logo" @click="goLogin" :hover-class="!login ? 'logo-hover' : ''">
-			<image class="logo-img" :src="login ? uerInfo.avatarUrl :avatarUrl"></image>
+		<view class="logo" @click="goLogin" :hover-class="!hasLogins ? 'logo-hover' : ''">
+			<!-- <image class="logo-img" :src="login ? uerInfo.avatarUrl :avatarUrl"></image> -->
 			<view class="logo-title">
-				<text class="uer-name">Hi，{{login ? uerInfo.name : '您未登录'}}</text>
-				<text class="go-login navigat-arrow" v-if="!login">&#xe65e;</text>
+				<!-- <text class="uer-name">Hi，{{login ? uerInfo.name : '您未登录'}}</text> -->
+				<view v-if="!hasLogin" class="uer-name">现在是未登录状态，点击按钮进行登录</view>
+				<view v-else class="uer-name">现在是登录状态，您的用户id是：{{uerInfo.userName}}</view>
+				<text class="go-login navigat-arrow" v-if="!hasLogin">&#xe65e;</text>
 			</view>
 		</view>
 		<view>
@@ -42,17 +44,33 @@
 </template>
 
 <script>
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex';
 	export default {
+		computed: mapState(['hasLogin', 'uerInfo']),
 		data() {
 			return {
-				login: false,
-				avatarUrl: '/static/logo.png',
-				uerInfo: {}
+				// login: false,
+				// avatarUrl: '/static/logo.png',
+				// userInfo: {
+				// 	name: ''
+				// }
 			}
 		},
 		methods: {
+			bindLogin() {
+				if (this.hasLogin) {
+					this.logout()
+				} else {
+					uni.navigateTo({
+						url: 'login/login'
+					})
+				}
+			},
 			goLogin() {
-				if (!this.login) {
+				if (!this.hasLogin) {
 					uni.navigateTo({
 						url: 'login/login'
 					})
