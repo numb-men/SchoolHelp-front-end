@@ -12,7 +12,7 @@
 						<text class="info-text">{{data.source}}</text>
 					</div>
 					<text class="info-text-reward">${{data.comment_count}}</text>
-					<text class="info-text-left">浏览{{data.comment_count}} 评论{{data.comment_count}} {{data.datetime}}</text>
+					<text class="info-text-left">{{data.datetime}} 浏览{{data.comment_count}} 评论{{data.comment_count}}</text>
 				</div>
 			</div>
 		</div>

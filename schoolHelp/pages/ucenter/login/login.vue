@@ -202,7 +202,7 @@
 		},
 		onReady() {
 			this.initPosition();
-			this.initProvider();
+			// this.initProvider();
 		}
 	}
 </script>

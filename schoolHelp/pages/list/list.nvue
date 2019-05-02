@@ -6,7 +6,6 @@
 					<text class="tab-bar-title" :class="[tabIndex === index ? 'active' : '']">{{tabBar.name}}</text>
 				</div>
 			</uni-tab-bar>
-
 			<uni-tab-content>
 				<list class="list" v-for="(tabItem, tabIndex) in newsList" :key="tabIndex" @loadmore="loadMore(tabIndex)"
 				 loadmoreoffset="10">
@@ -14,19 +13,6 @@
 						<text class="refresh-text">{{refreshText}}</text>
 					</refresh>
 					<cell v-for="(newsItem, newsIndex) in tabItem.data" :key="newsIndex">
-						<!-- <div class="list-add">
-							<uniSwiper>
-								<swiper-item>
-									<image src="../../static/add1.png" class="adds"></image>
-								</swiper-item>
-								<swiper-item>
-									<image src="../../static/add2.png" class="adds"></image>
-								</swiper-item>
-								<swiper-item>
-									<image src="../../static/add3.png" class="adds"></image>
-								</swiper-item>
-							</uniSwiper>
-						</div> -->
 						<uni-media-list :data="newsItem" @click="goDetail(newsItem)"></uni-media-list>
 					</cell>
 					<cell class="loadmore">
@@ -44,7 +30,6 @@
 	import uniTabs from '@/components/uni-tabs/uni-tabs.nvue';
 	import uniMediaList from '@/components/uni-media-list/uni-media-list.nvue';
 	import uniSwiper from '@/components/uniSwiper.nvue'
-
 	import {
 		friendlyDate
 	} from '@/common/util.js';
@@ -58,10 +43,6 @@
 				refreshText: '下拉刷新',
 				newsList: [],
 				tabIndex: 0,
-				indicatorDots: true,
-				autoplay: true,
-				interval: 2000,
-				duration: 500,
 				tabBars: [{
 					name: '学术论坛',
 					id: 0

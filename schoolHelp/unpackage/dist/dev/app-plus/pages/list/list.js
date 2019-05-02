@@ -2058,26 +2058,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var _uniTabContent = _interopRequireDefault(__webpack_require__(/*! @/components/uni-tab-content/uni-tab-content.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-tab-content/uni-tab-content.nvue"));
 var _uniTabBar = _interopRequireDefault(__webpack_require__(/*! @/components/uni-tab-bar/uni-tab-bar.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-tab-bar/uni-tab-bar.nvue"));
 var _uniTabs = _interopRequireDefault(__webpack_require__(/*! @/components/uni-tabs/uni-tabs.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-tabs/uni-tabs.nvue"));
 var _uniMediaList = _interopRequireDefault(__webpack_require__(/*! @/components/uni-media-list/uni-media-list.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-media-list/uni-media-list.nvue"));
 var _uniSwiper = _interopRequireDefault(__webpack_require__(/*! @/components/uniSwiper.nvue */ "../../../uniappWorkspace/schoolHelp/components/uniSwiper.nvue"));
-
 var _util = __webpack_require__(/*! @/common/util.js */ "../../../uniappWorkspace/schoolHelp/common/util.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
 
 
@@ -2091,10 +2076,6 @@ var dom = weex.requireModule('dom');var _default =
       refreshText: '下拉刷新',
       newsList: [],
       tabIndex: 0,
-      indicatorDots: true,
-      autoplay: true,
-      interval: 2000,
-      duration: 500,
       tabBars: [{
         name: '学术论坛',
         id: 0 },
@@ -2509,7 +2490,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["info-text-reward"]
   }, [_vm._v("$" + _vm._s(_vm.data.comment_count))]), _c('text', {
     staticClass: ["info-text-left"]
-  }, [_vm._v("浏览" + _vm._s(_vm.data.comment_count) + " 评论" + _vm._s(_vm.data.comment_count) + " " + _vm._s(_vm.data.datetime))])])])])])
+  }, [_vm._v(_vm._s(_vm.data.datetime) + " 浏览" + _vm._s(_vm.data.comment_count) + " 评论" + _vm._s(_vm.data.comment_count))])])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
