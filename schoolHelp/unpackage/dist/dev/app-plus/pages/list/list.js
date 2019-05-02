@@ -2058,6 +2058,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
+
+
+
 var _uniTabContent = _interopRequireDefault(__webpack_require__(/*! @/components/uni-tab-content/uni-tab-content.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-tab-content/uni-tab-content.nvue"));
 var _uniTabBar = _interopRequireDefault(__webpack_require__(/*! @/components/uni-tab-bar/uni-tab-bar.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-tab-bar/uni-tab-bar.nvue"));
 var _uniTabs = _interopRequireDefault(__webpack_require__(/*! @/components/uni-tabs/uni-tabs.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-tabs/uni-tabs.nvue"));
@@ -2070,8 +2078,31 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../uniappWorkspac
 var dom = weex.requireModule('dom');var _default =
 
 {
+  /**
+   * 当 searchInput 配置 disabled 为 true 时触发
+   */
+  onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked(e) {
+    console.log('事件执行了', " at pages\\list\\list.nvue:52");
+    uni.navigateTo({
+      url: '../message/message' });
+
+  }
+  // onNavigationBarSearchInputClicked: async function(e) {
+  // 	this.$api.msg('点击了搜索框');
+  // },
+  ,
   data: function data() {
     return {
+      imageList: [{
+        src: '../../static/add1.png' },
+
+      {
+        src: '../../static/add2.png' },
+
+      {
+        src: '../../static/add3.png' }],
+
+
       refreshing: false,
       refreshText: '下拉刷新',
       newsList: [],
@@ -2157,6 +2188,14 @@ var dom = weex.requireModule('dom');var _default =
         } });
 
     },
+    /**
+        * 当 searchInput 配置 disabled 为 true 时触发
+        */
+    onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked(e) {
+      uni.navigateTo({
+        url: '../search/search' });
+
+    },
     goDetail: function goDetail(detail) {
       uni.navigateTo({
         url: '/pages/detail/detail?query=' + encodeURIComponent(JSON.stringify(detail)) });
@@ -2216,6 +2255,26 @@ var dom = weex.requireModule('dom');var _default =
 /***/ (function(module, exports) {
 
 module.exports = {
+  "image": {
+    "height": 300
+  },
+  "slider": {
+    "position": "relative",
+    "height": 300
+  },
+  "frame": {
+    "height": 300
+  },
+  "indicator": {
+    "position": "absolute",
+    "left": 0,
+    "right": 0,
+    "bottom": 0,
+    "height": "60",
+    "backgroundColor": "rgba(0,0,0,0)",
+    "itemColor": "#dddddd",
+    "itemSelectedColor": "rgb(0,180,255)"
+  },
   "swiper": {
     "height": 300
   },
@@ -2261,6 +2320,27 @@ module.exports = {
     "textAlign": "center",
     "fontSize": "28",
     "color": "#999999"
+  },
+  "btn-plusempty": {
+    "zIndex": 999,
+    "width": 110,
+    "height": 110,
+    "background": "#007bfa",
+    "position": "fixed",
+    "bottom": 50,
+    "right": 20,
+    "borderRadius": 100,
+    "overflow": "hidden",
+    "textAlign": "center",
+    "lineHeight": 110
+  },
+  "bottom-btn-hover": {
+    "background": "#0564c7 !important"
+  },
+  "plusempty-img": {
+    "width": 50,
+    "height": 50,
+    "marginTop": 30
   }
 }
 
@@ -2422,7 +2502,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('text', {
       staticClass: ["refresh-text"]
-    }, [_vm._v(_vm._s(_vm.refreshText))])]), _vm._l((tabItem.data), function(newsItem, newsIndex) {
+    }, [_vm._v(_vm._s(_vm.refreshText))])]), (tabIndex === 0) ? _c('cell', {
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [_c('slider', {
+      staticClass: ["slider"],
+      attrs: {
+        "interval": "3000",
+        "autoPlay": "true"
+      }
+    }, [_vm._l((_vm.imageList), function(img, index) {
+      return _c('div', {
+        key: index,
+        staticClass: ["frame"]
+      }, [_c('image', {
+        staticClass: ["image"],
+        attrs: {
+          "resize": "cover",
+          "src": img.src
+        }
+      })])
+    }), _c('indicator', {
+      staticClass: ["indicator"]
+    })], 2)]) : _vm._e(), _vm._l((tabItem.data), function(newsItem, newsIndex) {
       return _c('cell', {
         key: newsIndex,
         appendAsTree: true,

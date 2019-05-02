@@ -8,7 +8,11 @@
     "pages/exapplication/questionnaire/questionnaire",
     "pages/ucenter/login/login",
     "pages/ucenter/reg/reg",
-    "pages/ucenter/pwd/pwd"
+    "pages/ucenter/pwd/pwd",
+    "pages/ucenter/setting/setting",
+    "pages/ucenter/setting/about/about",
+    "pages/post/post",
+    "pages/search/search"
   ],
   "subPackages": [],
   "window": {
@@ -36,6 +40,12 @@
         "text": "消息"
       },
       {
+        "pagePath": "pages/post/post",
+        "iconPath": "static/post.png",
+        "selectedIconPath": "static/postSelected.png",
+        "text": "发帖"
+      },
+      {
         "pagePath": "pages/exapplication/exapplication",
         "iconPath": "static/exapplication.png",
         "selectedIconPath": "static/exapplicationSelected.png",
@@ -49,6 +59,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

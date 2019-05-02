@@ -48,4 +48,25 @@
 	max-width: 100%;
 	max-height: 100%;
 }
+.btn-plusempty {
+	z-index: 999;
+	width: 110rpx;
+	height: 110rpx;
+	background: #007bfa;
+	position: fixed;
+	bottom: 50rpx;
+	right: 20rpx;
+	border-radius: 100%;
+	overflow: hidden;
+	text-align: center;
+	line-height: 110rpx;
+}
+.bottom-btn-hover {
+	background: #0564c7 !important;
+}
+.plusempty-img {
+	width: 50rpx;
+	height: 50rpx;
+	margin-top: 30rpx;
+}
 

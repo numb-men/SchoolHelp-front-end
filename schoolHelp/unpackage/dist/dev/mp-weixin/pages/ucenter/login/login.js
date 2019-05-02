@@ -128,8 +128,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _service = _interopRequireDefault(__webpack_require__(/*! ../../../service.js */ "../../../uniappWorkspace/schoolHelp/service.js"));
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../uniappWorkspace/schoolHelp/components/m-input.vue"));};var _default =
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../uniappWorkspace/schoolHelp/components/m-input.vue"));};var _default =
 
 
 
@@ -141,6 +140,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
   data: function data() {
     return {
+      loading: false,
       providerList: [],
       hasProvider: false,
       account: '',
@@ -150,30 +150,32 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
   },
   computed: (0, _vuex.mapState)(['forcedLogin']),
-  methods: _objectSpread({},
-  (0, _vuex.mapMutations)(['login']), {
-    initProvider: function initProvider() {var _this = this;
-      var filters = ['weixin', 'qq', 'sinaweibo'];
-      uni.getProvider({
-        service: 'oauth',
-        success: function success(res) {
-          if (res.provider && res.provider.length) {
-            for (var i = 0; i < res.provider.length; i++) {
-              if (~filters.indexOf(res.provider[i])) {
-                _this.providerList.push({
-                  value: res.provider[i],
-                  image: '../../../static/img/' + res.provider[i] + '.png' });
-
-              }
-            }
-            _this.hasProvider = true;
-          }
-        },
-        fail: function fail(err) {
-          console.error('获取服务供应商失败：' + JSON.stringify(err));
-        } });
-
-    },
+  methods: _objectSpread({
+    /**
+                            * 第三方授权初始化
+                            */
+    // initProvider() {
+    // 	const filters = ['weixin', 'qq', 'sinaweibo'];
+    // 	uni.getProvider({
+    // 		service: 'oauth',
+    // 		success: (res) => {
+    // 			if (res.provider && res.provider.length) {
+    // 				for (let i = 0; i < res.provider.length; i++) {
+    // 					if (~filters.indexOf(res.provider[i])) {
+    // 						this.providerList.push({
+    // 							value: res.provider[i],
+    // 							image: '../../../static/img/' + res.provider[i] + '.png'
+    // 						});
+    // 					}
+    // 				}
+    // 				this.hasProvider = true;
+    // 			}
+    // 		},
+    // 		fail: (err) => {
+    // 			console.error('获取服务供应商失败：' + JSON.stringify(err));
+    // 		}
+    // 	});
+    // },
     initPosition: function initPosition() {
       /**
                                             * 使用 absolute 定位，并且设置 bottom 值进行定位。软键盘弹出时，底部会因为窗口变化而被顶上来。
@@ -181,29 +183,44 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
                                             */
       this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
     },
-    bindLogin: function bindLogin() {
+    bindLogin: function bindLogin() {var _this = this;
+      var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
+      var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
+      // var pages = getCurrentPages();
+      // var currPage = pages[pages.length - 1]; //当前页面
+      // var prevPage = pages[pages.length - 2]; //上一个页面
       /**
-                                      * 客户端对账号信息进行一些必要的校验。
-                                      * 实际开发中，根据业务需要进行处理，这里仅做示例。
-                                      */
+       * 客户端对账号信息进行一些必要的校验。
+       */
       if (this.account.length != 11) {
+        this.loading = false;
         uni.showToast({
           icon: 'none',
           title: '请检查手机号是否正确' });
 
         return;
       }
-      if (this.account.length != 11) {
+      if (!/^1(3|4|5|7|8)\d{9}$/.test(this.account)) {
+        this.loading = false;
         uni.showToast({
           icon: 'none',
-          title: '请检查手机号是否正确' });
+          title: '手机号只能为11位数字' });
 
         return;
       }
-      if (this.password.length < 6 || this.password.length > 16) {
+      if (this.password.length < 8) {
+        this.loading = false;
         uni.showToast({
           icon: 'none',
-          title: '密码最短为 6 个字符，最长不超过16个字符' });
+          title: '密码最短为 8 个字符' });
+
+        return;
+      }
+      if (!regString.test(this.password)) {
+        this.loading = false;
+        uni.showToast({
+          icon: 'none',
+          title: '密码必须为字母和数字的组合' });
 
         return;
       }
@@ -212,42 +229,60 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
          * 检测用户账号密码是否在已注册的用户列表中
          * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
          */
-      var data = {
+      var loginData = {
         account: this.account,
         password: this.password };
 
-      var validUser = _service.default.getUsers().some(function (user) {
-        return data.account === user.account && data.password === user.password;
-      });
-      if (validUser) {
-        this.toMain(this.account);
-      } else {
-        uni.showToast({
-          icon: 'none',
-          title: '用户账号或密码不正确' });
+      uni.request({
+        url: 'http://24l687f160.qicp.vip:43882/login', //仅为示例，并非真实接口地址。
+        method: 'GET',
+        data: {
+          phone: loginData.account,
+          password: loginData.password },
 
-      }
-    },
-    oauth: function oauth(value) {var _this2 = this;
-      uni.login({
-        provider: value,
         success: function success(res) {
-          uni.getUserInfo({
-            provider: value,
-            success: function success(infoRes) {
-              /**
-                                                 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
-                                                 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
-                                                 */
-              _this2.toMain(infoRes.userInfo.nickName);
-            } });
+          if (res.data.code === 0) {
+            uni.showToast({
+              icon: 'none',
+              title: '登陆成功' });
 
+            _this.login(res.data);
+            uni.navigateBack();
+          } else {
+            uni.showModal({
+              content: "用户名密码错误！",
+              showCancel: false });
+
+          }
         },
-        fail: function fail(err) {
-          console.error('授权登录失败：' + JSON.stringify(err));
+        fail: function fail(res) {
+          uni.showModal({
+            content: "请求失败，请重试！",
+            showCancel: false });
+
         } });
 
     },
+    // oauth(value) {
+    // 	uni.login({
+    // 		provider: value,
+    // 		success: (res) => {
+    // 			uni.getUserInfo({
+    // 				provider: value,
+    // 				success: (infoRes) => {
+    // 					/**
+    // 					 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
+    // 					 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
+    // 					 */
+    // 					this.toMain(infoRes.userInfo.nickName);
+    // 				}
+    // 			});
+    // 		},
+    // 		fail: (err) => {
+    // 			console.error('授权登录失败：' + JSON.stringify(err));
+    // 		}
+    // 	});
+    // }, 
     toMain: function toMain(userName) {
       this.login(userName);
       /**
@@ -262,11 +297,12 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         uni.navigateBack();
       }
 
-    } }),
+    } },
+  (0, _vuex.mapMutations)(['login'])),
 
   onReady: function onReady() {
     this.initPosition();
-    this.initProvider();
+    // this.initProvider();
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 

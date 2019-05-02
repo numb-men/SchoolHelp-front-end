@@ -5,8 +5,7 @@
 				<view :class="{'media-image-right': options.article_type === 2, 'media-image-left': options.article_type === 1}">
 					<text class="media-title" :class="{'media-title2': options.article_type === 1 || options.article_type === 2}">{{options.title}}</text>
 					<view v-if="options.image_list || options.image_url" class="image-section" :class="{'image-section-right': options.article_type === 2, 'image-section-left': options.article_type === 1}">
-						<image class="image-list1" :class="{'image-list2': options.article_type === 1 || options.article_type === 2}"
-						 v-if="options.image_url" :src="options.image_url"></image>
+						<!-- <image class="image-list1" v-if="options.image_url" :src="options.image_url"></image> -->
 						<image class="image-list3" v-if="options.image_list" :src="source.url" v-for="(source, i) in options.image_list"
 						 :key="source.url" />
 					</view>

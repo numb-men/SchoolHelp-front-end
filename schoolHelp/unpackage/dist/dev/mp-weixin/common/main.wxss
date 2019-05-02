@@ -13,6 +13,30 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*每个页面公共css */
 page,
 page {
@@ -92,7 +116,7 @@ m-input {
 }
 .input-row .title {
 	text-align: right;
-	width: 30%;
+	width: 40%;
 	height: 50rpx;
 	min-height: 50rpx;
 	padding: 15rpx 0;
@@ -117,5 +141,6 @@ m-input {
 }
 button.primary {
 	background-color: #0faeff;
+	/* background-color: #999999; */
 }
 

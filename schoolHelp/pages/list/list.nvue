@@ -12,6 +12,14 @@
 					<refresh class="refresh" @refresh="onRefresh" @pullingdown="onPullingDown" :display="refreshing ? 'show' : 'hide'">
 						<text class="refresh-text">{{refreshText}}</text>
 					</refresh>
+					<cell v-if="tabIndex===0">
+						<slider class="slider" interval="3000" auto-play="true">
+							<div class="frame" v-for="(img,index) in imageList" :key="index">
+								<image class="image" resize="cover" :src="img.src"></image>
+							</div>
+							<indicator class="indicator"></indicator>
+						</slider>
+					</cell>
 					<cell v-for="(newsItem, newsIndex) in tabItem.data" :key="newsIndex">
 						<uni-media-list :data="newsItem" @click="goDetail(newsItem)"></uni-media-list>
 					</cell>
@@ -37,8 +45,31 @@
 	const dom = weex.requireModule('dom');
 
 	export default {
+		/**
+		 * 当 searchInput 配置 disabled 为 true 时触发
+		 */
+		onNavigationBarSearchInputClicked(e) {
+			console.log('事件执行了')
+			uni.navigateTo({
+				url: '../message/message'
+			});
+		}
+		// onNavigationBarSearchInputClicked: async function(e) {
+		// 	this.$api.msg('点击了搜索框');
+		// },
+		,
 		data() {
 			return {
+				imageList: [{
+						src: '../../static/add1.png'
+					},
+					{
+						src: '../../static/add2.png'
+					},
+					{
+						src: '../../static/add3.png'
+					}
+				],
 				refreshing: false,
 				refreshText: '下拉刷新',
 				newsList: [],
@@ -124,6 +155,14 @@
 					}
 				});
 			},
+			/**
+			 * 当 searchInput 配置 disabled 为 true 时触发
+			 */
+			onNavigationBarSearchInputClicked(e) {
+				uni.navigateTo({
+					url: '../search/search'
+				});
+			},
 			goDetail(detail) {
 				uni.navigateTo({
 					url: '/pages/detail/detail?query=' + encodeURIComponent(JSON.stringify(detail))
@@ -176,6 +215,31 @@
 </script>
 
 <style>
+	.image {
+		height: 300upx;
+	}
+
+	.slider {
+		position: relative;
+		height: 300upx;
+	}
+
+	.frame {
+		height: 300upx;
+	}
+
+	.indicator {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 60px;
+		background-color: rgba(0, 0, 0, 0);
+		item-color: #ddd;
+		item-selected-color: rgb(0, 180, 255);
+	}
+
+
 	.swiper {
 		height: 300upx;
 	}
@@ -229,5 +293,30 @@
 		text-align: center;
 		font-size: 28px;
 		color: #999999;
+	}
+
+	.btn-plusempty {
+		z-index: 999;
+		width: 110upx;
+		height: 110upx;
+		background: #007bfa;
+		position: fixed;
+		bottom: 50upx;
+		right: 20upx;
+		border-radius: 100%;
+		overflow: hidden;
+		text-align: center;
+		line-height: 110upx;
+	}
+
+	.bottom-btn-hover {
+		background: #0564c7 !important;
+		;
+	}
+
+	.plusempty-img {
+		width: 50upx;
+		height: 50upx;
+		margin-top: 30upx;
 	}
 </style>

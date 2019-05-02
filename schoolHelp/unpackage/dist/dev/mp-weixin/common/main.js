@@ -79,17 +79,41 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+
+
 {
-  onLaunch: function onLaunch() {
-    console.log('App Launch');
-  },
   onShow: function onShow() {
     console.log('App Show');
   },
   onHide: function onHide() {
     console.log('App Hide');
-  } };exports.default = _default;
+  },
+  onLaunch: function onLaunch() {var _this = this;
+    uni.getStorage({
+      key: 'uerInfo',
+      success: function success(res) {
+        _this.login(res.data);
+        // 如果还需要重新校验或是想要刷新token的有效时间 就再联网请求一次
+        // uni.request({
+        // 	url: `${this.$serverUrl}/auth.php`,
+        // 	data: {
+        // 		"username": res.data.user_name
+        // 	},
+        // 	method: "POST",
+        // 	success: (e) => {
+        // 		if (e.data.code === 0) {
+        // 			this.login(e.data);
+        // 		}
+        // 	}
+        // })
+      } });
+
+  },
+  methods: _objectSpread({},
+  (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

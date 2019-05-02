@@ -157,11 +157,11 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../uniappWorkspac
       tabBars: [{
         name: '最新',
         id: 0,
-        ref: 'jk' },
+        ref: 'new' },
       {
         name: '大公司',
         id: 23,
-        ref: 'asdfasf' },
+        ref: 'company' },
       {
         name: '内容',
         id: 223,
