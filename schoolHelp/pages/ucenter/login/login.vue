@@ -134,7 +134,7 @@
 					password: this.password
 				};
 				uni.request({
-					url: 'http://24l687f160.qicp.vip:43882/login', //仅为示例，并非真实接口地址。
+					url: 'http://24l687f160.qicp.vip:43882/login', 
 					method: 'GET',
 					data: {
 						phone: loginData.account,

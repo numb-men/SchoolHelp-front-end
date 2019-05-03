@@ -69,10 +69,10 @@
 				tabIndex: 0,
 				tabBars: [{
 					name: '学术论坛',
-					id: 0
+					id: 1 //0
 				}, {
 					name: '校园动态',
-					id: 23
+					id: 2 //23
 				}, {
 					name: '二手交易',
 					id: 223
@@ -101,10 +101,8 @@
 				this.newsList.push({
 					data: [],
 					requestParams: {
-						columnId: tabBar.id,
-						minId: 0,
-						pageSize: 10,
-						column: 'id,post_id,title,author_name,cover,published_at,comments_count'
+						typeId: tabBar.id,
+						pageSize: 10
 					},
 					loadingText: '加载中...'
 				});
@@ -114,46 +112,35 @@
 		methods: {
 			getList(action = 1) {
 				let activeTab = this.newsList[this.tabIndex];
-				activeTab.requestParams.time = new Date().getTime() + '';
-				if (action === 1) {
-					activeTab.requestParams.minId = 0;
-				}
 				uni.request({
-					url: 'https://unidemo.dcloud.net.cn/api/news',
-					data: activeTab.requestParams,
+					url: 'http://24l687f160.qicp.vip:43882/post/type/' + activeTab.requestParams.typeId,
+					method: 'GET',
 					success: (result) => {
-						if (result.statusCode == 200) {
-							const data = result.data.map((news) => {
-								return {
-									id: news.id,
-									article_type: 1,
-									datetime: friendlyDate(new Date(news.published_at.replace(/\-/g, '/')).getTime()),
-									title: news.title,
-									image_url: news.cover,
-									source: news.author_name,
-									comment_count: news.comments_count,
-									post_id: news.post_id
-								};
+						const data = result.data.data.map((news) => {
+							return {
+								postId: news.postId,
+								userId: news.userId,
+								datetime: friendlyDate(new Date(news.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
+								title: news.title,
+								image_url: news.cover,
+								content: news.content,
+								points: news.points,
+								viewNum: news.viewNum,
+								approvalNum: news.approvalNum,
+								commentNum: news.commentNum,
+								reportNum: news.reportNum,
+								postType: news.postType
+							};
+						});
+						if (action === 1) {
+							activeTab.data = data;
+							this.refreshing = false;
+						} else {
+							data.forEach((news) => {
+								activeTab.data.push(news);
 							});
-							if (action === 1) {
-								activeTab.data = data;
-								this.refreshing = false;
-							} else {
-								data.forEach((news) => {
-									activeTab.data.push(news);
-								});
-							}
-							activeTab.requestParams.minId = data[data.length - 1].id;
 						}
 					}
-				});
-			},
-			/**
-			 * 当 searchInput 配置 disabled 为 true 时触发
-			 */
-			onNavigationBarSearchInputClicked(e) {
-				uni.navigateTo({
-					url: '../search/search'
 				});
 			},
 			goDetail(detail) {
@@ -170,6 +157,7 @@
 				this.getList(2);
 			},
 			async changeTab(event) {
+				current = 0;
 				this.tabIndex = event.index;
 				const activeNode = this.$refs[this.tabBars[event.index].id + event.index][0];
 				let nodeSize = await this.getNodeSize(activeNode);

@@ -2102,11 +2102,11 @@ var dom = weex.requireModule('dom');var _default =
       tabIndex: 0,
       tabBars: [{
         name: '学术论坛',
-        id: 0 },
-      {
+        id: 1 //0
+      }, {
         name: '校园动态',
-        id: 23 },
-      {
+        id: 2 //23
+      }, {
         name: '二手交易',
         id: 223 },
       {
@@ -2134,10 +2134,8 @@ var dom = weex.requireModule('dom');var _default =
       _this.newsList.push({
         data: [],
         requestParams: {
-          columnId: tabBar.id,
-          minId: 0,
-          pageSize: 10,
-          column: 'id,post_id,title,author_name,cover,published_at,comments_count' },
+          typeId: tabBar.id,
+          pageSize: 10 },
 
         loadingText: '加载中...' });
 
@@ -2147,46 +2145,35 @@ var dom = weex.requireModule('dom');var _default =
   methods: {
     getList: function getList() {var _this2 = this;var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       var activeTab = this.newsList[this.tabIndex];
-      activeTab.requestParams.time = new Date().getTime() + '';
-      if (action === 1) {
-        activeTab.requestParams.minId = 0;
-      }
       uni.request({
-        url: 'https://unidemo.dcloud.net.cn/api/news',
-        data: activeTab.requestParams,
+        url: 'http://24l687f160.qicp.vip:43882/post/type/' + activeTab.requestParams.typeId,
+        method: 'GET',
         success: function success(result) {
-          if (result.statusCode == 200) {
-            var data = result.data.map(function (news) {
-              return {
-                id: news.id,
-                article_type: 1,
-                datetime: (0, _util.friendlyDate)(new Date(news.published_at.replace(/\-/g, '/')).getTime()),
-                title: news.title,
-                image_url: news.cover,
-                source: news.author_name,
-                comment_count: news.comments_count,
-                post_id: news.post_id };
+          var data = result.data.data.map(function (news) {
+            return {
+              postId: news.postId,
+              userId: news.userId,
+              datetime: (0, _util.friendlyDate)(new Date(news.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
+              title: news.title,
+              image_url: news.cover,
+              content: news.content,
+              points: news.points,
+              viewNum: news.viewNum,
+              approvalNum: news.approvalNum,
+              commentNum: news.commentNum,
+              reportNum: news.reportNum,
+              postType: news.postType };
 
+          });
+          if (action === 1) {
+            activeTab.data = data;
+            _this2.refreshing = false;
+          } else {
+            data.forEach(function (news) {
+              activeTab.data.push(news);
             });
-            if (action === 1) {
-              activeTab.data = data;
-              _this2.refreshing = false;
-            } else {
-              data.forEach(function (news) {
-                activeTab.data.push(news);
-              });
-            }
-            activeTab.requestParams.minId = data[data.length - 1].id;
           }
         } });
-
-    },
-    /**
-        * 当 searchInput 配置 disabled 为 true 时触发
-        */
-    onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked(e) {
-      uni.navigateTo({
-        url: '../search/search' });
 
     },
     goDetail: function goDetail(detail) {
@@ -2203,9 +2190,10 @@ var dom = weex.requireModule('dom');var _default =
       this.getList(2);
     },
     changeTab: function () {var _changeTab = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(event) {var activeNode, nodeSize, index, targetNode, activeTab;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                current = 0;
                 this.tabIndex = event.index;
-                activeNode = this.$refs[this.tabBars[event.index].id + event.index][0];_context.next = 4;return (
-                  this.getNodeSize(activeNode));case 4:nodeSize = _context.sent;
+                activeNode = this.$refs[this.tabBars[event.index].id + event.index][0];_context.next = 5;return (
+                  this.getNodeSize(activeNode));case 5:nodeSize = _context.sent;
                 if (nodeSize.left + nodeSize.width > 750) {
                   index = event.index - 4;
                   targetNode = this.$refs[this.tabBars[index].id + index][0];
@@ -2217,7 +2205,7 @@ var dom = weex.requireModule('dom');var _default =
                 activeTab = this.newsList[this.tabIndex];
                 if (activeTab.data.length === 0) {
                   this.getList();
-                }case 8:case "end":return _context.stop();}}}, _callee, this);}));function changeTab(_x) {return _changeTab.apply(this, arguments);}return changeTab;}(),
+                }case 9:case "end":return _context.stop();}}}, _callee, this);}));function changeTab(_x) {return _changeTab.apply(this, arguments);}return changeTab;}(),
 
     getNodeSize: function getNodeSize(node) {
       return new Promise(function (resolve, reject) {
@@ -2617,7 +2605,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["media-title"]
   }, [_vm._v(_vm._s(_vm.data.title))]), _c('text', {
     staticClass: ["media-preview"]
-  }, [_vm._v("的积分是上课点击返回司空见惯人生观和地方规划")]), _c('div', {
+  }, [_vm._v(_vm._s(_vm.data.content))]), _c('div', {
     staticClass: ["media-foot"]
   }, [_c('div', {
     staticClass: ["imgAndName"]
@@ -2630,11 +2618,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e()]) : _vm._e(), _c('text', {
     staticClass: ["info-text"]
-  }, [_vm._v(_vm._s(_vm.data.source))])]), _c('text', {
+  }, [_vm._v(_vm._s(_vm.data.userName))])]), _c('text', {
     staticClass: ["info-text-reward"]
-  }, [_vm._v("$" + _vm._s(_vm.data.comment_count))]), _c('text', {
+  }, [_vm._v("$" + _vm._s(_vm.data.points))]), _c('text', {
     staticClass: ["info-text-left"]
-  }, [_vm._v(_vm._s(_vm.data.datetime) + " 浏览" + _vm._s(_vm.data.comment_count) + " 评论" + _vm._s(_vm.data.comment_count))])])])])])
+  }, [_vm._v(_vm._s(_vm.data.datetime) + " 浏览" + _vm._s(_vm.data.viewNum) + " 评论" + _vm._s(_vm.data.commentNum))])])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

@@ -3,16 +3,16 @@
 		<div class="list-cell" @click="bindClick">
 			<div class="media-list">
 				<text class="media-title">{{data.title}}</text>
-				<text class="media-preview">的积分是上课点击返回司空见惯人生观和地方规划</text>
+				<text class="media-preview">{{data.content}}</text>
 				<div class="media-foot">
 					<div class="imgAndName">
 						<div v-if="showImg" class="image-section-left">
 							<image class="image-list1" v-if="data.image_url" :src="data.image_url"></image>
 						</div>
-						<text class="info-text">{{data.source}}</text>
+						<text class="info-text">{{data.userName}}</text>
 					</div>
-					<text class="info-text-reward">${{data.comment_count}}</text>
-					<text class="info-text-left">{{data.datetime}} 浏览{{data.comment_count}} 评论{{data.comment_count}}</text>
+					<text class="info-text-reward">${{data.points}}</text>
+					<text class="info-text-left">{{data.datetime}} 浏览{{data.viewNum}} 评论{{data.commentNum}}</text>
 				</div>
 			</div>
 		</div>
