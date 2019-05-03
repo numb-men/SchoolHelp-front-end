@@ -12,10 +12,16 @@
 					<refresh class="refresh" @refresh="onRefresh" @pullingdown="onPullingDown" :display="refreshing ? 'show' : 'hide'">
 						<text class="refresh-text">{{refreshText}}</text>
 					</refresh>
+					<cell>
+						<div class="search" @click="goSearch">
+							<image class="search-mirror" src="../../static/searchMirror.png"></image>
+							<text class="search-text">点击跳转搜索</text>
+						</div>
+					</cell>
 					<cell v-if="tabIndex===0">
 						<slider class="slider" interval="3000" auto-play="true">
 							<div class="frame" v-for="(img,index) in imageList" :key="index">
-								<image class="image" resize="cover" :src="img.src"></image>
+								<image class="image" resize="cover" :src="img.src" @click="goDetail(newsItem)"></image>
 							</div>
 							<indicator class="indicator"></indicator>
 						</slider>
@@ -45,19 +51,6 @@
 	const dom = weex.requireModule('dom');
 
 	export default {
-		/**
-		 * 当 searchInput 配置 disabled 为 true 时触发
-		 */
-		onNavigationBarSearchInputClicked(e) {
-			console.log('事件执行了')
-			uni.navigateTo({
-				url: '../message/message'
-			});
-		}
-		// onNavigationBarSearchInputClicked: async function(e) {
-		// 	this.$api.msg('点击了搜索框');
-		// },
-		,
 		data() {
 			return {
 				imageList: [{
@@ -168,6 +161,11 @@
 					url: '/pages/detail/detail?query=' + encodeURIComponent(JSON.stringify(detail))
 				});
 			},
+			goSearch() {
+				uni.navigateTo({
+					url: '../search/search'
+				});
+			},
 			loadMore() {
 				this.getList(2);
 			},
@@ -217,6 +215,30 @@
 <style>
 	.image {
 		height: 300upx;
+	}
+
+	.search {
+		display: flex;
+		flex-direction: row;
+		font-size: 40upx;
+		border: 5px solid #007AFF;
+		/* border-radius: 30%; */
+		height: 80upx;
+		background-color: #F0F0F0;
+		text-align: center;
+		justify-content: center;
+	}
+
+	.search-text {
+		color: #707070;
+		border: 5px solid #007AFF;
+		margin-top: 20upx;
+	}
+
+	.search-mirror {
+		width: 40upx;
+		height: 40upx;
+		margin-top: 20upx;
 	}
 
 	.slider {

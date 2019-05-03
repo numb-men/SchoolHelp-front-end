@@ -2066,6 +2066,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
+
 var _uniTabContent = _interopRequireDefault(__webpack_require__(/*! @/components/uni-tab-content/uni-tab-content.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-tab-content/uni-tab-content.nvue"));
 var _uniTabBar = _interopRequireDefault(__webpack_require__(/*! @/components/uni-tab-bar/uni-tab-bar.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-tab-bar/uni-tab-bar.nvue"));
 var _uniTabs = _interopRequireDefault(__webpack_require__(/*! @/components/uni-tabs/uni-tabs.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-tabs/uni-tabs.nvue"));
@@ -2078,19 +2084,6 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../uniappWorkspac
 var dom = weex.requireModule('dom');var _default =
 
 {
-  /**
-   * 当 searchInput 配置 disabled 为 true 时触发
-   */
-  onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked(e) {
-    console.log('事件执行了', " at pages\\list\\list.nvue:52");
-    uni.navigateTo({
-      url: '../message/message' });
-
-  }
-  // onNavigationBarSearchInputClicked: async function(e) {
-  // 	this.$api.msg('点击了搜索框');
-  // },
-  ,
   data: function data() {
     return {
       imageList: [{
@@ -2201,6 +2194,11 @@ var dom = weex.requireModule('dom');var _default =
         url: '/pages/detail/detail?query=' + encodeURIComponent(JSON.stringify(detail)) });
 
     },
+    goSearch: function goSearch() {
+      uni.navigateTo({
+        url: '../search/search' });
+
+    },
     loadMore: function loadMore() {
       this.getList(2);
     },
@@ -2257,6 +2255,26 @@ var dom = weex.requireModule('dom');var _default =
 module.exports = {
   "image": {
     "height": 300
+  },
+  "search": {
+    "display": "flex",
+    "flexDirection": "row",
+    "fontSize": 40,
+    "border": "5px solid #007AFF",
+    "height": 80,
+    "backgroundColor": "#F0F0F0",
+    "textAlign": "center",
+    "justifyContent": "center"
+  },
+  "search-text": {
+    "color": "#707070",
+    "border": "5px solid #007AFF",
+    "marginTop": 20
+  },
+  "search-mirror": {
+    "width": 40,
+    "height": 40,
+    "marginTop": 20
   },
   "slider": {
     "position": "relative",
@@ -2502,7 +2520,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('text', {
       staticClass: ["refresh-text"]
-    }, [_vm._v(_vm._s(_vm.refreshText))])]), (tabIndex === 0) ? _c('cell', {
+    }, [_vm._v(_vm._s(_vm.refreshText))])]), _c('cell', {
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [_c('div', {
+      staticClass: ["search"],
+      on: {
+        "click": _vm.goSearch
+      }
+    }, [_c('image', {
+      staticClass: ["search-mirror"],
+      attrs: {
+        "src": "../../static/searchMirror.png"
+      }
+    }), _c('text', {
+      staticClass: ["search-text"]
+    }, [_vm._v("点击跳转搜索")])])]), (tabIndex === 0) ? _c('cell', {
       appendAsTree: true,
       attrs: {
         "append": "tree"
@@ -2522,6 +2557,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         attrs: {
           "resize": "cover",
           "src": img.src
+        },
+        on: {
+          "click": function($event) {
+            _vm.goDetail(_vm.newsItem)
+          }
         }
       })])
     }), _c('indicator', {

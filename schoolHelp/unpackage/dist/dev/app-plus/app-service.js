@@ -1402,7 +1402,7 @@ return root;
 
 
 
-__wxAppCode__['app.json']={"pages":["pages/message/message","pages/detail/detail","pages/ucenter/ucenter","pages/exapplication/exapplication","pages/exapplication/questionnaire/questionnaire","pages/ucenter/login/login","pages/ucenter/reg/reg","pages/ucenter/pwd/pwd","pages/ucenter/setting/setting","pages/ucenter/setting/about/about","pages/post/post","pages/search/search"],"subPackages":[],"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"校园帮","navigationBarBackgroundColor":"#F0F0F0","backgroundColor":"#FFFFFF"},"tabBar":{"color":"#000000","selectedColor":"#2F85FC","backgroundColor":"#FFFFFF","borderStyle":"black","list":[{"pagePath":"pages/list/list","iconPath":"static/home.png","selectedIconPath":"static/home-active.png","text":"主页"},{"pagePath":"pages/message/message","iconPath":"static/message.png","selectedIconPath":"static/messageSelected.png","text":"消息"},{"pagePath":"pages/post/post","iconPath":"static/post.png","selectedIconPath":"static/postSelected.png","text":"发帖"},{"pagePath":"pages/exapplication/exapplication","iconPath":"static/exapplication.png","selectedIconPath":"static/exapplicationSelected.png","text":"应用"},{"pagePath":"pages/ucenter/ucenter","iconPath":"static/center.png","selectedIconPath":"static/center-active.png","text":"我的"}]},"nvue":{"pages":{"pages/list/list.html":{"window":{"usingComponents":{},"navigationBarTitleText":"校园帮","titleNView":{"type":"default","titleColor":"#fff","backgroundColor":"#007AFF","searchInput":{"backgroundColor":"#F0F0F0","borderRadius":"6px","placeholder":"请输入地址 如：大钟寺","disabled":true}}}}},"entryPagePath":"pages/list/list"},"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"sh","compilerVersion":"1.9.4","usingComponents":{}};
+__wxAppCode__['app.json']={"pages":["pages/message/message","pages/detail/detail","pages/ucenter/ucenter","pages/exapplication/exapplication","pages/exapplication/questionnaire/questionnaire","pages/ucenter/login/login","pages/ucenter/reg/reg","pages/ucenter/pwd/pwd","pages/ucenter/setting/setting","pages/ucenter/setting/about/about","pages/post/post","pages/search/search"],"subPackages":[],"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"校园帮","navigationBarBackgroundColor":"#F0F0F0","backgroundColor":"#FFFFFF"},"tabBar":{"color":"#000000","selectedColor":"#2F85FC","backgroundColor":"#FFFFFF","borderStyle":"black","list":[{"pagePath":"pages/list/list","iconPath":"static/home.png","selectedIconPath":"static/home-active.png","text":"主页"},{"pagePath":"pages/message/message","iconPath":"static/message.png","selectedIconPath":"static/messageSelected.png","text":"消息"},{"pagePath":"pages/post/post","iconPath":"static/post.png","selectedIconPath":"static/postSelected.png","text":"发帖"},{"pagePath":"pages/exapplication/exapplication","iconPath":"static/exapplication.png","selectedIconPath":"static/exapplicationSelected.png","text":"应用"},{"pagePath":"pages/ucenter/ucenter","iconPath":"static/center.png","selectedIconPath":"static/center-active.png","text":"我的"}]},"nvue":{"pages":{"pages/list/list.html":{"window":{"usingComponents":{},"navigationBarTitleText":"校园帮"}}},"entryPagePath":"pages/list/list"},"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"sh","compilerVersion":"1.9.4","usingComponents":{}};
 __wxAppCode__['app.wxml']=$gwx('./app.wxml');
 
 __wxAppCode__['components/m-icon/m-icon.json']={"usingComponents":{},"component":true};
@@ -2576,7 +2576,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8655,7 +8655,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8676,14 +8676,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8752,7 +8752,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));

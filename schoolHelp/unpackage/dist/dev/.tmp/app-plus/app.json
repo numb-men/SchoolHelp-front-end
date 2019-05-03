@@ -63,18 +63,7 @@
       "pages/list/list.html": {
         "window": {
           "usingComponents": {},
-          "navigationBarTitleText": "校园帮",
-          "titleNView": {
-            "type": "default",
-            "titleColor": "#fff",
-            "backgroundColor": "#007AFF",
-            "searchInput": {
-              "backgroundColor": "#F0F0F0",
-              "borderRadius": "6px",
-              "placeholder": "请输入地址 如：大钟寺",
-              "disabled": true
-            }
-          }
+          "navigationBarTitleText": "校园帮"
         }
       }
     },

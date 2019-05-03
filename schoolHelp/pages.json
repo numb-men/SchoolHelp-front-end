@@ -2,38 +2,25 @@
 	"pages": [{
 			"path": "pages/list/list",
 			"style": {
-				"navigationBarTitleText": "校园帮",
-				"app-plus": {
-					"titleNView": {
-						"type": "default",
-						"titleColor": "#fff",
-						"backgroundColor": "#007AFF",
-						"searchInput": {
-							"backgroundColor": "#F0F0F0",
-							"borderRadius": "6px",
-							"placeholder": "点击开始搜索帖子",
-							"disabled": true
-						}
-					}
-				}
+				"navigationBarTitleText": "校园帮"
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"type": "default",
+				// 		"titleColor": "#fff",
+				// 		"backgroundColor": "#007AFF",
+				// 		"searchInput": {
+				// 			"backgroundColor": "#F0F0F0",
+				// 			"borderRadius": "6px",
+				// 			"placeholder": "点击开始搜索帖子",
+				// 			"disabled": true
+				// 		}
+				// 	}
+				// }
 			}
 		}, {
 			"path": "pages/message/message",
 			"style": {
-				"navigationBarTitleText": "消息",
-				"app-plus": {
-					"titleNView": {
-						"type": "default",
-						"titleColor": "#fff",
-						"backgroundColor": "#007AFF",
-						"searchInput": {
-							"backgroundColor": "#F0F0F0",
-							"borderRadius": "6px",
-							"placeholder": "点击开始搜索帖子",
-							"disabled": true
-						}
-					}
-				}
+				"navigationBarTitleText": "消息"
 			}
 		},
 		{
