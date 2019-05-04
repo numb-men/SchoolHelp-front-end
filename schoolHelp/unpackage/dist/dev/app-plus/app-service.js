@@ -1371,7 +1371,7 @@ var o6=_mz(z,'view',['bindtap',2,'class',1,'data-event-opts',2,'hoverClass',3],[
 var f7=_v()
 _(o6,f7)
 if(_oz(z,6,e,s,gg)){f7.wxVkey=1
-cs.push("./pages/ucenter/ucenter.wxml:block:1:435")
+cs.push("./pages/ucenter/ucenter.wxml:block:1:383")
 cs.pop()
 }
 f7.wxXCkey=1
@@ -1444,7 +1444,7 @@ __wxAppCode__['pages/ucenter/setting/about/about.wxml']=$gwx('./pages/ucenter/se
 __wxAppCode__['pages/ucenter/setting/setting.json']={"navigationBarTitleText":"设置","usingComponents":{}};
 __wxAppCode__['pages/ucenter/setting/setting.wxml']=$gwx('./pages/ucenter/setting/setting.wxml');
 
-__wxAppCode__['pages/ucenter/ucenter.json']={"navigationBarTitleText":"个人中心","usingComponents":{}};
+__wxAppCode__['pages/ucenter/ucenter.json']={"navigationBarTitleText":"个人中心","enablePullDownRefresh":true,"usingComponents":{}};
 __wxAppCode__['pages/ucenter/ucenter.wxml']=$gwx('./pages/ucenter/ucenter.wxml');
 
 
@@ -1537,10 +1537,10 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
 {
   onShow: function onShow() {
-    console.log('App Show', " at App.vue:7");
+    // console.log('App Show')
   },
   onHide: function onHide() {
-    console.log('App Hide', " at App.vue:10");
+    // console.log('App Hide')
   },
   onLaunch: function onLaunch() {var _this = this;
     uni.getStorage({
@@ -2149,13 +2149,21 @@ _vue.default.use(_vuex.default);
 var store = new _vuex.default.Store({
   state: {
     uerInfo: {},
-    hasLogin: false },
+    hasLogin: false,
+    token: '' },
 
   mutations: {
     login: function login(state, provider) {
       state.hasLogin = true;
-      state.uerInfo.token = provider.data;
-      state.uerInfo.userName = provider.code;
+      state.uerInfo.token = provider.token;
+      state.uerInfo.userName = provider.name;
+      state.token = provider.token;
+
+      state.uerInfo.fallow = provider.fallow;
+      state.uerInfo.collect = provider.collect;
+      state.uerInfo.points = provider.points;
+      state.uerInfo.post = provider.post;
+      state.uerInfo.comment = provider.comment;
       uni.setStorage({
         key: 'uerInfo',
         data: provider });
@@ -2576,7 +2584,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8655,7 +8663,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8676,14 +8684,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8752,7 +8760,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -11123,57 +11131,128 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js"); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'uerInfo']), data: function data() {return {// login: false,
-      // avatarUrl: '/static/logo.png',
-      // userInfo: {
-      // 	name: ''
-      // }
-    };}, methods: { bindLogin: function bindLogin() {if (this.hasLogin) {this.logout();} else {uni.navigateTo({ url: 'login/login' });}}, goLogin: function goLogin() {if (!this.hasLogin) {uni.navigateTo({ url: 'login/login' });};}, goSetting: function goSetting() {uni.navigateTo({ url: 'setting/setting' });} } };exports.default = _default;
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+
+
+
+{
+  computed: (0, _vuex.mapState)(['hasLogin', 'uerInfo', 'token']),
+  data: function data() {
+    return {
+      userInfo: {
+        userName: '',
+        fallow: '',
+        collect: '',
+        points: '',
+        post: '',
+        comment: '' } };
+
+
+  },
+  onPullDownRefresh: function onPullDownRefresh() {
+    if (this.hasLogin) {
+      this.reFresh();
+    } else {
+      uni.stopPullDownRefresh();
+      return;
+    }
+  },
+  methods: _objectSpread({
+    bindLogin: function bindLogin() {
+      if (this.hasLogin) {
+        this.logout();
+      } else {
+        uni.navigateTo({
+          url: 'login/login' });
+
+      }
+    },
+    goLogin: function goLogin() {
+      if (!this.hasLogin) {
+        uni.navigateTo({
+          url: 'login/login' });
+
+      };
+    },
+    goSetting: function goSetting() {
+      uni.navigateTo({
+        url: 'setting/setting' });
+
+    },
+    reFresh: function reFresh() {var _this = this;
+      uni.request({
+        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
+        method: 'GET',
+        header: {
+          'token': this.token },
+
+        success: function success(result) {
+          if (result.data.code === 0) {var
+            User = function User(name, token, fallow, collect, points, post, comment) {
+              this.name = name;
+              this.token = token;
+              this.fallow = fallow;
+              this.collect = collect;
+              this.points = points;
+              this.post = post;
+              this.comment = comment;
+            };
+            var user = new User(result.data.data.name, _this.token, result.data.data.fallowNum, result.data.data.collectPostNum,
+            result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
+            _this.login(user);
+            _this.userInfo.fallow = result.data.data.fallowNum;
+            _this.userInfo.collect = result.data.data.collectPostNum;
+            _this.userInfo.points = result.data.data.points;
+            _this.userInfo.post = result.data.data.post;
+            _this.userInfo.comment = result.data.data.comment;
+            uni.stopPullDownRefresh();
+          }
+        },
+        fail: function fail() {
+          uni.showModal({
+            content: "获取用户信息失败！",
+            showCancel: false });
+
+        } });
+
+    },
+    goFollow: function goFollow() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'setting/setting' //关注界面路径
+        });
+      } else {
+        return;
+      }
+    },
+    goCollect: function goCollect() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '' //收藏界面路径
+        });
+      } else {
+        return;
+      }
+    },
+    goPost: function goPost() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '' //我的帖子界面路径
+        });
+      } else {
+        return;
+      }
+    },
+    goComment: function goComment() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '' //我的评论界面路径
+        });
+      } else {
+        return;
+      }
+    } },
+  (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
@@ -11792,7 +11871,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         password: this.password };
 
       uni.request({
-        url: 'http://24l687f160.qicp.vip:43882/login',
+        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/login',
         method: 'GET',
         data: {
           phone: loginData.account,
@@ -11804,8 +11883,38 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
               icon: 'none',
               title: '登陆成功' });
 
-            _this.login(res.data);
-            uni.navigateBack();
+
+            uni.request({
+              url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
+              method: 'GET',
+              header: {
+                'token': res.data.data },
+
+              success: function success(result) {
+                if (result.data.code === 0) {var
+                  User = function User(name, token, fallow, collect, points, post, comment) {
+                    this.name = name;
+                    this.token = token;
+                    this.fallow = fallow;
+                    this.collect = collect;
+                    this.points = points;
+                    this.post = post;
+                    this.comment = comment;
+                  };
+                  var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.data.collectPostNum,
+                  result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
+                  _this.login(user);
+                  uni.navigateBack();
+                }
+              },
+              fail: function fail() {
+                uni.showModal({
+                  content: "获取用户信息失败！",
+                  showCancel: false });
+
+              } });
+
+
           } else {
             uni.showModal({
               content: "用户名密码错误！",
@@ -11829,7 +11938,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
     // 				provider: value,
     // 				success: (infoRes) => {
     // 					/**
-    // 					 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
+    // 					 * 获取用户信息后，需要将信息上报至服务端。
     // 					 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
     // 					 */
     // 					this.toMain(infoRes.userInfo.nickName);
@@ -12071,7 +12180,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
       uni.request({
-        url: 'http://24l687f160.qicp.vip:43882/register', //仅为示例，并非真实接口地址。
+        url: 'http://134.175.16.143:8080/schoolhelp/register', //仅为示例，并非真实接口地址。
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded' },

@@ -144,57 +144,128 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js"); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'uerInfo']), data: function data() {return {// login: false,
-      // avatarUrl: '/static/logo.png',
-      // userInfo: {
-      // 	name: ''
-      // }
-    };}, methods: { bindLogin: function bindLogin() {if (this.hasLogin) {this.logout();} else {uni.navigateTo({ url: 'login/login' });}}, goLogin: function goLogin() {if (!this.hasLogin) {uni.navigateTo({ url: 'login/login' });};}, goSetting: function goSetting() {uni.navigateTo({ url: 'setting/setting' });} } };exports.default = _default;
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+
+
+
+{
+  computed: (0, _vuex.mapState)(['hasLogin', 'uerInfo', 'token']),
+  data: function data() {
+    return {
+      userInfo: {
+        userName: '',
+        fallow: '',
+        collect: '',
+        points: '',
+        post: '',
+        comment: '' } };
+
+
+  },
+  onPullDownRefresh: function onPullDownRefresh() {
+    if (this.hasLogin) {
+      this.reFresh();
+    } else {
+      uni.stopPullDownRefresh();
+      return;
+    }
+  },
+  methods: _objectSpread({
+    bindLogin: function bindLogin() {
+      if (this.hasLogin) {
+        this.logout();
+      } else {
+        uni.navigateTo({
+          url: 'login/login' });
+
+      }
+    },
+    goLogin: function goLogin() {
+      if (!this.hasLogin) {
+        uni.navigateTo({
+          url: 'login/login' });
+
+      };
+    },
+    goSetting: function goSetting() {
+      uni.navigateTo({
+        url: 'setting/setting' });
+
+    },
+    reFresh: function reFresh() {var _this = this;
+      uni.request({
+        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
+        method: 'GET',
+        header: {
+          'token': this.token },
+
+        success: function success(result) {
+          if (result.data.code === 0) {var
+            User = function User(name, token, fallow, collect, points, post, comment) {
+              this.name = name;
+              this.token = token;
+              this.fallow = fallow;
+              this.collect = collect;
+              this.points = points;
+              this.post = post;
+              this.comment = comment;
+            };
+            var user = new User(result.data.data.name, _this.token, result.data.data.fallowNum, result.data.data.collectPostNum,
+            result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
+            _this.login(user);
+            _this.userInfo.fallow = result.data.data.fallowNum;
+            _this.userInfo.collect = result.data.data.collectPostNum;
+            _this.userInfo.points = result.data.data.points;
+            _this.userInfo.post = result.data.data.post;
+            _this.userInfo.comment = result.data.data.comment;
+            uni.stopPullDownRefresh();
+          }
+        },
+        fail: function fail() {
+          uni.showModal({
+            content: "获取用户信息失败！",
+            showCancel: false });
+
+        } });
+
+    },
+    goFollow: function goFollow() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'setting/setting' //关注界面路径
+        });
+      } else {
+        return;
+      }
+    },
+    goCollect: function goCollect() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '' //收藏界面路径
+        });
+      } else {
+        return;
+      }
+    },
+    goPost: function goPost() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '' //我的帖子界面路径
+        });
+      } else {
+        return;
+      }
+    },
+    goComment: function goComment() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '' //我的评论界面路径
+        });
+      } else {
+        return;
+      }
+    } },
+  (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),

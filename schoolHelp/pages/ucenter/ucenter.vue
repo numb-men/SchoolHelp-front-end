@@ -4,22 +4,22 @@
 			<!-- <image class="logo-img" :src="login ? uerInfo.avatarUrl :avatarUrl"></image> -->
 			<view class="logo-title">
 				<!-- <text class="uer-name">Hi，{{login ? uerInfo.name : '您未登录'}}</text> -->
-				<view v-if="!hasLogin" class="uer-name">现在是未登录状态，点击按钮进行登录</view>
-				<view v-else class="uer-name">现在是登录状态，您的用户id是：{{uerInfo.userName}}</view>
+				<view v-if="!hasLogin" class="uer-name">快点我登录！福大学子为您待命^-^!</view>
+				<view v-else class="uer-name">{{uerInfo.userName}}</view>
 				<text class="go-login navigat-arrow" v-if="!hasLogin">&#xe65e;</text>
 			</view>
 		</view>
 		<view>
 			<div class="basic-data">
-				<div class="basic-data-item"><text>0</text><text>我的关注</text>
+				<div class="basic-data-item" @click="goFollow"><text>{{uerInfo.fallow}}</text><text>我的关注</text>
 				</div>
-				<div class="basic-data-item"><text>0</text><text>我的收藏</text>
+				<div class="basic-data-item" @click="goCollect"><text>{{uerInfo.collect}}</text><text>我的收藏</text>
 				</div>
-				<div class="basic-data-item"><text>0</text><text>我的帖子</text>
+				<div class="basic-data-item" @click="goPost"><text>{{uerInfo.post}}</text><text>我的帖子</text>
 				</div>
-				<div class="basic-data-item"><text>0</text><text>我的评论</text>
+				<div class="basic-data-item" @click="goComment"><text>{{uerInfo.comment}}</text><text>我的评论</text>
 				</div>
-				<div class="basic-data-item"><text>0</text><text>我的积分</text>
+				<div class="basic-data-item"><text>{{uerInfo.points}}</text><text>我的积分</text>
 				</div>
 			</div>
 		</view>
@@ -49,14 +49,25 @@
 		mapMutations
 	} from 'vuex';
 	export default {
-		computed: mapState(['hasLogin', 'uerInfo']),
+		computed: mapState(['hasLogin', 'uerInfo', 'token']),
 		data() {
 			return {
-				// login: false,
-				// avatarUrl: '/static/logo.png',
-				// userInfo: {
-				// 	name: ''
-				// }
+				userInfo: {
+					userName: '',
+					fallow: '',
+					collect: '',
+					points: '',
+					post: '',
+					comment: ''
+				}
+			}
+		},
+		onPullDownRefresh: function() {
+			if (this.hasLogin) {
+				this.reFresh();
+			} else {
+				uni.stopPullDownRefresh();
+				return;
 			}
 		},
 		methods: {
@@ -80,7 +91,81 @@
 				uni.navigateTo({
 					url: 'setting/setting'
 				})
-			}
+			},
+			reFresh() {
+				uni.request({
+					url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
+					method: 'GET',
+					header: {
+						'token': this.token
+					},
+					success: (result) => {
+						if (result.data.code === 0) {
+							function User(name, token, fallow, collect, points, post, comment) {
+								this.name = name;
+								this.token = token;
+								this.fallow = fallow;
+								this.collect = collect;
+								this.points = points;
+								this.post = post;
+								this.comment = comment;
+							}
+							var user = new User(result.data.data.name, this.token, result.data.data.fallowNum, result.data.data.collectPostNum,
+								result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
+							this.login(user);
+							this.userInfo.fallow = result.data.data.fallowNum;
+							this.userInfo.collect = result.data.data.collectPostNum;
+							this.userInfo.points = result.data.data.points;
+							this.userInfo.post = result.data.data.post;
+							this.userInfo.comment = result.data.data.comment;
+							uni.stopPullDownRefresh();
+						}
+					},
+					fail: () => {
+						uni.showModal({
+							content: "获取用户信息失败！",
+							showCancel: false
+						})
+					}
+				});
+			},
+			goFollow() {
+				if (this.hasLogin) {
+					uni.navigateTo({
+						url: 'setting/setting' //关注界面路径
+					})
+				} else {
+					return;
+				}
+			},
+			goCollect() {
+				if (this.hasLogin) {
+					uni.navigateTo({
+						url: '' //收藏界面路径
+					})
+				} else {
+					return;
+				}
+			},
+			goPost() {
+				if (this.hasLogin) {
+					uni.navigateTo({
+						url: '' //我的帖子界面路径
+					})
+				} else {
+					return;
+				}
+			},
+			goComment() {
+				if (this.hasLogin) {
+					uni.navigateTo({
+						url: '' //我的评论界面路径
+					})
+				} else {
+					return;
+				}
+			},
+			...mapMutations(['login'])
 		}
 	}
 </script>
@@ -108,7 +193,7 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
-		background-color: #FFFFFF;
+		background-color: #f8f8f8;
 		justify-content: space-between;
 	}
 
@@ -120,8 +205,9 @@
 		flex-direction: column;
 		flex-wrap: nowrap;
 		justify-content: space-between;
-		background-color: #f2f2f2;
-		/* border: 1px solid #CCCCCC; */
+		background-color: #ffffff;
+		border: 1px solid #CCCCCC;
+		border-radius: 10%;
 	}
 
 	.center {
@@ -133,7 +219,15 @@
 		height: 240upx;
 		padding: 20upx;
 		box-sizing: border-box;
-		background-color: #2F85FC;
+		/* background-color: #FFCC66; */
+		background: -webkit-linear-gradient(right, #FFCC66, #FF0066);
+		/* Safari 5.1 - 6.0 */
+		background: -o-linear-gradient(right, #FFCC66, #FF0066);
+		/* Opera 11.1 - 12.0 */
+		background: -moz-linear-gradient(right, #FFCC66, #FF0066);
+		/* Firefox 3.6 - 15 */
+		background: linear-gradient(right, #FFCC66, #FF0066);
+		/* 标准的语法（必须放在最后） */
 		flex-direction: row;
 		align-items: center;
 	}
@@ -179,7 +273,6 @@
 
 	.center-list {
 		background-color: #FFFFFF;
-		margin-top: 20upx;
 		width: 750upx;
 		flex-direction: column;
 	}

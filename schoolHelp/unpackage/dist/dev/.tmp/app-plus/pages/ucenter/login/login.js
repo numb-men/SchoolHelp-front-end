@@ -234,7 +234,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         password: this.password };
 
       uni.request({
-        url: 'http://24l687f160.qicp.vip:43882/login',
+        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/login',
         method: 'GET',
         data: {
           phone: loginData.account,
@@ -246,8 +246,38 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
               icon: 'none',
               title: '登陆成功' });
 
-            _this.login(res.data);
-            uni.navigateBack();
+
+            uni.request({
+              url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
+              method: 'GET',
+              header: {
+                'token': res.data.data },
+
+              success: function success(result) {
+                if (result.data.code === 0) {var
+                  User = function User(name, token, fallow, collect, points, post, comment) {
+                    this.name = name;
+                    this.token = token;
+                    this.fallow = fallow;
+                    this.collect = collect;
+                    this.points = points;
+                    this.post = post;
+                    this.comment = comment;
+                  };
+                  var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.data.collectPostNum,
+                  result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
+                  _this.login(user);
+                  uni.navigateBack();
+                }
+              },
+              fail: function fail() {
+                uni.showModal({
+                  content: "获取用户信息失败！",
+                  showCancel: false });
+
+              } });
+
+
           } else {
             uni.showModal({
               content: "用户名密码错误！",
@@ -271,7 +301,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
     // 				provider: value,
     // 				success: (infoRes) => {
     // 					/**
-    // 					 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
+    // 					 * 获取用户信息后，需要将信息上报至服务端。
     // 					 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
     // 					 */
     // 					this.toMain(infoRes.userInfo.nickName);

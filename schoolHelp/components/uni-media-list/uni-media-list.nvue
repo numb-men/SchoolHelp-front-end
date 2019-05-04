@@ -80,7 +80,7 @@
 		/* position: absolute; */
 		text-align: left;
 		margin-top: 30px;
-		color: #999999;
+		color: #AF94FF;
 		font-size: 28px;
 	}
 

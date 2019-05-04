@@ -6,13 +6,21 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 	state: {
 		uerInfo: {},
-		hasLogin: false
+		hasLogin: false,
+		token: ''
 	},
 	mutations: {
 		login(state, provider) {
 			state.hasLogin = true
-			state.uerInfo.token = provider.data
-			state.uerInfo.userName = provider.code
+			state.uerInfo.token = provider.token
+			state.uerInfo.userName = provider.name
+			state.token = provider.token
+
+			state.uerInfo.fallow = provider.fallow
+			state.uerInfo.collect = provider.collect
+			state.uerInfo.points = provider.points
+			state.uerInfo.post = provider.post
+			state.uerInfo.comment = provider.comment
 			uni.setStorage({
 				key: 'uerInfo',
 				data: provider

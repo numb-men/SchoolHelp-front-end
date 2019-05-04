@@ -163,7 +163,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
       uni.request({
-        url: 'http://24l687f160.qicp.vip:43882/register', //仅为示例，并非真实接口地址。
+        url: 'http://134.175.16.143:8080/schoolhelp/register', //仅为示例，并非真实接口地址。
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded' },

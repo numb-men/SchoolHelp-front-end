@@ -43,7 +43,6 @@
 	import uniTabBar from '@/components/uni-tab-bar/uni-tab-bar.nvue';
 	import uniTabs from '@/components/uni-tabs/uni-tabs.nvue';
 	import uniMediaList from '@/components/uni-media-list/uni-media-list.nvue';
-	import uniSwiper from '@/components/uniSwiper.nvue'
 	import {
 		friendlyDate
 	} from '@/common/util.js';
@@ -69,22 +68,22 @@
 				tabIndex: 0,
 				tabBars: [{
 					name: '学术论坛',
-					id: 1 //0
+					id: 1 //填写对应存储的帖子typeId
 				}, {
 					name: '校园动态',
-					id: 2 //23
+					id: 2 //填写对应存储的帖子typeId
 				}, {
 					name: '二手交易',
-					id: 223
+					id: 1 //填写对应存储的帖子typeId
 				}, {
 					name: '缺个伴吗',
-					id: 221
+					id: 1 //填写对应存储的帖子typeId
 				}, {
 					name: '帮你干活',
-					id: 225
+					id: 1 //填写对应存储的帖子typeId
 				}, {
 					name: '经验交流',
-					id: 208
+					id: 1 //填写对应存储的帖子typeId
 				}, ]
 			}
 		},
@@ -92,8 +91,7 @@
 			uniTabContent,
 			uniTabBar,
 			uniTabs,
-			uniMediaList,
-			uniSwiper
+			uniMediaList
 		},
 		created() {
 			// 初始化列表信息
@@ -101,8 +99,7 @@
 				this.newsList.push({
 					data: [],
 					requestParams: {
-						typeId: tabBar.id,
-						pageSize: 10
+						typeId: tabBar.id
 					},
 					loadingText: '加载中...'
 				});
@@ -112,8 +109,12 @@
 		methods: {
 			getList(action = 1) {
 				let activeTab = this.newsList[this.tabIndex];
+				activeTab.requestParams.time = new Date().getTime() + '';
+				if (action === 1) {
+					activeTab.requestParams.minId = 0;
+				}
 				uni.request({
-					url: 'http://24l687f160.qicp.vip:43882/post/type/' + activeTab.requestParams.typeId,
+					url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/post/type/' + activeTab.requestParams.typeId,
 					method: 'GET',
 					success: (result) => {
 						const data = result.data.data.map((news) => {
@@ -129,9 +130,11 @@
 								approvalNum: news.approvalNum,
 								commentNum: news.commentNum,
 								reportNum: news.reportNum,
-								postType: news.postType
+								postType: news.postType,
+								userName: news.userName
 							};
 						});
+						// console.log(data[0].userName);
 						if (action === 1) {
 							activeTab.data = data;
 							this.refreshing = false;
@@ -157,7 +160,6 @@
 				this.getList(2);
 			},
 			async changeTab(event) {
-				current = 0;
 				this.tabIndex = event.index;
 				const activeNode = this.$refs[this.tabBars[event.index].id + event.index][0];
 				let nodeSize = await this.getNodeSize(activeNode);

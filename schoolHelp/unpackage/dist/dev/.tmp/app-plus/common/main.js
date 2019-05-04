@@ -85,10 +85,10 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
 {
   onShow: function onShow() {
-    console.log('App Show', " at App.vue:7");
+    // console.log('App Show')
   },
   onHide: function onHide() {
-    console.log('App Hide', " at App.vue:10");
+    // console.log('App Hide')
   },
   onLaunch: function onLaunch() {var _this = this;
     uni.getStorage({

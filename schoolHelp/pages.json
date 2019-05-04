@@ -30,7 +30,8 @@
 		{
 			"path": "pages/ucenter/ucenter",
 			"style": {
-				"navigationBarTitleText": "个人中心"
+				"navigationBarTitleText": "个人中心",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/exapplication/exapplication",

@@ -314,50 +314,6 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ "../../../uniappWorkspace/schoolHelp/components/uniSwiper.nvue":
-/*!*********************************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/uniappWorkspace/schoolHelp/components/uniSwiper.nvue ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(/*! !../../../HBuilderX/plugins/uniapp-cli/node_modules/weex-vue-loader/lib/style-loader!../../../HBuilderX/plugins/uniapp-cli/node_modules/weex-vue-loader/lib/style-rewriter?id=data-v-7bb1aa9b!../../../HBuilderX/plugins/uniapp-cli/node_modules/weex-vue-loader/lib/selector?type=styles&index=0!./uniSwiper.nvue */ "./node_modules/weex-vue-loader/lib/style-loader.js!./node_modules/weex-vue-loader/lib/style-rewriter.js?id=data-v-7bb1aa9b!./node_modules/weex-vue-loader/lib/selector.js?type=styles&index=0!../../../uniappWorkspace/schoolHelp/components/uniSwiper.nvue")
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(/*! !../../../HBuilderX/plugins/uniapp-cli/node_modules/weex-vue-loader/lib/script-loader!babel-loader!../../../HBuilderX/plugins/uniapp-cli/node_modules/weex-vue-loader/lib/selector?type=script&index=0!./uniSwiper.nvue */ "./node_modules/weex-vue-loader/lib/script-loader.js!./node_modules/babel-loader/lib/index.js!./node_modules/weex-vue-loader/lib/selector.js?type=script&index=0!../../../uniappWorkspace/schoolHelp/components/uniSwiper.nvue")
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "C:\\Users\\ZPC\\Desktop\\uniappWorkspace\\schoolHelp\\components\\uniSwiper.nvue"
-__vue_options__._scopeId = "data-v-7bb1aa9b"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-
 /***/ "../../../uniappWorkspace/schoolHelp/pages/list/list.nvue?entry":
 /*!**********************************************************************************!*\
   !*** C:/Users/ZPC/Desktop/uniappWorkspace/schoolHelp/pages/list/list.nvue?entry ***!
@@ -1997,32 +1953,6 @@ var _uniTabContent = _interopRequireDefault(__webpack_require__(/*! ../uni-tab-c
 
 /***/ }),
 
-/***/ "./node_modules/weex-vue-loader/lib/script-loader.js!./node_modules/babel-loader/lib/index.js!./node_modules/weex-vue-loader/lib/selector.js?type=script&index=0!../../../uniappWorkspace/schoolHelp/components/uniSwiper.nvue":
-/*!****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/weex-vue-loader/lib/script-loader.js!./node_modules/babel-loader/lib!./node_modules/weex-vue-loader/lib/selector.js?type=script&index=0!C:/Users/ZPC/Desktop/uniappWorkspace/schoolHelp/components/uniSwiper.nvue ***!
-  \****************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
-{
-  render: function render(createElement) {
-    return createElement('swiper', {
-      style: {
-        flex: 1 },
-
-      attrs: {
-        indicatorDots: true,
-        autoplay: true,
-        interval: 2000,
-        duration: 500 } },
-
-    this.$slots.default);
-  } };exports.default = _default;
-
-/***/ }),
-
 /***/ "./node_modules/weex-vue-loader/lib/script-loader.js!./node_modules/babel-loader/lib/index.js!./node_modules/weex-vue-loader/lib/selector.js?type=script&index=0!../../../uniappWorkspace/schoolHelp/pages/list/list.nvue":
 /*!***********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/weex-vue-loader/lib/script-loader.js!./node_modules/babel-loader/lib!./node_modules/weex-vue-loader/lib/selector.js?type=script&index=0!C:/Users/ZPC/Desktop/uniappWorkspace/schoolHelp/pages/list/list.nvue ***!
@@ -2076,7 +2006,6 @@ var _uniTabContent = _interopRequireDefault(__webpack_require__(/*! @/components
 var _uniTabBar = _interopRequireDefault(__webpack_require__(/*! @/components/uni-tab-bar/uni-tab-bar.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-tab-bar/uni-tab-bar.nvue"));
 var _uniTabs = _interopRequireDefault(__webpack_require__(/*! @/components/uni-tabs/uni-tabs.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-tabs/uni-tabs.nvue"));
 var _uniMediaList = _interopRequireDefault(__webpack_require__(/*! @/components/uni-media-list/uni-media-list.nvue */ "../../../uniappWorkspace/schoolHelp/components/uni-media-list/uni-media-list.nvue"));
-var _uniSwiper = _interopRequireDefault(__webpack_require__(/*! @/components/uniSwiper.nvue */ "../../../uniappWorkspace/schoolHelp/components/uniSwiper.nvue"));
 var _util = __webpack_require__(/*! @/common/util.js */ "../../../uniappWorkspace/schoolHelp/common/util.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
 
 
@@ -2102,31 +2031,30 @@ var dom = weex.requireModule('dom');var _default =
       tabIndex: 0,
       tabBars: [{
         name: '学术论坛',
-        id: 1 //0
+        id: 1 //填写对应存储的帖子typeId
       }, {
         name: '校园动态',
-        id: 2 //23
+        id: 2 //填写对应存储的帖子typeId
       }, {
         name: '二手交易',
-        id: 223 },
-      {
+        id: 1 //填写对应存储的帖子typeId
+      }, {
         name: '缺个伴吗',
-        id: 221 },
-      {
+        id: 1 //填写对应存储的帖子typeId
+      }, {
         name: '帮你干活',
-        id: 225 },
-      {
+        id: 1 //填写对应存储的帖子typeId
+      }, {
         name: '经验交流',
-        id: 208 }] };
-
+        id: 1 //填写对应存储的帖子typeId
+      }] };
 
   },
   components: {
     uniTabContent: _uniTabContent.default,
     uniTabBar: _uniTabBar.default,
     uniTabs: _uniTabs.default,
-    uniMediaList: _uniMediaList.default,
-    uniSwiper: _uniSwiper.default },
+    uniMediaList: _uniMediaList.default },
 
   created: function created() {var _this = this;
     // 初始化列表信息
@@ -2134,8 +2062,7 @@ var dom = weex.requireModule('dom');var _default =
       _this.newsList.push({
         data: [],
         requestParams: {
-          typeId: tabBar.id,
-          pageSize: 10 },
+          typeId: tabBar.id },
 
         loadingText: '加载中...' });
 
@@ -2145,8 +2072,12 @@ var dom = weex.requireModule('dom');var _default =
   methods: {
     getList: function getList() {var _this2 = this;var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       var activeTab = this.newsList[this.tabIndex];
+      activeTab.requestParams.time = new Date().getTime() + '';
+      if (action === 1) {
+        activeTab.requestParams.minId = 0;
+      }
       uni.request({
-        url: 'http://24l687f160.qicp.vip:43882/post/type/' + activeTab.requestParams.typeId,
+        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/post/type/' + activeTab.requestParams.typeId,
         method: 'GET',
         success: function success(result) {
           var data = result.data.data.map(function (news) {
@@ -2162,9 +2093,11 @@ var dom = weex.requireModule('dom');var _default =
               approvalNum: news.approvalNum,
               commentNum: news.commentNum,
               reportNum: news.reportNum,
-              postType: news.postType };
+              postType: news.postType,
+              userName: news.userName };
 
           });
+          // console.log(data[0].userName);
           if (action === 1) {
             activeTab.data = data;
             _this2.refreshing = false;
@@ -2190,10 +2123,9 @@ var dom = weex.requireModule('dom');var _default =
       this.getList(2);
     },
     changeTab: function () {var _changeTab = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(event) {var activeNode, nodeSize, index, targetNode, activeTab;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                current = 0;
                 this.tabIndex = event.index;
-                activeNode = this.$refs[this.tabBars[event.index].id + event.index][0];_context.next = 5;return (
-                  this.getNodeSize(activeNode));case 5:nodeSize = _context.sent;
+                activeNode = this.$refs[this.tabBars[event.index].id + event.index][0];_context.next = 4;return (
+                  this.getNodeSize(activeNode));case 4:nodeSize = _context.sent;
                 if (nodeSize.left + nodeSize.width > 750) {
                   index = event.index - 4;
                   targetNode = this.$refs[this.tabBars[index].id + index][0];
@@ -2205,7 +2137,7 @@ var dom = weex.requireModule('dom');var _default =
                 activeTab = this.newsList[this.tabIndex];
                 if (activeTab.data.length === 0) {
                   this.getList();
-                }case 9:case "end":return _context.stop();}}}, _callee, this);}));function changeTab(_x) {return _changeTab.apply(this, arguments);}return changeTab;}(),
+                }case 8:case "end":return _context.stop();}}}, _callee, this);}));function changeTab(_x) {return _changeTab.apply(this, arguments);}return changeTab;}(),
 
     getNodeSize: function getNodeSize(node) {
       return new Promise(function (resolve, reject) {
@@ -2394,7 +2326,7 @@ module.exports = {
   "info-text": {
     "textAlign": "left",
     "marginTop": "30",
-    "color": "#999999",
+    "color": "#AF94FF",
     "fontSize": "28"
   },
   "info-text-left": {
@@ -2436,25 +2368,6 @@ module.exports = {
     "flexDirection": "row",
     "marginTop": "20",
     "justifyContent": "space-between"
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/weex-vue-loader/lib/style-loader.js!./node_modules/weex-vue-loader/lib/style-rewriter.js?id=data-v-7bb1aa9b!./node_modules/weex-vue-loader/lib/selector.js?type=styles&index=0!../../../uniappWorkspace/schoolHelp/components/uniSwiper.nvue":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/weex-vue-loader/lib/style-loader.js!./node_modules/weex-vue-loader/lib/style-rewriter.js?id=data-v-7bb1aa9b!./node_modules/weex-vue-loader/lib/selector.js?type=styles&index=0!C:/Users/ZPC/Desktop/uniappWorkspace/schoolHelp/components/uniSwiper.nvue ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "swiper": {
-    "height": 300
-  },
-  "adds": {
-    "width": 100,
-    "height": 100
   }
 }
 

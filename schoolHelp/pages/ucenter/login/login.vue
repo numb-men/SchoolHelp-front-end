@@ -40,7 +40,7 @@
 		},
 		data() {
 			return {
-                loading: false,
+				loading: false,
 				providerList: [],
 				hasProvider: false,
 				account: '',
@@ -85,7 +85,7 @@
 			},
 			bindLogin() {
 				var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
-				var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/;//验证数字、字母至少出现一次，且只能为数字和字母的组合。
+				var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
 				// var pages = getCurrentPages();
 				// var currPage = pages[pages.length - 1]; //当前页面
 				// var prevPage = pages[pages.length - 2]; //上一个页面
@@ -93,7 +93,7 @@
 				 * 客户端对账号信息进行一些必要的校验。
 				 */
 				if (this.account.length != 11) {
-                    this.loading = false;
+					this.loading = false;
 					uni.showToast({
 						icon: 'none',
 						title: '请检查手机号是否正确'
@@ -101,7 +101,7 @@
 					return;
 				}
 				if (!(/^1(3|4|5|7|8)\d{9}$/.test(this.account))) {
-                    this.loading = false;
+					this.loading = false;
 					uni.showToast({
 						icon: 'none',
 						title: '手机号只能为11位数字'
@@ -109,7 +109,7 @@
 					return;
 				}
 				if (this.password.length < 8) {
-                    this.loading = false;
+					this.loading = false;
 					uni.showToast({
 						icon: 'none',
 						title: '密码最短为 8 个字符'
@@ -117,7 +117,7 @@
 					return;
 				}
 				if (!(regString.test(this.password))) {
-                    this.loading = false;
+					this.loading = false;
 					uni.showToast({
 						icon: 'none',
 						title: '密码必须为字母和数字的组合'
@@ -134,7 +134,7 @@
 					password: this.password
 				};
 				uni.request({
-					url: 'http://24l687f160.qicp.vip:43882/login', 
+					url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/login',
 					method: 'GET',
 					data: {
 						phone: loginData.account,
@@ -146,8 +146,38 @@
 								icon: 'none',
 								title: '登陆成功',
 							});
-							this.login(res.data);
-							uni.navigateBack();
+
+							uni.request({
+								url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
+								method: 'GET',
+								header: {
+									'token': res.data.data
+								},
+								success: (result) => {
+									if (result.data.code === 0) {
+										function User(name, token, fallow, collect, points, post, comment) {
+											this.name = name;
+											this.token = token;
+											this.fallow = fallow;
+											this.collect = collect;
+											this.points = points;
+											this.post = post;
+											this.comment = comment;
+										}
+										var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.data.collectPostNum,
+											result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
+										this.login(user);
+										uni.navigateBack();
+									}
+								},
+								fail: () => {
+									uni.showModal({
+										content: "获取用户信息失败！",
+										showCancel: false
+									})
+								}
+							});
+
 						} else {
 							uni.showModal({
 								content: "用户名密码错误！",
@@ -157,8 +187,8 @@
 					},
 					fail: (res) => {
 						uni.showModal({
-						    content: "请求失败，请重试！",
-						    showCancel: false
+							content: "请求失败，请重试！",
+							showCancel: false
 						})
 					}
 				});
@@ -171,7 +201,7 @@
 			// 				provider: value,
 			// 				success: (infoRes) => {
 			// 					/**
-			// 					 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
+			// 					 * 获取用户信息后，需要将信息上报至服务端。
 			// 					 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
 			// 					 */
 			// 					this.toMain(infoRes.userInfo.nickName);
