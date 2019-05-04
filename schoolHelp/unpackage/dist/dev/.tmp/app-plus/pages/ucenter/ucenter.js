@@ -144,6 +144,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 
 
@@ -158,7 +159,8 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         collect: '',
         points: '',
         post: '',
-        comment: '' } };
+        comment: '',
+        avatarUrl: '' } };
 
 
   },
@@ -193,32 +195,54 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
     },
     reFresh: function reFresh() {var _this = this;
+      var tokenTemp = this.token;
       uni.request({
         url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
         method: 'GET',
         header: {
-          'token': this.token },
+          'token': tokenTemp },
 
         success: function success(result) {
-          if (result.data.code === 0) {var
-            User = function User(name, token, fallow, collect, points, post, comment) {
-              this.name = name;
-              this.token = token;
-              this.fallow = fallow;
-              this.collect = collect;
-              this.points = points;
-              this.post = post;
-              this.comment = comment;
-            };
-            var user = new User(result.data.data.name, _this.token, result.data.data.fallowNum, result.data.data.collectPostNum,
-            result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
-            _this.login(user);
-            _this.userInfo.fallow = result.data.data.fallowNum;
-            _this.userInfo.collect = result.data.data.collectPostNum;
-            _this.userInfo.points = result.data.data.points;
-            _this.userInfo.post = result.data.data.post;
-            _this.userInfo.comment = result.data.data.comment;
-            uni.stopPullDownRefresh();
+          if (result.data.code === 0) {
+            uni.request({
+              url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
+              method: 'GET',
+              header: {
+                'token': tokenTemp },
+
+              success: function success(resultHeadImage) {
+                function User(name, token, fallow, collect, points, post, comment, url) {
+                  this.name = name;
+                  this.token = token;
+                  this.fallow = fallow;
+                  this.collect = collect;
+                  this.points = points;
+                  this.post = post;
+                  this.comment = comment;
+                  this.url = url;
+                }
+                if (resultHeadImage.data.code === 0) {
+                  var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
+                  result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
+                  resultHeadImage.data.data);
+                  _this.userInfo.userName = result.data.data.name;
+                  _this.userInfo.fallow = result.data.data.fallowNum;
+                  _this.userInfo.collect = result.data.data.collectPostNum;
+                  _this.userInfo.points = result.data.data.points;
+                  _this.userInfo.post = result.data.data.postNum;
+                  _this.userInfo.comment = result.data.data.commentNum;
+                  _this.userInfo.avatarUrl = 'http://' + resultHeadImage.data.data;
+                  _this.login(user);
+                  uni.stopPullDownRefresh();
+                }
+              },
+              fail: function fail() {
+                uni.showModal({
+                  content: "获取用户头像失败！",
+                  showCancel: false });
+
+              } });
+
           }
         },
         fail: function fail() {

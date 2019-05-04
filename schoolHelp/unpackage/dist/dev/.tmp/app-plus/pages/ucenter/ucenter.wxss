@@ -94,10 +94,14 @@ page {
 .logo-hover {
 	opacity: 0.8;
 }
-.logo-img {
+.img {
 	width: 150rpx;
 	height: 150rpx;
-	border-radius: 150rpx;
+}
+.logo-img {
+	weight: 100%;
+	height: 100%;
+	border-radius: 75rpx;
 }
 .logo-title {
 	height: 150rpx;

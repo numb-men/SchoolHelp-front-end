@@ -155,19 +155,37 @@
 								},
 								success: (result) => {
 									if (result.data.code === 0) {
-										function User(name, token, fallow, collect, points, post, comment) {
-											this.name = name;
-											this.token = token;
-											this.fallow = fallow;
-											this.collect = collect;
-											this.points = points;
-											this.post = post;
-											this.comment = comment;
-										}
-										var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.data.collectPostNum,
-											result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
-										this.login(user);
-										uni.navigateBack();
+										uni.request({
+											url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
+											method: 'GET',
+											header: {
+												'token': res.data.data
+											},
+											success: (resultHeadImage) => {
+												function User(name, token, fallow, collect, points, post, comment, url) {
+													this.name = name;
+													this.token = token;
+													this.fallow = fallow;
+													this.collect = collect;
+													this.points = points;
+													this.post = post;
+													this.comment = comment;
+													this.url = url;
+												}
+												if (resultHeadImage.data.code === 0) {
+													var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.data.collectPostNum,
+														result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' + resultHeadImage.data.data);
+													this.login(user);
+													uni.navigateBack();
+												}
+											},
+											fail: () => {
+												uni.showModal({
+													content: "获取用户头像失败！",
+													showCancel: false
+												})
+											}
+										});
 									}
 								},
 								fail: () => {
@@ -177,7 +195,6 @@
 									})
 								}
 							});
-
 						} else {
 							uni.showModal({
 								content: "用户名密码错误！",

@@ -1371,7 +1371,7 @@ var o6=_mz(z,'view',['bindtap',2,'class',1,'data-event-opts',2,'hoverClass',3],[
 var f7=_v()
 _(o6,f7)
 if(_oz(z,6,e,s,gg)){f7.wxVkey=1
-cs.push("./pages/ucenter/ucenter.wxml:block:1:383")
+cs.push("./pages/ucenter/ucenter.wxml:block:1:501")
 cs.pop()
 }
 f7.wxXCkey=1
@@ -2164,6 +2164,7 @@ var store = new _vuex.default.Store({
       state.uerInfo.points = provider.points;
       state.uerInfo.post = provider.post;
       state.uerInfo.comment = provider.comment;
+      state.uerInfo.avatarUrl = provider.url;
       uni.setStorage({
         key: 'uerInfo',
         data: provider });
@@ -2584,7 +2585,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8663,7 +8664,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8684,14 +8685,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$mp[vm.mpType];
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8760,7 +8761,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -11131,6 +11132,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 
 
@@ -11145,7 +11147,8 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         collect: '',
         points: '',
         post: '',
-        comment: '' } };
+        comment: '',
+        avatarUrl: '' } };
 
 
   },
@@ -11180,32 +11183,54 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
     },
     reFresh: function reFresh() {var _this = this;
+      var tokenTemp = this.token;
       uni.request({
         url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
         method: 'GET',
         header: {
-          'token': this.token },
+          'token': tokenTemp },
 
         success: function success(result) {
-          if (result.data.code === 0) {var
-            User = function User(name, token, fallow, collect, points, post, comment) {
-              this.name = name;
-              this.token = token;
-              this.fallow = fallow;
-              this.collect = collect;
-              this.points = points;
-              this.post = post;
-              this.comment = comment;
-            };
-            var user = new User(result.data.data.name, _this.token, result.data.data.fallowNum, result.data.data.collectPostNum,
-            result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
-            _this.login(user);
-            _this.userInfo.fallow = result.data.data.fallowNum;
-            _this.userInfo.collect = result.data.data.collectPostNum;
-            _this.userInfo.points = result.data.data.points;
-            _this.userInfo.post = result.data.data.post;
-            _this.userInfo.comment = result.data.data.comment;
-            uni.stopPullDownRefresh();
+          if (result.data.code === 0) {
+            uni.request({
+              url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
+              method: 'GET',
+              header: {
+                'token': tokenTemp },
+
+              success: function success(resultHeadImage) {
+                function User(name, token, fallow, collect, points, post, comment, url) {
+                  this.name = name;
+                  this.token = token;
+                  this.fallow = fallow;
+                  this.collect = collect;
+                  this.points = points;
+                  this.post = post;
+                  this.comment = comment;
+                  this.url = url;
+                }
+                if (resultHeadImage.data.code === 0) {
+                  var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
+                  result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
+                  resultHeadImage.data.data);
+                  _this.userInfo.userName = result.data.data.name;
+                  _this.userInfo.fallow = result.data.data.fallowNum;
+                  _this.userInfo.collect = result.data.data.collectPostNum;
+                  _this.userInfo.points = result.data.data.points;
+                  _this.userInfo.post = result.data.data.postNum;
+                  _this.userInfo.comment = result.data.data.commentNum;
+                  _this.userInfo.avatarUrl = 'http://' + resultHeadImage.data.data;
+                  _this.login(user);
+                  uni.stopPullDownRefresh();
+                }
+              },
+              fail: function fail() {
+                uni.showModal({
+                  content: "获取用户头像失败！",
+                  showCancel: false });
+
+              } });
+
           }
         },
         fail: function fail() {
@@ -11891,20 +11916,38 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
                 'token': res.data.data },
 
               success: function success(result) {
-                if (result.data.code === 0) {var
-                  User = function User(name, token, fallow, collect, points, post, comment) {
-                    this.name = name;
-                    this.token = token;
-                    this.fallow = fallow;
-                    this.collect = collect;
-                    this.points = points;
-                    this.post = post;
-                    this.comment = comment;
-                  };
-                  var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.data.collectPostNum,
-                  result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
-                  _this.login(user);
-                  uni.navigateBack();
+                if (result.data.code === 0) {
+                  uni.request({
+                    url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
+                    method: 'GET',
+                    header: {
+                      'token': res.data.data },
+
+                    success: function success(resultHeadImage) {
+                      function User(name, token, fallow, collect, points, post, comment, url) {
+                        this.name = name;
+                        this.token = token;
+                        this.fallow = fallow;
+                        this.collect = collect;
+                        this.points = points;
+                        this.post = post;
+                        this.comment = comment;
+                        this.url = url;
+                      }
+                      if (resultHeadImage.data.code === 0) {
+                        var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.data.collectPostNum,
+                        result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' + resultHeadImage.data.data);
+                        _this.login(user);
+                        uni.navigateBack();
+                      }
+                    },
+                    fail: function fail() {
+                      uni.showModal({
+                        content: "获取用户头像失败！",
+                        showCancel: false });
+
+                    } });
+
                 }
               },
               fail: function fail() {
@@ -11913,7 +11956,6 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
                   showCancel: false });
 
               } });
-
 
           } else {
             uni.showModal({

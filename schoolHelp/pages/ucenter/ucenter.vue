@@ -1,11 +1,12 @@
 <template>
 	<view class="center">
 		<view class="logo" @click="goLogin" :hover-class="!hasLogins ? 'logo-hover' : ''">
-			<!-- <image class="logo-img" :src="login ? uerInfo.avatarUrl :avatarUrl"></image> -->
+			<view class="img" v-show="hasLogin">
+				<image class="logo-img" :src="uerInfo.avatarUrl"></image>
+			</view>
 			<view class="logo-title">
-				<!-- <text class="uer-name">Hi，{{login ? uerInfo.name : '您未登录'}}</text> -->
 				<view v-if="!hasLogin" class="uer-name">快点我登录！福大学子为您待命^-^!</view>
-				<view v-else class="uer-name">{{uerInfo.userName}}</view>
+				<view v-else class="uer-name">Hi，{{uerInfo.userName}}</view>
 				<text class="go-login navigat-arrow" v-if="!hasLogin">&#xe65e;</text>
 			</view>
 		</view>
@@ -58,7 +59,8 @@
 					collect: '',
 					points: '',
 					post: '',
-					comment: ''
+					comment: '',
+					avatarUrl: ''
 				}
 			}
 		},
@@ -93,32 +95,54 @@
 				})
 			},
 			reFresh() {
+				var tokenTemp = this.token;
 				uni.request({
 					url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
 					method: 'GET',
 					header: {
-						'token': this.token
+						'token': tokenTemp
 					},
 					success: (result) => {
 						if (result.data.code === 0) {
-							function User(name, token, fallow, collect, points, post, comment) {
-								this.name = name;
-								this.token = token;
-								this.fallow = fallow;
-								this.collect = collect;
-								this.points = points;
-								this.post = post;
-								this.comment = comment;
-							}
-							var user = new User(result.data.data.name, this.token, result.data.data.fallowNum, result.data.data.collectPostNum,
-								result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
-							this.login(user);
-							this.userInfo.fallow = result.data.data.fallowNum;
-							this.userInfo.collect = result.data.data.collectPostNum;
-							this.userInfo.points = result.data.data.points;
-							this.userInfo.post = result.data.data.post;
-							this.userInfo.comment = result.data.data.comment;
-							uni.stopPullDownRefresh();
+							uni.request({
+								url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
+								method: 'GET',
+								header: {
+									'token': tokenTemp
+								},
+								success: (resultHeadImage) => {
+									function User(name, token, fallow, collect, points, post, comment, url) {
+										this.name = name;
+										this.token = token;
+										this.fallow = fallow;
+										this.collect = collect;
+										this.points = points;
+										this.post = post;
+										this.comment = comment;
+										this.url = url;
+									}
+									if (resultHeadImage.data.code === 0) {
+										var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
+											result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
+											resultHeadImage.data.data);
+										this.userInfo.userName = result.data.data.name;
+										this.userInfo.fallow = result.data.data.fallowNum;
+										this.userInfo.collect = result.data.data.collectPostNum;
+										this.userInfo.points = result.data.data.points;
+										this.userInfo.post = result.data.data.postNum;
+										this.userInfo.comment = result.data.data.commentNum;
+										this.userInfo.avatarUrl = 'http://' + resultHeadImage.data.data;
+										this.login(user);
+										uni.stopPullDownRefresh();
+									}
+								},
+								fail: () => {
+									uni.showModal({
+										content: "获取用户头像失败！",
+										showCancel: false
+									})
+								}
+							});
 						}
 					},
 					fail: () => {
@@ -236,10 +260,15 @@
 		opacity: 0.8;
 	}
 
-	.logo-img {
+	.img {
 		width: 150upx;
 		height: 150upx;
-		border-radius: 150upx;
+	}
+
+	.logo-img {
+		weight: 100%;
+		height: 100%;
+		border-radius: 75upx;
 	}
 
 	.logo-title {

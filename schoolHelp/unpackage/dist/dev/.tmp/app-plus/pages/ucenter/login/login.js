@@ -254,20 +254,38 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
                 'token': res.data.data },
 
               success: function success(result) {
-                if (result.data.code === 0) {var
-                  User = function User(name, token, fallow, collect, points, post, comment) {
-                    this.name = name;
-                    this.token = token;
-                    this.fallow = fallow;
-                    this.collect = collect;
-                    this.points = points;
-                    this.post = post;
-                    this.comment = comment;
-                  };
-                  var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.data.collectPostNum,
-                  result.data.data.points, result.data.data.postNum, result.data.data.commentNum);
-                  _this.login(user);
-                  uni.navigateBack();
+                if (result.data.code === 0) {
+                  uni.request({
+                    url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
+                    method: 'GET',
+                    header: {
+                      'token': res.data.data },
+
+                    success: function success(resultHeadImage) {
+                      function User(name, token, fallow, collect, points, post, comment, url) {
+                        this.name = name;
+                        this.token = token;
+                        this.fallow = fallow;
+                        this.collect = collect;
+                        this.points = points;
+                        this.post = post;
+                        this.comment = comment;
+                        this.url = url;
+                      }
+                      if (resultHeadImage.data.code === 0) {
+                        var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.data.collectPostNum,
+                        result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' + resultHeadImage.data.data);
+                        _this.login(user);
+                        uni.navigateBack();
+                      }
+                    },
+                    fail: function fail() {
+                      uni.showModal({
+                        content: "获取用户头像失败！",
+                        showCancel: false });
+
+                    } });
+
                 }
               },
               fail: function fail() {
@@ -276,7 +294,6 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
                   showCancel: false });
 
               } });
-
 
           } else {
             uni.showModal({

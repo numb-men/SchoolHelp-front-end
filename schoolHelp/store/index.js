@@ -21,6 +21,7 @@ const store = new Vuex.Store({
 			state.uerInfo.points = provider.points
 			state.uerInfo.post = provider.post
 			state.uerInfo.comment = provider.comment
+			state.uerInfo.avatarUrl = provider.url
 			uni.setStorage({
 				key: 'uerInfo',
 				data: provider
