@@ -1,0 +1,133 @@
+<template>
+	<div>
+		<div class="list-cell" @click="bindClick">
+			<div class="media-list">
+				<text class="media-title">{{data.title}}</text>
+				<text class="media-preview">{{data.content}}</text>
+				<div class="media-foot">
+					<div class="imgAndName">
+						<div v-if="showImg" class="image-section-left">
+							<image class="image-list1" v-if="data.image_url" :src="data.image_url"></image>
+						</div>
+						<text class="info-text">{{data.userName}}</text>
+					</div>
+					<text class="info-text-reward">${{data.points}}</text>
+					<text class="info-text-left">{{data.datetime}} 浏览{{data.viewNum}} 评论{{data.commentNum}}</text>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</template>
+
+<script>
+	export default {
+		props: {
+			data: {
+				type: Object,
+				default: function(e) {
+					return {}
+				}
+			}
+		},
+		computed: {
+			showImg() {
+				return this.data.image_list || this.data.image_url
+			}
+		},
+		methods: {
+			bindClick() {
+				this.$emit('click');
+			}
+		}
+	}
+</script>
+
+<style>
+	.list-cell {
+		width: 750px;
+		padding: 0 30px;
+	}
+
+	.list-cell:active {
+		background-color: #eeeeee;
+	}
+
+	.media-list {
+		float: left;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		border-bottom-color: #c8c7cc;
+		padding: 20px 20;
+	}
+
+	.media-title {
+		lines: 1;
+		text-overflow: ellipsis;
+		font-size: 33px;
+		color: #555555;
+	}
+
+	.media-preview {
+		lines: 2;
+		text-overflow: ellipsis;
+		font-size: 30px;
+		padding-top: 5px;
+		color: #999999;
+	}
+
+	.info-text {
+		/* position: absolute; */
+		text-align: left;
+		margin-top: 30px;
+		color: #AF94FF;
+		font-size: 28px;
+	}
+
+	.info-text-left {
+		text-align: right;
+		margin-top: 30px;
+		margin-left: 10px;
+		color: #999999;
+		font-size: 28px;
+	}
+
+	.info-text-reward {
+		text-align: right;
+		margin-top: 30px;
+		margin-left: 10px;
+		color: #FFCC00;
+		font-size: 28px;
+	}
+
+	.imgAndName {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+	}
+
+	.image-section-left {
+		border-radius: 30px;
+		width: 60px;
+		height: 60px;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	.image-list1 {
+		width: 60px;
+		height: 60px;
+	}
+
+	.media-info {
+		display: flex;
+		justify-content: center;
+	}
+
+	.media-foot {
+		flex-direction: row;
+		margin-top: 20px;
+		justify-content: space-between;
+	}
+</style>

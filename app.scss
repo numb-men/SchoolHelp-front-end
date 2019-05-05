@@ -1,0 +1,86 @@
+/*每个页面公共css */
+%content {
+	background: #fefefe;
+	border-top: 1px solid #e9e9e9;
+}
+.content{
+	@extend %content;
+}
+// 行布局，参数代表主轴空间的分布方式（jusjustify-content）
+@mixin row($space: space-between) {
+	display: flex;
+	flex-direction: row;
+	justify-content: $space;
+}
+// 列布局，参数代表主轴空间的分布方式（jusjustify-content）
+@mixin column($space: space-between) {
+	display: flex;
+	flex-direction: column;
+	justify-content: $space;
+}
+// 分割线，参数代表分割线的粗
+@mixin devide-line($height) {
+	width: 100%;
+	height: $height;
+	background: #e9e9e9;
+}
+.devide-line{
+	@include devide-line(1px);
+}
+// 圆形，参数代表半径
+@mixin circle($radius) {
+	// width: $radius;
+	// height: $radius;
+	@include square($radius);
+	border-radius: 50%;
+}
+// 有颜色的圆形，参数代表半径，背景颜色
+@mixin color-circle($radius, $bgcolor) {
+	@include circle($radius);
+	background: $bgcolor;
+}
+// 像椭圆一样的条形，最小的时候是个圆
+@mixin like-ellipse($height, $bgcolor) {
+	min-width: $height;
+	height: $height;
+	border-radius: $height/2;
+	background: $bgcolor;
+}
+// 四方的
+@mixin square($width) {
+	width: $width;
+	height: $width;
+}
+// 字体，参数代表字体大小，字体行高，字体颜色，对齐方式，样式
+@mixin font($size, $lineHeight, $color: black, $align: center, $bold: normal) {
+	font-size: $size;
+	line-height: $lineHeight;
+	color: $color;
+	text-align: $align;
+	font-weight: $bold;
+}
+// 通用的图标盒子，图标 + 短文字
+.normal-icon-box {
+	@include row($space: center);
+	margin-top: 10upx;
+	width: 120upx;
+	&-icon {
+		@include square(36upx);
+		margin: 7upx 10upx;
+	}
+	&-text {
+		max-width: 60upx;
+		@include font(26upx, 50upx, #666, $align: left);
+	}
+}
+@mixin icon($size) {
+	@include square($size);
+	margin: 7upx 10upx;
+}
+// 通用的图标
+.normal-icon {
+	@include square(36upx);
+	margin: 7upx 10upx;
+}
+
+	

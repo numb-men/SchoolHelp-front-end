@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/messages/messages",
+    "pages/extensions/extensions",
+    "pages/my/my",
+    "pages/index/post-detail/post-detail",
+    "pages/index/add-post/add-post",
+    "pages/index/search-post/search-post",
+    "pages/index/search-result/search-result",
+    "pages/extensions/questionaire/questionaire",
+    "pages/my/login/login",
+    "pages/my/register/register",
+    "pages/my/change-password/change-password",
+    "pages/my/my-fallows/my-fallows",
+    "pages/my/my-collects/my-collects",
+    "pages/my/feedback/feedback",
+    "pages/my/setting/setting",
+    "pages/my/my-data/my-data",
+    "pages/my/my-comments/my-comments",
+    "pages/my/my-post/my-post"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "校园帮",
+    "navigationBarBackgroundColor": "#fefefe",
+    "backgroundColor": "#fefefe"
+  },
+  "tabBar": {
+    "color": "#343131",
+    "selectedColor": "#2F85FC",
+    "backgroundColor": "#fefefe",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/icons/index.png",
+        "selectedIconPath": "static/icons/index-active.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/messages/messages",
+        "iconPath": "static/icons/message.png",
+        "selectedIconPath": "static/icons/message-active.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/extensions/extensions",
+        "iconPath": "static/icons/extensions.png",
+        "selectedIconPath": "static/icons/extensions-active.png",
+        "text": "扩展"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "static/icons/my.png",
+        "selectedIconPath": "static/icons/my-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
