@@ -1,15 +1,15 @@
 
-.index.data-v-1e2286ac {
+.index.data-v-51a8f480 {
 	background: #f8f8f8;
 }
-.list-box.data-v-1e2286ac {
+.list-box.data-v-51a8f480 {
 	padding: 10rpx 0;
 }
-.container_of_slide.data-v-1e2286ac {
+.container_of_slide.data-v-51a8f480 {
 	width: 100%;
 	overflow: hidden;
 }
-.now-message-info.data-v-1e2286ac {
+.now-message-info.data-v-51a8f480 {
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	display: -webkit-box;
@@ -26,47 +26,47 @@
 	margin-bottom: 10rpx;
 	background: #ffffff;
 }
-.list-right.data-v-1e2286ac {
+.list-right.data-v-51a8f480 {
 	margin-left: 25rpx;
 	font-size: 25rpx;
 }
-.list-left-1.data-v-1e2286ac {
+.list-left-1.data-v-51a8f480 {
 	float: left;
 	padding-top: 20rpx;
 	color: #a9a9a9;
 }
-.list-right-1.data-v-1e2286ac {
+.list-right-1.data-v-51a8f480 {
 	float: right;
 	color: #a9a9a9;
 	padding-left: 400rpx;
 }
-.list-title.data-v-1e2286ac {
+.list-title.data-v-51a8f480 {
 	overflow: hidden;
 	font-size: 35rpx;
 	margin-bottom: 10rpx;
 	color: #696969;
 	overflow: hidden;
 }
-.list-detail.data-v-1e2286ac {
+.list-detail.data-v-51a8f480 {
 	width: 350rpx;
 	font-size: 25rpx;
 	color: #999999;
 	padding: 5rpx;
 	overflow: hidden;
 }
-.end-message.data-v-1e2286ac {
+.end-message.data-v-51a8f480 {
 	text-align: center;
 	font-size: 30rpx;
 	color: #999999;
 	padding-top: 5rpx;
 }
-.message-num.data-v-1e2286ac {
+.message-num.data-v-51a8f480 {
 	font-size: 35rpx;
 	color: #999999;
 	padding: 5rpx;
 	background: #f8f8f8;
 }
-.uni-list-cell-hover.data-v-1e2286ac {
+.uni-list-cell-hover.data-v-51a8f480 {
 	background-color: #eeeeee;
 }
 

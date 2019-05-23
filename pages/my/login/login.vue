@@ -141,6 +141,7 @@
 						password: loginData.password
 					},
 					success: (res) => {
+						console.log(res);
 						if (res.data.code === 0) {
 							uni.showToast({
 								icon: 'none',
@@ -178,6 +179,7 @@
 													this.login(user);
 													uni.navigateBack();
 												}
+												console.log(resultHeadImage);
 											},
 											fail: () => {
 												uni.showModal({

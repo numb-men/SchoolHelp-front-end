@@ -5,58 +5,46 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
-		uerInfo: {},
+		userInfo: {},
 		hasLogin: false,
 		token: ''
 	},
 	mutations: {
-		login(state, provider) {
+		// 保存登录状态
+		login(state, token) {
 			state.hasLogin = true
-			state.uerInfo.token = provider.token
-			state.uerInfo.userName = provider.name
-			state.token = provider.token
-
-			state.uerInfo.fallow = provider.fallow
-			state.uerInfo.collect = provider.collect
-			state.uerInfo.points = provider.points
-			state.uerInfo.post = provider.post
-			state.uerInfo.comment = provider.comment
-			state.uerInfo.avatarUrl = provider.url
+			state.token = token
+			console.log("save token", token)
 			uni.setStorage({
-				key: 'uerInfo',
-				data: provider
+				key: 'token',
+				data: token
 			})
 		},
+		// 登出，清空登录状态，同时清空用户信息
 		logout(state) {
 			state.hasLogin = false
-			state.uerInfo = {}
+			this.clearUserInfo()
 			uni.removeStorage({
-				key: 'uerInfo'
-			});
+				key: 'token'
+			})
+		},
+		// 保存用户信息
+		saveUserInfo (state, userInfo) {
+			state.userInfo = userInfo
+			console.log("save userInfo", userInfo)
+			uni.setStorage({
+				key: 'userInfo',
+				data: userInfo
+			})
+		},
+		// 清空用户信息
+		clearUserInfo(state) {
+			state.userInfo = {}
+			uni.removeStorage({
+				key: 'userInfo'
+			})
 		}
 	}
 })
-
-
-// const store = new Vuex.Store({
-//     state: {
-//         /**
-//          * 是否需要强制登录
-//          */
-//         forcedLogin: false,
-//         hasLogin: false,
-//         userName: ""
-//     },
-//     mutations: {
-//         login(state, userName) {
-//             state.userName = userName || '新用户';
-//             state.hasLogin = true;
-//         },
-//         logout(state) {
-//             state.userName = "";
-//             state.hasLogin = false;
-//         }
-//     }
-// })
 
 export default store

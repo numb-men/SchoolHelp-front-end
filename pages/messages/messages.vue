@@ -36,6 +36,7 @@
 		friendlyDate,
 		cutString
 	} from "@/common/util.js";
+	import api from "../../api/api.js";
 	
 	export default {
 		data() {
@@ -83,6 +84,24 @@
 				// 隐藏过多的未读消息
 				msgItem.notReadMsgNum = (msgItem.notReadMsgNum > 99 ? '99+' : ''+msgItem.notReadMsgNum);
 			}
+			var url = api.urls.getMessageList;
+			var data = {};
+			// 延时请求，防止请求之前还未登录
+			setTimeout(() =>{
+				api.req.get(url, data, (res) =>{
+					console.log(res);
+				});
+			}, 1000);
+			// 发送消息接口
+			
+			var url2 = api.urls.sendMessage;
+			var data2 = { accept: 138}
+			setTimeout(() =>{
+				console.log(data2, url2);
+				api.req.post(url2, data2, (res) =>{
+					console.log(res);
+				});
+			}, 1000);
 		},
 		methods: {
 			showMsgDetail: function(e){

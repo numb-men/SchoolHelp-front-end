@@ -9,7 +9,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.6.4",
   "appid": "touristappid",
-  "projectname": "SchoolHelpFrontEnd",
+  "projectname": "校园帮",
   "condition": {
     "search": {
       "current": -1,
@@ -24,8 +24,15 @@
       "list": []
     },
     "miniprogram": {
-      "current": -1,
-      "list": []
+      "current": 0,
+      "list": [
+        {
+          "name": "message",
+          "query": "",
+          "id": 0,
+          "pathName": "pages/messages/messages"
+        }
+      ]
     }
   }
 }

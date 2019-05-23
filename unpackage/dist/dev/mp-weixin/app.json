@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/messages/messages",
+    "pages/index/index",
+    "pages/messages/message-detail/message-detail",
     "pages/extensions/extensions",
     "pages/my/my",
     "pages/index/post-detail/post-detail",
@@ -59,5 +60,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

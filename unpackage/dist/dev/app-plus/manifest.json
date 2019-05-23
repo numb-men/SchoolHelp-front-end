@@ -113,6 +113,7 @@
         }
       }
     },
+    "arguments": "{\"name\":\"message\",\"query\":\"\",\"id\":0,\"pathName\":\"pages/messages/messages\"}",
     "allowsInlineMediaPlayback": true,
     "safearea": {
       "background": "#fefefe",
@@ -121,8 +122,16 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "1.9.4",
+      "compilerVersion": "1.9.9",
       "control": "v8"
+    },
+    "secondwebview": {
+      "id": "1",
+      "launch_path": "__uniappview.html",
+      "kernel": "WKWebview",
+      "mode": "child",
+      "top": 0,
+      "bottom": 56
     }
   }
 }
