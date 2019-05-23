@@ -1,1 +1,0 @@
-<view bind:__l="__l"><textarea class="aboutText">目前处于开发者阶段，具体内容等发布时再写。</textarea></view>

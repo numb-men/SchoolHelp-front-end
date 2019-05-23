@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "校园帮",
+  "usingComponents": {
+    "uni-media-list": "/components/uni-media-list",
+    "uni-load-more": "/components/uni-load-more"
+  }
+}

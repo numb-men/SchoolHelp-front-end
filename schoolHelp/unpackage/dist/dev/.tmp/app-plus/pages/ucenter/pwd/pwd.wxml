@@ -1,1 +1,0 @@
-<view class="content" bind:__l="__l"><view class="input-group"><view class="input-row"><m-input bind:input="__e" type="text" focus clearable placeholder="功能暂未开发,请联系开发团队132********" value="{{email}}" data-event-opts="{{[['^input',[['__set_model',['$0','email','$event'],['']]]]]}}"></m-input></view></view></view>

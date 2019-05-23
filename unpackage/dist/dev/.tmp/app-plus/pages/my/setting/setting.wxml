@@ -1,0 +1,1 @@
+<view bind:__l="__l"><view data-event-opts="{{[['tap',[['logoOut',['$event']]]]]}}" class="list-item border-bottom" bindtap="__e"><text class="list-text">注销</text></view></view>

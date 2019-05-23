@@ -1,0 +1,163 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "校园帮"
+			}
+		},
+		{
+			"path": "pages/messages/messages",
+			"style": {
+				"navigationBarTitleText": "消息"
+			}
+		},
+		{
+			"path": "pages/messages/message-detail/message-detail",
+			"style": {
+				"navigationBarTitleText": "消息详情"
+			}
+		},
+		{
+			"path": "pages/extensions/extensions",
+			"style": {
+				"navigationBarTitleText": "应用"
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/post-detail/post-detail",
+			"style": {
+				"navigationBarTitleText": "帖子详情"
+			}
+		},
+		{
+			"path": "pages/index/add-post/add-post",
+			"style": {
+				"navigationBarTitleText": "新建帖子"
+			}
+		},
+		{
+			"path": "pages/index/search-post/search-post",
+			"style": {
+				"navigationBarTitleText": "搜索帖子"
+			}
+		},
+		{
+			"path": "pages/index/search-result/search-result",
+			"style": {
+				"navigationBarTitleText": "搜索结果"
+			}
+		},
+		{
+			"path": "pages/extensions/questionaire/questionaire",
+			"style": {
+				"navigationBarTitleText": "问卷调查"
+			}
+		},
+		{
+			"path": "pages/my/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/my/register/register",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
+		},
+		{
+			"path": "pages/my/change-password/change-password",
+			"style": {
+				"navigationBarTitleText": "修改密码"
+			}
+		},
+		{
+			"path" : "pages/my/my-fallows/my-fallows",
+			"style" : {
+				"navigationBarTitleText": "我的关注"
+			}
+		},
+		{
+			"path": "pages/my/my-collects/my-collects",
+			"style": {
+				"navigationBarTitleText": "我的收藏"
+			}
+		},
+		{
+			"path": "pages/my/feedback/feedback",
+			"style": {
+				"navigationBarTitleText": "问题反馈"
+			}
+		},
+		{
+			"path": "pages/my/setting/setting",
+			"style": {
+				"navigationBarTitleText": "设置"
+			}
+		},
+		{
+			"path": "pages/my/my-data/my-data",
+			"style": {
+				"navigationBarTitleText": "我的资料"
+			}
+		},
+		{
+			"path": "pages/my/my-comments/my-comments",
+			"style": {
+				"navigationBarTitleText": "我的评论"
+			}
+		},
+		{
+			"path": "pages/my/my-post/my-post",
+			"style": {
+				"navigationBarTitleText": "我的帖子"
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#343131",
+		"selectedColor": "#2F85FC",
+		"backgroundColor": "#fefefe",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/icons/index.png",
+				"selectedIconPath": "static/icons/index-active.png",
+				"text": "主页"
+			},
+			{
+				"pagePath": "pages/messages/messages",
+				"iconPath": "static/icons/message.png",
+				"selectedIconPath": "static/icons/message-active.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/extensions/extensions",
+				"iconPath": "static/icons/extensions.png",
+				"selectedIconPath": "static/icons/extensions-active.png",
+				"text": "扩展"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"iconPath": "static/icons/my.png",
+				"selectedIconPath": "static/icons/my-active.png",
+				"text": "我的"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "校园帮",
+		"navigationBarBackgroundColor": "#fefefe",
+		"backgroundColor": "#fefefe"
+	}
+}
