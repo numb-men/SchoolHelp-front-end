@@ -11,7 +11,7 @@
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.1";
+var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
 // var root = "/schoolhelp/schoolhelp-1.0.1"; // h5测试使用
 
 // API url路径
@@ -56,6 +56,27 @@ var urls = {
   },
   del: function del(url, data, success, fail) {
     this.request(url, data, 'DELETE', success, fail);
+  },
+
+  // 获取用户信息
+  getUserInfo: function getUserInfo() {
+    var url = urls.getSelfUserInfo;
+    var data = {};
+    this.get(url, data, function (res) {
+      var userInfo = res.data;
+      delete userInfo.password;
+      _index.default.commit("saveUserInfo", userInfo);
+    });
+  },
+
+  // 登录，并且获取用户信息
+  login: function login(phone, password) {var _this = this;
+    var url = urls.login;
+    var data = { phone: phone, password: password };
+    this.get(url, data, function (res) {
+      _index.default.commit("login", res.data);
+      _this.getUserInfo();
+    });
   } };var _default =
 
 
@@ -146,11 +167,15 @@ function cutString(str, needSize) {
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../../校园帮/SchoolHelp-front-end/App.vue"));
 
+var _api = _interopRequireDefault(__webpack_require__(/*! api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));
 var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.config.productionTip = false;
 
 _vue.default.prototype.$store = _store.default;
+
+// 挂载api模块
+_vue.default.prototype.$api = _api.default;
 
 _App.default.mpType = 'app';
 
@@ -312,6 +337,23 @@ createPage(_messages.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _changePassword = _interopRequireDefault(__webpack_require__(/*! ./pages/my/change-password/change-password.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/change-password/change-password.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_changePassword.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fchange-userInfo%2Fchange-userInfo\"}":
+/*!**********************************************************************************************************************!*\
+  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fchange-userInfo%2Fchange-userInfo"} ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../校园帮/SchoolHelp-front-end/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _changeUserInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/my/change-userInfo/change-userInfo.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/change-userInfo/change-userInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_changeUserInfo.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),
@@ -568,7 +610,7 @@ var store = new _vuex.default.Store({
     // 登出，清空登录状态，同时清空用户信息
     logout: function logout(state) {
       state.hasLogin = false;
-      this.clearUserInfo();
+      this.commit("clearUserInfo");
       uni.removeStorage({
         key: 'token' });
 

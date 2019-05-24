@@ -64,9 +64,44 @@
     text-align: left;
     font-weight: normal;
 }
+.big-icon-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 120rpx;
+}
+.big-icon-box-icon {
+    width: 34rpx;
+    height: 34rpx;
+    padding: 3rpx 0;
+    margin-right: 5rpx;
+}
+.big-icon-box-text {
+    max-width: 75rpx;
+    font-size: 30rpx;
+    line-height: 40rpx;
+    color: #343131;
+    text-align: left;
+    font-weight: normal;
+}
 .normal-icon {
   width: 36rpx;
   height: 36rpx;
+  margin: 7rpx 10rpx;
+}
+.large-icon {
+  width: 45rpx;
+  height: 45rpx;
   margin: 7rpx 10rpx;
 }
 .no-use {

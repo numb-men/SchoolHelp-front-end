@@ -1,0 +1,54 @@
+@import "@/app.scss";
+.background-img {
+	width: 750upx;
+	height: 380upx;
+}
+.userInfo {
+	padding: 15upx 10upx;
+	width: 732upx;
+	position: absolute;
+	left: 0;
+	top: 370upx;
+	background: #fefefe;
+	border-top-left-radius: 8upx;
+	border-top-right-radius: 8upx;
+	
+	&-head-img {
+		@include circle(125upx);
+		position: absolute;
+		top: -100upx;
+		left: 15upx;
+	}
+	
+	&-top {
+		@include row;
+		padding: 20upx 15upx;
+		padding-top: 45upx;
+		width: 730upx;
+		box-sizing: border-box;
+		
+		&-label {
+			@include font(35upx, 45upx, $align: left, $color: #343131);
+		}
+		
+		&-icon {
+			@extend .large-icon;
+		}
+	}
+	
+	&-item {
+		@include row;
+		padding: 25upx 20upx;
+		width: 730upx;
+		box-sizing: border-box;
+		
+		&-label {
+			@include font(30upx, 60upx, $align: left, $color: #343131);
+		}
+		
+		&-edit-input {
+			width: 400upx;
+			@include font(30upx, 45upx, $align: right, $color: #343131);
+		}
+	}
+}

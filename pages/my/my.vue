@@ -6,7 +6,7 @@
 			</view>
 			<view class="logo-title">
 				<view v-if="!hasLogin" class="uer-name">快点我登录！福大学子为您待命^-^!</view>
-				<view v-else class="uer-name">Hi，{{uerInfo.userName}}</view>
+				<view v-else class="uer-name" @click="goChangeUserInfo">Hi，{{uerInfo.userName}}</view>
 				<text class="go-login navigat-arrow" v-if="!hasLogin">&#xe65e;</text>
 			</view>
 		</view>
@@ -94,6 +94,11 @@
 			goSetting() {
 				uni.navigateTo({
 					url: 'setting/setting'
+				})
+			},
+			goChangeUserInfo() {
+				uni.navigateTo({
+					url: 'change-userInfo/change-userInfo'
 				})
 			},
 			reFresh() {

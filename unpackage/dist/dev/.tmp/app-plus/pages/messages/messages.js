@@ -136,7 +136,8 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 
 
 
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+var _api = _interopRequireDefault(__webpack_require__(/*! @/api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));
+var _index = _interopRequireDefault(__webpack_require__(/*! @/store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -187,21 +188,21 @@ var _default = { data: function data() {return { msgs: [{ id: 1, chatUserHeadImg
     var url = _api.default.urls.getMessageList;
     var data = {};
     // 延时请求，防止请求之前还未登录
-    setTimeout(function () {
-      _api.default.req.get(url, data, function (res) {
-        console.log(res, " at pages\\messages\\messages.vue:92");
-      });
-    }, 1000);
-    // 发送消息接口
-
-    var url2 = _api.default.urls.sendMessage;
-    var data2 = { accept: 138 };
-    setTimeout(function () {
-      console.log(data2, url2, " at pages\\messages\\messages.vue:100");
-      _api.default.req.post(url2, data2, function (res) {
-        console.log(res, " at pages\\messages\\messages.vue:102");
-      });
-    }, 1000);
+    // setTimeout(() =>{
+    // 	api.req.get(url, data, (res) =>{
+    // 		console.log(res);
+    // 	});
+    // }, 1000);
+    // // 发送消息接口
+    // 
+    // var url2 = api.urls.sendMessage;
+    // var data2 = { accept: 138, messageContent: "123541235qwrefqw"};
+    // setTimeout(() =>{
+    // 	console.log(data2, url2);
+    // 	api.req.post(url2, data2, (res) =>{
+    // 		console.log(res);
+    // 	});
+    // }, 1000);
   },
   methods: {
     showMsgDetail: function showMsgDetail(e) {

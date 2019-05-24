@@ -113,7 +113,7 @@
         }
       }
     },
-    "arguments": "{\"name\":\"message\",\"query\":\"\",\"id\":0,\"pathName\":\"pages/messages/messages\"}",
+    "arguments": "{\"name\":\"my\",\"query\":\"\",\"id\":1,\"pathName\":\"pages/my/my\"}",
     "allowsInlineMediaPlayback": true,
     "safearea": {
       "background": "#fefefe",

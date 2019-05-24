@@ -73,6 +73,20 @@
 		@include font(26upx, 50upx, #666, $align: left);
 	}
 }
+// 较大的图标盒子，图标 + 短文字
+.big-icon-box {
+	@include row($space: center);
+	width: 120upx;
+	&-icon {
+		@include square(34upx);
+		padding: 3upx 0;
+		margin-right: 5upx;
+	}
+	&-text {
+		max-width: 75upx;
+		@include font(30upx, 40upx, $align: left, $color: #343131);
+	}
+}
 @mixin icon($size) {
 	@include square($size);
 	margin: 7upx 10upx;
@@ -80,6 +94,11 @@
 // 通用的图标
 .normal-icon {
 	@include square(36upx);
+	margin: 7upx 10upx;
+}
+// 大图标
+.large-icon {
+	@include square(45upx);
 	margin: 7upx 10upx;
 }
 

@@ -23,7 +23,7 @@ const store = new Vuex.Store({
 		// 登出，清空登录状态，同时清空用户信息
 		logout(state) {
 			state.hasLogin = false
-			this.clearUserInfo()
+			this.commit("clearUserInfo")
 			uni.removeStorage({
 				key: 'token'
 			})

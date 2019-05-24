@@ -89,11 +89,19 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ "../..
   },
   methods: {
     // 获取用户信息，检查是否登录，如果已经登录，存储登录状态token和用户信息
-    init: function init() {var _this = this;
+    init: function init() {
+      /**
+                            * TODO 开发环境 测试使用
+                            */
+      this.$api.req.login("13078901232", "12345abc");
+      /*
+                                                       * 
+                                                      **/
+
       uni.getStorage({
         key: 'token',
         success: function success(res) {
-          console.log("已登录", " at App.vue:15");
+          console.log("已登录", " at App.vue:23");
           _index.default.commit("login", res.data);
           uni.getStorage({
             key: "userInfo",
@@ -103,35 +111,9 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ "../..
 
         },
         fail: function fail(err) {
-          console.log("未登录", " at App.vue:25");
-          /**
-                                                 * 
-                                                 * TODO 开发环境 测试使用
-                                                 * 
-                                                 */
-          _this.login("13078901232", "12345abc");
+          console.log("未登录", " at App.vue:33");
         } });
 
-    },
-    // 登录，同时获取用户信息
-    login: function login(phone, password) {var _this2 = this;
-      console.log("模拟登录", " at App.vue:37");
-      var url = _api.default.urls.login;
-      var data = { phone: phone, password: password };
-      _api.default.req.get(url, data, function (res) {
-        _index.default.commit("login", res.data);
-        _this2.getUserInfo();
-      });
-    },
-    // 获取用户信息
-    getUserInfo: function getUserInfo() {
-      var url = _api.default.urls.getSelfUserInfo;
-      var data = {};
-      _api.default.req.get(url, data, function (res) {
-        var userInfo = res.data;
-        delete userInfo.password;
-        _index.default.commit("saveUserInfo", userInfo);
-      });
     },
     addFeedback: function addFeedback() {
       uni.request({
@@ -144,10 +126,10 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ "../..
           'token': _index.default.state.token //默认携带token，未登录时，token为''
         },
         success: function success(res) {
-          console.log(res.data, " at App.vue:66");
+          console.log(res.data, " at App.vue:48");
         },
         fail: function fail(err) {
-          console.log(err, " at App.vue:69");
+          console.log(err, " at App.vue:51");
         } });
 
     } } };exports.default = _default;

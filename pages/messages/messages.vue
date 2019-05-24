@@ -36,7 +36,8 @@
 		friendlyDate,
 		cutString
 	} from "@/common/util.js";
-	import api from "../../api/api.js";
+	import api from "@/api/api.js";
+	import store from "@/store/index.js";
 	
 	export default {
 		data() {
@@ -87,21 +88,21 @@
 			var url = api.urls.getMessageList;
 			var data = {};
 			// 延时请求，防止请求之前还未登录
-			setTimeout(() =>{
-				api.req.get(url, data, (res) =>{
-					console.log(res);
-				});
-			}, 1000);
-			// 发送消息接口
-			
-			var url2 = api.urls.sendMessage;
-			var data2 = { accept: 138}
-			setTimeout(() =>{
-				console.log(data2, url2);
-				api.req.post(url2, data2, (res) =>{
-					console.log(res);
-				});
-			}, 1000);
+			// setTimeout(() =>{
+			// 	api.req.get(url, data, (res) =>{
+			// 		console.log(res);
+			// 	});
+			// }, 1000);
+			// // 发送消息接口
+			// 
+			// var url2 = api.urls.sendMessage;
+			// var data2 = { accept: 138, messageContent: "123541235qwrefqw"};
+			// setTimeout(() =>{
+			// 	console.log(data2, url2);
+			// 	api.req.post(url2, data2, (res) =>{
+			// 		console.log(res);
+			// 	});
+			// }, 1000);
 		},
 		methods: {
 			showMsgDetail: function(e){

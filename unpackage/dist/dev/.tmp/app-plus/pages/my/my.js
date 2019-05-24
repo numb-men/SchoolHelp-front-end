@@ -196,6 +196,11 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         url: 'setting/setting' });
 
     },
+    goChangeUserInfo: function goChangeUserInfo() {
+      uni.navigateTo({
+        url: 'change-userInfo/change-userInfo' });
+
+    },
     reFresh: function reFresh() {var _this = this;
       var tokenTemp = this.token;
       uni.request({

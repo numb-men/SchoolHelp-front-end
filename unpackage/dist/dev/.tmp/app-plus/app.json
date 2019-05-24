@@ -18,7 +18,8 @@
     "pages/my/setting/setting",
     "pages/my/my-data/my-data",
     "pages/my/my-comments/my-comments",
-    "pages/my/my-post/my-post"
+    "pages/my/my-post/my-post",
+    "pages/my/change-userInfo/change-userInfo"
   ],
   "subPackages": [],
   "window": {

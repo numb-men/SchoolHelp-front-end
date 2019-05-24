@@ -9,6 +9,14 @@
 		methods: {
 			// 获取用户信息，检查是否登录，如果已经登录，存储登录状态token和用户信息
 			init(){
+				/**
+				 * TODO 开发环境 测试使用
+				 */
+				this.$api.req.login("13078901232", "12345abc");
+				/*
+				 * 
+				**/
+				
 				uni.getStorage({
 					key: 'token',
 					success: (res) =>{
@@ -23,33 +31,7 @@
 					},
 					fail: (err) =>{
 						console.log("未登录");
-						/**
-						 * 
-						 * TODO 开发环境 测试使用
-						 * 
-						 */
-						this.login("13078901232", "12345abc");
 					}
-				});
-			},
-			// 登录，同时获取用户信息
-			login(phone, password) {
-				console.log("模拟登录");
-				var url = api.urls.login;
-				var data = { phone, password };
-				api.req.get(url, data, (res) => {
-					store.commit("login", res.data);
-					this.getUserInfo();
-				});
-			},
-			// 获取用户信息
-			getUserInfo() {
-				var url = api.urls.getSelfUserInfo;
-				var data = {};
-				api.req.get(url, data, (res) => {
-					let userInfo = res.data;
-					delete userInfo.password;
-					store.commit("saveUserInfo", userInfo);
 				});
 			},
 			addFeedback() {
@@ -109,7 +91,6 @@
 		flex: 1;
 		flex-direction: column;
 		background-color: #efeff4;
-		padding: 20upx;
 	}
 
 	.input-group {

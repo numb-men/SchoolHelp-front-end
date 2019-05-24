@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import App from './App'
 
+import api from 'api/api.js'
 import store from './store'
 
 Vue.config.productionTip = false
 
 Vue.prototype.$store = store
+
+// 挂载api模块
+Vue.prototype.$api = api
 
 App.mpType = 'app'
 

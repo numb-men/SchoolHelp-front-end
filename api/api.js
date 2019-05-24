@@ -1,7 +1,7 @@
 import store from "../store/index.js";
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.1";
+var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
 // var root = "/schoolhelp/schoolhelp-1.0.1"; // h5测试使用
 
 // API url路径
@@ -46,6 +46,27 @@ var req = {
 	},
 	del(url, data, success, fail) {
 		this.request(url, data, 'DELETE', success, fail);
+	},
+	
+	// 获取用户信息
+	getUserInfo(){
+		var url = urls.getSelfUserInfo;
+		var data = {};
+		this.get(url, data, (res) => {
+			let userInfo = res.data;
+			delete userInfo.password;
+			store.commit("saveUserInfo", userInfo);
+		});
+	},
+	
+	// 登录，并且获取用户信息
+	login(phone, password) {
+		var url = urls.login;
+		var data = { phone, password };
+		this.get(url, data, (res) => {
+			store.commit("login", res.data);
+			this.getUserInfo();
+		});
 	}
 }
 
