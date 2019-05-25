@@ -22,7 +22,8 @@ var urls = {
   deleteCollect: "".concat(root, "/user/collect"),
   getMessageList: "".concat(root, "/user/message"),
   getSelfUserInfo: "".concat(root, "/user"),
-  getHead: "".concat(root, "/download/head")
+  getHead: "".concat(root, "/download/head"),
+  feedback: "".concat(root, "/feedback/")
 
 
   // 封装请求方法
@@ -34,11 +35,11 @@ var urls = {
       method: method,
       header: {
         //取值：application/json(默认) / application/x-www-form-urlencoded
-        // 'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded',
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(method, url, res.data, " at api\\api.js:31");
+        console.log(method, url, res.data, " at api\\api.js:32");
         _success(res.data);
       },
       fail: function fail(err) {
@@ -466,6 +467,74 @@ createPage(_myPost.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/my/register/register.vue */ "../../../../SchoolHelp-front-end/pages/my/register/register.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_register.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Fabout-SchoolHelp%2Fabout-SchoolHelp\"}":
+/*!*******************************************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fsetting%2Fabout-SchoolHelp%2Fabout-SchoolHelp"} ***!
+  \*******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../SchoolHelp-front-end/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _aboutSchoolHelp = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/about-SchoolHelp/about-SchoolHelp.vue */ "../../../../SchoolHelp-front-end/pages/my/setting/about-SchoolHelp/about-SchoolHelp.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_aboutSchoolHelp.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Faccount-security%2Faccount-security\"}":
+/*!*******************************************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fsetting%2Faccount-security%2Faccount-security"} ***!
+  \*******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../SchoolHelp-front-end/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _accountSecurity = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/account-security/account-security.vue */ "../../../../SchoolHelp-front-end/pages/my/setting/account-security/account-security.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_accountSecurity.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Faccount-security%2Fchange-phone%2Fchange-phone\"}":
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fsetting%2Faccount-security%2Fchange-phone%2Fchange-phone"} ***!
+  \******************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../SchoolHelp-front-end/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _changePhone = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/account-security/change-phone/change-phone.vue */ "../../../../SchoolHelp-front-end/pages/my/setting/account-security/change-phone/change-phone.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_changePhone.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Fhelp%2Fhelp\"}":
+/*!*******************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fsetting%2Fhelp%2Fhelp"} ***!
+  \*******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../SchoolHelp-front-end/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _help = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/help/help.vue */ "../../../../SchoolHelp-front-end/pages/my/setting/help/help.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_help.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),

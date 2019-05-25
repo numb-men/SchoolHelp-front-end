@@ -1,0 +1,76 @@
+
+@font-face {
+	font-family: texticons;
+	font-weight: normal;
+	font-style: normal;
+	src: url('https://at.alicdn.com/t/font_984210_5cs13ndgqsn.ttf') format('truetype');
+}
+page,
+view {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+page {
+	background-color: #f8f8f8;
+}
+.list-up {
+	margin-top: 10rpx;
+	margin-bottom: 10rpx;
+	padding-left: 30rpx;
+}
+.center {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.center-list {
+	background-color: #FFFFFF;
+	width: 750rpx;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.center-list-item {
+	height: 90rpx;
+	width: 750rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	padding: 0rpx 20rpx;
+}
+.center-list-item:active {
+	background-color: #eeeeee;
+}
+.border-bottom {
+	border-bottom-width: 1rpx;
+	border-color: #c8c7cc;
+	border-bottom-style: solid;
+}
+.list-text {
+	height: 90rpx;
+	line-height: 90rpx;
+	font-size: 34rpx;
+	color: #555;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+	text-align: left;
+}
+.title-text {
+	height: 40rpx;
+	font-size: 28rpx;
+	color: #555;
+	text-align: left;
+}
+

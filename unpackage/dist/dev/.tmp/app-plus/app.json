@@ -18,7 +18,11 @@
     "pages/my/setting/setting",
     "pages/my/my-data/my-data",
     "pages/my/my-comments/my-comments",
-    "pages/my/my-post/my-post"
+    "pages/my/my-post/my-post",
+    "pages/my/setting/account-security/account-security",
+    "pages/my/setting/account-security/change-phone/change-phone",
+    "pages/my/setting/help/help",
+    "pages/my/setting/about-SchoolHelp/about-SchoolHelp"
   ],
   "subPackages": [],
   "window": {

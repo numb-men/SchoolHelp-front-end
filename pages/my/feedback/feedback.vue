@@ -13,6 +13,8 @@
 		mapState,
 		mapMutations
 	} from 'vuex';
+	import store from "../../../store/index.js";
+	import api from "../../../api/api.js";
 	export default {
 		computed: mapState(['hasLogin', 'uerInfo', 'token']),
 		data() {
@@ -54,32 +56,21 @@
 						}
 					});
 				}else{
-					var contentPost = this.sendDate.content;
-					var tokenTemp = this.token;
-					uni.request({
-						url: 'http://24l687f160.qicp.vip:43882/feedback/',
-						method: 'POST',
-						header: {
-							'content-type': 'application/x-www-form-urlencoded',
-							'token': tokenTemp
-						},
-						data: {
-							feedbackContent: contentPost
-						},
-						success: (result) => {
-							if(result.data.code === 0){
-								uni.showModal({
-									content: "反馈成功！",
-									showCancel: false
-								})
-								uni.navigateBack();
-							}
-						},
-						fail: (err) => {
+					var url = api.urls.feedback;
+					var data = { feedbackContent:this.sendDate.content };
+					api.req.post(url, data, (res) => {
+						if(res.code===0){
 							uni.showModal({
-								content: "提交失败！",
+								content: "反馈成功！",
 								showCancel: false
 							})
+							uni.navigateBack();
+						}else{
+							uni.showModal({
+								content: "反馈失败！",
+								showCancel: false
+							})
+							return;
 						}
 					});
 				}

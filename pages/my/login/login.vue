@@ -7,7 +7,7 @@
 			</view>
 			<view class="input-row">
 				<text class="title">密码：</text>
-				<m-input type="password" displayable v-model="password" placeholder="请输入密码"></m-input>
+				<m-input type="password" displayable v-model="password" placeholder="至少8位数字与字母组合"></m-input>
 			</view>
 		</view>
 		<view class="btn-row">
@@ -148,57 +148,43 @@
 							icon: 'none',
 							title: '登陆成功',
 						});
+						var urlInfo = api.urls.getSelfUserInfo;
+						var dataInfo = {};
+						api.req.get(urlInfo, dataInfo, (resInfo) => {
+							if (resInfo.code === 0) {
+								var urlHead = api.urls.getHead;
+								var dataHead = {};
+								api.req.get(urlHead, dataHead, (resHead) => {
+									if (resHead.code === 0) {
+										let userInfoAndHead = resInfo.data;
+										userInfoAndHead.headUrl = 'http://' + resHead.data;
+										delete userInfoAndHead.password;
+										store.commit("saveUserInfo", userInfoAndHead);
+									} else {
+										let userInfoAndHead = resInfo.data;
+										userInfoAndHead.headUrl = '/static/icons/logo.png';
+										delete userInfoAndHead.password;
+										store.commit("saveUserInfo", userInfoAndHead);
+									}
+								});
+							} else {
+								uni.showModal({
+									content: "获取用户信息失败！",
+									showCancel: false
+								})
+							}
+						});
+						uni.navigateBack();
 					} else {
 						uni.showModal({
 							content: "用户名或者密码错误！",
 							showCancel: false
 						});
+						return;
 					}
 				});
 				// console.log(this.token);
 
-				var urlInfo = api.urls.getSelfUserInfo;
-				var dataInfo = {};
-				api.req.get(urlInfo, dataInfo, (resInfo) => {
-					if (resInfo.code === 0) {
-						var urlHead = api.urls.getHead;
-						var dataHead = {};
-						api.req.get(urlHead, dataHead, (resHead) => {
-							if (resHead.code === 0) {
-								let userInfoGet = resInfo.data;
-								userInfoGet.headUrl = 'http://' + resHead.data;
-								delete userInfoGet.password;
-								store.commit("saveUserInfo", userInfoGet);
-							} else {
-								let userInfoGet = resInfo.data;
-								userInfoGet.headUrl = '../../static/icons/logo.png';
-								delete userInfoGet.password;
-								store.commit("saveUserInfo", userInfoGet);
-							}
-						});
-					} else {
-						uni.showModal({
-							content: "获取用户信息失败！",
-							showCancel: false
-						})
-					}
-				});
-
-				var urlHead = api.urls.getHead;
-				var dataHead = {};
-				api.req.get(urlHead, dataHead, (resHead) => {
-					if (resHead.code === 0) {
-						let userInfoGet = resInfo.data;
-						userInfoGet.headUrl = 'http://' + resHead.data;
-						store.commit("saveUserInfo", userInfoGet);
-					} else {
-						userInfoGet.headUrl = '../../static/icons/logo.png';
-						store.commit("saveUserInfo", userInfoGet);
-					}
-				});
-				// console.log(urlTemp);
-
-				uni.navigateBack();
 				// uni.request({
 				// 	url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/login',
 				// 	method: 'GET',

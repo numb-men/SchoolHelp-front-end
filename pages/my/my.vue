@@ -56,17 +56,7 @@
 	export default {
 		computed: mapState(['hasLogin', 'userInfo', 'token']),
 		data() {
-			return {
-				// userInfo: {
-				// 	userName: '',
-				// 	fallow: '',
-				// 	collect: '',
-				// 	points: '',
-				// 	post: '',
-				// 	comment: '',
-				// 	avatarUrl: ''
-				// }
-			}
+			return {}
 		},
 		onPullDownRefresh: function() {
 			if (this.hasLogin) {
@@ -113,7 +103,7 @@
 								delete userInfoGet.password;
 								store.commit("saveUserInfo", userInfoGet);
 							} else {
-								userInfoGet.headUrl = '../../static/icons/logo.png';
+								userInfoGet.headUrl = '/static/icons/logo.png';
 							}
 						});
 						console.log(this.userInfo);
@@ -125,75 +115,6 @@
 						})
 					}
 				});
-				// var tokenTemp = this.token;
-				// uni.request({
-				// 	url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
-				// 	method: 'GET',
-				// 	header: {
-				// 		'token': tokenTemp
-				// 	},
-				// 	success: (result) => {
-				// 		if (result.data.code === 0) {
-				// 			uni.request({
-				// 				url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
-				// 				method: 'GET',
-				// 				header: {
-				// 					'token': tokenTemp
-				// 				},
-				// 				success: (resultHeadImage) => {
-				// 					function User(name, token, fallow, collect, points, post, comment, url) {
-				// 						this.name = name;
-				// 						this.token = token;
-				// 						this.fallow = fallow;
-				// 						this.collect = collect;
-				// 						this.points = points;
-				// 						this.post = post;
-				// 						this.comment = comment;
-				// 						this.url = url;
-				// 					}
-				// 					if (resultHeadImage.data.code === 0) {
-				// 						var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
-				// 							result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
-				// 							resultHeadImage.data.data);
-				// this.userInfo.userName = result.data.data.name;
-				// this.userInfo.fallow = result.data.data.fallowNum;
-				// this.userInfo.collect = result.data.data.collectPostNum;
-				// this.userInfo.points = result.data.data.points;
-				// this.userInfo.post = result.data.data.postNum;
-				// this.userInfo.comment = result.data.data.commentNum;
-				// this.userInfo.avatarUrl = 'http://' + resultHeadImage.data.data;
-				// 						this.login(user);
-				// 						uni.stopPullDownRefresh();
-				// 					} else if (resultHeadImage.data.code === -1) {
-				// 						var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
-				// 							result.data.data.points, result.data.data.postNum, result.data.data.commentNum, '../../static/icons/logo.png');
-				// 						this.userInfo.userName = result.data.data.name;
-				// 						this.userInfo.fallow = result.data.data.fallowNum;
-				// 						this.userInfo.collect = result.data.data.collectPostNum;
-				// 						this.userInfo.points = result.data.data.points;
-				// 						this.userInfo.post = result.data.data.postNum;
-				// 						this.userInfo.comment = result.data.data.commentNum;
-				// 						this.userInfo.avatarUrl = '../../static/icons/logo.png';
-				// 						this.login(user);
-				// 						uni.stopPullDownRefresh();
-				// 					}
-				// 				},
-				// 				fail: () => {
-				// 					uni.showModal({
-				// 						content: "获取用户头像失败！",
-				// 						showCancel: false
-				// 					})
-				// 				}
-				// 			});
-				// 		}
-				// 	},
-				// 	fail: () => {
-				// 		uni.showModal({
-				// 			content: "获取用户信息失败！",
-				// 			showCancel: false
-				// 		})
-				// 	}
-				// });
 			},
 			goFollow() {
 				uni.navigateTo({

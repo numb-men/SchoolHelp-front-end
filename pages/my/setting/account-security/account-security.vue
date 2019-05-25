@@ -1,26 +1,34 @@
 <template>
 	<view class="center">
+		<view class="logo" :hover-class="!hasLogins ? 'logo-hover' : ''">
+			<view class="img" v-show="hasLogin">
+				<image class="logo-img" :src="userInfo.headUrl"></image>
+			</view>
+			<view class="logo-title">
+				<view v-if="!hasLogin" class="uer-name">您还没有登录哟</view>
+				<view v-else class="uer-name">{{userInfo.name}}</view>
+			</view>
+		</view>
 		<view class="list-up">
 			<view class="center-list">
-				<view class="center-list-item border-bottom" @click="gotoAccountSecurity()">
-					<text class="list-text">账号与安全</text>
-					<text class="navigat-arrow">&#xe65e;</text>
+				<view class="center-list-item border-bottom">
+					<text class="list-text">是否隐藏个人资料</text>
+					<switch class="switch" checked @change="switch1Change" />
 				</view>
 			</view>
 		</view>
 
-
 		<view class="list-up">
 			<view class="center-list">
-				<navigator url="../../../pages/my/feedback/feedback">
+				<view class="center-list-item border-bottom">
+					<text class="list-text">在线状态</text>
+					<picker @change="bindPickerChange" :value="index" :range="array">
+						<view class="picker-text">{{array[index]}}</view>
+					</picker>
+				</view>
+				<navigator url="/pages/my/setting/account-security/change-phone/change-phone">
 					<view class="center-list-item border-bottom">
-						<text class="list-text">意见反馈</text>
-						<text class="navigat-arrow">&#xe65e;</text>
-					</view>
-				</navigator>
-				<navigator url="../../../pages/my/setting/help/help">
-					<view class="center-list-item border-bottom">
-						<text class="list-text">帮助</text>
+						<text class="list-text">手机号绑定</text>
 						<text class="navigat-arrow">&#xe65e;</text>
 					</view>
 				</navigator>
@@ -29,12 +37,9 @@
 
 		<view class="list-up">
 			<view class="center-list">
-				<navigator url="../../../pages/my/setting/about-SchoolHelp/about-SchoolHelp">
-					<view class="center-list-item border-bottom">
-						<text class="list-text">关于校园帮</text>
-						<text class="navigat-arrow">&#xe65e;</text>
-					</view>
-				</navigator>
+				<view class="center-list-item border-bottom" @click="logoOut">
+					<text class="list-text">退出登录</text>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -45,12 +50,15 @@
 		mapState,
 		mapMutations
 	} from 'vuex';
-	import store from "../../../store/index.js";
-	import api from "../../../api/api.js";
+	import store from "../../../../store/index.js";
+	import api from "../../../../api/api.js";
 	export default {
 		computed: mapState(['hasLogin', 'userInfo', 'token']),
 		data() {
-			return {}
+			return {
+				array: ['在线', '隐身'],
+				index: 0
+			}
 		},
 		methods: {
 			...mapMutations(['logout']),
@@ -61,7 +69,9 @@
 						title: '注销成功',
 					});
 					this.logout();
-					uni.navigateBack();
+					uni.reLaunch({
+						url: '../../../../pages/my/my'
+					});
 				} else {
 					uni.showToast({
 						icon: 'none',
@@ -69,17 +79,17 @@
 					});
 				}
 			},
-			gotoAccountSecurity() {
-				if (this.hasLogin) {
-					uni.navigateTo({
-						url: '../../../pages/my/setting/account-security/account-security'
-					})
-				} else {
-					uni.showToast({
-						icon: 'none',
-						title: '您尚未登录哟~',
-					});
-				}
+			gotoDevelop() {
+				uni.navigateTo({
+					url: 'about/about'
+				})
+			},
+			switch1Change: function(e) {
+				console.log('switch1 发生 change 事件，携带值为', e.target.value)
+			},
+			bindPickerChange: function(e) {
+				console.log('picker发送选择改变，携带值为：' + e.target.value)
+				this.index = e.target.value
 			}
 		}
 	}
@@ -112,21 +122,6 @@
 		justify-content: space-between;
 	}
 
-	.list-up {
-		margin-top: 10upx;
-		margin-bottom: 30upx;
-	}
-
-	.list-mid {
-		margin-top: 10upx;
-		margin-bottom: 30upx;
-	}
-
-	.list-bottom {
-		margin-top: 10upx;
-		margin-bottom: 30upx;
-	}
-
 	.basic-data-item {
 		width: 60px;
 		font-size: 80%;
@@ -142,6 +137,23 @@
 
 	.center {
 		flex-direction: column;
+		background-color: #f2f2f2;
+	}
+
+
+	.list-up {
+		margin-top: 10upx;
+		margin-bottom: 30upx;
+	}
+
+	.list-mid {
+		margin-top: 10upx;
+		margin-bottom: 30upx;
+	}
+
+	.list-bottom {
+		margin-top: 10upx;
+		margin-bottom: 30upx;
 	}
 
 	.logo {
@@ -149,15 +161,7 @@
 		height: 240upx;
 		padding: 20upx;
 		box-sizing: border-box;
-		/* background-color: #FFCC66; */
-		background: -webkit-linear-gradient(right, #FFCC66, #FF0066);
-		/* Safari 5.1 - 6.0 */
-		background: -o-linear-gradient(right, #FFCC66, #FF0066);
-		/* Opera 11.1 - 12.0 */
-		background: -moz-linear-gradient(right, #FFCC66, #FF0066);
-		/* Firefox 3.6 - 15 */
-		background: linear-gradient(right, #FFCC66, #FF0066);
-		/* 标准的语法（必须放在最后） */
+		background-color: #9E9E9E;
 		flex-direction: row;
 		align-items: center;
 	}
@@ -215,13 +219,10 @@
 	.center-list-item {
 		height: 90upx;
 		width: 750upx;
+		margin-top: 10upx;
 		box-sizing: border-box;
 		flex-direction: row;
 		padding: 0upx 20upx;
-	}
-
-	.center-list-item:active {
-		background-color: #eeeeee;
 	}
 
 	.border-bottom {
@@ -248,6 +249,19 @@
 		color: #555;
 		flex: 1;
 		text-align: left;
+	}
+
+	.picker-text {
+		height: 90upx;
+		line-height: 90upx;
+		font-size: 34upx;
+		color: #FFCC00;
+		flex: 1;
+		text-align: left;
+	}
+
+	.switch {
+		line-height: 90upx;
 	}
 
 	.navigat-arrow {

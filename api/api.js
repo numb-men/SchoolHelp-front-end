@@ -12,7 +12,8 @@ var urls = {
 	deleteCollect: `${root}/user/collect`,
 	getMessageList: `${root}/user/message`,
 	getSelfUserInfo: `${root}/user`,
-	getHead: `${root}/download/head`
+	getHead: `${root}/download/head`,
+	feedback: `${root}/feedback/`
 }
 
 // 封装请求方法
@@ -24,11 +25,11 @@ var req = {
 			method: method,
 			header: {
 				//取值：application/json(默认) / application/x-www-form-urlencoded
-				// 'content-type': 'application/json',
+				'content-type': 'application/x-www-form-urlencoded',
 				'token': store.state.token //默认携带token，未登录时，token为''
 			},
 			success: (res) => {
-				 console.log(method, url, res.data);
+				console.log(method, url, res.data);
 				success(res.data);
 			},
 			fail: (err) => {

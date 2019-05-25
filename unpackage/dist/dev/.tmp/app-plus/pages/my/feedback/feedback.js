@@ -109,10 +109,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
   computed: (0, _vuex.mapState)(['hasLogin', 'uerInfo', 'token']),
   data: function data() {
@@ -154,34 +156,23 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
           } });
 
       } else {
-        var contentPost = this.sendDate.content;
-        var tokenTemp = this.token;
-        uni.request({
-          url: 'http://24l687f160.qicp.vip:43882/feedback/',
-          method: 'POST',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'token': tokenTemp },
-
-          data: {
-            feedbackContent: contentPost },
-
-          success: function success(result) {
-            if (result.data.code === 0) {
-              uni.showModal({
-                content: "反馈成功！",
-                showCancel: false });
-
-              uni.navigateBack();
-            }
-          },
-          fail: function fail(err) {
+        var url = _api.default.urls.feedback;
+        var data = { feedbackContent: this.sendDate.content };
+        _api.default.req.post(url, data, function (res) {
+          if (res.code === 0) {
             uni.showModal({
-              content: "提交失败！",
+              content: "反馈成功！",
               showCancel: false });
 
-          } });
+            uni.navigateBack();
+          } else {
+            uni.showModal({
+              content: "反馈失败！",
+              showCancel: false });
 
+            return;
+          }
+        });
       }
     } },
   (0, _vuex.mapMutations)(['login'])) };exports.default = _default;

@@ -248,57 +248,43 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
             icon: 'none',
             title: '登陆成功' });
 
+          var urlInfo = _api.default.urls.getSelfUserInfo;
+          var dataInfo = {};
+          _api.default.req.get(urlInfo, dataInfo, function (resInfo) {
+            if (resInfo.code === 0) {
+              var urlHead = _api.default.urls.getHead;
+              var dataHead = {};
+              _api.default.req.get(urlHead, dataHead, function (resHead) {
+                if (resHead.code === 0) {
+                  var userInfoAndHead = resInfo.data;
+                  userInfoAndHead.headUrl = 'http://' + resHead.data;
+                  delete userInfoAndHead.password;
+                  _index.default.commit("saveUserInfo", userInfoAndHead);
+                } else {
+                  var _userInfoAndHead = resInfo.data;
+                  _userInfoAndHead.headUrl = '/static/icons/logo.png';
+                  delete _userInfoAndHead.password;
+                  _index.default.commit("saveUserInfo", _userInfoAndHead);
+                }
+              });
+            } else {
+              uni.showModal({
+                content: "获取用户信息失败！",
+                showCancel: false });
+
+            }
+          });
+          uni.navigateBack();
         } else {
           uni.showModal({
             content: "用户名或者密码错误！",
             showCancel: false });
 
+          return;
         }
       });
       // console.log(this.token);
 
-      var urlInfo = _api.default.urls.getSelfUserInfo;
-      var dataInfo = {};
-      _api.default.req.get(urlInfo, dataInfo, function (resInfo) {
-        if (resInfo.code === 0) {
-          var urlHead = _api.default.urls.getHead;
-          var dataHead = {};
-          _api.default.req.get(urlHead, dataHead, function (resHead) {
-            if (resHead.code === 0) {
-              var _userInfoGet = resInfo.data;
-              _userInfoGet.headUrl = 'http://' + resHead.data;
-              delete _userInfoGet.password;
-              _index.default.commit("saveUserInfo", _userInfoGet);
-            } else {
-              var _userInfoGet2 = resInfo.data;
-              _userInfoGet2.headUrl = '../../static/icons/logo.png';
-              delete _userInfoGet2.password;
-              _index.default.commit("saveUserInfo", _userInfoGet2);
-            }
-          });
-        } else {
-          uni.showModal({
-            content: "获取用户信息失败！",
-            showCancel: false });
-
-        }
-      });
-
-      var urlHead = _api.default.urls.getHead;
-      var dataHead = {};
-      _api.default.req.get(urlHead, dataHead, function (resHead) {
-        if (resHead.code === 0) {
-          var _userInfoGet3 = resInfo.data;
-          _userInfoGet3.headUrl = 'http://' + resHead.data;
-          _index.default.commit("saveUserInfo", _userInfoGet3);
-        } else {
-          userInfoGet.headUrl = '../../static/icons/logo.png';
-          _index.default.commit("saveUserInfo", userInfoGet);
-        }
-      });
-      // console.log(urlTemp);
-
-      uni.navigateBack();
       // uni.request({
       // 	url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/login',
       // 	method: 'GET',
