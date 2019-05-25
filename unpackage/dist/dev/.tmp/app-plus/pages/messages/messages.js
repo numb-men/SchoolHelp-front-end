@@ -132,7 +132,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _util = __webpack_require__(/*! @/common/util.js */ "../../../../SchoolHelp-front-end/common/util.js"); //
+var _util = __webpack_require__(/*! @/common/util.js */ "../../../../SchoolHelp-front-end/common/util.js");
+
+
+
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -165,10 +169,7 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../SchoolHelp-
 //
 //
 //
-var _default = { data: function data() {return { msgs: [{ id: 1, chatUserHeadImg: "/static/images/img_1.jpg", chatUserName: "小马达", latestMsgContent: "你什么时候回家？", notReadMsgNum: 1, latestMsgTime: "7:00" }, { id: 2, chatUserHeadImg: "/static/images/img_2.jpg", chatUserName: "真有钱", latestMsgContent: "你需要钱吗？我借钱给你，5千够吗？", notReadMsgNum: 1, latestMsgTime: "14:00" }, { id: 3, chatUserHeadImg: "/static/images/img_3.jpg", chatUserName: "好厉害", latestMsgContent: "我真的太菜了，还是你厉害。", notReadMsgNum: 0, latestMsgTime: "19:00" }, {
-        id: 4,
-        chatUserHeadImg: "/static/images/img_4.jpg",
-        chatUserName: "真滴烦",
+var _default = { data: function data() {return { msgs: [{ id: 1, chatUserHeadImg: "/static/images/img_1.jpg", chatUserName: "小马达", latestMsgContent: "你什么时候回家？", notReadMsgNum: 1, latestMsgTime: "7:00" }, { id: 2, chatUserHeadImg: "/static/images/img_2.jpg", chatUserName: "真有钱", latestMsgContent: "你需要钱吗？我借钱给你，5千够吗？", notReadMsgNum: 1, latestMsgTime: "14:00" }, { id: 3, chatUserHeadImg: "/static/images/img_3.jpg", chatUserName: "好厉害", latestMsgContent: "我真的太菜了，还是你厉害。", notReadMsgNum: 0, latestMsgTime: "19:00" }, { id: 4, chatUserHeadImg: "/static/images/img_4.jpg", chatUserName: "真滴烦",
         latestMsgContent: "哇哇哇——啊啊啊——好气啊——气死我了——啊啊啊——",
         notReadMsgNum: 100,
         latestMsgTime: "5-3" }] };
@@ -183,6 +184,24 @@ var _default = { data: function data() {return { msgs: [{ id: 1, chatUserHeadImg
         // 隐藏过多的未读消息
         msgItem.notReadMsgNum = msgItem.notReadMsgNum > 99 ? '99+' : '' + msgItem.notReadMsgNum;
       }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
+    var url = _api.default.urls.getMessageList;
+    var data = {};
+    // 延时请求，防止请求之前还未登录
+    setTimeout(function () {
+      _api.default.req.get(url, data, function (res) {
+        console.log(res, " at pages\\messages\\messages.vue:92");
+      });
+    }, 1000);
+    // 发送消息接口
+
+    var url2 = _api.default.urls.sendMessage;
+    var data2 = { accept: 138 };
+    setTimeout(function () {
+      console.log(data2, url2, " at pages\\messages\\messages.vue:100");
+      _api.default.req.post(url2, data2, function (res) {
+        console.log(res, " at pages\\messages\\messages.vue:102");
+      });
+    }, 1000);
   },
   methods: {
     showMsgDetail: function showMsgDetail(e) {

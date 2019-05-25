@@ -1650,7 +1650,7 @@ var oBC=_mz(z,'view',['bindtap',2,'class',1,'data-event-opts',2,'hoverClass',3],
 var fCC=_v()
 _(oBC,fCC)
 if(_oz(z,6,e,s,gg)){fCC.wxVkey=1
-cs.push("./pages/my/my.wxml:block:1:501")
+cs.push("./pages/my/my.wxml:block:1:497")
 cs.pop()
 }
 fCC.wxXCkey=1
@@ -1868,39 +1868,79 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
-
+var _index = _interopRequireDefault(__webpack_require__(/*! ./store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
 {
-  onShow: function onShow() {
-    // console.log('App Show')
+  onLaunch: function onLaunch() {
+    this.init();
   },
-  onHide: function onHide() {
-    // console.log('App Hide')
-  },
-  onLaunch: function onLaunch() {var _this = this;
-    uni.getStorage({
-      key: 'uerInfo',
-      success: function success(res) {
-        _this.login(res.data);
-        // 如果还需要重新校验或是想要刷新token的有效时间 就再联网请求一次
-        // uni.request({
-        // 	url: `${this.$serverUrl}/auth.php`,
-        // 	data: {
-        // 		"username": res.data.user_name
-        // 	},
-        // 	method: "POST",
-        // 	success: (e) => {
-        // 		if (e.data.code === 0) {
-        // 			this.login(e.data);
-        // 		}
-        // 	}
-        // })
-      } });
+  methods: {
+    // 获取用户信息，检查是否登录，如果已经登录，存储登录状态token和用户信息
+    init: function init() {
+      uni.getStorage({
+        key: 'token',
+        success: function success(res) {
+          console.log("已登录", " at App.vue:15");
+          // this.login("13078901232", "12345abc");
+          _index.default.commit("login", res.data);
+          uni.getStorage({
+            key: "userInfo",
+            success: function success(res2) {
+              _index.default.commit("saveUserInfo", res2.data);
+            } });
 
-  },
-  methods: _objectSpread({},
-  (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
+          // this.logout();
+        },
+        fail: function fail(err) {
+          console.log("未登录", " at App.vue:27");
+          /**
+                                                 * 
+                                                 * TODO 开发环境 测试使用
+                                                 * 
+                                                 */
+          // this.login("13078901232", "12345abc");
+        } });
+
+    },
+    // 登录，同时获取用户信息 
+    login: function login(phone, password) {var _this = this;
+      console.log("模拟登录", " at App.vue:39");
+      var url = _api.default.urls.login;
+      var data = { phone: phone, password: password };
+      _api.default.req.get(url, data, function (res) {
+        _index.default.commit("login", res.data);
+        _this.getUserInfo();
+      });
+    },
+    // 获取用户信息
+    getUserInfo: function getUserInfo() {
+      var url = _api.default.urls.getSelfUserInfo;
+      var data = {};
+      _api.default.req.get(url, data, function (res) {
+        var userInfo = res.data;
+        delete userInfo.password;
+        _index.default.commit("saveUserInfo", userInfo);
+      });
+    },
+    addFeedback: function addFeedback() {
+      uni.request({
+        url: "http://24l687f160.qicp.vip:43882/feedback/",
+        data: { feedbackContent: "1235gfasgasdga" },
+        method: "POST",
+        header: {
+          //取值：application/json(默认) / application/x-www-form-urlencoded
+          'content-type': 'application/json',
+          'token': _index.default.state.token //默认携带token，未登录时，token为''
+        },
+        success: function success(res) {
+          console.log(res.data, " at App.vue:68");
+        },
+        fail: function fail(err) {
+          console.log(err, " at App.vue:71");
+        } });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
@@ -2186,6 +2226,74 @@ define('common/runtime.js',function(require, module, exports, window, document, 
 });
 define('common/vendor.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
+
+/***/ "../../../../SchoolHelp-front-end/api/api.js":
+/*!************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/api/api.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+// API 请求根路径
+var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
+// var root = "/schoolhelp/schoolhelp-1.0.1"; // h5测试使用
+
+// API url路径
+var urls = {
+  login: "".concat(root, "/login"),
+  sendMessage: "".concat(root, "/user/message"),
+  updateUserInfo: "".concat(root, "/user"),
+  deleteCollect: "".concat(root, "/user/collect"),
+  getMessageList: "".concat(root, "/user/message"),
+  getSelfUserInfo: "".concat(root, "/user"),
+  getHead: "".concat(root, "/download/head")
+
+
+  // 封装请求方法
+};var req = {
+  request: function request(url, data, method, _success, _fail) {
+    uni.request({
+      url: url,
+      data: data,
+      method: method,
+      header: {
+        //取值：application/json(默认) / application/x-www-form-urlencoded
+        // 'content-type': 'application/json',
+        'token': _index.default.state.token //默认携带token，未登录时，token为''
+      },
+      success: function success(res) {
+        console.log(method, url, res.data, " at api\\api.js:31");
+        _success(res.data);
+      },
+      fail: function fail(err) {
+        if (_fail) _fail(err); // 如果失败方法非空，执行失败方法
+      } });
+
+  },
+  get: function get(url, data, success, fail) {
+    this.request(url, data, 'GET', success, fail);
+  },
+  post: function post(url, data, success, fail) {
+    this.request(url, data, 'POST', success, fail);
+  },
+  put: function put(url, data, success, fail) {
+    this.request(url, data, 'PUT', success, fail);
+  },
+  del: function del(url, data, success, fail) {
+    this.request(url, data, 'DELETE', success, fail);
+  } };var _default =
+
+
+{
+  root: root,
+  urls: urls,
+  req: req };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
+
+/***/ }),
 
 /***/ "../../../../SchoolHelp-front-end/common/util.js":
 /*!****************************************************************!*\
@@ -2670,60 +2778,48 @@ _vue.default.use(_vuex.default);
 
 var store = new _vuex.default.Store({
   state: {
-    uerInfo: {},
+    userInfo: {},
     hasLogin: false,
     token: '' },
 
   mutations: {
-    login: function login(state, provider) {
+    // 保存登录状态
+    login: function login(state, token) {
       state.hasLogin = true;
-      state.uerInfo.token = provider.token;
-      state.uerInfo.userName = provider.name;
-      state.token = provider.token;
-
-      state.uerInfo.fallow = provider.fallow;
-      state.uerInfo.collect = provider.collect;
-      state.uerInfo.points = provider.points;
-      state.uerInfo.post = provider.post;
-      state.uerInfo.comment = provider.comment;
-      state.uerInfo.avatarUrl = provider.url;
+      state.token = token;
+      console.log("save token", token, " at store\\index.js:17");
       uni.setStorage({
-        key: 'uerInfo',
-        data: provider });
+        key: 'token',
+        data: token });
 
     },
+    // 登出，清空登录状态，同时清空用户信息
     logout: function logout(state) {
       state.hasLogin = false;
-      state.uerInfo = {};
+      this.commit("clearUserInfo");
       uni.removeStorage({
-        key: 'uerInfo' });
+        key: 'token' });
 
-    } } });
+    },
+    // 保存用户信息
+    saveUserInfo: function saveUserInfo(state, userInfo) {
+      state.userInfo = userInfo;
+      // console.log("save userInfo", userInfo)
+      uni.setStorage({
+        key: 'userInfo',
+        data: userInfo });
+
+    },
+    // 清空用户信息
+    clearUserInfo: function clearUserInfo(state) {
+      state.userInfo = {};
+      uni.removeStorage({
+        key: 'userInfo' });
+
+    } } });var _default =
 
 
 
-
-// const store = new Vuex.Store({
-//     state: {
-//         /**
-//          * 是否需要强制登录
-//          */
-//         forcedLogin: false,
-//         hasLogin: false,
-//         userName: ""
-//     },
-//     mutations: {
-//         login(state, userName) {
-//             state.userName = userName || '新用户';
-//             state.hasLogin = true;
-//         },
-//         logout(state) {
-//             state.userName = "";
-//             state.hasLogin = false;
-//         }
-//     }
-// })
-var _default =
 store;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -3195,7 +3291,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -9269,7 +9365,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -9290,14 +9386,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9366,7 +9462,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -11668,7 +11764,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _util = __webpack_require__(/*! @/common/util.js */ "../../../../SchoolHelp-front-end/common/util.js"); //
+var _util = __webpack_require__(/*! @/common/util.js */ "../../../../SchoolHelp-front-end/common/util.js");
+
+
+
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -11701,10 +11801,7 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../SchoolHelp-
 //
 //
 //
-var _default = { data: function data() {return { msgs: [{ id: 1, chatUserHeadImg: "/static/images/img_1.jpg", chatUserName: "小马达", latestMsgContent: "你什么时候回家？", notReadMsgNum: 1, latestMsgTime: "7:00" }, { id: 2, chatUserHeadImg: "/static/images/img_2.jpg", chatUserName: "真有钱", latestMsgContent: "你需要钱吗？我借钱给你，5千够吗？", notReadMsgNum: 1, latestMsgTime: "14:00" }, { id: 3, chatUserHeadImg: "/static/images/img_3.jpg", chatUserName: "好厉害", latestMsgContent: "我真的太菜了，还是你厉害。", notReadMsgNum: 0, latestMsgTime: "19:00" }, {
-        id: 4,
-        chatUserHeadImg: "/static/images/img_4.jpg",
-        chatUserName: "真滴烦",
+var _default = { data: function data() {return { msgs: [{ id: 1, chatUserHeadImg: "/static/images/img_1.jpg", chatUserName: "小马达", latestMsgContent: "你什么时候回家？", notReadMsgNum: 1, latestMsgTime: "7:00" }, { id: 2, chatUserHeadImg: "/static/images/img_2.jpg", chatUserName: "真有钱", latestMsgContent: "你需要钱吗？我借钱给你，5千够吗？", notReadMsgNum: 1, latestMsgTime: "14:00" }, { id: 3, chatUserHeadImg: "/static/images/img_3.jpg", chatUserName: "好厉害", latestMsgContent: "我真的太菜了，还是你厉害。", notReadMsgNum: 0, latestMsgTime: "19:00" }, { id: 4, chatUserHeadImg: "/static/images/img_4.jpg", chatUserName: "真滴烦",
         latestMsgContent: "哇哇哇——啊啊啊——好气啊——气死我了——啊啊啊——",
         notReadMsgNum: 100,
         latestMsgTime: "5-3" }] };
@@ -11719,6 +11816,24 @@ var _default = { data: function data() {return { msgs: [{ id: 1, chatUserHeadImg
         // 隐藏过多的未读消息
         msgItem.notReadMsgNum = msgItem.notReadMsgNum > 99 ? '99+' : '' + msgItem.notReadMsgNum;
       }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
+    var url = _api.default.urls.getMessageList;
+    var data = {};
+    // 延时请求，防止请求之前还未登录
+    setTimeout(function () {
+      _api.default.req.get(url, data, function (res) {
+        console.log(res, " at pages\\messages\\messages.vue:92");
+      });
+    }, 1000);
+    // 发送消息接口
+
+    var url2 = _api.default.urls.sendMessage;
+    var data2 = { accept: 138 };
+    setTimeout(function () {
+      console.log(data2, url2, " at pages\\messages\\messages.vue:100");
+      _api.default.req.post(url2, data2, function (res) {
+        console.log(res, " at pages\\messages\\messages.vue:102");
+      });
+    }, 1000);
   },
   methods: {
     showMsgDetail: function showMsgDetail(e) {
@@ -12371,24 +12486,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
-  computed: (0, _vuex.mapState)(['hasLogin', 'uerInfo', 'token']),
+  computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']),
   data: function data() {
     return {
-      userInfo: {
-        userName: '',
-        fallow: '',
-        collect: '',
-        points: '',
-        post: '',
-        comment: '',
-        avatarUrl: '' } };
-
-
+      // userInfo: {
+      // 	userName: '',
+      // 	fallow: '',
+      // 	collect: '',
+      // 	points: '',
+      // 	post: '',
+      // 	comment: '',
+      // 	avatarUrl: ''
+      // }
+    };
   },
   onPullDownRefresh: function onPullDownRefresh() {
     if (this.hasLogin) {
@@ -12421,75 +12538,101 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
     },
     reFresh: function reFresh() {var _this = this;
-      var tokenTemp = this.token;
-      uni.request({
-        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
-        method: 'GET',
-        header: {
-          'token': tokenTemp },
-
-        success: function success(result) {
-          if (result.data.code === 0) {
-            uni.request({
-              url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
-              method: 'GET',
-              header: {
-                'token': tokenTemp },
-
-              success: function success(resultHeadImage) {
-                function User(name, token, fallow, collect, points, post, comment, url) {
-                  this.name = name;
-                  this.token = token;
-                  this.fallow = fallow;
-                  this.collect = collect;
-                  this.points = points;
-                  this.post = post;
-                  this.comment = comment;
-                  this.url = url;
-                }
-                if (resultHeadImage.data.code === 0) {
-                  var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
-                  result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
-                  resultHeadImage.data.data);
-                  _this.userInfo.userName = result.data.data.name;
-                  _this.userInfo.fallow = result.data.data.fallowNum;
-                  _this.userInfo.collect = result.data.data.collectPostNum;
-                  _this.userInfo.points = result.data.data.points;
-                  _this.userInfo.post = result.data.data.postNum;
-                  _this.userInfo.comment = result.data.data.commentNum;
-                  _this.userInfo.avatarUrl = 'http://' + resultHeadImage.data.data;
-                  _this.login(user);
-                  uni.stopPullDownRefresh();
-                } else if (resultHeadImage.data.code === -1) {
-                  var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
-                  result.data.data.points, result.data.data.postNum, result.data.data.commentNum, '../../static/icons/logo.png');
-                  _this.userInfo.userName = result.data.data.name;
-                  _this.userInfo.fallow = result.data.data.fallowNum;
-                  _this.userInfo.collect = result.data.data.collectPostNum;
-                  _this.userInfo.points = result.data.data.points;
-                  _this.userInfo.post = result.data.data.postNum;
-                  _this.userInfo.comment = result.data.data.commentNum;
-                  _this.userInfo.avatarUrl = '../../static/icons/logo.png';
-                  _this.login(user);
-                  uni.stopPullDownRefresh();
-                }
-              },
-              fail: function fail() {
-                uni.showModal({
-                  content: "获取用户头像失败！",
-                  showCancel: false });
-
-              } });
-
-          }
-        },
-        fail: function fail() {
+      var url = _api.default.urls.getSelfUserInfo;
+      var data = {};
+      _api.default.req.get(url, data, function (res) {
+        if (res.code === 0) {
+          var urlHead = _api.default.urls.getHead;
+          var dataHead = {};
+          var userInfoGet = res.data;
+          _api.default.req.get(urlHead, dataHead, function (resHead) {
+            if (resHead.code === 0) {
+              userInfoGet.headUrl = 'http://' + resHead.data;
+              console.log(userInfoGet.headUrl, " at pages\\my\\my.vue:112");
+              delete userInfoGet.password;
+              _index.default.commit("saveUserInfo", userInfoGet);
+            } else {
+              userInfoGet.headUrl = '../../static/icons/logo.png';
+            }
+          });
+          console.log(_this.userInfo, " at pages\\my\\my.vue:119");
+          uni.stopPullDownRefresh();
+        } else {
           uni.showModal({
             content: "获取用户信息失败！",
             showCancel: false });
 
-        } });
-
+        }
+      });
+      // var tokenTemp = this.token;
+      // uni.request({
+      // 	url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
+      // 	method: 'GET',
+      // 	header: {
+      // 		'token': tokenTemp
+      // 	},
+      // 	success: (result) => {
+      // 		if (result.data.code === 0) {
+      // 			uni.request({
+      // 				url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
+      // 				method: 'GET',
+      // 				header: {
+      // 					'token': tokenTemp
+      // 				},
+      // 				success: (resultHeadImage) => {
+      // 					function User(name, token, fallow, collect, points, post, comment, url) {
+      // 						this.name = name;
+      // 						this.token = token;
+      // 						this.fallow = fallow;
+      // 						this.collect = collect;
+      // 						this.points = points;
+      // 						this.post = post;
+      // 						this.comment = comment;
+      // 						this.url = url;
+      // 					}
+      // 					if (resultHeadImage.data.code === 0) {
+      // 						var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
+      // 							result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
+      // 							resultHeadImage.data.data);
+      // this.userInfo.userName = result.data.data.name;
+      // this.userInfo.fallow = result.data.data.fallowNum;
+      // this.userInfo.collect = result.data.data.collectPostNum;
+      // this.userInfo.points = result.data.data.points;
+      // this.userInfo.post = result.data.data.postNum;
+      // this.userInfo.comment = result.data.data.commentNum;
+      // this.userInfo.avatarUrl = 'http://' + resultHeadImage.data.data;
+      // 						this.login(user);
+      // 						uni.stopPullDownRefresh();
+      // 					} else if (resultHeadImage.data.code === -1) {
+      // 						var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
+      // 							result.data.data.points, result.data.data.postNum, result.data.data.commentNum, '../../static/icons/logo.png');
+      // 						this.userInfo.userName = result.data.data.name;
+      // 						this.userInfo.fallow = result.data.data.fallowNum;
+      // 						this.userInfo.collect = result.data.data.collectPostNum;
+      // 						this.userInfo.points = result.data.data.points;
+      // 						this.userInfo.post = result.data.data.postNum;
+      // 						this.userInfo.comment = result.data.data.commentNum;
+      // 						this.userInfo.avatarUrl = '../../static/icons/logo.png';
+      // 						this.login(user);
+      // 						uni.stopPullDownRefresh();
+      // 					}
+      // 				},
+      // 				fail: () => {
+      // 					uni.showModal({
+      // 						content: "获取用户头像失败！",
+      // 						showCancel: false
+      // 					})
+      // 				}
+      // 			});
+      // 		}
+      // 	},
+      // 	fail: () => {
+      // 		uni.showModal({
+      // 			content: "获取用户信息失败！",
+      // 			showCancel: false
+      // 		})
+      // 	}
+      // });
     },
     goFollow: function goFollow() {
       uni.navigateTo({
@@ -13792,16 +13935,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 
 
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
 
 {
   components: {
     mInput: mInput },
 
+  computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']),
   data: function data() {
     return {
       loading: false,
@@ -13813,7 +13959,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
       msg: '' };
 
   },
-  computed: (0, _vuex.mapState)(['forcedLogin']),
+  // computed: mapState(['forcedLogin']),
   methods: _objectSpread({
     /**
                             * 第三方授权初始化
@@ -13847,7 +13993,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
                                             */
       this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
     },
-    bindLogin: function bindLogin() {var _this = this;
+    bindLogin: function bindLogin() {
       var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
       var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
       // var pages = getCurrentPages();
@@ -13894,93 +14040,156 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
          * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
          */
       var loginData = {
-        account: this.account,
+        phone: this.account,
         password: this.password };
 
-      uni.request({
-        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/login',
-        method: 'GET',
-        data: {
-          phone: loginData.account,
-          password: loginData.password },
+      var url = _api.default.urls.login;
+      var data = {
+        phone: loginData.phone,
+        password: loginData.password };
 
-        success: function success(res) {
-          if (res.data.code === 0) {
-            uni.showToast({
-              icon: 'none',
-              title: '登陆成功' });
+      _api.default.req.get(url, data, function (res) {
+        if (res.code === 0) {
+          _index.default.commit("login", res.data);
+          uni.showToast({
+            icon: 'none',
+            title: '登陆成功' });
 
-
-            uni.request({
-              url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
-              method: 'GET',
-              header: {
-                'token': res.data.data },
-
-              success: function success(result) {
-                if (result.data.code === 0) {
-                  uni.request({
-                    url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
-                    method: 'GET',
-                    header: {
-                      'token': res.data.data },
-
-                    success: function success(resultHeadImage) {
-                      function User(name, token, fallow, collect, points, post, comment, url) {
-                        this.name = name;
-                        this.token = token;
-                        this.fallow = fallow;
-                        this.collect = collect;
-                        this.points = points;
-                        this.post = post;
-                        this.comment = comment;
-                        this.url = url;
-                      }
-                      if (resultHeadImage.data.code === 0) {
-                        var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.
-                        data.collectPostNum,
-                        result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
-                        resultHeadImage.data.data);
-                        _this.login(user);
-                        uni.navigateBack();
-                      } else if (resultHeadImage.data.code === -1) {
-                        var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.
-                        data.collectPostNum,
-                        result.data.data.points, result.data.data.postNum, result.data.data.commentNum, '../../static/icons/logo.png');
-                        _this.login(user);
-                        uni.navigateBack();
-                      }
-                    },
-                    fail: function fail() {
-                      uni.showModal({
-                        content: "获取用户头像失败！",
-                        showCancel: false });
-
-                    } });
-
-                }
-              },
-              fail: function fail() {
-                uni.showModal({
-                  content: "获取用户信息失败！",
-                  showCancel: false });
-
-              } });
-
-          } else {
-            uni.showModal({
-              content: "用户名密码错误！",
-              showCancel: false });
-
-          }
-        },
-        fail: function fail(res) {
+        } else {
           uni.showModal({
-            content: "请求失败，请重试！",
+            content: "用户名或者密码错误！",
             showCancel: false });
 
-        } });
+        }
+      });
+      // console.log(this.token);
 
+      var urlInfo = _api.default.urls.getSelfUserInfo;
+      var dataInfo = {};
+      _api.default.req.get(urlInfo, dataInfo, function (resInfo) {
+        if (resInfo.code === 0) {
+          var urlHead = _api.default.urls.getHead;
+          var dataHead = {};
+          _api.default.req.get(urlHead, dataHead, function (resHead) {
+            if (resHead.code === 0) {
+              var _userInfoGet = resInfo.data;
+              _userInfoGet.headUrl = 'http://' + resHead.data;
+              delete _userInfoGet.password;
+              _index.default.commit("saveUserInfo", _userInfoGet);
+            } else {
+              var _userInfoGet2 = resInfo.data;
+              _userInfoGet2.headUrl = '../../static/icons/logo.png';
+              delete _userInfoGet2.password;
+              _index.default.commit("saveUserInfo", _userInfoGet2);
+            }
+          });
+        } else {
+          uni.showModal({
+            content: "获取用户信息失败！",
+            showCancel: false });
+
+        }
+      });
+
+      var urlHead = _api.default.urls.getHead;
+      var dataHead = {};
+      _api.default.req.get(urlHead, dataHead, function (resHead) {
+        if (resHead.code === 0) {
+          var _userInfoGet3 = resInfo.data;
+          _userInfoGet3.headUrl = 'http://' + resHead.data;
+          _index.default.commit("saveUserInfo", _userInfoGet3);
+        } else {
+          userInfoGet.headUrl = '../../static/icons/logo.png';
+          _index.default.commit("saveUserInfo", userInfoGet);
+        }
+      });
+      // console.log(urlTemp);
+
+      uni.navigateBack();
+      // uni.request({
+      // 	url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/login',
+      // 	method: 'GET',
+      // 	data: {
+      // 		phone: loginData.account,
+      // 		password: loginData.password
+      // 	},
+      // 					success: (res) => {
+      // 						if (res.data.code === 0) {
+      // 							uni.showToast({
+      // 								icon: 'none',
+      // 								title: '登陆成功',
+      // 							});
+      // 
+      // 							uni.request({
+      // 								url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
+      // 								method: 'GET',
+      // 								header: {
+      // 									'token': res.data.data
+      // 								},
+      // 								success: (result) => {
+      // 									if (result.data.code === 0) {
+      // 										uni.request({
+      // 											url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
+      // 											method: 'GET',
+      // 											header: {
+      // 												'token': res.data.data
+      // 											},
+      // 											success: (resultHeadImage) => {
+      // 												function User(name, token, fallow, collect, points, post, comment, url) {
+      // 													this.name = name;
+      // 													this.token = token;
+      // 													this.fallow = fallow;
+      // 													this.collect = collect;
+      // 													this.points = points;
+      // 													this.post = post;
+      // 													this.comment = comment;
+      // 													this.url = url;
+      // 												}
+      // 												if (resultHeadImage.data.code === 0) {
+      // 													var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data
+      // 														.data.collectPostNum,
+      // 														result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
+      // 														resultHeadImage.data.data);
+      // 													this.login(user);
+      // 													uni.navigateBack();
+      // 												} else if (resultHeadImage.data.code === -1) {
+      // 													var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data
+      // 														.data.collectPostNum,
+      // 														result.data.data.points, result.data.data.postNum, result.data.data.commentNum, '../../static/icons/logo.png');
+      // 													this.login(user);
+      // 													uni.navigateBack();
+      // 												}
+      // 											},
+      // 											fail: () => {
+      // 												uni.showModal({
+      // 													content: "获取用户头像失败！",
+      // 													showCancel: false
+      // 												})
+      // 											}
+      // 										});
+      // 									}
+      // 								},
+      // 								fail: () => {
+      // 									uni.showModal({
+      // 										content: "获取用户信息失败！",
+      // 										showCancel: false
+      // 									})
+      // 								}
+      // 							});
+      // 						} else {
+      // 							uni.showModal({
+      // 								content: "用户名密码错误！",
+      // 								showCancel: false
+      // 							});
+      // 						}
+      // 					},
+      // 					fail: (res) => {
+      // 						uni.showModal({
+      // 							content: "请求失败，请重试！",
+      // 							showCancel: false
+      // 						})
+      // 					}
+      // 				});
     },
     // oauth(value) {
     // 	uni.login({
@@ -15218,6 +15427,25 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

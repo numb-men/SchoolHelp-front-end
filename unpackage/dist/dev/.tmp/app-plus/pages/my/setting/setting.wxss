@@ -1,5 +1,37 @@
 
+@font-face {
+	font-family: texticons;
+	font-weight: normal;
+	font-style: normal;
+	src: url('https://at.alicdn.com/t/font_984210_5cs13ndgqsn.ttf') format('truetype');
+}
+.total {
+	background-color: #F2F2F2;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	width: 750rpx;
+}
+.list-up {
+	margin-top: 10rpx;
+	margin-bottom: 30rpx;
+}
+.list-mid {
+	margin-top: 10rpx;
+	margin-bottom: 30rpx;
+}
+.list-bottom {
+	margin-top: 10rpx;
+	margin-bottom: 30rpx;
+}
 .list-item {
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	background-color: #FFFFFF;
 	height: 90rpx;
 	width: 750rpx;
 	-webkit-box-sizing: border-box;
@@ -12,7 +44,7 @@
 	padding: 0rpx 20rpx;
 }
 .list-item:active {
-	background-color: #eeeeee;
+	background-color: #EEEEEE;
 }
 .list-text {
 	height: 90rpx;
@@ -29,5 +61,14 @@
 	border-bottom-width: 1rpx;
 	border-color: #c8c7cc;
 	border-bottom-style: solid;
+}
+.navigat-arrow {
+	height: 90rpx;
+	width: 40rpx;
+	line-height: 90rpx;
+	font-size: 34rpx;
+	color: #555;
+	text-align: right;
+	font-family: texticons;
 }
 

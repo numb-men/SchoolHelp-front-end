@@ -80,39 +80,79 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
-
+var _index = _interopRequireDefault(__webpack_require__(/*! ./store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
 {
-  onShow: function onShow() {
-    // console.log('App Show')
+  onLaunch: function onLaunch() {
+    this.init();
   },
-  onHide: function onHide() {
-    // console.log('App Hide')
-  },
-  onLaunch: function onLaunch() {var _this = this;
-    uni.getStorage({
-      key: 'uerInfo',
-      success: function success(res) {
-        _this.login(res.data);
-        // 如果还需要重新校验或是想要刷新token的有效时间 就再联网请求一次
-        // uni.request({
-        // 	url: `${this.$serverUrl}/auth.php`,
-        // 	data: {
-        // 		"username": res.data.user_name
-        // 	},
-        // 	method: "POST",
-        // 	success: (e) => {
-        // 		if (e.data.code === 0) {
-        // 			this.login(e.data);
-        // 		}
-        // 	}
-        // })
-      } });
+  methods: {
+    // 获取用户信息，检查是否登录，如果已经登录，存储登录状态token和用户信息
+    init: function init() {
+      uni.getStorage({
+        key: 'token',
+        success: function success(res) {
+          console.log("已登录", " at App.vue:15");
+          // this.login("13078901232", "12345abc");
+          _index.default.commit("login", res.data);
+          uni.getStorage({
+            key: "userInfo",
+            success: function success(res2) {
+              _index.default.commit("saveUserInfo", res2.data);
+            } });
 
-  },
-  methods: _objectSpread({},
-  (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
+          // this.logout();
+        },
+        fail: function fail(err) {
+          console.log("未登录", " at App.vue:27");
+          /**
+                                                 * 
+                                                 * TODO 开发环境 测试使用
+                                                 * 
+                                                 */
+          // this.login("13078901232", "12345abc");
+        } });
+
+    },
+    // 登录，同时获取用户信息 
+    login: function login(phone, password) {var _this = this;
+      console.log("模拟登录", " at App.vue:39");
+      var url = _api.default.urls.login;
+      var data = { phone: phone, password: password };
+      _api.default.req.get(url, data, function (res) {
+        _index.default.commit("login", res.data);
+        _this.getUserInfo();
+      });
+    },
+    // 获取用户信息
+    getUserInfo: function getUserInfo() {
+      var url = _api.default.urls.getSelfUserInfo;
+      var data = {};
+      _api.default.req.get(url, data, function (res) {
+        var userInfo = res.data;
+        delete userInfo.password;
+        _index.default.commit("saveUserInfo", userInfo);
+      });
+    },
+    addFeedback: function addFeedback() {
+      uni.request({
+        url: "http://24l687f160.qicp.vip:43882/feedback/",
+        data: { feedbackContent: "1235gfasgasdga" },
+        method: "POST",
+        header: {
+          //取值：application/json(默认) / application/x-www-form-urlencoded
+          'content-type': 'application/json',
+          'token': _index.default.state.token //默认携带token，未登录时，token为''
+        },
+        success: function success(res) {
+          console.log(res.data, " at App.vue:68");
+        },
+        fail: function fail(err) {
+          console.log(err, " at App.vue:71");
+        } });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),

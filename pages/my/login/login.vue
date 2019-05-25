@@ -33,11 +33,14 @@
 		mapMutations
 	} from 'vuex';
 	import mInput from '../../../components/m-input.vue';
+	import store from "../../../store/index.js";
+	import api from "../../../api/api.js";
 
 	export default {
 		components: {
 			mInput
 		},
+		computed: mapState(['hasLogin', 'userInfo', 'token']),
 		data() {
 			return {
 				loading: false,
@@ -49,7 +52,7 @@
 				msg: ''
 			}
 		},
-		computed: mapState(['forcedLogin']),
+		// computed: mapState(['forcedLogin']),
 		methods: {
 			/**
 			 * 第三方授权初始化
@@ -130,93 +133,156 @@
 				 * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
 				 */
 				const loginData = {
-					account: this.account,
+					phone: this.account,
 					password: this.password
 				};
-				uni.request({
-					url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/login',
-					method: 'GET',
-					data: {
-						phone: loginData.account,
-						password: loginData.password
-					},
-					success: (res) => {
-						if (res.data.code === 0) {
-							uni.showToast({
-								icon: 'none',
-								title: '登陆成功',
-							});
-
-							uni.request({
-								url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
-								method: 'GET',
-								header: {
-									'token': res.data.data
-								},
-								success: (result) => {
-									if (result.data.code === 0) {
-										uni.request({
-											url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
-											method: 'GET',
-											header: {
-												'token': res.data.data
-											},
-											success: (resultHeadImage) => {
-												function User(name, token, fallow, collect, points, post, comment, url) {
-													this.name = name;
-													this.token = token;
-													this.fallow = fallow;
-													this.collect = collect;
-													this.points = points;
-													this.post = post;
-													this.comment = comment;
-													this.url = url;
-												}
-												if (resultHeadImage.data.code === 0) {
-													var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data
-														.data.collectPostNum,
-														result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
-														resultHeadImage.data.data);
-													this.login(user);
-													uni.navigateBack();
-												} else if (resultHeadImage.data.code === -1) {
-													var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data
-														.data.collectPostNum,
-														result.data.data.points, result.data.data.postNum, result.data.data.commentNum, '../../static/icons/logo.png');
-													this.login(user);
-													uni.navigateBack();
-												}
-											},
-											fail: () => {
-												uni.showModal({
-													content: "获取用户头像失败！",
-													showCancel: false
-												})
-											}
-										});
-									}
-								},
-								fail: () => {
-									uni.showModal({
-										content: "获取用户信息失败！",
-										showCancel: false
-									})
-								}
-							});
-						} else {
-							uni.showModal({
-								content: "用户名密码错误！",
-								showCancel: false
-							});
-						}
-					},
-					fail: (res) => {
+				var url = api.urls.login;
+				var data = {
+					phone: loginData.phone,
+					password: loginData.password
+				};
+				api.req.get(url, data, (res) => {
+					if (res.code === 0) {
+						store.commit("login", res.data);
+						uni.showToast({
+							icon: 'none',
+							title: '登陆成功',
+						});
+					} else {
 						uni.showModal({
-							content: "请求失败，请重试！",
+							content: "用户名或者密码错误！",
+							showCancel: false
+						});
+					}
+				});
+				// console.log(this.token);
+
+				var urlInfo = api.urls.getSelfUserInfo;
+				var dataInfo = {};
+				api.req.get(urlInfo, dataInfo, (resInfo) => {
+					if (resInfo.code === 0) {
+						var urlHead = api.urls.getHead;
+						var dataHead = {};
+						api.req.get(urlHead, dataHead, (resHead) => {
+							if (resHead.code === 0) {
+								let userInfoGet = resInfo.data;
+								userInfoGet.headUrl = 'http://' + resHead.data;
+								delete userInfoGet.password;
+								store.commit("saveUserInfo", userInfoGet);
+							} else {
+								let userInfoGet = resInfo.data;
+								userInfoGet.headUrl = '../../static/icons/logo.png';
+								delete userInfoGet.password;
+								store.commit("saveUserInfo", userInfoGet);
+							}
+						});
+					} else {
+						uni.showModal({
+							content: "获取用户信息失败！",
 							showCancel: false
 						})
 					}
 				});
+
+				var urlHead = api.urls.getHead;
+				var dataHead = {};
+				api.req.get(urlHead, dataHead, (resHead) => {
+					if (resHead.code === 0) {
+						let userInfoGet = resInfo.data;
+						userInfoGet.headUrl = 'http://' + resHead.data;
+						store.commit("saveUserInfo", userInfoGet);
+					} else {
+						userInfoGet.headUrl = '../../static/icons/logo.png';
+						store.commit("saveUserInfo", userInfoGet);
+					}
+				});
+				// console.log(urlTemp);
+
+				uni.navigateBack();
+				// uni.request({
+				// 	url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/login',
+				// 	method: 'GET',
+				// 	data: {
+				// 		phone: loginData.account,
+				// 		password: loginData.password
+				// 	},
+				// 					success: (res) => {
+				// 						if (res.data.code === 0) {
+				// 							uni.showToast({
+				// 								icon: 'none',
+				// 								title: '登陆成功',
+				// 							});
+				// 
+				// 							uni.request({
+				// 								url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
+				// 								method: 'GET',
+				// 								header: {
+				// 									'token': res.data.data
+				// 								},
+				// 								success: (result) => {
+				// 									if (result.data.code === 0) {
+				// 										uni.request({
+				// 											url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
+				// 											method: 'GET',
+				// 											header: {
+				// 												'token': res.data.data
+				// 											},
+				// 											success: (resultHeadImage) => {
+				// 												function User(name, token, fallow, collect, points, post, comment, url) {
+				// 													this.name = name;
+				// 													this.token = token;
+				// 													this.fallow = fallow;
+				// 													this.collect = collect;
+				// 													this.points = points;
+				// 													this.post = post;
+				// 													this.comment = comment;
+				// 													this.url = url;
+				// 												}
+				// 												if (resultHeadImage.data.code === 0) {
+				// 													var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data
+				// 														.data.collectPostNum,
+				// 														result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
+				// 														resultHeadImage.data.data);
+				// 													this.login(user);
+				// 													uni.navigateBack();
+				// 												} else if (resultHeadImage.data.code === -1) {
+				// 													var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data
+				// 														.data.collectPostNum,
+				// 														result.data.data.points, result.data.data.postNum, result.data.data.commentNum, '../../static/icons/logo.png');
+				// 													this.login(user);
+				// 													uni.navigateBack();
+				// 												}
+				// 											},
+				// 											fail: () => {
+				// 												uni.showModal({
+				// 													content: "获取用户头像失败！",
+				// 													showCancel: false
+				// 												})
+				// 											}
+				// 										});
+				// 									}
+				// 								},
+				// 								fail: () => {
+				// 									uni.showModal({
+				// 										content: "获取用户信息失败！",
+				// 										showCancel: false
+				// 									})
+				// 								}
+				// 							});
+				// 						} else {
+				// 							uni.showModal({
+				// 								content: "用户名密码错误！",
+				// 								showCancel: false
+				// 							});
+				// 						}
+				// 					},
+				// 					fail: (res) => {
+				// 						uni.showModal({
+				// 							content: "请求失败，请重试！",
+				// 							showCancel: false
+				// 						})
+				// 					}
+				// 				});
 			},
 			// oauth(value) {
 			// 	uni.login({

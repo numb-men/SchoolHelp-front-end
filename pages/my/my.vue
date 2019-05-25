@@ -2,25 +2,25 @@
 	<view class="center">
 		<view class="logo" @click="goLogin" :hover-class="!hasLogins ? 'logo-hover' : ''">
 			<view class="img" v-show="hasLogin">
-				<image class="logo-img" :src="uerInfo.avatarUrl"></image>
+				<image class="logo-img" :src="userInfo.headUrl"></image>
 			</view>
 			<view class="logo-title">
 				<view v-if="!hasLogin" class="uer-name">快点我登录！福大学子为您待命^-^!</view>
-				<view v-else class="uer-name">Hi，{{uerInfo.userName}}</view>
+				<view v-else class="uer-name">Hi，{{userInfo.name}}</view>
 				<text class="go-login navigat-arrow" v-if="!hasLogin">&#xe65e;</text>
 			</view>
 		</view>
 		<view>
 			<div class="basic-data">
-				<div class="basic-data-item" @click="goFollow"><text>{{uerInfo.fallow}}</text><text>我的关注</text>
+				<div class="basic-data-item" @click="goFollow"><text>{{userInfo.followNum}}</text><text>我的关注</text>
 				</div>
-				<div class="basic-data-item" @click="goCollect"><text>{{uerInfo.collect}}</text><text>我的收藏</text>
+				<div class="basic-data-item" @click="goCollect"><text>{{userInfo.collectPostNum}}</text><text>我的收藏</text>
 				</div>
-				<div class="basic-data-item" @click="goPost"><text>{{uerInfo.post}}</text><text>我的帖子</text>
+				<div class="basic-data-item" @click="goPost"><text>{{userInfo.postNum}}</text><text>我的帖子</text>
 				</div>
-				<div class="basic-data-item" @click="goComment"><text>{{uerInfo.comment}}</text><text>我的评论</text>
+				<div class="basic-data-item" @click="goComment"><text>{{userInfo.commentNum}}</text><text>我的评论</text>
 				</div>
-				<div class="basic-data-item"><text>{{uerInfo.points}}</text><text>我的积分</text>
+				<div class="basic-data-item"><text>{{userInfo.points}}</text><text>我的积分</text>
 				</div>
 			</div>
 		</view>
@@ -51,19 +51,21 @@
 		mapState,
 		mapMutations
 	} from 'vuex';
+	import store from "../../store/index.js";
+	import api from "../../api/api.js";
 	export default {
-		computed: mapState(['hasLogin', 'uerInfo', 'token']),
+		computed: mapState(['hasLogin', 'userInfo', 'token']),
 		data() {
 			return {
-				userInfo: {
-					userName: '',
-					fallow: '',
-					collect: '',
-					points: '',
-					post: '',
-					comment: '',
-					avatarUrl: ''
-				}
+				// userInfo: {
+				// 	userName: '',
+				// 	fallow: '',
+				// 	collect: '',
+				// 	points: '',
+				// 	post: '',
+				// 	comment: '',
+				// 	avatarUrl: ''
+				// }
 			}
 		},
 		onPullDownRefresh: function() {
@@ -97,75 +99,101 @@
 				})
 			},
 			reFresh() {
-				var tokenTemp = this.token;
-				uni.request({
-					url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
-					method: 'GET',
-					header: {
-						'token': tokenTemp
-					},
-					success: (result) => {
-						if (result.data.code === 0) {
-							uni.request({
-								url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
-								method: 'GET',
-								header: {
-									'token': tokenTemp
-								},
-								success: (resultHeadImage) => {
-									function User(name, token, fallow, collect, points, post, comment, url) {
-										this.name = name;
-										this.token = token;
-										this.fallow = fallow;
-										this.collect = collect;
-										this.points = points;
-										this.post = post;
-										this.comment = comment;
-										this.url = url;
-									}
-									if (resultHeadImage.data.code === 0) {
-										var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
-											result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
-											resultHeadImage.data.data);
-										this.userInfo.userName = result.data.data.name;
-										this.userInfo.fallow = result.data.data.fallowNum;
-										this.userInfo.collect = result.data.data.collectPostNum;
-										this.userInfo.points = result.data.data.points;
-										this.userInfo.post = result.data.data.postNum;
-										this.userInfo.comment = result.data.data.commentNum;
-										this.userInfo.avatarUrl = 'http://' + resultHeadImage.data.data;
-										this.login(user);
-										uni.stopPullDownRefresh();
-									} else if (resultHeadImage.data.code === -1) {
-										var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
-											result.data.data.points, result.data.data.postNum, result.data.data.commentNum, '../../static/icons/logo.png');
-										this.userInfo.userName = result.data.data.name;
-										this.userInfo.fallow = result.data.data.fallowNum;
-										this.userInfo.collect = result.data.data.collectPostNum;
-										this.userInfo.points = result.data.data.points;
-										this.userInfo.post = result.data.data.postNum;
-										this.userInfo.comment = result.data.data.commentNum;
-										this.userInfo.avatarUrl = '../../static/icons/logo.png';
-										this.login(user);
-										uni.stopPullDownRefresh();
-									}
-								},
-								fail: () => {
-									uni.showModal({
-										content: "获取用户头像失败！",
-										showCancel: false
-									})
-								}
-							});
-						}
-					},
-					fail: () => {
+				var url = api.urls.getSelfUserInfo;
+				var data = {};
+				api.req.get(url, data, (res) => {
+					if (res.code === 0) {
+						var urlHead = api.urls.getHead;
+						var dataHead = {};
+						let userInfoGet = res.data;
+						api.req.get(urlHead, dataHead, (resHead) => {
+							if (resHead.code === 0) {
+								userInfoGet.headUrl = 'http://' + resHead.data;
+								console.log(userInfoGet.headUrl);
+								delete userInfoGet.password;
+								store.commit("saveUserInfo", userInfoGet);
+							} else {
+								userInfoGet.headUrl = '../../static/icons/logo.png';
+							}
+						});
+						console.log(this.userInfo);
+						uni.stopPullDownRefresh();
+					} else {
 						uni.showModal({
 							content: "获取用户信息失败！",
 							showCancel: false
 						})
 					}
 				});
+				// var tokenTemp = this.token;
+				// uni.request({
+				// 	url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
+				// 	method: 'GET',
+				// 	header: {
+				// 		'token': tokenTemp
+				// 	},
+				// 	success: (result) => {
+				// 		if (result.data.code === 0) {
+				// 			uni.request({
+				// 				url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
+				// 				method: 'GET',
+				// 				header: {
+				// 					'token': tokenTemp
+				// 				},
+				// 				success: (resultHeadImage) => {
+				// 					function User(name, token, fallow, collect, points, post, comment, url) {
+				// 						this.name = name;
+				// 						this.token = token;
+				// 						this.fallow = fallow;
+				// 						this.collect = collect;
+				// 						this.points = points;
+				// 						this.post = post;
+				// 						this.comment = comment;
+				// 						this.url = url;
+				// 					}
+				// 					if (resultHeadImage.data.code === 0) {
+				// 						var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
+				// 							result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
+				// 							resultHeadImage.data.data);
+				// this.userInfo.userName = result.data.data.name;
+				// this.userInfo.fallow = result.data.data.fallowNum;
+				// this.userInfo.collect = result.data.data.collectPostNum;
+				// this.userInfo.points = result.data.data.points;
+				// this.userInfo.post = result.data.data.postNum;
+				// this.userInfo.comment = result.data.data.commentNum;
+				// this.userInfo.avatarUrl = 'http://' + resultHeadImage.data.data;
+				// 						this.login(user);
+				// 						uni.stopPullDownRefresh();
+				// 					} else if (resultHeadImage.data.code === -1) {
+				// 						var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
+				// 							result.data.data.points, result.data.data.postNum, result.data.data.commentNum, '../../static/icons/logo.png');
+				// 						this.userInfo.userName = result.data.data.name;
+				// 						this.userInfo.fallow = result.data.data.fallowNum;
+				// 						this.userInfo.collect = result.data.data.collectPostNum;
+				// 						this.userInfo.points = result.data.data.points;
+				// 						this.userInfo.post = result.data.data.postNum;
+				// 						this.userInfo.comment = result.data.data.commentNum;
+				// 						this.userInfo.avatarUrl = '../../static/icons/logo.png';
+				// 						this.login(user);
+				// 						uni.stopPullDownRefresh();
+				// 					}
+				// 				},
+				// 				fail: () => {
+				// 					uni.showModal({
+				// 						content: "获取用户头像失败！",
+				// 						showCancel: false
+				// 					})
+				// 				}
+				// 			});
+				// 		}
+				// 	},
+				// 	fail: () => {
+				// 		uni.showModal({
+				// 			content: "获取用户信息失败！",
+				// 			showCancel: false
+				// 		})
+				// 	}
+				// });
 			},
 			goFollow() {
 				uni.navigateTo({

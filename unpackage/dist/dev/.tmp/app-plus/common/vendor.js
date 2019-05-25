@@ -1,5 +1,73 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
 
+/***/ "../../../../SchoolHelp-front-end/api/api.js":
+/*!************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/api/api.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+// API 请求根路径
+var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
+// var root = "/schoolhelp/schoolhelp-1.0.1"; // h5测试使用
+
+// API url路径
+var urls = {
+  login: "".concat(root, "/login"),
+  sendMessage: "".concat(root, "/user/message"),
+  updateUserInfo: "".concat(root, "/user"),
+  deleteCollect: "".concat(root, "/user/collect"),
+  getMessageList: "".concat(root, "/user/message"),
+  getSelfUserInfo: "".concat(root, "/user"),
+  getHead: "".concat(root, "/download/head")
+
+
+  // 封装请求方法
+};var req = {
+  request: function request(url, data, method, _success, _fail) {
+    uni.request({
+      url: url,
+      data: data,
+      method: method,
+      header: {
+        //取值：application/json(默认) / application/x-www-form-urlencoded
+        // 'content-type': 'application/json',
+        'token': _index.default.state.token //默认携带token，未登录时，token为''
+      },
+      success: function success(res) {
+        console.log(method, url, res.data, " at api\\api.js:31");
+        _success(res.data);
+      },
+      fail: function fail(err) {
+        if (_fail) _fail(err); // 如果失败方法非空，执行失败方法
+      } });
+
+  },
+  get: function get(url, data, success, fail) {
+    this.request(url, data, 'GET', success, fail);
+  },
+  post: function post(url, data, success, fail) {
+    this.request(url, data, 'POST', success, fail);
+  },
+  put: function put(url, data, success, fail) {
+    this.request(url, data, 'PUT', success, fail);
+  },
+  del: function del(url, data, success, fail) {
+    this.request(url, data, 'DELETE', success, fail);
+  } };var _default =
+
+
+{
+  root: root,
+  urls: urls,
+  req: req };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
+
+/***/ }),
+
 /***/ "../../../../SchoolHelp-front-end/common/util.js":
 /*!****************************************************************!*\
   !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/common/util.js ***!
@@ -483,60 +551,48 @@ _vue.default.use(_vuex.default);
 
 var store = new _vuex.default.Store({
   state: {
-    uerInfo: {},
+    userInfo: {},
     hasLogin: false,
     token: '' },
 
   mutations: {
-    login: function login(state, provider) {
+    // 保存登录状态
+    login: function login(state, token) {
       state.hasLogin = true;
-      state.uerInfo.token = provider.token;
-      state.uerInfo.userName = provider.name;
-      state.token = provider.token;
-
-      state.uerInfo.fallow = provider.fallow;
-      state.uerInfo.collect = provider.collect;
-      state.uerInfo.points = provider.points;
-      state.uerInfo.post = provider.post;
-      state.uerInfo.comment = provider.comment;
-      state.uerInfo.avatarUrl = provider.url;
+      state.token = token;
+      console.log("save token", token, " at store\\index.js:17");
       uni.setStorage({
-        key: 'uerInfo',
-        data: provider });
+        key: 'token',
+        data: token });
 
     },
+    // 登出，清空登录状态，同时清空用户信息
     logout: function logout(state) {
       state.hasLogin = false;
-      state.uerInfo = {};
+      this.commit("clearUserInfo");
       uni.removeStorage({
-        key: 'uerInfo' });
+        key: 'token' });
 
-    } } });
+    },
+    // 保存用户信息
+    saveUserInfo: function saveUserInfo(state, userInfo) {
+      state.userInfo = userInfo;
+      // console.log("save userInfo", userInfo)
+      uni.setStorage({
+        key: 'userInfo',
+        data: userInfo });
+
+    },
+    // 清空用户信息
+    clearUserInfo: function clearUserInfo(state) {
+      state.userInfo = {};
+      uni.removeStorage({
+        key: 'userInfo' });
+
+    } } });var _default =
 
 
 
-
-// const store = new Vuex.Store({
-//     state: {
-//         /**
-//          * 是否需要强制登录
-//          */
-//         forcedLogin: false,
-//         hasLogin: false,
-//         userName: ""
-//     },
-//     mutations: {
-//         login(state, userName) {
-//             state.userName = userName || '新用户';
-//             state.hasLogin = true;
-//         },
-//         logout(state) {
-//             state.userName = "";
-//             state.hasLogin = false;
-//         }
-//     }
-// })
-var _default =
 store;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -1008,7 +1064,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7082,7 +7138,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7103,14 +7159,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7179,7 +7235,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));

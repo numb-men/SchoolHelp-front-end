@@ -93,6 +93,19 @@
         "router" : {
             "base" : "/demo/news/website/"
         },
-        "template" : "h5.template.html"
+        "template" : "h5.template.html",
+		
+		// 配置h5跨域请求
+		"devServer": {
+		    "port": 8000,
+		    "disableHostCheck": true,
+		    "proxy": {
+		        "/schoolhelp": {
+		            "target": "http://134.175.16.143:8080",
+		            "changeOrigin": true,
+		            "secure": false
+		        }
+		    }
+		}
     }
 }
