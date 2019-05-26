@@ -3,15 +3,15 @@
 		<view class="input-group">
 			<view class="input-row border">
 				<text class="title">手机号：</text>
-				<m-input type="text" focus clearable v-model="account" placeholder="请输入账号"></m-input>
+				<m-input type="number" focus clearable v-model="account" maxlength="11" placeholder="请输入账号"></m-input>
 			</view>
 			<view class="input-row border">
 				<text class="title">密码：</text>
-				<m-input type="password" displayable v-model="password" placeholder="请输入密码"></m-input>
+				<m-input type="password" displayable v-model="password" maxlength="16" placeholder="请输入密码"></m-input>
 			</view>
 			<view class="input-row border">
 				<text class="title">确认密码：</text>
-				<m-input type="password" displayable v-model="checkPassword" placeholder="请输入密码"></m-input>
+				<m-input type="password" displayable v-model="checkPassword" maxlength="16" placeholder="请输入密码"></m-input>
 			</view>
 		</view>
 		<view class="btn-row">
@@ -22,6 +22,8 @@
 
 <script>
 	import mInput from '../../../components/m-input.vue';
+	import store from "../../../store/index.js";
+	import api from "../../../api/api.js";
 
 	export default {
 		components: {
@@ -75,40 +77,33 @@
 					});
 					return;
 				}
-				const regData = {
-					account: this.account,
-					password: this.password
-				}
 
-				uni.request({
-					url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/register', //仅为示例，并非真实接口地址。
-					method: 'POST',
-					header: {
-						'content-type': 'application/x-www-form-urlencoded',
-					},
-					data: {
-						phone: regData.account,
-						password: regData.password
-					},
-					success: (res) => {
-						if (res.data.code === 0) {
-							uni.showToast({
-								icon: 'none',
-								title: '注册成功'+this.token,
-							});
-							uni.navigateBack();
-						} else {
-							uni.showModal({
-								content: "出现错误，请稍后再试！" + res.data.msg,
-								showCancel: false
-							});
-						}
-					},
-					fail: (res) => {
+				var url = api.urls.register;
+				var data = {
+					phone: this.account,
+					password: this.password
+				};
+				api.req.post(url, data, (res) => {
+					if(res.code===0){
+						uni.showToast({
+							icon: 'none',
+							title: '注册成功',
+						});
+						uni.navigateBack();
+					}
+					else if(res.code===-200){
 						uni.showModal({
-							content: "请求失败，请重试！",
+							content: "无效手机号！请检查手机号是否正确。",
 							showCancel: false
-						})
+						});
+						return;
+					}
+					else if(res.code===-4){
+						uni.showModal({
+							content: "密码应由长度至少为8位的数字和字母组成！",
+							showCancel: false
+						});
+						return;
 					}
 				});
 			}

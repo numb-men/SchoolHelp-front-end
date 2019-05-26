@@ -1,15 +1,15 @@
 
-.index.data-v-5e0558ee {
+.index.data-v-35ea1e58 {
 	background: #f8f8f8;
 }
-.list-box.data-v-5e0558ee {
+.list-box.data-v-35ea1e58 {
 	padding: 10rpx 0;
 }
-.container_of_slide.data-v-5e0558ee {
+.container_of_slide.data-v-35ea1e58 {
 	width: 100%;
 	overflow: hidden;
 }
-.now-message-info.data-v-5e0558ee {
+.now-message-info.data-v-35ea1e58 {
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	display: -webkit-box;
@@ -26,47 +26,47 @@
 	margin-bottom: 10rpx;
 	background: #ffffff;
 }
-.list-right.data-v-5e0558ee {
+.list-right.data-v-35ea1e58 {
 	margin-left: 25rpx;
 	font-size: 25rpx;
 }
-.list-left-1.data-v-5e0558ee {
+.list-left-1.data-v-35ea1e58 {
 	float: left;
 	padding-top: 20rpx;
 	color: #a9a9a9;
 }
-.list-right-1.data-v-5e0558ee {
+.list-right-1.data-v-35ea1e58 {
 	float: right;
 	color: #a9a9a9;
 	padding-left: 400rpx;
 }
-.list-title.data-v-5e0558ee {
+.list-title.data-v-35ea1e58 {
 	overflow: hidden;
 	font-size: 35rpx;
 	margin-bottom: 10rpx;
 	color: #696969;
 	overflow: hidden;
 }
-.list-detail.data-v-5e0558ee {
+.list-detail.data-v-35ea1e58 {
 	width: 350rpx;
 	font-size: 25rpx;
 	color: #999999;
 	padding: 5rpx;
 	overflow: hidden;
 }
-.end-message.data-v-5e0558ee {
+.end-message.data-v-35ea1e58 {
 	text-align: center;
 	font-size: 30rpx;
 	color: #999999;
 	padding-top: 5rpx;
 }
-.message-num.data-v-5e0558ee {
+.message-num.data-v-35ea1e58 {
 	font-size: 35rpx;
 	color: #999999;
 	padding: 5rpx;
 	background: #f8f8f8;
 }
-.uni-list-cell-hover.data-v-5e0558ee {
+.uni-list-cell-hover.data-v-35ea1e58 {
 	background-color: #eeeeee;
 }
 

@@ -1206,11 +1206,13 @@ Z([3,'input-group'])
 Z(z[1])
 Z([3,'m-input'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'account']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
+Z([3,'11'])
 Z([3,'请输入手机号'])
 Z([3,'number'])
 Z([[7],[3,'account']])
 Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'password']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
+Z([3,'16'])
 Z([3,'至少8位数字与字母组合'])
 Z([3,'password'])
 Z([[7],[3,'password']])
@@ -1298,18 +1300,21 @@ Z([[4],[[5],[[4],[[5],[[5],[1,'submit']],[[4],[[5],[[4],[[5],[[5],[1,'register']
 Z([3,'input-group'])
 Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'account']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
+Z([3,'11'])
 Z([3,'请输入账号'])
-Z([3,'text'])
+Z([3,'number'])
 Z([[7],[3,'account']])
 Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'password']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
+Z([3,'16'])
 Z([3,'请输入密码'])
 Z([3,'password'])
 Z([[7],[3,'password']])
 Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'checkPassword']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
-Z(z[12])
 Z(z[13])
+Z(z[14])
+Z(z[15])
 Z([[7],[3,'checkPassword']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_21);return __WXML_GLOBAL__.ops_cached.$gwx_21
 }
@@ -1361,8 +1366,8 @@ var xC=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
 var oD=_v()
 _(xC,oD)
 if(_oz(z,2,e,s,gg)){oD.wxVkey=1
-cs.push("./components/m-input.wxml:block:1:383")
-cs.push("./components/m-input.wxml:m-icon:1:469")
+cs.push("./components/m-input.wxml:block:1:409")
+cs.push("./components/m-input.wxml:m-icon:1:495")
 var cF=_mz(z,'m-icon',['bind:click',3,'color',1,'data-event-opts',2,'size',3,'type',4],[],e,s,gg)
 cs.pop()
 _(oD,cF)
@@ -1371,8 +1376,8 @@ cs.pop()
 var fE=_v()
 _(xC,fE)
 if(_oz(z,8,e,s,gg)){fE.wxVkey=1
-cs.push("./components/m-input.wxml:block:1:604")
-cs.push("./components/m-input.wxml:m-icon:1:663")
+cs.push("./components/m-input.wxml:block:1:630")
+cs.push("./components/m-input.wxml:m-icon:1:689")
 var hG=_mz(z,'m-icon',['bind:click',9,'color',1,'data-event-opts',2,'size',3,'type',4],[],e,s,gg)
 cs.pop()
 _(fE,hG)
@@ -1572,11 +1577,11 @@ cs.push("./pages/my/login/login.wxml:view:1:117")
 var oJB=_n('view')
 _rz(z,oJB,'class',4,e,s,gg)
 cs.push("./pages/my/login/login.wxml:m-input:1:213")
-var fKB=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'class',1,'data-event-opts',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+var fKB=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'class',1,'data-event-opts',2,'maxlength',3,'placeholder',4,'type',5,'value',6],[],e,s,gg)
 cs.pop()
 _(oJB,fKB)
-cs.push("./pages/my/login/login.wxml:m-input:1:499")
-var cLB=_mz(z,'m-input',['displayable',-1,'bind:input',11,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
+cs.push("./pages/my/login/login.wxml:m-input:1:514")
+var cLB=_mz(z,'m-input',['displayable',-1,'bind:input',12,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
 cs.pop()
 _(oJB,cLB)
 cs.pop()
@@ -1694,15 +1699,15 @@ cs.push("./pages/my/register/register.wxml:view:1:116")
 var oFC=_n('view')
 _rz(z,oFC,'class',4,e,s,gg)
 cs.push("./pages/my/register/register.wxml:m-input:1:212")
-var cGC=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
+var cGC=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
 cs.pop()
 _(oFC,cGC)
-cs.push("./pages/my/register/register.wxml:m-input:1:484")
-var oHC=_mz(z,'m-input',['displayable',-1,'bind:input',10,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
+cs.push("./pages/my/register/register.wxml:m-input:1:501")
+var oHC=_mz(z,'m-input',['displayable',-1,'bind:input',11,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
 cs.pop()
 _(oFC,oHC)
-cs.push("./pages/my/register/register.wxml:m-input:1:764")
-var lIC=_mz(z,'m-input',['displayable',-1,'bind:input',15,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
+cs.push("./pages/my/register/register.wxml:m-input:1:796")
+var lIC=_mz(z,'m-input',['displayable',-1,'bind:input',17,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
 cs.pop()
 _(oFC,lIC)
 cs.pop()
@@ -2304,6 +2309,7 @@ var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
 // API url路径
 var urls = {
   login: "".concat(root, "/login"),
+  register: "".concat(root, "/register"),
   sendMessage: "".concat(root, "/user/message"),
   updateUserInfo: "".concat(root, "/user"),
   deleteCollect: "".concat(root, "/user/collect"),
@@ -2326,7 +2332,7 @@ var urls = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(method, url, res.data, " at api\\api.js:32");
+        console.log(method, url, res.data, " at api\\api.js:33");
         _success(res.data);
       },
       fail: function fail(err) {
@@ -11345,8 +11351,12 @@ define('components/m-input.js',function(require, module, exports, window, docume
 
       props: {
         /**
-                       * 输入类型
+                       * 输入长度
                        */
+        maxlength: 0,
+        /**
+                                     * 输入类型
+                                     */
         type: String,
         /**
                                      * 值
@@ -14132,9 +14142,33 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
             }
           });
           uni.navigateBack();
+        } else if (res.code === -200) {
+          uni.showModal({
+            content: "无效手机号！",
+            showCancel: false });
+
+          return;
+        } else if (res.code === -6) {
+          uni.showModal({
+            content: "密码错误！",
+            showCancel: false });
+
+          return;
+        } else if (res.code === -2) {
+          uni.showModal({
+            content: "用户不存在！",
+            showCancel: false });
+
+          return;
+        } else if (res.code === -100) {
+          uni.showModal({
+            content: "手机号和密码不能为空！",
+            showCancel: false });
+
+          return;
         } else {
           uni.showModal({
-            content: "用户名或者密码错误！",
+            content: "未知错误！",
             showCancel: false });
 
           return;
@@ -14394,7 +14428,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -14418,6 +14452,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
 
 {
   components: {
@@ -14430,7 +14466,7 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   methods: {
-    register: function register() {var _this = this;
+    register: function register() {
       var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
       var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
       /**
@@ -14471,42 +14507,35 @@ __webpack_require__.r(__webpack_exports__);
 
         return;
       }
-      var regData = {
-        account: this.account,
+
+      var url = _api.default.urls.register;
+      var data = {
+        phone: this.account,
         password: this.password };
 
+      _api.default.req.post(url, data, function (res) {
+        if (res.code === 0) {
+          uni.showToast({
+            icon: 'none',
+            title: '注册成功' });
 
-      uni.request({
-        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/register', //仅为示例，并非真实接口地址。
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded' },
-
-        data: {
-          phone: regData.account,
-          password: regData.password },
-
-        success: function success(res) {
-          if (res.data.code === 0) {
-            uni.showToast({
-              icon: 'none',
-              title: '注册成功' + _this.token });
-
-            uni.navigateBack();
-          } else {
-            uni.showModal({
-              content: "出现错误，请稍后再试！" + res.data.msg,
-              showCancel: false });
-
-          }
-        },
-        fail: function fail(res) {
+          uni.navigateBack();
+        } else
+        if (res.code === -200) {
           uni.showModal({
-            content: "请求失败，请重试！",
+            content: "无效手机号！请检查手机号是否正确。",
             showCancel: false });
 
-        } });
+          return;
+        } else
+        if (res.code === -4) {
+          uni.showModal({
+            content: "密码应由长度至少为8位的数字和字母组成！",
+            showCancel: false });
 
+          return;
+        }
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

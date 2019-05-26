@@ -1,15 +1,15 @@
 
-.index.data-v-60377c33 {
+.index.data-v-ee64bb2c {
 	background: #f8f8f8;
 }
-.list-box.data-v-60377c33 {
+.list-box.data-v-ee64bb2c {
 	padding: 10rpx 0;
 }
-.container_of_slide.data-v-60377c33 {
+.container_of_slide.data-v-ee64bb2c {
 	width: 100%;
 	overflow: hidden;
 }
-.now-message-info.data-v-60377c33 {
+.now-message-info.data-v-ee64bb2c {
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	display: -webkit-box;
@@ -26,47 +26,47 @@
 	margin-bottom: 10rpx;
 	background: #ffffff;
 }
-.list-right.data-v-60377c33 {
+.list-right.data-v-ee64bb2c {
 	margin-left: 25rpx;
 	font-size: 25rpx;
 }
-.list-left-1.data-v-60377c33 {
+.list-left-1.data-v-ee64bb2c {
 	float: left;
 	padding-top: 20rpx;
 	color: #a9a9a9;
 }
-.list-right-1.data-v-60377c33 {
+.list-right-1.data-v-ee64bb2c {
 	float: right;
 	color: #a9a9a9;
 	padding-left: 400rpx;
 }
-.list-title.data-v-60377c33 {
+.list-title.data-v-ee64bb2c {
 	overflow: hidden;
 	font-size: 35rpx;
 	margin-bottom: 10rpx;
 	color: #696969;
 	overflow: hidden;
 }
-.list-detail.data-v-60377c33 {
+.list-detail.data-v-ee64bb2c {
 	width: 350rpx;
 	font-size: 25rpx;
 	color: #999999;
 	padding: 5rpx;
 	overflow: hidden;
 }
-.end-message.data-v-60377c33 {
+.end-message.data-v-ee64bb2c {
 	text-align: center;
 	font-size: 30rpx;
 	color: #999999;
 	padding-top: 5rpx;
 }
-.message-num.data-v-60377c33 {
+.message-num.data-v-ee64bb2c {
 	font-size: 35rpx;
 	color: #999999;
 	padding: 5rpx;
 	background: #f8f8f8;
 }
-.uni-list-cell-hover.data-v-60377c33 {
+.uni-list-cell-hover.data-v-ee64bb2c {
 	background-color: #eeeeee;
 }
 

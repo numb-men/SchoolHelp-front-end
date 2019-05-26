@@ -80,7 +80,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -104,6 +104,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
 
 {
   components: {
@@ -116,7 +118,7 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   methods: {
-    register: function register() {var _this = this;
+    register: function register() {
       var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
       var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
       /**
@@ -157,42 +159,35 @@ __webpack_require__.r(__webpack_exports__);
 
         return;
       }
-      var regData = {
-        account: this.account,
+
+      var url = _api.default.urls.register;
+      var data = {
+        phone: this.account,
         password: this.password };
 
+      _api.default.req.post(url, data, function (res) {
+        if (res.code === 0) {
+          uni.showToast({
+            icon: 'none',
+            title: '注册成功' });
 
-      uni.request({
-        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/register', //仅为示例，并非真实接口地址。
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded' },
-
-        data: {
-          phone: regData.account,
-          password: regData.password },
-
-        success: function success(res) {
-          if (res.data.code === 0) {
-            uni.showToast({
-              icon: 'none',
-              title: '注册成功' + _this.token });
-
-            uni.navigateBack();
-          } else {
-            uni.showModal({
-              content: "出现错误，请稍后再试！" + res.data.msg,
-              showCancel: false });
-
-          }
-        },
-        fail: function fail(res) {
+          uni.navigateBack();
+        } else
+        if (res.code === -200) {
           uni.showModal({
-            content: "请求失败，请重试！",
+            content: "无效手机号！请检查手机号是否正确。",
             showCancel: false });
 
-        } });
+          return;
+        } else
+        if (res.code === -4) {
+          uni.showModal({
+            content: "密码应由长度至少为8位的数字和字母组成！",
+            showCancel: false });
 
+          return;
+        }
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

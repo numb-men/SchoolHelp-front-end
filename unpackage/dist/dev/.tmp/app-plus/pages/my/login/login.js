@@ -275,9 +275,33 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
             }
           });
           uni.navigateBack();
+        } else if (res.code === -200) {
+          uni.showModal({
+            content: "无效手机号！",
+            showCancel: false });
+
+          return;
+        } else if (res.code === -6) {
+          uni.showModal({
+            content: "密码错误！",
+            showCancel: false });
+
+          return;
+        } else if (res.code === -2) {
+          uni.showModal({
+            content: "用户不存在！",
+            showCancel: false });
+
+          return;
+        } else if (res.code === -100) {
+          uni.showModal({
+            content: "手机号和密码不能为空！",
+            showCancel: false });
+
+          return;
         } else {
           uni.showModal({
-            content: "用户名或者密码错误！",
+            content: "未知错误！",
             showCancel: false });
 
           return;

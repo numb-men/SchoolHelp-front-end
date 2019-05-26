@@ -17,6 +17,7 @@ var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
 // API url路径
 var urls = {
   login: "".concat(root, "/login"),
+  register: "".concat(root, "/register"),
   sendMessage: "".concat(root, "/user/message"),
   updateUserInfo: "".concat(root, "/user"),
   deleteCollect: "".concat(root, "/user/collect"),
@@ -39,7 +40,7 @@ var urls = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(method, url, res.data, " at api\\api.js:32");
+        console.log(method, url, res.data, " at api\\api.js:33");
         _success(res.data);
       },
       fail: function fail(err) {

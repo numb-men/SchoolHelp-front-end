@@ -3,11 +3,11 @@
 		<view class="input-group">
 			<view class="input-row border">
 				<text class="title">手机号：</text>
-				<m-input class="m-input" type="number" clearable focus v-model="account" placeholder="请输入手机号"></m-input>
+				<m-input class="m-input" type="number" maxlength="11" clearable focus v-model="account" placeholder="请输入手机号"></m-input>
 			</view>
 			<view class="input-row">
 				<text class="title">密码：</text>
-				<m-input type="password" displayable v-model="password" placeholder="至少8位数字与字母组合"></m-input>
+				<m-input type="password" displayable v-model="password" maxlength="16" placeholder="至少8位数字与字母组合"></m-input>
 			</view>
 		</view>
 		<view class="btn-row">
@@ -175,9 +175,33 @@
 							}
 						});
 						uni.navigateBack();
+					} else if (res.code === -200) {
+						uni.showModal({
+							content: "无效手机号！",
+							showCancel: false
+						});
+						return;
+					} else if(res.code===-6){
+						uni.showModal({
+							content: "密码错误！",
+							showCancel: false
+						});
+						return;
+					} else if(res.code===-2){
+						uni.showModal({
+							content: "用户不存在！",
+							showCancel: false
+						});
+						return;
+					} else if(res.code===-100){
+						uni.showModal({
+							content: "手机号和密码不能为空！",
+							showCancel: false
+						});
+						return;
 					} else {
 						uni.showModal({
-							content: "用户名或者密码错误！",
+							content: "未知错误！",
 							showCancel: false
 						});
 						return;

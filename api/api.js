@@ -7,6 +7,7 @@ var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
 // API url路径
 var urls = {
 	login: `${root}/login`,
+	register: `${root}/register`,
 	sendMessage: `${root}/user/message`,
 	updateUserInfo: `${root}/user`,
 	deleteCollect: `${root}/user/collect`,
