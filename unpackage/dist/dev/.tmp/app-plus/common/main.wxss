@@ -155,13 +155,14 @@ m-input {
 	position: relative;
 }
 .input-row .title {
-	text-align: right;
-	width: 40%;
+	text-align: left;
+	width: 35%;
 	height: 50rpx;
 	min-height: 50rpx;
+	font-size: 34rpx;
 	padding: 15rpx 0;
 	padding-left: 30rpx;
-	line-height: 50rpx;
+	line-height: 60rpx;
 }
 .input-row.border::after {
 	position: absolute;

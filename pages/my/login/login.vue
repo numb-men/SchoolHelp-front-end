@@ -3,10 +3,10 @@
 		<view class="input-group">
 			<view class="input-row border">
 				<text class="title">手机号：</text>
-				<m-input class="m-input" type="number" maxlength="11" clearable focus v-model="account" placeholder="请输入手机号"></m-input>
+				<m-input class="m-input" type="number" maxlength="11" clearable focus v-model="account" placeholder="请输入11位手机号"></m-input>
 			</view>
 			<view class="input-row">
-				<text class="title">密码：</text>
+				<text class="title">密&nbsp;&nbsp;&nbsp;&nbsp;码：</text>
 				<m-input type="password" displayable v-model="password" maxlength="16" placeholder="至少8位数字与字母组合"></m-input>
 			</view>
 		</view>

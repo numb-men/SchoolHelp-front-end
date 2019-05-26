@@ -151,13 +151,14 @@
 	}
 
 	.input-row .title {
-		text-align: right;
-		width: 40%;
+		text-align: left;
+		width: 35%;
 		height: 50upx;
 		min-height: 50upx;
+		font-size: 34upx;
 		padding: 15upx 0;
 		padding-left: 30upx;
-		line-height: 50upx;
+		line-height: 60upx;
 	}
 
 	.input-row.border::after {

@@ -28,7 +28,10 @@
 			"path": "pages/my/my",
 			"style": {
 				"navigationBarTitleText": "我的",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": false
+				}
 			}
 		},
 		{
@@ -130,20 +133,18 @@
 			"style": {
 				"navigationBarTitleText": "手机号绑定"
 			}
-		}
-	    ,{
-            "path" : "pages/my/setting/help/help",
-            "style" : {
+		}, {
+			"path": "pages/my/setting/help/help",
+			"style": {
 				"navigationBarTitleText": "帮助"
 			}
-        }
-        ,{
-            "path" : "pages/my/setting/about-SchoolHelp/about-SchoolHelp",
-            "style" : {
+		}, {
+			"path": "pages/my/setting/about-SchoolHelp/about-SchoolHelp",
+			"style": {
 				"navigationBarTitleText": "关于校园帮"
 			}
-        }
-    ],
+		}
+	],
 	"tabBar": {
 		"color": "#343131",
 		"selectedColor": "#2F85FC",

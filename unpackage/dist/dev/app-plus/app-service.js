@@ -1207,7 +1207,7 @@ Z(z[1])
 Z([3,'m-input'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'account']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
 Z([3,'11'])
-Z([3,'请输入手机号'])
+Z([3,'请输入11位手机号'])
 Z([3,'number'])
 Z([[7],[3,'account']])
 Z(z[1])
@@ -1280,13 +1280,6 @@ function gz$gwx_20(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_20)return __WXML_GLOBAL__.ops_cached.$gwx_20
 __WXML_GLOBAL__.ops_cached.$gwx_20=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'__l'])
-Z([3,'center'])
-Z([3,'__e'])
-Z([3,'logo'])
-Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[1,'goLogin']],[[4],[[5],[1,'$event']]]]]]]]]]])
-Z([[2,'?:'],[[2,'!'],[[7],[3,'hasLogins']]],[1,'logo-hover'],[1,'']])
-Z([[2,'!'],[[7],[3,'hasLogin']]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_20);return __WXML_GLOBAL__.ops_cached.$gwx_20
 }
 function gz$gwx_21(){
@@ -1301,19 +1294,19 @@ Z([3,'input-group'])
 Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'account']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
 Z([3,'11'])
-Z([3,'请输入账号'])
+Z([3,'请输入11位手机号'])
 Z([3,'number'])
 Z([[7],[3,'account']])
 Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'password']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
 Z([3,'16'])
-Z([3,'请输入密码'])
+Z([3,'至少8位数字与字母组合'])
 Z([3,'password'])
 Z([[7],[3,'password']])
 Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'checkPassword']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
 Z(z[13])
-Z(z[14])
+Z([3,'请输入密码'])
 Z(z[15])
 Z([[7],[3,'checkPassword']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_21);return __WXML_GLOBAL__.ops_cached.$gwx_21
@@ -1580,7 +1573,7 @@ cs.push("./pages/my/login/login.wxml:m-input:1:213")
 var fKB=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'class',1,'data-event-opts',2,'maxlength',3,'placeholder',4,'type',5,'value',6],[],e,s,gg)
 cs.pop()
 _(oJB,fKB)
-cs.push("./pages/my/login/login.wxml:m-input:1:514")
+cs.push("./pages/my/login/login.wxml:m-input:1:527")
 var cLB=_mz(z,'m-input',['displayable',-1,'bind:input',12,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
 cs.pop()
 _(oJB,cLB)
@@ -1672,21 +1665,6 @@ e_[x[18]]={f:m18,j:[],i:[],ti:[],ic:[]}
 d_[x[19]]={}
 var m19=function(e,s,r,gg){
 var z=gz$gwx_20()
-cs.push("./pages/my/my.wxml:view:1:1")
-var xAC=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
-cs.push("./pages/my/my.wxml:view:1:37")
-var oBC=_mz(z,'view',['bindtap',2,'class',1,'data-event-opts',2,'hoverClass',3],[],e,s,gg)
-var fCC=_v()
-_(oBC,fCC)
-if(_oz(z,6,e,s,gg)){fCC.wxVkey=1
-cs.push("./pages/my/my.wxml:block:1:497")
-cs.pop()
-}
-fCC.wxXCkey=1
-cs.pop()
-_(xAC,oBC)
-cs.pop()
-_(r,xAC)
 return r
 }
 e_[x[19]]={f:m19,j:[],i:[],ti:[],ic:[]}
@@ -1694,26 +1672,26 @@ d_[x[20]]={}
 var m20=function(e,s,r,gg){
 var z=gz$gwx_21()
 cs.push("./pages/my/register/register.wxml:form:1:1")
-var hEC=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var oBC=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
 cs.push("./pages/my/register/register.wxml:view:1:116")
-var oFC=_n('view')
-_rz(z,oFC,'class',4,e,s,gg)
-cs.push("./pages/my/register/register.wxml:m-input:1:212")
-var cGC=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+var fCC=_n('view')
+_rz(z,fCC,'class',4,e,s,gg)
+cs.push("./pages/my/register/register.wxml:m-input:1:220")
+var cDC=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
 cs.pop()
-_(oFC,cGC)
-cs.push("./pages/my/register/register.wxml:m-input:1:501")
-var oHC=_mz(z,'m-input',['displayable',-1,'bind:input',11,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+_(fCC,cDC)
+cs.push("./pages/my/register/register.wxml:m-input:1:533")
+var hEC=_mz(z,'m-input',['displayable',-1,'bind:input',11,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
 cs.pop()
-_(oFC,oHC)
-cs.push("./pages/my/register/register.wxml:m-input:1:796")
-var lIC=_mz(z,'m-input',['displayable',-1,'bind:input',17,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+_(fCC,hEC)
+cs.push("./pages/my/register/register.wxml:m-input:1:844")
+var oFC=_mz(z,'m-input',['displayable',-1,'bind:input',17,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
 cs.pop()
-_(oFC,lIC)
+_(fCC,oFC)
 cs.pop()
-_(hEC,oFC)
+_(oBC,fCC)
 cs.pop()
-_(r,hEC)
+_(r,oBC)
 return r
 }
 e_[x[20]]={f:m20,j:[],i:[],ti:[],ic:[]}
@@ -1827,7 +1805,7 @@ __wxAppCode__['pages/my/my-fallows/my-fallows.wxml']=$gwx('./pages/my/my-fallows
 __wxAppCode__['pages/my/my-post/my-post.json']={"navigationBarTitleText":"我的帖子","usingComponents":{}};
 __wxAppCode__['pages/my/my-post/my-post.wxml']=$gwx('./pages/my/my-post/my-post.wxml');
 
-__wxAppCode__['pages/my/my.json']={"navigationBarTitleText":"我的","enablePullDownRefresh":true,"usingComponents":{}};
+__wxAppCode__['pages/my/my.json']={"navigationBarTitleText":"我的","enablePullDownRefresh":true,"titleNView":false,"usingComponents":{}};
 __wxAppCode__['pages/my/my.wxml']=$gwx('./pages/my/my.wxml');
 
 __wxAppCode__['pages/my/register/register.json']={"navigationBarTitleText":"注册","usingComponents":{"m-input":"/components/m-input"}};
@@ -2303,7 +2281,8 @@ define('common/vendor.js',function(require, module, exports, window, document, f
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
+// var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
+var root = "http://24l687f160.qicp.vip:43882";
 // var root = "/schoolhelp/schoolhelp-1.0.1"; // h5测试使用
 
 // API url路径
@@ -2332,7 +2311,7 @@ var urls = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(method, url, res.data, " at api\\api.js:33");
+        console.log(method, url, res.data, " at api\\api.js:34");
         _success(res.data);
       },
       fail: function fail(err) {
@@ -3426,7 +3405,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -9500,7 +9479,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -9521,14 +9500,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9597,7 +9576,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -12625,6 +12604,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
@@ -12659,12 +12677,19 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
         uni.navigateTo({
           url: 'login/login' });
 
-      };
+      }
     },
     goSetting: function goSetting() {
       uni.navigateTo({
         url: 'setting/setting' });
 
+    },
+    goMessage: function goMessage() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '../../pages/messages/messages' });
+
+      }
     },
     reFresh: function reFresh() {var _this = this;
       var url = _api.default.urls.getSelfUserInfo;
@@ -12677,14 +12702,14 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
           _api.default.req.get(urlHead, dataHead, function (resHead) {
             if (resHead.code === 0) {
               userInfoGet.headUrl = 'http://' + resHead.data;
-              console.log(userInfoGet.headUrl, " at pages\\my\\my.vue:102");
+              console.log(userInfoGet.headUrl, " at pages\\my\\my.vue:148");
               delete userInfoGet.password;
               _index.default.commit("saveUserInfo", userInfoGet);
             } else {
               userInfoGet.headUrl = '/static/icons/logo.png';
             }
           });
-          console.log(_this.userInfo, " at pages\\my\\my.vue:109");
+          console.log(_this.userInfo, " at pages\\my\\my.vue:155");
           uni.stopPullDownRefresh();
         } else {
           uni.showModal({
@@ -12695,24 +12720,39 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
       });
     },
     goFollow: function goFollow() {
-      uni.navigateTo({
-        url: 'my-fallows/my-fallows' //关注界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-fallows/my-fallows' //关注界面路径
+        });
+      }
     },
     goCollect: function goCollect() {
-      uni.navigateTo({
-        url: 'my-collects/my-collects' //收藏界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-collects/my-collects' //收藏界面路径
+        });
+      }
     },
     goPost: function goPost() {
-      uni.navigateTo({
-        url: 'my-post/my-post' //我的帖子界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-post/my-post' //我的帖子界面路径
+        });
+      }
     },
     goComment: function goComment() {
-      uni.navigateTo({
-        url: 'my-comments/my-comments' //我的评论界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-comments/my-comments' //我的评论界面路径
+        });
+      }
+    },
+    goEditInformation: function goEditInformation() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-comments/my-comments' //我的评论界面路径
+        });
+      }
     } },
   (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))

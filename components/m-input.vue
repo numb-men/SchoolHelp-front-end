@@ -122,8 +122,10 @@
 	}
 
 	.m-input-input {
+		height: 90upx;
 		flex: 1;
 		width: 100%;
+		font-size: 30upx;
 	}
 
 	.m-input-icon {

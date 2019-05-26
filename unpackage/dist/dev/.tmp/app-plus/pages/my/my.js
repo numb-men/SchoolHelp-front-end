@@ -147,6 +147,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
@@ -181,12 +220,19 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
         uni.navigateTo({
           url: 'login/login' });
 
-      };
+      }
     },
     goSetting: function goSetting() {
       uni.navigateTo({
         url: 'setting/setting' });
 
+    },
+    goMessage: function goMessage() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '../../pages/messages/messages' });
+
+      }
     },
     reFresh: function reFresh() {var _this = this;
       var url = _api.default.urls.getSelfUserInfo;
@@ -199,14 +245,14 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
           _api.default.req.get(urlHead, dataHead, function (resHead) {
             if (resHead.code === 0) {
               userInfoGet.headUrl = 'http://' + resHead.data;
-              console.log(userInfoGet.headUrl, " at pages\\my\\my.vue:102");
+              console.log(userInfoGet.headUrl, " at pages\\my\\my.vue:148");
               delete userInfoGet.password;
               _index.default.commit("saveUserInfo", userInfoGet);
             } else {
               userInfoGet.headUrl = '/static/icons/logo.png';
             }
           });
-          console.log(_this.userInfo, " at pages\\my\\my.vue:109");
+          console.log(_this.userInfo, " at pages\\my\\my.vue:155");
           uni.stopPullDownRefresh();
         } else {
           uni.showModal({
@@ -217,24 +263,39 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
       });
     },
     goFollow: function goFollow() {
-      uni.navigateTo({
-        url: 'my-fallows/my-fallows' //关注界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-fallows/my-fallows' //关注界面路径
+        });
+      }
     },
     goCollect: function goCollect() {
-      uni.navigateTo({
-        url: 'my-collects/my-collects' //收藏界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-collects/my-collects' //收藏界面路径
+        });
+      }
     },
     goPost: function goPost() {
-      uni.navigateTo({
-        url: 'my-post/my-post' //我的帖子界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-post/my-post' //我的帖子界面路径
+        });
+      }
     },
     goComment: function goComment() {
-      uni.navigateTo({
-        url: 'my-comments/my-comments' //我的评论界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-comments/my-comments' //我的评论界面路径
+        });
+      }
+    },
+    goEditInformation: function goEditInformation() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-comments/my-comments' //我的评论界面路径
+        });
+      }
     } },
   (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))

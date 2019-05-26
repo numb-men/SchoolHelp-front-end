@@ -1,7 +1,8 @@
 import store from "../store/index.js";
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
+// var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
+var root = "http://24l687f160.qicp.vip:43882";
 // var root = "/schoolhelp/schoolhelp-1.0.1"; // h5测试使用
 
 // API url路径

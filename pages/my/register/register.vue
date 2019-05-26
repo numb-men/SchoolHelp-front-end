@@ -2,12 +2,12 @@
 	<form class="content" @submit="register">
 		<view class="input-group">
 			<view class="input-row border">
-				<text class="title">手机号：</text>
-				<m-input type="number" focus clearable v-model="account" maxlength="11" placeholder="请输入账号"></m-input>
+				<text class="title">手&nbsp;&nbsp;机&nbsp;&nbsp;号：</text>
+				<m-input type="number" focus clearable v-model="account" maxlength="11" placeholder="请输入11位手机号"></m-input>
 			</view>
 			<view class="input-row border">
-				<text class="title">密码：</text>
-				<m-input type="password" displayable v-model="password" maxlength="16" placeholder="请输入密码"></m-input>
+				<text class="title">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</text>
+				<m-input type="password" displayable v-model="password" maxlength="16" placeholder="至少8位数字与字母组合"></m-input>
 			</view>
 			<view class="input-row border">
 				<text class="title">确认密码：</text>
