@@ -1,6 +1,4 @@
 <script>
-	import store from "./store/index.js";
-	import api from "./api/api.js";
 	
 	export default {
 		onLaunch: function() {
@@ -12,42 +10,27 @@
 				/**
 				 * TODO 开发环境 测试使用
 				 */
-				this.$api.req.login("13078901232", "12345abc");
+				// this.$api.req.login("13078901278", "12345abc");
+				// this.$store.commit("logout");
+				// this.$api.req.register("13078901278", "12345abc");
 				/*
 				 * 
 				**/
-				
+
 				uni.getStorage({
 					key: 'token',
 					success: (res) =>{
 						console.log("已登录");
-						store.commit("login", res.data)
+						this.$store.commit("login", res.data)
 						uni.getStorage({
 							key: "userInfo",
 							success: (res2) => {
-								store.commit("saveUserInfo", res2.data);
+								this.$store.commit("saveUserInfo", res2.data);
 							}
 						})
 					},
 					fail: (err) =>{
 						console.log("未登录");
-					}
-				});
-			},
-			addFeedback() {
-				uni.request({
-					url: "http://24l687f160.qicp.vip:43882/feedback/",
-					data: { feedbackContent: "1235gfasgasdga" },
-					method: "POST",
-					header: {
-						//取值：application/json(默认) / application/x-www-form-urlencoded
-						'content-type': 'application/json', 
-						'token': store.state.token	//默认携带token，未登录时，token为''
-					},
-					success: (res) => {
-						console.log(res.data);
-					},
-					fail: (err) => {
 						console.log(err);
 					}
 				});

@@ -33,39 +33,45 @@
 </template>
 
 <script>
+import {
+	friendlyDate
+} from '@/common/util.js';
+
 export default {
+		
 	name: 'my-post',
 	data() {
 		return {
-			postNum: 4,
-			postList: [
-				{
-					id: 1,
-					title: '锐捷租借，也可以半租',
-					time: '2019-03-18'
-				},
-				{
-					id: 2,
-					title: '哪里有卖口罩的？',
-					time: '2019-03-16'
-				},
-				{
-					id: 3,
-					title: '晚上教学区几点熄灯啊？',
-					time: '2019-03-15'
-				},
-				{
-					id: 4,
-					title: '求高数复习资料！',
-					time: '2019-03-10'
-				}
-			]
+			postIdList: [],
+			postNum: 0,
+			postList: []
 		};
 	},
 	onLoad() {
-		
+		var url = this.$api.urls.getMyPosts;
+		var data = {};
+		this.$api.req.get(url, data, (res) =>{
+			console.log(res);
+			this.postIdList = res.data;
+			this.postNum = res.data.length;
+			this.getPosts();
+		});
 	},
 	methods: {
+		getPosts() {
+			this.postIdList.map((postId) =>{
+				var url = this.$api.urls.getEasyPost + postId;
+				var data = {};
+				this.$api.req.get(url, data, (res) =>{
+					console.log(res);
+					this.postList.push({
+						id: res.data.postId,
+						title: res.data.title,
+						time: friendlyDate(new Date(res.data.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime())
+					})
+				});
+			});
+		}
 	}
 };
 </script>

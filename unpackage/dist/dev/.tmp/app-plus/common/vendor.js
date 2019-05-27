@@ -11,17 +11,27 @@
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.2";
-// var root = "/schoolhelp/schoolhelp-1.0.1"; // h5测试使用
+var root = "http://134.175.16.143:8080/schoolhelp-1.0.3";
+// var root = "/schoolhelp/schoolhelp-1.0.3"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
 var urls = {
+  register: "".concat(root, "/register"),
   login: "".concat(root, "/login"),
   sendMessage: "".concat(root, "/user/message"),
   updateUserInfo: "".concat(root, "/user"),
   deleteCollect: "".concat(root, "/user/collect"),
   getMessageList: "".concat(root, "/user/message"),
-  getSelfUserInfo: "".concat(root, "/user")
+  getSelfUserInfo: "".concat(root, "/user"),
+  sendPost: "".concat(root, "/post"),
+  getPostDetail: "".concat(root, "/post/id/"), //获取帖子详情，+id
+  addComment: "".concat(root, "/post/comment"),
+  getAllComments: "".concat(root, "/post/comment/all/"), //获取帖子所有评论，+id
+  collectPost: "".concat(root, "/user/collect"),
+  approvalPost: "".concat(root, "/post/approval"),
+  reportPost: "".concat(root, "/post/report"),
+  getMyPosts: "".concat(root, "/user/post"),
+  getEasyPost: "".concat(root, "/post/id/brief/") //获取帖子简要信息，+id
 
 
   // 封装请求方法
@@ -33,11 +43,11 @@ var urls = {
       method: method,
       header: {
         //取值：application/json(默认) / application/x-www-form-urlencoded
-        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded',
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(method, url, res.data, " at api\\api.js:30");
+        console.log(method, url, res.data, " at api\\api.js:40");
         _success(res.data);
       },
       fail: function fail(err) {
@@ -76,6 +86,16 @@ var urls = {
     this.get(url, data, function (res) {
       _index.default.commit("login", res.data);
       _this.getUserInfo();
+    });
+  },
+
+  // 注册，并获取用户信息
+  register: function register(phone, password) {var _this2 = this;
+    var url = urls.register;
+    var data = { phone: phone, password: password };
+    this.post(url, data, function (res) {
+      _index.default.commit("login", res.data);
+      _this2.getUserInfo();
     });
   } };var _default =
 
@@ -168,7 +188,8 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../../校园帮/SchoolHelp-front-end/App.vue"));
 
 var _api = _interopRequireDefault(__webpack_require__(/*! api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));
-var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));
+var _util = _interopRequireDefault(__webpack_require__(/*! common/util.js */ "../../../../../校园帮/SchoolHelp-front-end/common/util.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.config.productionTip = false;
 

@@ -2221,7 +2221,7 @@ var dom = weex.requireModule('dom');var _default =
         activeTab.requestParams.minId = 0;
       }
       uni.request({
-        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/post/type/' + activeTab.requestParams.typeId,
+        url: 'http://134.175.16.143:8080/schoolhelp-1.0.3/post/type/' + activeTab.requestParams.typeId,
         method: 'GET',
         success: function success(result) {
           var data = result.data.data.map(function (news) {
@@ -2260,7 +2260,7 @@ var dom = weex.requireModule('dom');var _default =
     },
     goSearch: function goSearch() {
       uni.navigateTo({
-        url: 'search-result/search-result' });
+        url: 'search-post/search-post' });
 
     },
     goAddPost: function goAddPost() {

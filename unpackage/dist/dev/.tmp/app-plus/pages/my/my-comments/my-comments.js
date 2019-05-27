@@ -169,9 +169,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-var _index = _interopRequireDefault(__webpack_require__(/*! ./store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 
 {
   onLaunch: function onLaunch() {
@@ -179,47 +177,32 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ "../..
   },
   methods: {
     // 获取用户信息，检查是否登录，如果已经登录，存储登录状态token和用户信息
-    init: function init() {
+    init: function init() {var _this = this;
       /**
-                            * TODO 开发环境 测试使用
-                            */
-      this.$api.req.login("13078901232", "12345abc");
+                                              * TODO 开发环境 测试使用
+                                              */
+      // this.$api.req.login("13078901278", "12345abc");
+      // this.$store.commit("logout");
+      // this.$api.req.register("13078901278", "12345abc");
       /*
-                                                       * 
-                                                      **/
+       * 
+      **/
 
       uni.getStorage({
         key: 'token',
         success: function success(res) {
           console.log("已登录", " at App.vue:23");
-          _index.default.commit("login", res.data);
+          _this.$store.commit("login", res.data);
           uni.getStorage({
             key: "userInfo",
             success: function success(res2) {
-              _index.default.commit("saveUserInfo", res2.data);
+              _this.$store.commit("saveUserInfo", res2.data);
             } });
 
         },
         fail: function fail(err) {
           console.log("未登录", " at App.vue:33");
-        } });
-
-    },
-    addFeedback: function addFeedback() {
-      uni.request({
-        url: "http://24l687f160.qicp.vip:43882/feedback/",
-        data: { feedbackContent: "1235gfasgasdga" },
-        method: "POST",
-        header: {
-          //取值：application/json(默认) / application/x-www-form-urlencoded
-          'content-type': 'application/json',
-          'token': _index.default.state.token //默认携带token，未登录时，token为''
-        },
-        success: function success(res) {
-          console.log(res.data, " at App.vue:48");
-        },
-        fail: function fail(err) {
-          console.log(err, " at App.vue:51");
+          console.log(err, " at App.vue:34");
         } });
 
     } } };exports.default = _default;

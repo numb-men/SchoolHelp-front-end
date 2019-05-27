@@ -134,6 +134,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -143,15 +149,26 @@ var _default =
         content: "",
         tags: ["标签1", "标签2", "标签3"],
         titleWordCount: 0,
-        contentWordCount: 0 } };
+        contentWordCount: 0,
+        points: -1,
+        postType: "" },
 
+      showTagInput: false,
+      tagInputContent: "",
+      pointsRange: [0, 5, 10, 20, 50, 100, 200],
+      postTypeRange: ["学术论坛", "校园动态", "二手交易", "缺个伴吗", "帮我干活"],
+      pointsSelected: 0,
+      postTypeSelected: 0 };
 
   },
+  computed: {},
+
+
   methods: {
     bindTitleInput: function bindTitleInput(e) {
       this.post.title = e.target.value;
       this.post.titleWordCount = e.target.value.length;
-      console.log(this.post.title, this.post.titleWordCount, this.post.title.length, " at pages\\index\\add-post\\add-post.vue:54");
+      console.log(this.post.title, this.post.titleWordCount, this.post.title.length, " at pages\\index\\add-post\\add-post.vue:71");
     },
     bindContentInput: function bindContentInput(e) {
       this.post.content = e.target.value;
@@ -161,6 +178,61 @@ var _default =
       uni.navigateBack({
         delta: 1 });
 
+    },
+    showTagInputBox: function showTagInputBox() {
+      if (this.post.tags.length < 5) {
+        this.showTagInput = true;
+      } else
+      {
+        uni.showToast({
+          icon: "none",
+          title: "最多添加5个标签哦" });
+
+      }
+    },
+    hideTagInputBox: function hideTagInputBox() {
+      this.showTagInput = false;
+    },
+    addTag: function addTag() {
+      if (this.post.tags.length < 5) {
+        this.post.tags.push(this.tagInputContent);
+        this.tagInputContent = "";
+      } else
+      {
+        uni.showToast({
+          icon: "none",
+          title: "最多添加5个标签哦" });
+
+        this.tagInputContent = "";
+        this.hideTagInputBox();
+      }
+    },
+    selectPoints: function selectPoints(e) {
+      this.post.points = this.pointsRange[e.detail.value];
+    },
+    selectpostType: function selectpostType(e) {
+      this.post.postType = this.postTypeRange[e.detail.value];
+    },
+    sendPost: function sendPost() {var _this = this;
+      var url = this.$api.urls.sendPost;
+      var data = this.post;
+      data.postType = 2;
+      this.$api.req.post(url, data, function (res) {
+        console.log(res, " at pages\\index\\add-post\\add-post.vue:121");
+        if (res.code < 0) {
+          uni.showToast({
+            icon: "none",
+            title: res.msg });
+
+        } else
+        {
+          uni.showToast({
+            icon: "none",
+            title: "发帖成功" });
+
+          setTimeout(function () {_this.goBack();}, 1500);
+        }
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
