@@ -293,7 +293,7 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
     goEditInformation: function goEditInformation() {
       if (this.hasLogin) {
         uni.navigateTo({
-          url: 'my-comments/my-comments' //我的评论界面路径
+          url: '../../pages/my/setting/edit-information/edit-information' //我的评论界面路径
         });
       }
     } },

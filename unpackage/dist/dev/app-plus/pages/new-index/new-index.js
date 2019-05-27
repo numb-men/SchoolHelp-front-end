@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"container { width: ",[0,750],"; background-color: #FFFFFF; }\n",],undefined,{path:"./pages/new-index/new-index.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/new-index/new-index.wxml') } }));

@@ -32,6 +32,12 @@
 						<text class="navigat-arrow">&#xe65e;</text>
 					</view>
 				</navigator>
+				<navigator url="/pages/my/setting/account-security/change-password/change-password">
+					<view class="center-list-item border-bottom">
+						<text class="list-text">修改登录密码</text>
+						<text class="navigat-arrow">&#xe65e;</text>
+					</view>
+				</navigator>
 			</view>
 		</view>
 

@@ -113,7 +113,7 @@
         }
       }
     },
-    "arguments": "{\"name\":\"login\",\"query\":\"\",\"id\":1,\"pathName\":\"pages/my/my\"}",
+    "arguments": "{\"name\":\"new-index\",\"query\":\"\",\"id\":1,\"pathName\":\"pages/new-index/new-index\"}",
     "allowsInlineMediaPlayback": true,
     "safearea": {
       "background": "#fefefe",
@@ -128,10 +128,7 @@
     "secondwebview": {
       "id": "1",
       "launch_path": "__uniappview.html",
-      "kernel": "WKWebview",
-      "mode": "child",
-      "top": 0,
-      "bottom": 56
+      "kernel": "WKWebview"
     }
   }
 }

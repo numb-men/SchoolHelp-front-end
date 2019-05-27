@@ -143,6 +143,25 @@
 			"style": {
 				"navigationBarTitleText": "关于校园帮"
 			}
+		}, {
+			"path": "pages/my/setting/account-security/change-password/change-password",
+			"style": {
+				"navigationBarTitleText": "修改密码"
+			}
+		}, {
+			"path": "pages/my/setting/edit-information/edit-information",
+			"style": {
+				"navigationBarTitleText": "修改资料"
+			}
+		}, {
+			"path": "pages/new-index/new-index",
+			"style": {
+				"navigationBarTitleText": "校园帮"
+				// ,
+				// "app-plus": {
+				// 	"titleNView": false
+				// }
+			}
 		}
 	],
 	"tabBar": {
@@ -190,8 +209,8 @@
 				"query": "" //启动参数，在页面的onLoad函数里面得到
 			},
 			{
-				"name": "login", //模式名称
-				"path": "pages/my/my", //启动页面，必选
+				"name": "new-index", //模式名称
+				"path": "pages/new-index/new-index", //启动页面，必选
 				"query": "" //启动参数，在页面的onLoad函数里面得到
 			}
 		]

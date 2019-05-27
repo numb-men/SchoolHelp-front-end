@@ -3,7 +3,20 @@
 		<text>this is a test</text>
 	</view>
 </template>
-<script></script>
+
+<script>
+	export default {
+		data() {
+			return {
+
+			}
+		},
+		methods: {
+
+		}
+	}
+</script>
+
 <style>
 	.container {
 		width: 750upx;

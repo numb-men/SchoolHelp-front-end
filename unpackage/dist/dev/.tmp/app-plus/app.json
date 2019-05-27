@@ -22,7 +22,10 @@
     "pages/my/setting/account-security/account-security",
     "pages/my/setting/account-security/change-phone/change-phone",
     "pages/my/setting/help/help",
-    "pages/my/setting/about-SchoolHelp/about-SchoolHelp"
+    "pages/my/setting/about-SchoolHelp/about-SchoolHelp",
+    "pages/my/setting/account-security/change-password/change-password",
+    "pages/my/setting/edit-information/edit-information",
+    "pages/new-index/new-index"
   ],
   "subPackages": [],
   "window": {

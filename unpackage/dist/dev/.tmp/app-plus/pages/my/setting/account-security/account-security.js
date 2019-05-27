@@ -146,6 +146,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
@@ -185,10 +191,10 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../api/api.js
 
     },
     switch1Change: function switch1Change(e) {
-      console.log('switch1 发生 change 事件，携带值为', e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:88");
+      console.log('switch1 发生 change 事件，携带值为', e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:94");
     },
     bindPickerChange: function bindPickerChange(e) {
-      console.log('picker发送选择改变，携带值为：' + e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:91");
+      console.log('picker发送选择改变，携带值为：' + e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:97");
       this.index = e.target.value;
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))

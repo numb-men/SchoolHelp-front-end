@@ -193,7 +193,7 @@
 			goEditInformation() {
 				if (this.hasLogin) {
 					uni.navigateTo({
-						url: 'my-comments/my-comments' //我的评论界面路径
+						url: '../../pages/my/setting/edit-information/edit-information' //我的评论界面路径
 					});
 				}
 			},
@@ -298,18 +298,6 @@
 		width: 750upx;
 		height: 280upx;
 		background-image: url(../../static/images/my_background.jpg);
-		/* padding: 20upx; */
-		/* text-align: center; */
-		/* box-sizing: border-box; */
-		/* background-color: #FFCC66; */
-		/* background: -webkit-linear-gradient(right, #FFCC66, #FF0066); */
-		/* Safari 5.1 - 6.0 */
-		/* background: -o-linear-gradient(right, #FFCC66, #FF0066); */
-		/* Opera 11.1 - 12.0 */
-		/* background: -moz-linear-gradient(right, #FFCC66, #FF0066); */
-		/* Firefox 3.6 - 15 */
-		/* background: linear-gradient(right, #FFCC66, #FF0066); */
-		/* 标准的语法（必须放在最后） */
 	}
 
 	.logo {
