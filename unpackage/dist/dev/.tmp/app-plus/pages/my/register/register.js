@@ -159,11 +159,11 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
 
         return;
       }
-
+      var that = this;
       var url = _api.default.urls.register;
       var data = {
-        phone: this.account,
-        password: this.password };
+        phone: that.account,
+        password: that.password };
 
       _api.default.req.post(url, data, function (res) {
         if (res.code === 0) {
@@ -171,16 +171,95 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
             icon: 'none',
             title: '注册成功' });
 
-          uni.navigateBack();
-        } else
-        if (res.code === -200) {
+          var loginData = {
+            phone: that.account,
+            password: that.password };
+
+          var url = _api.default.urls.login;
+          var data = {
+            phone: loginData.phone,
+            password: loginData.password };
+
+          _api.default.req.get(url, data, function (res) {
+            if (res.code === 0) {
+              _index.default.commit("login", res.data);
+              uni.showToast({
+                icon: 'none',
+                title: '登陆成功' });
+
+              var urlInfo = _api.default.urls.getSelfUserInfo;
+              var dataInfo = {};
+              _api.default.req.get(urlInfo, dataInfo, function (resInfo) {
+                if (resInfo.code === 0) {
+                  var urlHead = _api.default.urls.getHead;
+                  var dataHead = {};
+                  _api.default.req.get(urlHead, dataHead, function (resHead) {
+                    if (resHead.code === 0) {
+                      var userInfoAndHead = resInfo.data;
+                      userInfoAndHead.headUrl = 'http://' +
+                      resHead.data;
+                      delete userInfoAndHead.password;
+                      _index.default.commit("saveUserInfo",
+                      userInfoAndHead);
+                    } else {
+                      var _userInfoAndHead = resInfo.data;
+                      _userInfoAndHead.headUrl =
+                      '/static/icons/logo.png';
+                      delete _userInfoAndHead.password;
+                      _index.default.commit("saveUserInfo",
+                      _userInfoAndHead);
+                    }
+                  });
+                } else {
+                  uni.showModal({
+                    content: "获取用户信息失败！",
+                    showCancel: false });
+
+                }
+              });
+              uni.navigateBack();
+            } else if (res.code === -200) {
+              uni.showModal({
+                content: "无效手机号！",
+                showCancel: false });
+
+              return;
+            } else if (res.code === -6) {
+              uni.showModal({
+                content: "密码错误！",
+                showCancel: false });
+
+              return;
+            } else if (res.code === -2) {
+              uni.showModal({
+                content: "用户不存在！",
+                showCancel: false });
+
+              return;
+            } else if (res.code === -100) {
+              uni.showModal({
+                content: "手机号和密码不能为空！",
+                showCancel: false });
+
+              return;
+            } else {
+              uni.showModal({
+                content: "未知错误！",
+                showCancel: false });
+
+              return;
+            }
+          });
+          uni.reLaunch({
+            url: '../../../pages/my/my' });
+
+        } else if (res.code === -200) {
           uni.showModal({
             content: "无效手机号！请检查手机号是否正确。",
             showCancel: false });
 
           return;
-        } else
-        if (res.code === -4) {
+        } else if (res.code === -4) {
           uni.showModal({
             content: "密码应由长度至少为8位的数字和字母组成！",
             showCancel: false });

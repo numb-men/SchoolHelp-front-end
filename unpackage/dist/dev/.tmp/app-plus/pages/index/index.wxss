@@ -1,0 +1,274 @@
+
+.container {
+    /* position: absolute; */
+    width: 750rpx;
+    background-color: #FFFFFF;
+}
+.head {
+    position: fixed;
+    width: 750rpx;
+    background-color: #FFFFFF;
+    height: 60rpx;
+    z-index: 9999;
+}
+.head-nav {
+    position: fixed;
+    top: 60rpx;
+    width: 750rpx;
+    background-color: #D3D3D3;
+    height: 140rpx;
+    /* padding-top: 60upx; */
+    z-index: 9990;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+}
+.head-title {
+    position: relative;
+    top: 30rpx;
+    font-size: 60rpx;
+    text-align: left;
+    font-weight: bold;
+    height: 160rpx;
+    color: #7d7c7c;
+    margin-left: 40rpx;
+}
+.head-search {
+    position: relative;
+    top: -45rpx;
+    height: 80rpx;
+    width: 80rpx;
+    margin-left: 640rpx;
+}
+.index-body {
+    position: relative;
+    top: 200rpx;
+}
+.slider {
+    position: relative;
+    height: 400rpx;
+}
+.frame {
+    height: 400rpx;
+}
+.image {
+    height: 400rpx;
+    width: 100%;
+}
+.news {
+    height: 400rpx;
+}
+.noCard {
+    width: 90%;
+    height: 200rpx;
+    margin: auto;
+    background-color: white;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: #999999;
+    -webkit-box-shadow: 0 0 10rpx 0 rgba(0, 0, 0, 0.10);
+            box-shadow: 0 0 10rpx 0 rgba(0, 0, 0, 0.10);
+    border-radius: 10rpx;
+}
+swiper {
+    min-height: 90vh;
+}
+.clickClass {
+    color: #0079FF;
+}
+.underline {
+    width: 84rpx;
+    height: 3px;
+    background-color: white;
+}
+.underlineBox {
+    width: 25%;
+    height: 3px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+.navTabItem {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+    font-size: 28rpx;
+}
+.nav {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+}
+.swiper-tab {
+    width: 100%;
+    white-space: nowrap;
+    line-height: 100rpx;
+    height: 100rpx;
+}
+.swiper-tab-list {
+    font-size: 32rpx;
+    width: 150rpx;
+    display: inline-block;
+    text-align: center;
+}
+
+/* 帖子格子css */
+.content {
+    width: 750rpx;
+    padding: 0;
+}
+.card {
+    position: relative;
+    width: 750rpx;
+    height: 300rpx;
+    background-color: white;
+    background: #FFFFFF;
+    border-bottom-width: 1rpx;
+    border-bottom-style: solid;
+    border-bottom-color: #c8c7cc;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+.card-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+.card:active {
+    background-color: #eeeeee;
+}
+.media-title {
+    position: relative;
+    top: 30rpx;
+    left: 30rpx;
+    width: 100px;
+}
+.media-title-text {
+    font-size: 45rpx;
+    color: #555555;
+    width: 100px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.media-preview {
+    position: relative;
+    top: 40rpx;
+    left: 30rpx;
+}
+.media-preview-text {
+    font-size: 35rpx;
+    color: #999999;
+
+    width: 300px;
+    height: 48px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.media-head-image {
+    position: relative;
+    top: 50rpx;
+    left: 30rpx;
+}
+.media-head-image-detail {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+}
+.media-name {
+    position: relative;
+    top: -10rpx;
+    left: 100rpx;
+}
+.media-name-text {
+    text-align: left;
+    color: #AF94FF;
+    font-size: 30rpx;
+}
+.media-points {
+    position: relative;
+    top: -30rpx;
+    left: 400rpx;
+}
+.media-points-view-comment {
+    position: relative;
+    top: -60rpx;
+    left: 490rpx;
+}
+.media-points-view-comment-text {
+    font-size: 30rpx;
+    color: #555555;
+}
+.media-points-text {
+    text-align: left;
+    color: #FFCC00;
+    font-size: 30rpx;
+    padding-right: 10rpx;
+}
+.media-time {
+    position: relative;
+    top: -300rpx;
+    left: 600rpx;
+}
+.media-time-text {
+    text-align: left;
+    font-size: 30rpx;
+    color: #555555;
+}
+

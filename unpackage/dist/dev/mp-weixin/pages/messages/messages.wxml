@@ -1,1 +1,0 @@
-<view bind:__l="__l"><view class="content"><block wx:for="{{msgs}}" wx:for-item="msgItem" wx:for-index="index" wx:key="id"><view></view></block></view></view>

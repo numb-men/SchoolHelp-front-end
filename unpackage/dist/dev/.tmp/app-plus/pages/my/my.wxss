@@ -51,6 +51,7 @@ page {
 	left: 680rpx;
 	width: 60rpx;
 	height: 55rpx;
+	margin-left: 10rpx;
 }
 .head-notification {
 	position: absolute;
@@ -160,6 +161,8 @@ page {
 	border-radius: 50%;
 	-webkit-box-shadow: 3px 3px 8px #888888;
 	        box-shadow: 3px 3px 8px #888888;
+	background-color: #FFFFFF;
+	z-index: 100;
 }
 .logo-img {
 	weight: 100%;

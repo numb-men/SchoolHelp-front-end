@@ -252,6 +252,7 @@
 		left: 680upx;
 		width: 60upx;
 		height: 55upx;
+		margin-left: 10upx;
 	}
 
 	.head-notification {
@@ -328,6 +329,8 @@
 		height: 160upx;
 		border-radius: 50%;
 		box-shadow: 3px 3px 8px #888888;
+		background-color: #FFFFFF;
+		z-index: 100;
 	}
 
 	.logo-img {

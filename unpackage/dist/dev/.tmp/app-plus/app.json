@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/messages/messages",
+    "pages/index/index",
     "pages/messages/message-detail/message-detail",
+    "pages/messages/messages",
     "pages/extensions/extensions",
     "pages/my/my",
     "pages/index/post-detail/post-detail",
@@ -24,8 +25,7 @@
     "pages/my/setting/help/help",
     "pages/my/setting/about-SchoolHelp/about-SchoolHelp",
     "pages/my/setting/account-security/change-password/change-password",
-    "pages/my/setting/edit-information/edit-information",
-    "pages/new-index/new-index"
+    "pages/my/setting/edit-information/edit-information"
   ],
   "subPackages": [],
   "window": {
@@ -65,17 +65,6 @@
         "text": "我的"
       }
     ]
-  },
-  "nvue": {
-    "pages": {
-      "pages/index/index.html": {
-        "window": {
-          "usingComponents": {},
-          "navigationBarTitleText": "校园帮"
-        }
-      }
-    },
-    "entryPagePath": "pages/index/index"
   },
   "splashscreen": {
     "alwaysShowBeforeRender": true,
