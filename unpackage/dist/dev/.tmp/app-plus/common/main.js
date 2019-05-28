@@ -91,17 +91,19 @@ __webpack_require__.r(__webpack_exports__);
       /**
                                               * TODO 开发环境 测试使用
                                               */
-      // this.$api.req.login("13078901278", "12345abc");
       // this.$store.commit("logout");
-      // this.$api.req.register("13078901278", "12345abc");
+      // this.$api.req.login("13067247166", "1515491ccc");
+      // this.$api.req.register("13078901271", "12345abc");
       /*
        * 
       **/
+      this.$store.commit("getSearchHistroy");
+      console.log(this.$store.state.searchHistroy, " at App.vue:20");
 
       uni.getStorage({
         key: 'token',
         success: function success(res) {
-          console.log("已登录", " at App.vue:23");
+          console.log("已登录", " at App.vue:25");
           _this.$store.commit("login", res.data);
           uni.getStorage({
             key: "userInfo",
@@ -111,8 +113,8 @@ __webpack_require__.r(__webpack_exports__);
 
         },
         fail: function fail(err) {
-          console.log("未登录", " at App.vue:33");
-          console.log(err, " at App.vue:34");
+          console.log("未登录", " at App.vue:35");
+          console.log(err, " at App.vue:36");
         } });
 
     } } };exports.default = _default;

@@ -1,5 +1,5 @@
 <template>
-	<view class="content">
+	<view id="my-collects" class="content">
 		<view v-for="(postItem, index) in posts" :key="postItem.id"
 			:id="postItem.id" :data-index="index">
 			<view class="post-item">
@@ -85,14 +85,46 @@
 				]
 			}
 		},
+		onLoad() {
+			var url = this.$api.urls.getAllCollects;
+			var data = {};
+			this.$api.req.get(url, data, (res) =>{
+				console.log(res);
+				this.posts = res.data.map((item, index) =>{
+					return {
+						id: index,
+						userHeadImg: "http://"+item.imageUrl,
+						title: item.title,
+						publishTime: "8:00",
+						content: item.content,
+						userName: item.name,
+						points: 10,
+						watchNum: 43,
+						commentNum: 2
+					}
+				})
+			})
+		},
 		methods: {
-			
+			getPosts() {
+				this.posts.map((item) =>{
+					let postId = item.id;
+					var url = this.$api.urls.getEasyPost + postId;
+					var data = {};
+					this.$api.req.get(url, data, (res) =>{
+						console.log(res);
+					});
+				});
+			}
 		}
 	}
 </script>
 
 <style lang="scss">
 	@import "@/app.scss";
+	#my-collects {
+		width: 750upx;
+	}
 	.post-item {
 		@include column;
 		padding: 17upx 35upx;

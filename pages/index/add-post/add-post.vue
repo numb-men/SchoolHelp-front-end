@@ -29,7 +29,7 @@
 				<picker class="set-points" :range="pointsRange" :value="pointsSelected" @change="selectPoints">设置分数</picker>
 				<view class="post-points" v-show="post.points!=-1">{{post.points}}</view>
 				<picker class="set-sort" :range="postTypeRange"  :value="postTypeSelected" @change="selectpostType">设置分类</picker>
-				<view class="post-sorted" v-show="post.postType!=''">{{post.postType}}</view>
+				<view class="post-sorted" v-show="post.postType!=-1">{{postTypeComputed}}</view>
 			</view>
 			<view class="row-right">
 				<image src="/static/icons/emoji.png" class="normal-icon" mode=""></image>
@@ -51,7 +51,7 @@
 					titleWordCount: 0,
 					contentWordCount: 0,
 					points: -1,
-					postType: ""
+					postType: -1
 				},
 				showTagInput: false,
 				tagInputContent: "",
@@ -62,7 +62,9 @@
             }
         },
 		computed: {
-			
+			postTypeComputed() {
+				return this.postTypeRange[this.post.postType-1];
+			}
 		},
         methods: {
 			bindTitleInput: function(e){
@@ -111,12 +113,39 @@
 				this.post.points = this.pointsRange[e.detail.value];
 			},
 			selectpostType(e) {
-				this.post.postType = this.postTypeRange[e.detail.value];
+				this.post.postType = e.detail.value + 1;
 			},
 			sendPost() {
+				if (this.post.points == -1) {
+					uni.showToast({
+						icon: "none",
+						title: "请设置帖子积分"
+					});
+					return;
+				}
+				if (this.post.postType == -1) {
+					uni.showToast({
+						icon: "none",
+						title: "请设置帖子分类"
+					});
+					return;
+				}
+				if (this.post.title.length < 5 || this.post.title.length > 15) {
+					uni.showToast({
+						icon: "none",
+						title: "帖子标题长度应在5-15之间"
+					});
+					return;
+				}
+				if (this.post.content.length < 15 || this.post.content.length > 400) {
+					uni.showToast({
+						icon: "none",
+						title: "帖子内容长度应在15-400之间"
+					});
+					return;
+				}
 				var url = this.$api.urls.sendPost;
 				var data = this.post;
-				data.postType = 2;
 				this.$api.req.post(url, data, (res)=>{
 					console.log(res);
 					if (res.code < 0){

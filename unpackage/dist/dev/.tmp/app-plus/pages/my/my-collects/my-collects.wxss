@@ -104,6 +104,9 @@
   height: 45rpx;
   margin: 7rpx 10rpx;
 }
+#my-collects {
+  width: 750rpx;
+}
 .post-item {
   display: -webkit-box;
   display: -webkit-flex;

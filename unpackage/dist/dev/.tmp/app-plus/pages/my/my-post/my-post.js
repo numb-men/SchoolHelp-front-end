@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -167,11 +167,24 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { name: 'my-post', data: function data() {return { postIdList: [], postNum: 0, postList: [] };}, onLoad: function onLoad() {var _this = this;var url = this.$api.urls.getMyPosts;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\my\\my-post\\my-post.vue:54");_this.postIdList = res.data;_this.postNum = res.data.length;_this.getPosts();});}, methods: { getPosts: function getPosts() {var _this2 = this;this.postIdList.map(function (postId) {var url = _this2.$api.urls.getEasyPost + postId;var data = {};_this2.$api.req.get(url, data, function (res) {console.log(res, " at pages\\my\\my-post\\my-post.vue:66");_this2.postList.push({ id: res.data.postId, title: res.data.title, time: (0, _util.friendlyDate)(new Date(res.data.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()) });
+var _default = { name: 'my-post', data: function data() {return { postIdList: [], postList: [] };}, onLoad: function onLoad() {var _this = this;var url = this.$api.urls.getMyPosts;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\my\\my-post\\my-post.vue:53");_this.postIdList = res.data;_this.getPosts();});}, methods: { getPosts: function getPosts() {var _this2 = this;this.postIdList.map(function (postId) {var url = _this2.$api.urls.getEasyPost + postId;var data = {};_this2.$api.req.get(url, data, function (res) {// console.log(res);
+          _this2.postList.push({ id: res.data.postId, title: res.data.title, time: (0, _util.friendlyDate)(new Date(res.data.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()) });});});
+    },
+    deleteAPost: function deleteAPost(e) {var _this3 = this;
+      console.log(e, " at pages\\my\\my-post\\my-post.vue:74");
+      var id = this.postList[e.currentTarget.dataset.index].id;
+      var url = this.$api.urls.deleteAPost;
+      var data = { postId: id };
+      this.$api.req.del(url, data, function (res) {
+        console.log(res, " at pages\\my\\my-post\\my-post.vue:79");
+        uni.showToast({
+          icon: "none",
+          title: "删除成功！" });
 
-        });
+        _this3.postList.splice(e.currentTarget.dataset.index, 1);
       });
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

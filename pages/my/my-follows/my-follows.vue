@@ -1,5 +1,5 @@
 <template>
-	<view class="content">
+	<view id="my-follows" class="content">
 		<block v-for="(myFollow, index) in myFollows" :key="myFollow.id">
 			<view class="my-follow-item" :id="myFollow.id" :data-index="index">
 				<view class="left">
@@ -12,7 +12,7 @@
 				</view>
 				<view class="my-follow-item-right">
 					<image class="normal-icon" src="/static/icons/more.png"></image>
-					<image class="normal-icon" src="/static/icons/cancel-follow.png"></image>
+					<image class="normal-icon" src="/static/icons/cancel-follow.png" @click="cancelAttention" :data-index="index"></image>
 				</view>
 			</view>
 			<view class="devide-line"></view>
@@ -24,42 +24,58 @@
 	export default {
 		data() {
 			return {
-				myFollows: [
-					{
-						id: 1,
-						userHeadImg: "/static/images/img_1.jpg",
-						isCertified: true,
-						name: "衡与墨Mommmmmmmmm"
-					},
-					{
-						id: 2,
-						userHeadImg: "/static/images/img_2.jpg",
-						isCertified: true,
-						name: "fishkk"
-					},
-					{
-						id: 3,
-						userHeadImg: "/static/images/img_3.jpg",
-						isCertified: false,
-						name: "星夜、痕"
-					},
-					{
-						id: 4,
-						userHeadImg: "/static/images/img_4.jpg",
-						isCertified: false,
-						name: "lc"
-					},
-				]
+				myFollows: []
 			}
 		},
+		onLoad() {
+			var url = this.$api.urls.getAttentions;
+			var data = {};
+			this.$api.req.get(url, data, (res) =>{
+				console.log(res);
+				this.myFollows = res.data.map((item, index) =>{
+					return {
+						id: index,
+						userHeadImg: "http://"+item.imageUrl,
+						name: item.name,
+						isCertified: item.isCertified
+					}
+				})
+			});
+			// this.follow(2);
+			// this.follow(27);
+			// this.follow(6034);
+			// this.follow(534);
+		},
 		methods: {
-			
+			follow(id) {
+				var url = this.$api.urls.attentionSomeone;
+				var data = {beAttentionUserId: id};
+				this.$api.req.post(url, data, (res) =>{
+					console.log(res);
+				})
+			},
+			cancelAttention(e) {
+				/**
+				 * 
+				 * TODO
+				 * 
+				 */
+				var index = e.currentTarget.dataset.index;
+				var url = this.$api.urls.cancelAttention;
+				var data = {};
+				// this.$api.req.del(url, data, (res) =>{
+				// 	console.log(res);
+				// })
+			}
 		}
 	}
 </script>
 
 <style lang="scss">
 	@import "@/app.scss";
+	#my-follows {
+		width: 750upx;
+	}
 	.my-follow-item {
 		@include row;
 		padding: 20upx 30upx;
@@ -74,6 +90,7 @@
 	}
 	.my-follow-item-center {
 		@include column;
+		flex: 1;
 	}
 	.has-certified {
 		background: rgb(0, 153, 255);

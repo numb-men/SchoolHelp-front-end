@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="content">
+		<view id="message" class="content">
 			<!-- 消息列表 -->
 			<view class="msg-item" v-for="(msgItem, index) in msgs" :key="msgItem.id" 
 				:data-index="index" :id="msgItem.id" @tap="showMsgDetail">
@@ -85,8 +85,8 @@
 				// 隐藏过多的未读消息
 				msgItem.notReadMsgNum = (msgItem.notReadMsgNum > 99 ? '99+' : ''+msgItem.notReadMsgNum);
 			}
-			var url = api.urls.getMessageList;
-			var data = {};
+			// var url = api.urls.getMessageList;
+			// var data = {};
 			// 延时请求，防止请求之前还未登录
 			// setTimeout(() =>{
 			// 	api.req.get(url, data, (res) =>{
@@ -119,6 +119,9 @@
 
 <style lang="scss">
 	@import '@/app.scss';
+	#message {
+		width: 750upx;
+	}
 	.msg-item {
 		@include row;
 		padding: 10upx;
@@ -130,7 +133,7 @@
 	}
 	.msg-item-center {
 		@include column($space: space-around);
-		width: 480upx;
+		flex: 1;
 	}
 	.chat-user-name {
 		@include font(34upx, 55upx, $align: left, $bold: bold, $color: #666);

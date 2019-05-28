@@ -262,7 +262,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
     },
     goFollow: function goFollow() {
       uni.navigateTo({
-        url: 'my-fallows/my-fallows' //关注界面路径
+        url: 'my-follows/my-follows' //关注界面路径
       });
     },
     goCollect: function goCollect() {

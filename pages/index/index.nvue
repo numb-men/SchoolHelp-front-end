@@ -116,7 +116,7 @@
 					activeTab.requestParams.minId = 0;
 				}
 				uni.request({
-					url: 'http://134.175.16.143:8080/schoolhelp-1.0.3/post/type/' + activeTab.requestParams.typeId,
+					url: 'http://134.175.16.143:8080/schoolhelp-1.0.5/post/type/' + activeTab.requestParams.typeId,
 					method: 'GET',
 					success: (result) => {
 						const data = result.data.data.map((news) => {

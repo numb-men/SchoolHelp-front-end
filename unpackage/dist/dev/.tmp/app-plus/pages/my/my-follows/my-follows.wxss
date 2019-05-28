@@ -104,6 +104,9 @@
   height: 45rpx;
   margin: 7rpx 10rpx;
 }
+#my-follows {
+  width: 750rpx;
+}
 .my-follow-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -156,6 +159,10 @@
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .has-certified, .not-certified {
   background: #0099ff;

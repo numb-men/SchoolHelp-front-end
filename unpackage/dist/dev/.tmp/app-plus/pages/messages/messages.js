@@ -184,26 +184,26 @@ var _default = { data: function data() {return { msgs: [{ id: 1, chatUserHeadImg
         msgItem.latestMsgContent = (0, _util.cutString)(msgItem.latestMsgContent, 15);
         // 隐藏过多的未读消息
         msgItem.notReadMsgNum = msgItem.notReadMsgNum > 99 ? '99+' : '' + msgItem.notReadMsgNum;
-      }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
-    var url = _api.default.urls.getMessageList;
-    var data = {};
-    // 延时请求，防止请求之前还未登录
-    // setTimeout(() =>{
-    // 	api.req.get(url, data, (res) =>{
-    // 		console.log(res);
-    // 	});
-    // }, 1000);
-    // // 发送消息接口
-    // 
-    // var url2 = api.urls.sendMessage;
-    // var data2 = { accept: 138, messageContent: "123541235qwrefqw"};
-    // setTimeout(() =>{
-    // 	console.log(data2, url2);
-    // 	api.req.post(url2, data2, (res) =>{
-    // 		console.log(res);
-    // 	});
-    // }, 1000);
-  },
+      }
+      // var url = api.urls.getMessageList;
+      // var data = {};
+      // 延时请求，防止请求之前还未登录
+      // setTimeout(() =>{
+      // 	api.req.get(url, data, (res) =>{
+      // 		console.log(res);
+      // 	});
+      // }, 1000);
+      // // 发送消息接口
+      // 
+      // var url2 = api.urls.sendMessage;
+      // var data2 = { accept: 138, messageContent: "123541235qwrefqw"};
+      // setTimeout(() =>{
+      // 	console.log(data2, url2);
+      // 	api.req.post(url2, data2, (res) =>{
+      // 		console.log(res);
+      // 	});
+      // }, 1000);
+    } catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}},
   methods: {
     showMsgDetail: function showMsgDetail(e) {
       var msgId = e.currentTarget.id;

@@ -241,28 +241,33 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { showAddComment: false, commentEnter: "", postDetail: {}, post: {} };}, methods: { showAddCommentBox: function showAddCommentBox() {this.showAddComment = true;}, hideAddCommentBox: function hideAddCommentBox() {this.showAddComment = false;}, addComment: function addComment() {var _this = this;var url = this.$api.urls.addComment;var data = { postId: this.post.id, commentContent: this.commentEnter };console.log(data, " at pages\\index\\post-detail\\post-detail.vue:96");this.$api.req.post(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:98");_this.updateComments();_this.hideAddCommentBox();});}, updateComments: function updateComments() {var _this2 = this;var url = this.$api.urls.getAllComments + this.post.id;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:107");var helpUserId = _this2.post.helpUserId;var comments = [];if (res.data) {comments = res.data.map(function (item) {return { id: item.commentId, user: { id: item.userId, headImg: "http://" + item.headImageUrl, isCertified: true, name: item.commentUserName }, publishTime: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()), content: item.commentContent, helpOk: item.userId == helpUserId };});_this2.post.comments = comments;}});}, approvalPost: function approvalPost() {var _this3 = this;var url = this.$api.urls.approvalPost;var data = { postId: this.post.id };this.$api.req.post(url, data, function (res) {// console.log(res);
-        // if (res.code == 0) {
-        uni.showToast({ icon: "none", title: "点赞成功" });_this3.post.approvalNum++; // }
-        // else {
-        // 	uni.showToast({
-        // 		icon: "none",
-        // 		title: res.msg
-        // 	});
-        // }
-      });}, reportPost: function reportPost() {var _this4 = this;var url = this.$api.urls.reportPost;var data = { postId: this.post.id, reportDes: "none" };this.$api.req.post(url, data, function (res) {// if (res.code == 0) {
-        uni.showToast({
-          icon: "none",
-          title: "举报成功" });
+var _default = { data: function data() {return { showAddComment: false, commentEnter: "", postDetail: {}, post: {} };}, methods: { showAddCommentBox: function showAddCommentBox() {this.showAddComment = true;}, hideAddCommentBox: function hideAddCommentBox() {this.showAddComment = false;}, addComment: function addComment() {var _this = this;var url = this.$api.urls.addComment;var data = { postId: this.post.id, commentContent: this.commentEnter };console.log(data, " at pages\\index\\post-detail\\post-detail.vue:96");this.$api.req.post(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:98");_this.updateComments();_this.hideAddCommentBox();});}, updateComments: function updateComments() {var _this2 = this;var url = this.$api.urls.getAllComments + this.post.id;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:107");var helpUserId = _this2.post.helpUserId;var comments = [];if (res.data) {comments = res.data.map(function (item) {return { id: item.commentId, user: { id: item.userId, headImg: "http://" + item.headImageUrl, isCertified: true, name: item.commentUserName }, publishTime: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()), content: item.commentContent, helpOk: item.userId == helpUserId };});_this2.post.comments = comments;}});}, approvalPost: function approvalPost() {var _this3 = this;var url = this.$api.urls.approvalPost;var data = { postId: this.post.id };this.$api.req.post(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:133");if (res.code == 0) {uni.showToast({ icon: "none", title: res.data });if (res.data == "点赞成功") {_this3.post.approvalNum++;} else if (res.data == "取消点赞") {_this3.post.approvalNum--;}
+        } else
+        {
+          uni.showToast({
+            icon: "none",
+            title: res.msg });
 
-        _this4.post.reportNum++;
-        // }
-        // else {
-        // 	uni.showToast({
-        // 		icon: "none",
-        // 		title: res.msg
-        // 	});
-        // }
+        }
+      });
+    },
+    reportPost: function reportPost() {var _this4 = this;
+      var url = this.$api.urls.reportPost;
+      var data = { postId: this.post.id, reportDes: "nonenonenonenonenonenonenone" };
+      this.$api.req.post(url, data, function (res) {
+        if (res.code == 0) {
+          uni.showToast({
+            icon: "none",
+            title: "举报成功" });
+
+          _this4.post.reportNum++;
+        } else
+        {
+          uni.showToast({
+            icon: "none",
+            title: res.msg });
+
+        }
       });
     },
     collectPost: function collectPost() {var _this5 = this;
@@ -288,12 +293,12 @@ var _default = { data: function data() {return { showAddComment: false, commentE
   onLoad: function onLoad(option) {var _this6 = this;
     this.postDetail = JSON.parse(option.query);
     for (var key in this.postDetail) {
-      console.log(key, "---", this.postDetail[key], " at pages\\index\\post-detail\\post-detail.vue:191");
+      console.log(key, "---", this.postDetail[key], " at pages\\index\\post-detail\\post-detail.vue:196");
     }
     var url = this.$api.urls.getPostDetail + this.postDetail.postId;
     var data = {};
     this.$api.req.get(url, data, function (res) {
-      console.log(res, " at pages\\index\\post-detail\\post-detail.vue:196");
+      console.log(res, " at pages\\index\\post-detail\\post-detail.vue:201");
       var helpUserId = res.data.post.helpUserId;
       var comments = [];
       if (res.data.comments) {

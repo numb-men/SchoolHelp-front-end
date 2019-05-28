@@ -151,7 +151,7 @@ var _default =
         titleWordCount: 0,
         contentWordCount: 0,
         points: -1,
-        postType: "" },
+        postType: -1 },
 
       showTagInput: false,
       tagInputContent: "",
@@ -161,14 +161,16 @@ var _default =
       postTypeSelected: 0 };
 
   },
-  computed: {},
-
+  computed: {
+    postTypeComputed: function postTypeComputed() {
+      return this.postTypeRange[this.post.postType - 1];
+    } },
 
   methods: {
     bindTitleInput: function bindTitleInput(e) {
       this.post.title = e.target.value;
       this.post.titleWordCount = e.target.value.length;
-      console.log(this.post.title, this.post.titleWordCount, this.post.title.length, " at pages\\index\\add-post\\add-post.vue:71");
+      console.log(this.post.title, this.post.titleWordCount, this.post.title.length, " at pages\\index\\add-post\\add-post.vue:73");
     },
     bindContentInput: function bindContentInput(e) {
       this.post.content = e.target.value;
@@ -211,14 +213,41 @@ var _default =
       this.post.points = this.pointsRange[e.detail.value];
     },
     selectpostType: function selectpostType(e) {
-      this.post.postType = this.postTypeRange[e.detail.value];
+      this.post.postType = e.detail.value + 1;
     },
     sendPost: function sendPost() {var _this = this;
+      if (this.post.points == -1) {
+        uni.showToast({
+          icon: "none",
+          title: "请设置帖子积分" });
+
+        return;
+      }
+      if (this.post.postType == -1) {
+        uni.showToast({
+          icon: "none",
+          title: "请设置帖子分类" });
+
+        return;
+      }
+      if (this.post.title.length < 5 || this.post.title.length > 15) {
+        uni.showToast({
+          icon: "none",
+          title: "帖子标题长度应在5-15之间" });
+
+        return;
+      }
+      if (this.post.content.length < 15 || this.post.content.length > 400) {
+        uni.showToast({
+          icon: "none",
+          title: "帖子内容长度应在15-400之间" });
+
+        return;
+      }
       var url = this.$api.urls.sendPost;
       var data = this.post;
-      data.postType = 2;
       this.$api.req.post(url, data, function (res) {
-        console.log(res, " at pages\\index\\add-post\\add-post.vue:121");
+        console.log(res, " at pages\\index\\add-post\\add-post.vue:150");
         if (res.code < 0) {
           uni.showToast({
             icon: "none",

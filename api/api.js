@@ -1,8 +1,8 @@
 import store from "../store/index.js";
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.3";
-// var root = "/schoolhelp/schoolhelp-1.0.3"; // h5测试使用，使用了manifest.json中的h5代理配置
+var root = "http://134.175.16.143:8080/schoolhelp-1.0.5";
+// var root = "/schoolhelp/schoolhelp-1.0.4"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
 var urls = {
@@ -11,7 +11,7 @@ var urls = {
 	sendMessage: `${root}/user/message`,
 	updateUserInfo: `${root}/user`,
 	deleteCollect: `${root}/user/collect`,
-	getMessageList: `${root}/user/message`,
+	getMessage: `${root}/user/message`,
 	getSelfUserInfo: `${root}/user`,
 	sendPost: `${root}/post`,
 	getPostDetail: `${root}/post/id/`, //获取帖子详情，+id
@@ -22,6 +22,18 @@ var urls = {
 	reportPost: `${root}/post/report`,
 	getMyPosts: `${root}/user/post`,
 	getEasyPost: `${root}/post/id/brief/`, //获取帖子简要信息，+id
+	searchPost: `${root}/post/search/`, //搜索关键词，+关键词
+	getHotSearch: `${root}/post/search/hot`,
+	getSearchHistroy: `${root}/user/searches`,
+	deleteAllSearchHistroy: `${root}/user/searches`,
+	deleteASearchHistroy: `${root}/user/search`,
+	getAllUserComments: `${root}/user/comments`,
+	deleteAPost: `${root}/post`,
+	deleteAComment: `${root}/post/delete/comment`,
+	getAllCollects: `${root}/user/collects`,
+	getAttentions: `${root}/user/attention`,
+	cancelAttentions: `${root}/user/attention`,
+	attentionSomeone: `${root}/user/attention`
 }
 
 // 封装请求方法

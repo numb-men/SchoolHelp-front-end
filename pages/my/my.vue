@@ -162,7 +162,7 @@
 			},
 			goFollow() {
 				uni.navigateTo({
-					url: 'my-fallows/my-fallows' //关注界面路径
+					url: 'my-follows/my-follows' //关注界面路径
 				});
 			},
 			goCollect() {

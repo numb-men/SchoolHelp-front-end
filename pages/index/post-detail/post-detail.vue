@@ -130,39 +130,44 @@
 				var url = this.$api.urls.approvalPost;
 				var data = { postId: this.post.id };
 				this.$api.req.post(url, data, (res) =>{
-					// console.log(res);
-					// if (res.code == 0) {
+					console.log(res);
+					if (res.code == 0) {
 						uni.showToast({
 							icon: "none",
-							title: "点赞成功"
+							title: res.data
 						});
-						this.post.approvalNum ++;
-					// }
-					// else {
-					// 	uni.showToast({
-					// 		icon: "none",
-					// 		title: res.msg
-					// 	});
-					// }
+						if (res.data == "点赞成功"){
+							this.post.approvalNum ++;
+						}
+						else if (res.data == "取消点赞") {
+							this.post.approvalNum --;
+						}
+					}
+					else {
+						uni.showToast({
+							icon: "none",
+							title: res.msg
+						});
+					}
 				})
 			},
 			reportPost() {
 				var url = this.$api.urls.reportPost;
-				var data = { postId: this.post.id, reportDes: "none" };
+				var data = { postId: this.post.id, reportDes: "nonenonenonenonenonenonenone" };
 				this.$api.req.post(url, data, (res) =>{
-					// if (res.code == 0) {
+					if (res.code == 0) {
 						uni.showToast({
 							icon: "none",
 							title: "举报成功"
 						});
 						this.post.reportNum ++;
-					// }
-					// else {
-					// 	uni.showToast({
-					// 		icon: "none",
-					// 		title: res.msg
-					// 	});
-					// }
+					}
+					else {
+						uni.showToast({
+							icon: "none",
+							title: res.msg
+						});
+					}
 				})
 			},
 			collectPost() {

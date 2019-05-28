@@ -138,44 +138,81 @@ var _default =
 {
   data: function data() {
     return {
-      hotSearchList: [
-      {
-        id: 1,
-        content: "锐捷租借" },
-
-      {
-        id: 2,
-        content: "开黑" },
-
-      {
-        id: 3,
-        content: "打球" },
-
-      {
-        id: 4,
-        content: "旧书转卖" }],
-
-
-      searchHistroyList: [
-      {
-        id: 1,
-        content: "水一水" },
-
-      {
-        id: 2,
-        content: "再水一水" }],
-
-
+      hotSearchList: [],
+      searchHistroyList: [],
       searchInput: "" };
 
   },
-  onLoad: function onLoad() {
+  onShow: function onShow() {
+    this.getHotSearchList();
+    this.getSearchHistroy();
   },
   methods: {
     goSearchResult: function goSearchResult() {
       uni.navigateTo({
-        url: "../search-result/search-result" });
+        url: "../search-result/search-result?keyword=" + this.searchInput });
 
+    },
+    getHotSearchList: function getHotSearchList() {var _this = this;
+      var url = this.$api.urls.getHotSearch;
+      var data = {};
+      this.$api.req.get(url, data, function (res) {
+        _this.hotSearchList = res.data;
+      });
+    },
+    getSearchHistroy: function getSearchHistroy() {var _this2 = this;
+      if (this.$store.state.hasLogin) {
+        // 云端搜索记录
+        var url = this.$api.urls.getSearchHistroy;
+        var data = {};
+        this.$api.req.get(url, data, function (res) {
+          console.log(res, " at pages\\index\\search-post\\search-post.vue:69");
+          _this2.searchHistroyList = res.data.map(function (item) {
+            return {
+              id: item.searchId,
+              content: item.content };
+
+          });
+        });
+      } else {
+        // 如果未登录获取本地搜索缓存
+        this.searchHistroyList = this.$store.state.searchHistroy.map(function (item, index) {
+          return {
+            id: index,
+            content: item };
+
+        });
+      }
+      console.log(this.searchHistroyList, " at pages\\index\\search-post\\search-post.vue:86");
+    },
+    searchIt: function searchIt(e) {
+      this.searchInput = e.target.dataset.content;
+      this.goSearchResult();
+    },
+    deleteASearchHistroy: function deleteASearchHistroy(e) {
+      if (this.$store.state.hasLogin) {
+        var url = this.$api.urls.deleteASearchHistroy;
+        var data = { searchId: this.searchHistroyList[e.target.dataset.index].id };
+        this.$api.req.del(url, data, function (res) {
+          console.log(res, " at pages\\index\\search-post\\search-post.vue:97");
+        });
+      }
+      this.searchHistroyList.splice(e.target.dataset.index, 1);
+      this.$store.commit("deleteASearchHistroy", e.target.dataset.index);
+      console.log(this.searchHistroyList, " at pages\\index\\search-post\\search-post.vue:102");
+    },
+    deleteAllSearchHistroy: function deleteAllSearchHistroy() {
+      if (this.$store.state.hasLogin) {
+        var url = this.$api.urls.deleteAllSearchHistroy;
+        var data = {};
+        this.$api.req.del(url, data, function (res) {
+          uni.showToast({
+            title: "清空成功" });
+
+        });
+      }
+      this.searchHistroyList = [];
+      this.$store.commit("clearSearchHistroy");
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

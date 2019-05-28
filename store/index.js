@@ -7,7 +7,8 @@ const store = new Vuex.Store({
 	state: {
 		userInfo: {},
 		hasLogin: false,
-		token: ''
+		token: '',
+		searchHistroy: []
 	},
 	mutations: {
 		// 保存登录状态
@@ -43,6 +44,38 @@ const store = new Vuex.Store({
 			uni.removeStorage({
 				key: 'userInfo'
 			})
+		},
+		// 删除某条搜索历史
+		deleteASearchHistroy(state, index) {
+			state.searchHistroy.splice(index, 1);
+		},
+		// 获取搜索历史
+		getSearchHistroy(state) {
+			uni.getStorage({
+				key: "searchHistroy",
+				success: (res) => {
+					state.searchHistroy = res.data;
+				},
+				fail: (err) => {
+					state.searchHistroy = [];
+					console.log(err);
+				}
+			})
+		},
+		// 清空搜索历史
+		clearSearchHistroy(state) {
+			state.searchHistroy = [];
+			uni.removeStorage({
+				key: 'searchHistroy'
+			})
+		},
+		// 保存搜索历史
+		saveSearchHistroy(state, searchHistroy) {
+			state.searchHistroy = searchHistroy;
+			uni.setStorage({
+				key: "searchHistroy",
+				data: searchHistroy
+			});
 		}
 	}
 })

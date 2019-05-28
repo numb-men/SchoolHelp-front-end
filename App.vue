@@ -10,12 +10,14 @@
 				/**
 				 * TODO 开发环境 测试使用
 				 */
-				// this.$api.req.login("13078901278", "12345abc");
 				// this.$store.commit("logout");
-				// this.$api.req.register("13078901278", "12345abc");
+				// this.$api.req.login("13067247166", "1515491ccc");
+				// this.$api.req.register("13078901271", "12345abc");
 				/*
 				 * 
 				**/
+				this.$store.commit("getSearchHistroy");
+				console.log(this.$store.state.searchHistroy);
 
 				uni.getStorage({
 					key: 'token',
@@ -69,12 +71,12 @@
 		display: flex;
 	}
 
-	.content {
+	/* .content {
 		display: flex;
 		flex: 1;
 		flex-direction: column;
 		background-color: #efeff4;
-	}
+	} */
 
 	.input-group {
 		background-color: #ffffff;

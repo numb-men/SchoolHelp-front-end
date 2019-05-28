@@ -185,7 +185,37 @@ var _default =
 
 
   },
-  methods: {} };exports.default = _default;
+  onLoad: function onLoad() {var _this = this;
+    var url = this.$api.urls.getAllCollects;
+    var data = {};
+    this.$api.req.get(url, data, function (res) {
+      console.log(res, " at pages\\my\\my-collects\\my-collects.vue:92");
+      _this.posts = res.data.map(function (item, index) {
+        return {
+          id: index,
+          userHeadImg: "http://" + item.imageUrl,
+          title: item.title,
+          publishTime: "8:00",
+          content: item.content,
+          userName: item.name,
+          points: 10,
+          watchNum: 43,
+          commentNum: 2 };
+
+      });
+    });
+  },
+  methods: {
+    getPosts: function getPosts() {var _this2 = this;
+      this.posts.map(function (item) {
+        var postId = item.id;
+        var url = _this2.$api.urls.getEasyPost + postId;
+        var data = {};
+        _this2.$api.req.get(url, data, function (res) {
+          console.log(res, " at pages\\my\\my-collects\\my-collects.vue:115");
+        });
+      });
+    } } };exports.default = _default;
 
 /***/ }),
 

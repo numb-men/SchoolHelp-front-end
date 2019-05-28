@@ -11,8 +11,8 @@
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.3";
-// var root = "/schoolhelp/schoolhelp-1.0.3"; // h5测试使用，使用了manifest.json中的h5代理配置
+var root = "http://134.175.16.143:8080/schoolhelp-1.0.5";
+// var root = "/schoolhelp/schoolhelp-1.0.4"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
 var urls = {
@@ -21,7 +21,7 @@ var urls = {
   sendMessage: "".concat(root, "/user/message"),
   updateUserInfo: "".concat(root, "/user"),
   deleteCollect: "".concat(root, "/user/collect"),
-  getMessageList: "".concat(root, "/user/message"),
+  getMessage: "".concat(root, "/user/message"),
   getSelfUserInfo: "".concat(root, "/user"),
   sendPost: "".concat(root, "/post"),
   getPostDetail: "".concat(root, "/post/id/"), //获取帖子详情，+id
@@ -31,7 +31,19 @@ var urls = {
   approvalPost: "".concat(root, "/post/approval"),
   reportPost: "".concat(root, "/post/report"),
   getMyPosts: "".concat(root, "/user/post"),
-  getEasyPost: "".concat(root, "/post/id/brief/") //获取帖子简要信息，+id
+  getEasyPost: "".concat(root, "/post/id/brief/"), //获取帖子简要信息，+id
+  searchPost: "".concat(root, "/post/search/"), //搜索关键词，+关键词
+  getHotSearch: "".concat(root, "/post/search/hot"),
+  getSearchHistroy: "".concat(root, "/user/searches"),
+  deleteAllSearchHistroy: "".concat(root, "/user/searches"),
+  deleteASearchHistroy: "".concat(root, "/user/search"),
+  getAllUserComments: "".concat(root, "/user/comments"),
+  deleteAPost: "".concat(root, "/post"),
+  deleteAComment: "".concat(root, "/post/delete/comment"),
+  getAllCollects: "".concat(root, "/user/collects"),
+  getAttentions: "".concat(root, "/user/attention"),
+  cancelAttentions: "".concat(root, "/user/attention"),
+  attentionSomeone: "".concat(root, "/user/attention")
 
 
   // 封装请求方法
@@ -47,7 +59,7 @@ var urls = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(method, url, res.data, " at api\\api.js:40");
+        console.log(method, url, res.data, " at api\\api.js:52");
         _success(res.data);
       },
       fail: function fail(err) {
@@ -481,9 +493,9 @@ createPage(_myData.default);
 
 /***/ }),
 
-/***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fmy-fallows%2Fmy-fallows\"}":
+/***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fmy-follows%2Fmy-follows\"}":
 /*!************************************************************************************************************!*\
-  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fmy-fallows%2Fmy-fallows"} ***!
+  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fmy-follows%2Fmy-follows"} ***!
   \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -492,8 +504,8 @@ createPage(_myData.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../校园帮/SchoolHelp-front-end/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _myFallows = _interopRequireDefault(__webpack_require__(/*! ./pages/my/my-fallows/my-fallows.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/my-fallows/my-fallows.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_myFallows.default);
+var _myFollows = _interopRequireDefault(__webpack_require__(/*! ./pages/my/my-follows/my-follows.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/my-follows/my-follows.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_myFollows.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),
@@ -615,14 +627,15 @@ var store = new _vuex.default.Store({
   state: {
     userInfo: {},
     hasLogin: false,
-    token: '' },
+    token: '',
+    searchHistroy: [] },
 
   mutations: {
     // 保存登录状态
     login: function login(state, token) {
       state.hasLogin = true;
       state.token = token;
-      console.log("save token", token, " at store\\index.js:17");
+      console.log("save token", token, " at store\\index.js:18");
       uni.setStorage({
         key: 'token',
         data: token });
@@ -639,7 +652,7 @@ var store = new _vuex.default.Store({
     // 保存用户信息
     saveUserInfo: function saveUserInfo(state, userInfo) {
       state.userInfo = userInfo;
-      console.log("save userInfo", userInfo, " at store\\index.js:34");
+      console.log("save userInfo", userInfo, " at store\\index.js:35");
       uni.setStorage({
         key: 'userInfo',
         data: userInfo });
@@ -650,6 +663,38 @@ var store = new _vuex.default.Store({
       state.userInfo = {};
       uni.removeStorage({
         key: 'userInfo' });
+
+    },
+    // 删除某条搜索历史
+    deleteASearchHistroy: function deleteASearchHistroy(state, index) {
+      state.searchHistroy.splice(index, 1);
+    },
+    // 获取搜索历史
+    getSearchHistroy: function getSearchHistroy(state) {
+      uni.getStorage({
+        key: "searchHistroy",
+        success: function success(res) {
+          state.searchHistroy = res.data;
+        },
+        fail: function fail(err) {
+          state.searchHistroy = [];
+          console.log(err, " at store\\index.js:61");
+        } });
+
+    },
+    // 清空搜索历史
+    clearSearchHistroy: function clearSearchHistroy(state) {
+      state.searchHistroy = [];
+      uni.removeStorage({
+        key: 'searchHistroy' });
+
+    },
+    // 保存搜索历史
+    saveSearchHistroy: function saveSearchHistroy(state, searchHistroy) {
+      state.searchHistroy = searchHistroy;
+      uni.setStorage({
+        key: "searchHistroy",
+        data: searchHistroy });
 
     } } });var _default =
 
