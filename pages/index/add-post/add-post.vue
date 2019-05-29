@@ -18,7 +18,7 @@
 			</view>
 		</view>
 		<!-- 标签输入盒 -->
-		<view class="tag-input-box" v-show="showTagInput">
+		<view class="tag-input-box" v-if="showTagInput">
 			<input class="tag-input-box-input" type="text" v-model="tagInputContent" placeholder="七个字以内" maxlength="7">
 			<view class="tag-input-box-add-btn" @click="addTag">添加</view>
 			<image src="/static/icons/delete-gray.png" class="tag-input-box-icon-cancel" @click="hideTagInputBox"></image>
@@ -28,7 +28,7 @@
 			<view class="row-left">
 				<picker class="set-points" :range="pointsRange" :value="pointsSelected" @change="selectPoints">设置分数</picker>
 				<view class="post-points" v-show="post.points!=-1">{{post.points}}</view>
-				<picker class="set-sort" :range="postTypeRange"  :value="postTypeSelected" @change="selectpostType">设置分类</picker>
+				<picker class="set-sort" :range="postTypeRange"  :value="postTypeSelected" @change="selectPostType">设置分类</picker>
 				<view class="post-sorted" v-show="post.postType!=-1">{{postTypeComputed}}</view>
 			</view>
 			<view class="row-right">
@@ -56,14 +56,14 @@
 				showTagInput: false,
 				tagInputContent: "",
 				pointsRange: [0, 5, 10, 20, 50, 100, 200],
-				postTypeRange: ["学术论坛", "校园动态", "二手交易", "缺个伴吗", "帮我干活"],
+				postTypeRange: ["学术论坛", "校园动态", "二手交易", "缺个伴吗", "帮你干活", "经验交流"],
 				pointsSelected: 0,
 				postTypeSelected: 0
             }
         },
 		computed: {
 			postTypeComputed() {
-				return this.postTypeRange[this.post.postType-1];
+				return this.postTypeRange[this.post.postType];
 			}
 		},
         methods: {
@@ -112,8 +112,8 @@
 			selectPoints(e) {
 				this.post.points = this.pointsRange[e.detail.value];
 			},
-			selectpostType(e) {
-				this.post.postType = e.detail.value + 1;
+			selectPostType(e) {
+				this.post.postType = e.detail.value;
 			},
 			sendPost() {
 				if (this.post.points == -1) {
@@ -167,6 +167,6 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	@import "add-post.scss";
 </style>

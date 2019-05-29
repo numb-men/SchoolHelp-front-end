@@ -104,8 +104,11 @@
   height: 45rpx;
   margin: 7rpx 10rpx;
 }
+.content {
+  padding: 0 10rpx;
+}
 #message {
-  width: 750rpx;
+  width: 730rpx;
 }
 .msg-item {
   display: -webkit-box;

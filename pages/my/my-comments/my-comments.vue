@@ -6,7 +6,7 @@
 		</view>
 		<!-- 评论列表 -->
 		<view v-for="(comment, index) in commentList" :key="comment.id">
-			<view class="comment-box" :data-index="index" :id="comment.id">
+			<view class="comment-box" :data-index="index" :id="comment.id" @click="goDetail">
 				<!-- 评论内容 -->
 				<view class="comment-box-content">
 					{{comment.content}}
@@ -38,7 +38,8 @@
 
 <script>
 import {
-	friendlyDate
+	friendlyDate,
+	cutString
 } from '@/common/util.js';
 
 export default {
@@ -71,7 +72,13 @@ export default {
 					title: "删除成功"
 				})
 			})
-		}
+		},
+		goDetail(e) {
+			var detail = {postId: this.commentList[e.currentTarget.dataset.index].postId};
+			uni.navigateTo({
+				url: '../../index/post-detail/post-detail?query=' + encodeURIComponent(JSON.stringify(detail))
+			});
+		},
 	},
 	onLoad() {
 		var url = this.$api.urls.getAllUserComments;
@@ -86,7 +93,7 @@ export default {
 					postTitle: "",
 					post: {},
 					commentUserName: item.commentUserName,
-					content: item.commentContent,
+					content: cutString(item.commentContent, 20),
 					time: friendlyDate(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
 					headImageUrl: "http://"+item.headImageUrl
 				}

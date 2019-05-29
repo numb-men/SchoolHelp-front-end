@@ -2,30 +2,32 @@
 	<view>
 		<view id="message" class="content">
 			<!-- 消息列表 -->
-			<view class="msg-item" v-for="(msgItem, index) in msgs" :key="msgItem.id" 
-				:data-index="index" :id="msgItem.id" @tap="showMsgDetail">
-				<!-- 左侧头像 -->
-				<image class="chat-user-head-img" :src="msgItem.chatUserHeadImg" mode=""></image>
-				<!-- 中间用户名和最新聊天内容 -->
-				<view class="msg-item-center">
-					<view class="chat-user-name">
-						{{msgItem.chatUserName}}
+			<view v-for="(msgItem, index) in msgs" :key="msgItem.id">
+				<view class="msg-item" :data-index="index" :id="msgItem.chatUserId" @click="showMsgDetail">
+					<!-- 左侧头像 -->
+					<image class="chat-user-head-img" :src="msgItem.chatUserHeadImg" mode=""></image>
+					<!-- 中间用户名和最新聊天内容 -->
+					<view class="msg-item-center">
+						<view class="chat-user-name">
+							{{msgItem.chatUserName}}
+						</view>
+						<view class="latest-msg-content">
+							{{msgItem.latestMsgContent}}
+						</view>
 					</view>
-					<view class="latest-msg-content">
-						{{msgItem.latestMsgContent}}
+					<!-- 右侧时间和未读消息数目 -->
+					<view class="msg-item-right">
+						<view class="latest-msg-time">
+							{{msgItem.latestMsgTime}}
+						</view>
+						<!-- 判断未读消息数目是否为0，为0隐藏 -->
+						<view class="not-read-msg-num" v-if="msgItem.notReadMsgNum != '0'">
+							{{msgItem.notReadMsgNum}}
+						</view>
+						<view class="not-new-message" v-else></view>
 					</view>
 				</view>
-				<!-- 右侧时间和未读消息数目 -->
-				<view class="msg-item-right">
-					<view class="latest-msg-time">
-						{{msgItem.latestMsgTime}}
-					</view>
-					<!-- 判断未读消息数目是否为0，为0隐藏 -->
-					<view class="not-read-msg-num" v-if="msgItem.notReadMsgNum != '0'">
-						{{msgItem.notReadMsgNum}}
-					</view>
-					<view class="not-new-message" v-else></view>
-				</view>
+				<view class="devide-line"></view>
 			</view>
 		</view>
 	</view>
@@ -36,82 +38,57 @@
 		friendlyDate,
 		cutString
 	} from "@/common/util.js";
-	import api from "@/api/api.js";
-	import store from "@/store/index.js";
 	
 	export default {
 		data() {
 			return {
-				msgs: [
-					{
-						id: 1,
-						chatUserHeadImg: "/static/images/img_1.jpg",
-						chatUserName: "小马达",
-						latestMsgContent: "你什么时候回家？",
-						notReadMsgNum: 1,
-						latestMsgTime: "7:00"
-					},
-					{
-						id: 2,
-						chatUserHeadImg: "/static/images/img_2.jpg",
-						chatUserName: "真有钱",
-						latestMsgContent: "你需要钱吗？我借钱给你，5千够吗？",
-						notReadMsgNum: 1,
-						latestMsgTime: "14:00"
-					},
-					{
-						id: 3,
-						chatUserHeadImg: "/static/images/img_3.jpg",
-						chatUserName: "好厉害",
-						latestMsgContent: "我真的太菜了，还是你厉害。",
-						notReadMsgNum: 0,
-						latestMsgTime: "19:00"
-					},
-					{
-						id: 4,
-						chatUserHeadImg: "/static/images/img_4.jpg",
-						chatUserName: "真滴烦",
-						latestMsgContent: "哇哇哇——啊啊啊——好气啊——气死我了——啊啊啊——",
-						notReadMsgNum: 100,
-						latestMsgTime: "5-3"
-					},
-				]
+				msgs: []
 			}
 		},
-		onLoad: function() {
+		onShow: function() {
+			var url = this.$api.urls.getChatList;
+			var data = {};
+			this.$api.req.get(url, data, (res) =>{
+				console.log(res);
+				this.msgs = res.data.map((item, index) =>{
+					return {
+						id: index,
+						chatUserHeadImg: "http://"+item.headIimage,
+						chatUserId: item.userId,
+						chatUserName: "",
+						chatUser: {},
+						latestMsgContent: item.latedMessage,
+						notReadMsgNum: item.newMessageNum,
+						latestMsgTime: friendlyDate(new Date(item.latedTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime())
+					}
+				})
+				this.getUserData();
+			})
 			for (var msgItem of this.msgs) {
 				// 裁剪过长的消息内容
 				msgItem.latestMsgContent = cutString(msgItem.latestMsgContent, 15);
 				// 隐藏过多的未读消息
 				msgItem.notReadMsgNum = (msgItem.notReadMsgNum > 99 ? '99+' : ''+msgItem.notReadMsgNum);
 			}
-			// var url = api.urls.getMessageList;
-			// var data = {};
-			// 延时请求，防止请求之前还未登录
-			// setTimeout(() =>{
-			// 	api.req.get(url, data, (res) =>{
-			// 		console.log(res);
-			// 	});
-			// }, 1000);
-			// // 发送消息接口
-			// 
-			// var url2 = api.urls.sendMessage;
-			// var data2 = { accept: 138, messageContent: "123541235qwrefqw"};
-			// setTimeout(() =>{
-			// 	console.log(data2, url2);
-			// 	api.req.post(url2, data2, (res) =>{
-			// 		console.log(res);
-			// 	});
-			// }, 1000);
 		},
 		methods: {
 			showMsgDetail: function(e){
-				let msgId = e.currentTarget.id;
-				// let msgIndex = e.currentTarget.dataset.index;
-				// console.log(msgId, msgIndex);
+				console.log(e);
+				let detail = this.msgs[e.currentTarget.dataset.index];
 				uni.navigateTo({
-					url: "message-detail/message-detail?msgId=" + msgId
+					url: "message-detail/message-detail?detail=" + encodeURIComponent(JSON.stringify(detail))
 				});
+			},
+			getUserData() {
+				this.msgs.map((item) =>{
+					var url = this.$api.urls.getOtherUserInfo + item.chatUserId;
+					var data = {};
+					this.$api.req.get(url, data, (res) =>{
+						// console.log(res);
+						item.chatUser = res.data;
+						item.chatUserName = res.data.name;
+					})
+				})
 			}
 		}
 	}
@@ -119,8 +96,12 @@
 
 <style lang="scss">
 	@import '@/app.scss';
+	.content {
+		@extend %content;
+		padding: 0 10upx;
+	}
 	#message {
-		width: 750upx;
+		width: 730upx;
 	}
 	.msg-item {
 		@include row;

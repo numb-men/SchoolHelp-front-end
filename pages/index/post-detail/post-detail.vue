@@ -17,7 +17,7 @@
 			</view>
 			<view class="post-title">{{post.title}}</view>
 			<view class="devide-line"></view>
-			<view class="post-content">{{post.content}}</view>
+			<text class="post-content">{{post.content}}</text>
 			<view class="operation-box">
 				<image class="operation-icon" src="/static/icons/collect.png" @click="collectPost"></image>
 				<image class="operation-icon" src="/static/icons/comment2.png" @click="showAddCommentBox"></image>

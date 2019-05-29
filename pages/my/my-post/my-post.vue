@@ -6,7 +6,7 @@
 		</view>
 		<!-- 帖子列表 -->
 		<view v-for="(post, index) in postList" :key="post.id">
-			<view class="post-box" :data-index="index" :id="post.id">
+			<view class="post-box" :data-index="index" :id="post.id" @click="goDetail">
 				<!-- 帖子内容 -->
 				<view class="post-box-title">
 					{{post.title}}
@@ -83,7 +83,13 @@ export default {
 				})
 				this.postList.splice(e.currentTarget.dataset.index, 1);
 			})
-		}
+		},
+		goDetail(e) {
+			var detail = {postId: this.postList[e.currentTarget.dataset.index].id};
+			uni.navigateTo({
+				url: '../../index/post-detail/post-detail?query=' + encodeURIComponent(JSON.stringify(detail))
+			});
+		},
 	}
 };
 </script>

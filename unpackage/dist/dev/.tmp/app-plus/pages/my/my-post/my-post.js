@@ -183,6 +183,12 @@ var _default = { name: 'my-post', data: function data() {return { postIdList: []
 
         _this3.postList.splice(e.currentTarget.dataset.index, 1);
       });
+    },
+    goDetail: function goDetail(e) {
+      var detail = { postId: this.postList[e.currentTarget.dataset.index].id };
+      uni.navigateTo({
+        url: '../../index/post-detail/post-detail?query=' + encodeURIComponent(JSON.stringify(detail)) });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

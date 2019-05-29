@@ -1,7 +1,7 @@
 import store from "../store/index.js";
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.5";
+var root = "http://134.175.16.143:8080/schoolhelp-1.0.6";
 // var root = "/schoolhelp/schoolhelp-1.0.4"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
@@ -32,13 +32,24 @@ var urls = {
 	deleteAComment: `${root}/post/delete/comment`,
 	getAllCollects: `${root}/user/collects`,
 	getAttentions: `${root}/user/attention`,
-	cancelAttentions: `${root}/user/attention`,
-	attentionSomeone: `${root}/user/attention`
+	cancelAttention: `${root}/user/attention`,
+	attentionSomeone: `${root}/user/attention`,
+	getChatList: `${root}/message/chatlist`,
+	getOtherUserInfo: `${root}/user/`, //获取其他用户的非隐私信息，+userId
+	getMessageListForUser: `${root}/user/message/Corresponding`, //获取与对应用户的消息列表
+	getSelfHeadImg: `${root}/download/head`, //获取用户自己的头像
+	
+	/**********************************************/
+	
+	getHead: `${root}/download/head`,
+	feedback: `${root}/feedback/`,
+	getPostList:`${root}/post/pages`
 }
 
 // 封装请求方法
 var req = {
 	request(url, data, method, success, fail) {
+		console.log(method, url);
 		uni.request({
 			url: url,
 			data: data,
@@ -49,10 +60,20 @@ var req = {
 				'token': store.state.token	//默认携带token，未登录时，token为''
 			},
 			success: (res) => {
-				console.log(method, url, res.data);
-				success(res.data);
+				console.log(res.data);
+				if (res.data.code == 0){
+					success(res.data);
+				} else {
+					// 打印错误提示
+					uni.showToast({
+						icon: "none",
+						title: res.data.msg
+					})
+					if (fail) fail(err);
+				}
 			},
 			fail: (err) => {
+				console.log("fail");
 				if (fail) fail(err);  // 如果失败方法非空，执行失败方法
 			}
 		});

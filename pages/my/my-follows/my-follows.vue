@@ -32,9 +32,9 @@
 			var data = {};
 			this.$api.req.get(url, data, (res) =>{
 				console.log(res);
-				this.myFollows = res.data.map((item, index) =>{
+				this.myFollows = res.data.map((item) =>{
 					return {
-						id: index,
+						id: item.id,
 						userHeadImg: "http://"+item.imageUrl,
 						name: item.name,
 						isCertified: item.isCertified
@@ -55,17 +55,17 @@
 				})
 			},
 			cancelAttention(e) {
-				/**
-				 * 
-				 * TODO
-				 * 
-				 */
 				var index = e.currentTarget.dataset.index;
 				var url = this.$api.urls.cancelAttention;
-				var data = {};
-				// this.$api.req.del(url, data, (res) =>{
-				// 	console.log(res);
-				// })
+				var data = {beAttentionUserId: this.myFollows[index].id};
+				this.$api.req.del(url, data, (res) =>{
+					console.log(res);
+					this.myFollows.splice(e.currentTarget.dataset.index, 1);
+					uni.showToast({
+						icon: "none",
+						title: "取消关注成功"
+					})
+				})
 			}
 		}
 	}

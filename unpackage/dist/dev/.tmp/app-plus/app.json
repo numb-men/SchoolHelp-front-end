@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/messages/messages",
     "pages/messages/message-detail/message-detail",
     "pages/extensions/extensions",
@@ -19,7 +20,13 @@
     "pages/my/my-data/my-data",
     "pages/my/my-comments/my-comments",
     "pages/my/my-post/my-post",
-    "pages/my/change-userInfo/change-userInfo"
+    "pages/my/change-userInfo/change-userInfo",
+    "pages/my/setting/account-security/account-security",
+    "pages/my/setting/account-security/change-phone/change-phone",
+    "pages/my/setting/help/help",
+    "pages/my/setting/about-SchoolHelp/about-SchoolHelp",
+    "pages/my/setting/account-security/change-password/change-password",
+    "pages/my/setting/edit-information/edit-information"
   ],
   "subPackages": [],
   "window": {
@@ -59,17 +66,6 @@
         "text": "我的"
       }
     ]
-  },
-  "nvue": {
-    "pages": {
-      "pages/index/index.html": {
-        "window": {
-          "usingComponents": {},
-          "navigationBarTitleText": "校园帮"
-        }
-      }
-    },
-    "entryPagePath": "pages/index/index"
   },
   "splashscreen": {
     "alwaysShowBeforeRender": true,

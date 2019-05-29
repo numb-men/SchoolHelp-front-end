@@ -98,20 +98,28 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
+  computed: (0, _vuex.mapState)(['hasLogin', 'uerInfo', 'token']),
   data: function data() {
     return {
+      submitDisabled: true,
       wordCount: 0,
       sendDate: {
         content: '' } };
@@ -119,12 +127,55 @@ var _default =
 
   },
   onLoad: function onLoad() {},
-  methods: {
+  methods: _objectSpread({
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });
 
-    } } };exports.default = _default;
+    },
+    descInput: function descInput() {
+      this.wordCount = this.sendDate.content.length;
+      if (this.sendDate.content.length >= 10) {
+        this.submitDisabled = false;
+      } else {
+        this.submitDisabled = true;
+      }
+    },
+    send: function send() {
+      if (!this.hasLogin) {
+        uni.showModal({
+          content: "请先登录",
+          success: function success(res) {
+            if (res.confirm) {
+              uni.navigateTo({
+                url: '../login/login' });
+
+            } else if (res.cancel) {
+              return;
+            }
+          } });
+
+      } else {
+        var url = _api.default.urls.feedback;
+        var data = { feedbackContent: this.sendDate.content };
+        _api.default.req.post(url, data, function (res) {
+          if (res.code === 0) {
+            uni.showModal({
+              content: "反馈成功！",
+              showCancel: false });
+
+            uni.navigateBack();
+          } else {
+            uni.showModal({
+              content: "反馈失败！",
+              showCancel: false });
+
+            return;
+          }
+        });
+      }
+    } },
+  (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),

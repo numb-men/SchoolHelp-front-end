@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -191,55 +191,19 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { searchInput: "", searchHistroyList: [], posts: [{ id: 1, userHeadImg: "/static/images/img_1.jpg", title: "出国留学小白求指教", publishTime: "8:00", content: "请问哪位大神知道出国留学有什么流程呢？", userName: "衡与墨", points: 10, watchNum: 43, commentNum: 2 }, { id: 2, userHeadImg: "/static/images/img_2.jpg", title: "最近有嘉锡讲坛吗？", publishTime: "6:20", content: "...", userName: "kilig", points: 20, watchNum: 43, commentNum: 2 }, { id: 3, userHeadImg: "/static/images/img_3.jpg", title: "求陈**老师的联系方式，急急急", publishTime: "8:00", content: "对他的细胞克隆猴项目感兴趣，希望加入其中", userName: "fishkk", points: 10, watchNum: 43, commentNum: 2 }, { id: 4, userHeadImg: "/static/images/img_4.jpg", title: "北京",
-        publishTime: "8:00",
-        content: "...",
-        userName: "lc",
-        points: 10,
-        watchNum: 43,
-        commentNum: 2 }] };
-
-
-
-  },
-  onLoad: function onLoad(options) {
-    console.log(options, " at pages\\index\\search-result\\search-result.vue:106");
-    this.searchInput = options.keyword;
-    this.searchHistroyList = this.$store.state.searchHistroy;
-    this.searchPost();
-  },
-  methods: {
-    searchPost: function searchPost() {var _this = this;
-      this.searchHistroyList.unshift(this.searchInput); //向头部添加，这样最新的排在前面
-      this.$store.commit("saveSearchHistroy", this.searchHistroyList);
-      console.log(this.searchHistroyList, this.$store.state.searchHistroy, " at pages\\index\\search-result\\search-result.vue:115");
-      var url = this.$api.urls.searchPost + this.searchInput;
-      var data = {};
-      this.$api.req.get(url, data, function (res) {
-        console.log(res, " at pages\\index\\search-result\\search-result.vue:119");
-        if (res.data) {
-          _this.posts = res.data.map(function (item) {
-            console.log(item.issueTime, " at pages\\index\\search-result\\search-result.vue:122");
-            return {
-              id: item.postId,
-              userId: item.userId,
-              userHeadImg: "http://" + item.headImageUrl,
-              title: item.title,
-              publishTime: (0, _util.friendlyDate)(new Date(item.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
-              content: item.content,
-              userName: item.userName,
-              points: item.points,
-              watchNum: item.viewNum,
-              commentNum: item.commentNum,
-              approvalNum: item.approvalNum,
-              reportNum: item.reportNum,
-              postType: item.postType,
-              helpUserId: item.helpUserId };
-
-          });
+var _default = { data: function data() {return { searchInput: "", searchHistroyList: [], posts: [] };}, onLoad: function onLoad(options) {console.log(options, " at pages\\index\\search-result\\search-result.vue:62");this.searchInput = options.keyword;this.searchHistroyList = this.$store.state.searchHistroy;this.searchPost();}, methods: { searchPost: function searchPost() {var _this = this;this.searchHistroyList.unshift(this.searchInput); //向头部添加，这样最新的排在前面
+      this.$store.commit("saveSearchHistroy", this.searchHistroyList);console.log(this.searchHistroyList, this.$store.state.searchHistroy, " at pages\\index\\search-result\\search-result.vue:71");var url = this.$api.urls.searchPost + this.searchInput;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\index\\search-result\\search-result.vue:75");if (res.data) {_this.posts = res.data.map(function (item) {console.log(item.issueTime, " at pages\\index\\search-result\\search-result.vue:78");return { id: item.postId, userId: item.userId, userHeadImg: "http://" + item.headImageUrl, title: item.title, publishTime: (0, _util.friendlyDate)(new Date(item.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()), content: (0, _util.cutString)(item.content, 20), userName: item.userName, points: item.points, watchNum: item.viewNum, commentNum: item.commentNum, approvalNum: item.approvalNum, reportNum: item.reportNum, postType: item.postType, helpUserId: item.helpUserId };});
         }
       });
+    },
+
+    goDetail: function goDetail(e) {
+      var detail = { postId: this.posts[e.currentTarget.dataset.index].id };
+      uni.navigateTo({
+        url: '../post-detail/post-detail?query=' + encodeURIComponent(JSON.stringify(detail)) });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

@@ -1,10 +1,4 @@
 @import "@/app.scss";
-.content {
-	background: #fefefe;
-	border-top: 1px solid #e9e9e9;
-	margin: 0;
-	padding: 0;
-}
 .post-detail {
 	width: 750upx;
 	padding: 0 15upx;
@@ -60,6 +54,7 @@
 }
 .post-content {
 	width: 700upx;
+	word-break: break-all;
 	padding: 10upx;
 	@include font(28upx, 45upx, #343131, $align: left);
 }

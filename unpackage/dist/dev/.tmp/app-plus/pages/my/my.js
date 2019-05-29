@@ -147,24 +147,55 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
-  computed: (0, _vuex.mapState)(['hasLogin', 'uerInfo', 'token']),
+  computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']),
   data: function data() {
-    return {
-      userInfo: {
-        userName: '',
-        fallow: '',
-        collect: '',
-        points: '',
-        post: '',
-        comment: '',
-        avatarUrl: '' } };
-
-
+    return {};
   },
   onPullDownRefresh: function onPullDownRefresh() {
     if (this.hasLogin) {
@@ -189,96 +220,82 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         uni.navigateTo({
           url: 'login/login' });
 
-      };
+      }
     },
     goSetting: function goSetting() {
       uni.navigateTo({
         url: 'setting/setting' });
 
     },
-    goChangeUserInfo: function goChangeUserInfo() {
-      uni.navigateTo({
-        url: 'change-userInfo/change-userInfo' });
+    goMessage: function goMessage() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '../messages/messages' });
 
+      }
     },
     reFresh: function reFresh() {var _this = this;
-      var tokenTemp = this.token;
-      uni.request({
-        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
-        method: 'GET',
-        header: {
-          'token': tokenTemp },
-
-        success: function success(result) {
-          if (result.data.code === 0) {
-            uni.request({
-              url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
-              method: 'GET',
-              header: {
-                'token': tokenTemp },
-
-              success: function success(resultHeadImage) {
-                function User(name, token, fallow, collect, points, post, comment, url) {
-                  this.name = name;
-                  this.token = token;
-                  this.fallow = fallow;
-                  this.collect = collect;
-                  this.points = points;
-                  this.post = post;
-                  this.comment = comment;
-                  this.url = url;
-                }
-                if (resultHeadImage.data.code === 0) {
-                  var user = new User(result.data.data.name, tokenTemp, result.data.data.fallowNum, result.data.data.collectPostNum,
-                  result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' +
-                  resultHeadImage.data.data);
-                  _this.userInfo.userName = result.data.data.name;
-                  _this.userInfo.fallow = result.data.data.fallowNum;
-                  _this.userInfo.collect = result.data.data.collectPostNum;
-                  _this.userInfo.points = result.data.data.points;
-                  _this.userInfo.post = result.data.data.postNum;
-                  _this.userInfo.comment = result.data.data.commentNum;
-                  _this.userInfo.avatarUrl = 'http://' + resultHeadImage.data.data;
-                  _this.login(user);
-                  uni.stopPullDownRefresh();
-                }
-              },
-              fail: function fail() {
-                uni.showModal({
-                  content: "获取用户头像失败！",
-                  showCancel: false });
-
-              } });
-
-          }
-        },
-        fail: function fail() {
+      var url = _api.default.urls.getSelfUserInfo;
+      var data = {};
+      _api.default.req.get(url, data, function (res) {
+        if (res.code === 0) {
+          var urlHead = _api.default.urls.getHead;
+          var dataHead = {};
+          var userInfoGet = res.data;
+          _api.default.req.get(urlHead, dataHead, function (resHead) {
+            if (resHead.code === 0) {
+              userInfoGet.headUrl = 'http://' + resHead.data;
+              console.log(userInfoGet.headUrl, " at pages\\my\\my.vue:148");
+              delete userInfoGet.password;
+              _index.default.commit("saveUserInfo", userInfoGet);
+            } else {
+              userInfoGet.headUrl = '/static/icons/logo.png';
+            }
+          });
+          console.log(_this.userInfo, " at pages\\my\\my.vue:155");
+          uni.stopPullDownRefresh();
+        } else {
           uni.showModal({
             content: "获取用户信息失败！",
             showCancel: false });
 
-        } });
-
+        }
+      });
     },
     goFollow: function goFollow() {
-      uni.navigateTo({
-        url: 'my-follows/my-follows' //关注界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-follows/my-follows' //关注界面路径
+        });
+      }
     },
     goCollect: function goCollect() {
-      uni.navigateTo({
-        url: 'my-collects/my-collects' //收藏界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-collects/my-collects' //收藏界面路径
+        });
+      }
     },
     goPost: function goPost() {
-      uni.navigateTo({
-        url: 'my-post/my-post' //我的帖子界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-post/my-post' //我的帖子界面路径
+        });
+      }
     },
     goComment: function goComment() {
-      uni.navigateTo({
-        url: 'my-comments/my-comments' //我的评论界面路径
-      });
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: 'my-comments/my-comments' //我的评论界面路径
+        });
+      }
+    },
+    goEditInformation: function goEditInformation() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '../my/setting/edit-information/edit-information' //我的评论界面路径
+        });
+      }
     } },
   (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))

@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -132,9 +132,9 @@ var _default =
     var data = {};
     this.$api.req.get(url, data, function (res) {
       console.log(res, " at pages\\my\\my-follows\\my-follows.vue:34");
-      _this.myFollows = res.data.map(function (item, index) {
+      _this.myFollows = res.data.map(function (item) {
         return {
-          id: index,
+          id: item.id,
           userHeadImg: "http://" + item.imageUrl,
           name: item.name,
           isCertified: item.isCertified };
@@ -154,19 +154,20 @@ var _default =
         console.log(res, " at pages\\my\\my-follows\\my-follows.vue:54");
       });
     },
-    cancelAttention: function cancelAttention(e) {
-      /**
-                                                   * 
-                                                   * TODO
-                                                   * 
-                                                   */
+    cancelAttention: function cancelAttention(e) {var _this2 = this;
       var index = e.currentTarget.dataset.index;
       var url = this.$api.urls.cancelAttention;
-      var data = {};
-      // this.$api.req.del(url, data, (res) =>{
-      // 	console.log(res);
-      // })
+      var data = { beAttentionUserId: this.myFollows[index].id };
+      this.$api.req.del(url, data, function (res) {
+        console.log(res, " at pages\\my\\my-follows\\my-follows.vue:62");
+        _this2.myFollows.splice(e.currentTarget.dataset.index, 1);
+        uni.showToast({
+          icon: "none",
+          title: "取消关注成功" });
+
+      });
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

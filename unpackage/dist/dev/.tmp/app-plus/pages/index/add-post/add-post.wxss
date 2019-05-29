@@ -25,16 +25,16 @@
 /* 透明度 */
 /* 文章场景相关 */
 /*每个页面公共css */
-.content {
+.content.data-v-6128ef32 {
   background: #fefefe;
   border-top: 1px solid #e9e9e9;
 }
-.devide-line {
+.devide-line.data-v-6128ef32 {
   width: 100%;
   height: 1px;
   background: #e9e9e9;
 }
-.normal-icon-box {
+.normal-icon-box.data-v-6128ef32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -51,12 +51,12 @@
   margin-top: 10rpx;
   width: 120rpx;
 }
-.normal-icon-box-icon {
+.normal-icon-box-icon.data-v-6128ef32 {
     width: 36rpx;
     height: 36rpx;
     margin: 7rpx 10rpx;
 }
-.normal-icon-box-text {
+.normal-icon-box-text.data-v-6128ef32 {
     max-width: 60rpx;
     font-size: 26rpx;
     line-height: 50rpx;
@@ -64,7 +64,7 @@
     text-align: left;
     font-weight: normal;
 }
-.big-icon-box {
+.big-icon-box.data-v-6128ef32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -80,13 +80,13 @@
           justify-content: center;
   width: 120rpx;
 }
-.big-icon-box-icon {
+.big-icon-box-icon.data-v-6128ef32 {
     width: 34rpx;
     height: 34rpx;
     padding: 3rpx 0;
     margin-right: 5rpx;
 }
-.big-icon-box-text {
+.big-icon-box-text.data-v-6128ef32 {
     max-width: 75rpx;
     font-size: 30rpx;
     line-height: 40rpx;
@@ -94,23 +94,21 @@
     text-align: left;
     font-weight: normal;
 }
-.normal-icon {
+.normal-icon.data-v-6128ef32 {
   width: 36rpx;
   height: 36rpx;
   margin: 7rpx 10rpx;
 }
-.large-icon {
+.large-icon.data-v-6128ef32 {
   width: 45rpx;
   height: 45rpx;
   margin: 7rpx 10rpx;
 }
-.add-post-box {
+.add-post-box.data-v-6128ef32 {
   padding: 0 15rpx;
 }
-.post-title {
-  width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+.post-title.data-v-6128ef32 {
+  width: 710rpx;
   padding: 10rpx 5rpx;
   font-size: 45rpx;
   line-height: 50rpx;
@@ -118,7 +116,7 @@
   text-align: left;
   font-weight: normal;
 }
-.title-placeholder {
+.title-placeholder.data-v-6128ef32 {
   padding: 10rpx 5rpx;
   font-size: 45rpx;
   line-height: 50rpx;
@@ -126,8 +124,8 @@
   text-align: left;
   font-weight: normal;
 }
-.post-content {
-  width: 100%;
+.post-content.data-v-6128ef32 {
+  width: 720rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 600rpx;
@@ -138,14 +136,14 @@
   text-align: left;
   font-weight: normal;
 }
-.title-word-count, .content-word-count {
+.title-word-count.data-v-6128ef32, .content-word-count.data-v-6128ef32 {
   font-size: 22rpx;
   line-height: 40rpx;
   color: #666;
   text-align: right;
   font-weight: normal;
 }
-.content-placeholder {
+.content-placeholder.data-v-6128ef32 {
   font-size: 30rpx;
   line-height: 40rpx;
   color: #666;
@@ -153,12 +151,12 @@
   font-weight: normal;
   color: #c9c9c9;
 }
-.content-word-count {
+.content-word-count.data-v-6128ef32 {
   position: fixed;
   bottom: 230rpx;
   right: 35rpx;
 }
-.tags-box {
+.tags-box.data-v-6128ef32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -184,7 +182,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-.tag, .set-points, .set-sort, .post-points, .post-sorted {
+.tag.data-v-6128ef32, .set-points.data-v-6128ef32, .set-sort.data-v-6128ef32, .post-points.data-v-6128ef32, .post-sorted.data-v-6128ef32 {
   font-size: 28rpx;
   line-height: 40rpx;
   color: #666;
@@ -197,7 +195,7 @@
   margin: 5rpx;
   background: #f6f6f6;
 }
-.tag-input-box {
+.tag-input-box.data-v-6128ef32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -225,7 +223,7 @@
   border-radius: 10rpx;
   padding-left: 15rpx;
 }
-.tag-input-box-input {
+.tag-input-box-input.data-v-6128ef32 {
     font-size: 32rpx;
     line-height: 32rpx;
     color: #343131;
@@ -239,7 +237,7 @@
             flex: 1;
     background: #fefefe;
 }
-.tag-input-box-add-btn {
+.tag-input-box-add-btn.data-v-6128ef32 {
     padding: 0 20rpx;
     font-size: 32rpx;
     line-height: 58rpx;
@@ -248,13 +246,13 @@
     font-weight: normal;
     background: #0099ff;
 }
-.tag-input-box-icon-cancel {
+.tag-input-box-icon-cancel.data-v-6128ef32 {
     width: 36rpx;
     height: 36rpx;
     padding: 12rpx 8rpx;
     background: #f6f6f6;
 }
-.add-post-bottom {
+.add-post-bottom.data-v-6128ef32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -268,7 +266,7 @@
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 100%;
+  width: 750rpx;
   height: 120rpx;
   padding: 30rpx 10rpx;
   position: fixed;
@@ -278,7 +276,7 @@
   left: 0;
   border-top: 1px solid #c9c9c9;
 }
-.row-left {
+.row-left.data-v-6128ef32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -297,7 +295,7 @@
       -ms-flex: 1;
           flex: 1;
 }
-.row-right {
+.row-right.data-v-6128ef32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -313,13 +311,13 @@
           justify-content: space-between;
   margin-right: 20rpx;
 }
-.normal-icon {
+.normal-icon.data-v-6128ef32 {
   width: 40rpx;
   height: 40rpx;
   margin: 7rpx 10rpx;
   margin: 7rpx 10rpx;
 }
-.send {
+.send.data-v-6128ef32 {
   font-size: 32rpx;
   line-height: 45rpx;
   color: #fefefe;

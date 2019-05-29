@@ -3,8 +3,7 @@
 	padding: 0 15upx;
 }
 .post-title {
-	width: 100%;
-	box-sizing: border-box;
+	width: 710upx;
 	padding: 10upx 5upx;
 	@include font(45upx, 50upx, #666, $align: left);
 }
@@ -13,7 +12,7 @@
 	@include font(45upx, 50upx, #666, $align: left);
 }
 .post-content {
-	width: 100%;
+	width: 720upx;
 	box-sizing: border-box;
 	height: 600upx;
 	padding: 10upx 5upx;
@@ -85,7 +84,7 @@
 }
 .add-post-bottom {
 	@include row;
-	width: 100%;
+	width: 750upx;
 	height: 120upx;
 	padding: 30upx 10upx;
 	position: fixed;

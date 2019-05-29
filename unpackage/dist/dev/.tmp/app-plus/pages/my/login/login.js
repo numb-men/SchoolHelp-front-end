@@ -128,16 +128,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../../校园帮/SchoolHelp-front-end/components/m-input.vue"));};var _default =
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 
 
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../../校园帮/SchoolHelp-front-end/components/m-input.vue"));};var _default =
 
 {
   components: {
     mInput: mInput },
 
+  computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']),
   data: function data() {
     return {
       loading: false,
@@ -149,7 +152,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
       msg: '' };
 
   },
-  computed: (0, _vuex.mapState)(['forcedLogin']),
+  // computed: mapState(['forcedLogin']),
   methods: _objectSpread({
     /**
                             * 第三方授权初始化
@@ -183,7 +186,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
                                             */
       this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
     },
-    bindLogin: function bindLogin() {var _this = this;
+    bindLogin: function bindLogin() {
       var regNumber = /\d+/; //验证0-9的任意数字最少出现1次。
       var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
       // var pages = getCurrentPages();
@@ -230,87 +233,80 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
          * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
          */
       var loginData = {
-        account: this.account,
+        phone: this.account,
         password: this.password };
 
-      uni.request({
-        url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/login',
-        method: 'GET',
-        data: {
-          phone: loginData.account,
-          password: loginData.password },
+      var url = _api.default.urls.login;
+      var data = {
+        phone: loginData.phone,
+        password: loginData.password };
 
-        success: function success(res) {
-          console.log(res, " at pages\\my\\login\\login.vue:144");
-          if (res.data.code === 0) {
-            uni.showToast({
-              icon: 'none',
-              title: '登陆成功' });
+      _api.default.req.get(url, data, function (res) {
+        if (res.code === 0) {
+          _index.default.commit("login", res.data);
+          uni.showToast({
+            icon: 'none',
+            title: '登陆成功' });
 
-
-            uni.request({
-              url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/user',
-              method: 'GET',
-              header: {
-                'token': res.data.data },
-
-              success: function success(result) {
-                if (result.data.code === 0) {
-                  uni.request({
-                    url: 'http://134.175.16.143:8080/schoolhelp-1.0.1/download/head',
-                    method: 'GET',
-                    header: {
-                      'token': res.data.data },
-
-                    success: function success(resultHeadImage) {
-                      function User(name, token, fallow, collect, points, post, comment, url) {
-                        this.name = name;
-                        this.token = token;
-                        this.fallow = fallow;
-                        this.collect = collect;
-                        this.points = points;
-                        this.post = post;
-                        this.comment = comment;
-                        this.url = url;
-                      }
-                      if (resultHeadImage.data.code === 0) {
-                        var user = new User(result.data.data.name, res.data.data, result.data.data.fallowNum, result.data.data.collectPostNum,
-                        result.data.data.points, result.data.data.postNum, result.data.data.commentNum, 'http://' + resultHeadImage.data.data);
-                        _this.login(user);
-                        uni.navigateBack();
-                      }
-                      console.log(resultHeadImage, " at pages\\my\\login\\login.vue:182");
-                    },
-                    fail: function fail() {
-                      uni.showModal({
-                        content: "获取用户头像失败！",
-                        showCancel: false });
-
-                    } });
-
+          var urlInfo = _api.default.urls.getSelfUserInfo;
+          var dataInfo = {};
+          _api.default.req.get(urlInfo, dataInfo, function (resInfo) {
+            if (resInfo.code === 0) {
+              var urlHead = _api.default.urls.getHead;
+              var dataHead = {};
+              _api.default.req.get(urlHead, dataHead, function (resHead) {
+                if (resHead.code === 0) {
+                  var userInfoAndHead = resInfo.data;
+                  userInfoAndHead.headUrl = 'http://' + resHead.data;
+                  delete userInfoAndHead.password;
+                  _index.default.commit("saveUserInfo", userInfoAndHead);
+                } else {
+                  var _userInfoAndHead = resInfo.data;
+                  _userInfoAndHead.headUrl = '/static/icons/logo.png';
+                  delete _userInfoAndHead.password;
+                  _index.default.commit("saveUserInfo", _userInfoAndHead);
                 }
-              },
-              fail: function fail() {
-                uni.showModal({
-                  content: "获取用户信息失败！",
-                  showCancel: false });
+              });
+            } else {
+              uni.showModal({
+                content: "获取用户信息失败！",
+                showCancel: false });
 
-              } });
-
-          } else {
-            uni.showModal({
-              content: "用户名密码错误！",
-              showCancel: false });
-
-          }
-        },
-        fail: function fail(res) {
+            }
+          });
+          uni.navigateBack();
+        } else if (res.code === -200) {
           uni.showModal({
-            content: "请求失败，请重试！",
+            content: "无效手机号！",
             showCancel: false });
 
-        } });
+          return;
+        } else if (res.code === -6) {
+          uni.showModal({
+            content: "密码错误！",
+            showCancel: false });
 
+          return;
+        } else if (res.code === -2) {
+          uni.showModal({
+            content: "用户不存在！",
+            showCancel: false });
+
+          return;
+        } else if (res.code === -100) {
+          uni.showModal({
+            content: "手机号和密码不能为空！",
+            showCancel: false });
+
+          return;
+        } else {
+          uni.showModal({
+            content: "未知错误！",
+            showCancel: false });
+
+          return;
+        }
+      });
     },
     // oauth(value) {
     // 	uni.login({

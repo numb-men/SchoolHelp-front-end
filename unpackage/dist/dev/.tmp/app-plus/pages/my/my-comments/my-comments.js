@@ -175,9 +175,16 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { name: 'slide-list', data: function data() {return { commentList: [] };}, methods: { loadPostData: function loadPostData() {var _this = this;this.commentList.map(function (item, index) {var url = _this.$api.urls.getEasyPost + item.postId;var data = {};_this.$api.req.get(url, data, function (res) {item.postTitle = res.data.title;item.post = res.data;});});}, deleteAComment: function deleteAComment(e) {var _this2 = this;console.log(e, " at pages\\my\\my-comments\\my-comments.vue:63");var url = this.$api.urls.deleteAComment;var data = { commentId: this.commentList[e.currentTarget.dataset.index].id };this.$api.req.del(url, data, function (res) {console.log(res, " at pages\\my\\my-comments\\my-comments.vue:67");_this2.commentList.splice(e.currentTarget.dataset.index, 1);uni.showToast({ icon: "none", title: "删除成功" });});} }, onLoad: function onLoad() {var _this3 = this;var url = this.$api.urls.getAllUserComments;var data = {};
+var _default = { name: 'slide-list', data: function data() {return { commentList: [] };}, methods: { loadPostData: function loadPostData() {var _this = this;this.commentList.map(function (item, index) {var url = _this.$api.urls.getEasyPost + item.postId;var data = {};_this.$api.req.get(url, data, function (res) {item.postTitle = res.data.title;item.post = res.data;});});}, deleteAComment: function deleteAComment(e) {var _this2 = this;console.log(e, " at pages\\my\\my-comments\\my-comments.vue:64");var url = this.$api.urls.deleteAComment;var data = { commentId: this.commentList[e.currentTarget.dataset.index].id };this.$api.req.del(url, data, function (res) {console.log(res, " at pages\\my\\my-comments\\my-comments.vue:68");_this2.commentList.splice(e.currentTarget.dataset.index, 1);uni.showToast({ icon: "none", title: "删除成功" });});}, goDetail: function goDetail(e) {var detail = { postId: this.commentList[e.currentTarget.dataset.index].postId };uni.navigateTo({
+        url: '../../index/post-detail/post-detail?query=' + encodeURIComponent(JSON.stringify(detail)) });
+
+    } },
+
+  onLoad: function onLoad() {var _this3 = this;
+    var url = this.$api.urls.getAllUserComments;
+    var data = {};
     this.$api.req.get(url, data, function (res) {
-      console.log(res, " at pages\\my\\my-comments\\my-comments.vue:80");
+      console.log(res, " at pages\\my\\my-comments\\my-comments.vue:87");
       _this3.commentList = res.data.map(function (item) {
         return {
           id: item.commentId,
@@ -186,7 +193,7 @@ var _default = { name: 'slide-list', data: function data() {return { commentList
           postTitle: "",
           post: {},
           commentUserName: item.commentUserName,
-          content: item.commentContent,
+          content: (0, _util.cutString)(item.commentContent, 20),
           time: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
           headImageUrl: "http://" + item.headImageUrl };
 

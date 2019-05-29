@@ -104,12 +104,6 @@
   height: 45rpx;
   margin: 7rpx 10rpx;
 }
-.content.data-v-7d9ace20 {
-  background: #fefefe;
-  border-top: 1px solid #e9e9e9;
-  margin: 0;
-  padding: 0;
-}
 .post-detail.data-v-7d9ace20 {
   width: 750rpx;
   padding: 0 15rpx;
@@ -236,6 +230,7 @@
 }
 .post-content.data-v-7d9ace20 {
   width: 700rpx;
+  word-break: break-all;
   padding: 10rpx;
   font-size: 28rpx;
   line-height: 45rpx;
