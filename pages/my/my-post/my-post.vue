@@ -1,148 +1,99 @@
 <template>
-	<view @click="goBack">
-		<view class="message-num">{{ message_num }}条提问</view>
-		<view class="index" v-bind:style="[{ 'min-height': secondHeight + 'px' }]">
-			<view class="list-box">
-				<view style="margin-top: 10upx;"></view>
-				<view class="container_of_slide" v-for="(item, index) in list" :key="index">
-					<view class="now-message-info" hover-class="uni-list-cell-hover" :style="{ width: Screen_width + 'px' }" @click="getDetail(item)">
-						<view class="list-right">
-							<view class="list-title" v-if="item.name">{{ item.name }}</view>
-							<view class="list-detail">{{ item.remarks }}</view>
-							<view class="list-left-1">
-								{{ item.dateTime }}
-								<view class="list-right-1">修改 删除</view>
-							</view>
+	<view id="my-post" class="content">
+		<!-- 帖子数目 -->
+		<view class="post-num">
+			{{postList.length}} 个帖子
+		</view>
+		<!-- 帖子列表 -->
+		<view v-for="(post, index) in postList" :key="post.id">
+			<view class="post-box" :data-index="index" :id="post.id" @click="goDetail">
+				<!-- 帖子内容 -->
+				<view class="post-box-title">
+					{{post.title}}
+				</view>
+				<!-- 帖子底部区域：时间、操作 -->
+				<view class="post-box-bottom">
+					<view class="post-box-bottom-time">{{post.time}}</view>
+					<view class="post-box-bottom-operation">
+						<!-- <view class="big-icon-box">
+							<image src="/static/icons/edit.png" class="big-icon-box-icon"></image>
+							<view class="big-icon-box-text">修改</view>
+						</view> -->
+						<view class="big-icon-box" @click="deleteAPost" :data-index="index">
+							<image src="/static/icons/delete.png" class="big-icon-box-icon"></image>
+							<view class="big-icon-box-text">删除</view>
 						</view>
 					</view>
-					<view style="clear:both"></view>
 				</view>
-				<view class="end-message">没有更多内容</view>
 			</view>
+			<!-- 分割线 -->
+			<view class="devide-line"></view>
 		</view>
 	</view>
 </template>
 
 <script>
+import {
+	friendlyDate
+} from '@/common/util.js';
+
 export default {
-	name: 'slide-list',
-	computed: {
-		Screen_width() {
-			return uni.getSystemInfoSync().windowWidth;
-		}
-	},
+		
+	name: 'my-post',
 	data() {
 		return {
-			message_num: 4,
-			list: [
-				{
-					id: 1,
-					name: '锐捷租借',
-					dateTime: '2019-03-18',
-					remarks: '...'
-				},
-				{
-					id: 2,
-					name: '锐捷租借',
-					dateTime: '2019-03-17',
-					remarks: '...'
-				},
-				{
-					id: 3,
-					name: '锐捷租借',
-					dateTime: '2019-03-18',
-					remarks: '...'
-				},
-				{
-					id: 4,
-					name: '锐捷租借',
-					dateTime: '2019-03-18',
-					remarks: '...'
-				}
-			],
-			secondHeight: ''
+			postIdList: [],
+			postList: []
 		};
 	},
-	onShow() {
-		const res = uni.getSystemInfoSync();
-		// 计算主体部分高度,单位为px
-		this.secondHeight = res.windowHeight;
+	onLoad() {
+		var url = this.$api.urls.getMyPosts;
+		var data = {};
+		this.$api.req.get(url, data, (res) =>{
+			console.log(res);
+			this.postIdList = res.data;
+			this.getPosts();
+		});
 	},
 	methods: {
-		goBack(){
-			uni.navigateTo({
-				url:"../contents/contents"
+		getPosts() {
+			this.postIdList.map((postId) =>{
+				var url = this.$api.urls.getEasyPost + postId;
+				var data = {};
+				this.$api.req.get(url, data, (res) =>{
+					// console.log(res);
+					this.postList.push({
+						id: res.data.postId,
+						title: res.data.title,
+						time: friendlyDate(new Date(res.data.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime())
+					})
+				});
+			});
+		},
+		deleteAPost(e) {
+			console.log(e);
+			var id = this.postList[e.currentTarget.dataset.index].id;
+			var url = this.$api.urls.deleteAPost;
+			var data = {postId: id};
+			this.$api.req.del(url, data, (res) =>{
+				console.log(res);
+				uni.showToast({
+					icon: "none",
+					title: "删除成功！"
+				})
+				this.postList.splice(e.currentTarget.dataset.index, 1);
 			})
 		},
-		getDetail(item) {
-			console.log('查看详情');
-		}
+		goDetail(e) {
+			var detail = {postId: this.postList[e.currentTarget.dataset.index].id};
+			uni.navigateTo({
+				url: '../../index/post-detail/post-detail?query=' + encodeURIComponent(JSON.stringify(detail))
+			});
+		},
 	}
 };
 </script>
 
-<style scoped>
-.index {
-	background: #f8f8f8;
-}
-.list-box {
-	padding: 10upx 0;
-}
-.container_of_slide {
-	width: 100%;
-	overflow: hidden;
-}
-.now-message-info {
-	box-sizing: border-box;
-	display: flex;
-	align-items: center;
-	clear: both;
-	height: 200upx;
-	padding: 0 5upx;
-	margin-bottom: 10upx;
-	background: #ffffff;
-}
-.list-right {
-	margin-left: 25upx;
-	font-size: 25upx;
-}
-.list-left-1 {
-	float: left;
-	padding-top: 20upx;
-	color: #a9a9a9;
-}
-.list-right-1 {
-	float: right;
-	color: #a9a9a9;
-	padding-left: 400upx;
-}
-.list-title {
-	overflow: hidden;
-	font-size: 35upx;
-	margin-bottom: 10upx;
-	color: #696969;
-	overflow: hidden;
-}
-.list-detail {
-	width: 350upx;
-	font-size: 25upx;
-	color: #999999;
-	padding: 5upx;
-	overflow: hidden;
-}
-.end-message {
-	text-align: center;
-	font-size: 30upx;
-	color: #999999;
-	padding-top: 5upx;
-}
-.message-num {
-	font-size: 35upx;
-	color: #999999;
-	padding: 5upx;
-	background: #f8f8f8;
-}
-.uni-list-cell-hover {
-	background-color: #eeeeee;
-}
+<style lang="scss" scoped>
+	@import "./my-post.scss";
 </style>

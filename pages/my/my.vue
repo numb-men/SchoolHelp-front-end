@@ -2,38 +2,35 @@
     <view class="root">
         <view class="head-nav">
             <text class="head-text">我的</text>
-            <image class="head-setting" src="../../static/icons/setting1.png" @click="goSetting"></image>
             <image class="head-notification" src="../../static/icons/notification.png" @click="goMessage"></image>
+            <image class="head-setting" src="../../static/icons/setting1.png" @click="goSetting"></image>
         </view>
         <view class="center">
             <view class="logo-backgroud">
                 <view class="logo">
                     <view class="img">
                         <image v-if="!hasLogin" class="logo-img" @click="goLogin" hover-class="logo-hover" src="/static/icons/logo.png"></image>
-                        <image v-else class="logo-img" :src="userInfo.headUrl"></image>
+                        <image v-else class="logo-img" :src="userInfo.headImageUrl"></image>
                     </view>
                     <view class="logo-title">
                         <view v-if="!hasLogin" @click="goLogin" class="user-name">登录</view>
                         <view v-else class="user-name">{{userInfo.name}}</view>
-                        <!-- <text class="go-login navigat-arrow" v-if="!hasLogin">&#xe65e;</text> -->
                     </view>
                 </view>
                 <view>
                     <image @click="goEditInformation()" class="logo-edit" src="../../static/icons/edit_information.png"></image>
                 </view>
-                <view>
-                    <text class="point-text">$积分&#xe65e;</text>
+                <view class="points" @click="goPoints">
+                    <text v-if="userInfo.points" class="point-text">${{userInfo.points}}积分&#xe65e;</text>
+                    <text v-else class="point-text">$0积分&#xe65e;</text>
                 </view>
             </view>
-
             <view class="body">
                 <div class="basic-data">
                     <div class="basic-data-item" @click="goFollow"><text>关注</text><text>{{userInfo.followNum}}</text></div>
                     <div class="basic-data-item" @click="goCollect"><text>收藏</text><text>{{userInfo.collectPostNum}}</text></div>
                     <div class="basic-data-item" @click="goPost"><text>帖子</text><text>{{userInfo.postNum}}</text></div>
                     <div class="basic-data-item-last" @click="goComment"><text>评论</text><text>{{userInfo.commentNum}}</text></div>
-                    <!-- <div class="basic-data-item"><text>{{userInfo.points}}</text><text>我的积分</text>
-					</div> -->
                 </div>
             </view>
             <!-- <view class="center-list">
@@ -57,18 +54,18 @@
 			</view> -->
             <view class="image-con">
                 <view class="left-up">
-                    <image class="left-up-img" src="../../static/images/my_2.jpg"></image>
+                    <image class="left-up-img" src="../../static/images/FZU-scenery-1.jpg"></image>
                 </view>
                 <view class="right-up">
-                    <image class="right-up-img" src="../../static/images/my_3.jpg"></image>
+                    <image class="right-up-img" src="../../static/images/FZU-scenery-2.jpg"></image>
                 </view>
             </view>
             <view class="image-con">
                 <view class="left-bottom">
-                    <image class="left-bottom-img" src="../../static/images/my_1.jpg"></image>
+                    <image class="left-bottom-img" src="../../static/images/FZU-scenery-3.jpg"></image>
                 </view>
                 <view class="right-bottom">
-                    <image class="right-bottom-img" src="../../static/images/my_4.jpg"></image>
+                    <image class="right-bottom-img" src="../../static/images/FZU-scenery-4.jpg"></image>
                 </view>
             </view>
             <!-- <view id="container">
@@ -100,14 +97,18 @@
         onPullDownRefresh: function() {
             if (this.hasLogin) {
                 this.reFresh();
+                uni.stopPullDownRefresh();
             } else {
                 uni.stopPullDownRefresh();
                 return;
             }
-            setTimeout(() => {
-                uni.hideLoading()
-                uni.stopPullDownRefresh()
-            }, 1000)
+        },
+        onShow() {
+            if (this.hasLogin) {
+                this.reFresh();
+            } else {
+                return;
+            }
         },
         methods: {
             bindLogin() {
@@ -133,43 +134,26 @@
             },
             goMessage() {
                 if (this.hasLogin) {
-                    uni.navigateTo({
+                    uni.reLaunch({
                         url: '../../pages/messages/messages'
                     })
                 }
             },
+            goPoints() {
+                if (this.hasLogin) {
+                    // console.log("in2")
+                    // uni.reLaunch({
+                    //     url: '../../pages/my/point'
+                    // })
+                }
+            },
             reFresh() {
-                var url = api.urls.getSelfUserInfo;
-                var data = {};
-                api.req.get(url, data, (res) => {
-                    if (res.code === 0) {
-                        var urlHead = api.urls.getHead;
-                        var dataHead = {};
-                        let userInfoGet = res.data;
-                        api.req.get(urlHead, dataHead, (resHead) => {
-                            if (resHead.code === 0) {
-                                userInfoGet.headUrl = 'http://' + resHead.data;
-                                console.log(userInfoGet.headUrl);
-                                delete userInfoGet.password;
-                                store.commit("saveUserInfo", userInfoGet);
-                            } else {
-                                userInfoGet.headUrl = '/static/icons/logo.png';
-                            }
-                        });
-                        console.log(this.userInfo);
-                        uni.stopPullDownRefresh();
-                    } else {
-                        uni.showModal({
-                            content: res.msg,
-                            showCancel: false
-                        })
-                    }
-                });
+                api.req.getUserInfo()
             },
             goFollow() {
                 if (this.hasLogin) {
                     uni.navigateTo({
-                        url: 'my-fallows/my-fallows' //关注界面路径
+                        url: 'my-follows/my-follows' //关注界面路径
                     });
                 }
             },
@@ -197,7 +181,7 @@
             goEditInformation() {
                 if (this.hasLogin) {
                     uni.navigateTo({
-                        url: '../../pages/my/setting/change-userInfo/change-userInfo' //修改用户资料路径
+                        url: '../../pages/my/setting/change-userInfo/change-userInfo' //我的评论界面路径
                     });
                 }
             },
@@ -256,7 +240,7 @@
         left: 680upx;
         width: 60upx;
         height: 55upx;
-        margin-left: 10upx;
+        margin-right: 20upx;
     }
 
     .head-notification {
@@ -265,6 +249,7 @@
         left: 610upx;
         width: 60upx;
         height: 55upx;
+        z-index: 10000;
     }
 
     .basic-data {
@@ -384,21 +369,27 @@
         height: 70upx;
     }
 
-    .point-text {
-        font-family: texticons;
+    .points {
         position: absolute;
-        height: 50upx;
         top: 90upx;
-        left: 580upx;
-        font-size: 34upx;
-        color: #555;
-        text-align: center;
+        left: 510upx;
+        /* width: 50upx; */
+        max-width: 200upx;
         border-width: 1upx;
         border-color: #FFFFFF;
         border-style: solid;
         box-shadow: 1px 1px 5px #888888;
         background-color: #FFFFFF;
         border-radius: 10upx;
+        height: 50upx;
+    }
+
+    .point-text {
+        width: 100%;
+        font-family: texticons;
+        font-size: 34upx;
+        color: #555;
+        text-align: center;
     }
 
     .center-list {

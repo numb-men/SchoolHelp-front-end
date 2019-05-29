@@ -1,7 +1,7 @@
 <template>
-	<view class="content">
+	<view id="my-collects" class="content">
 		<view v-for="(postItem, index) in posts" :key="postItem.id"
-			:id="postItem.id" :data-index="index">
+			:id="postItem.id" :data-index="index" @click="goDetail">
 			<view class="post-item">
 				<view class="post-item-top">
 					<view class="post-title">{{postItem.title}}</view>
@@ -34,65 +34,68 @@
 </template>
 
 <script>
+	import {
+		friendlyDate,
+		cutString
+	} from "@/common/util.js";
+	
 	export default {
 		data() {
 			return {
-				posts: [
-					{
-						id: 1,
-						userHeadImg: "/static/images/img_1.jpg",
-						title: "出国留学小白求指教",
-						publishTime: "8:00",
-						content: "请问哪位大神知道出国留学有什么流程呢？",
-						userName: "衡与墨",
-						points: 10,
-						watchNum: 43,
-						commentNum: 2,
-					},
-					{
-						id: 2,
-						userHeadImg: "/static/images/img_2.jpg",
-						title: "最近有嘉锡讲坛吗？",
-						publishTime: "6:20",
-						content: "...",
-						userName: "kilig",
-						points: 20,
-						watchNum: 43,
-						commentNum: 2,
-					},
-					{
-						id: 3,
-						userHeadImg: "/static/images/img_3.jpg",
-						title: "求陈**老师的联系方式，急急急",
-						publishTime: "8:00",
-						content: "对他的细胞克隆猴项目感兴趣，希望加入其中",
-						userName: "fishkk",
-						points: 10,
-						watchNum: 43,
-						commentNum: 2,
-					},
-					{
-						id: 4,
-						userHeadImg: "/static/images/img_4.jpg",
-						title: "北京",
-						publishTime: "8:00",
-						content: "...",
-						userName: "lc",
-						points: 10,
-						watchNum: 43,
-						commentNum: 2,
-					},
-				]
+				posts: []
 			}
 		},
+		onLoad() {
+			var url = this.$api.urls.getAllCollects;
+			var data = {};
+			this.$api.req.get(url, data, (res) =>{
+				console.log(res);
+				this.posts = res.data.map((item) =>{
+					return {
+						id: item.postId,
+						userHeadImg: "http://"+item.imageUrl,
+						title: item.title,
+						content: cutString(item.content, 20),
+						userName: item.name,
+						publishTime: "8:00",
+						points: 10,
+						watchNum: 43,
+						commentNum: 2,
+					}
+				})
+				this.getPosts();
+			})
+		},
 		methods: {
-			
+			getPosts() {
+				this.posts.map((item) =>{
+					let postId = item.id;
+					var url = this.$api.urls.getEasyPost + postId;
+					var data = {};
+					this.$api.req.get(url, data, (res) =>{
+						console.log(res);
+						item.publishTime = friendlyDate(new Date(res.data.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime());
+						item.points = res.data.points;
+						item.watchNum = res.data.viewNum;
+						item.commentNum = res.data.commentNum;
+					});
+				});
+			},
+			goDetail(e) {
+				var detail = {postId: this.posts[e.currentTarget.dataset.index].id};
+				uni.navigateTo({
+					url: '../../index/post-detail/post-detail?query=' + encodeURIComponent(JSON.stringify(detail))
+				});
+			},
 		}
 	}
 </script>
 
 <style lang="scss">
 	@import "@/app.scss";
+	#my-collects {
+		width: 750upx;
+	}
 	.post-item {
 		@include column;
 		padding: 17upx 35upx;

@@ -51,7 +51,7 @@ page {
         left: 680rpx;
         width: 60rpx;
         height: 55rpx;
-        margin-left: 10rpx;
+        margin-right: 20rpx;
 }
 .head-notification {
         position: absolute;
@@ -59,6 +59,7 @@ page {
         left: 610rpx;
         width: 60rpx;
         height: 55rpx;
+        z-index: 10000;
 }
 .basic-data {
         /* height: 120upx; */
@@ -214,15 +215,12 @@ page {
         width: 70rpx;
         height: 70rpx;
 }
-.point-text {
-        font-family: texticons;
+.points {
         position: absolute;
-        height: 50rpx;
         top: 90rpx;
-        left: 580rpx;
-        font-size: 34rpx;
-        color: #555;
-        text-align: center;
+        left: 510rpx;
+        /* width: 50upx; */
+        max-width: 200rpx;
         border-width: 1rpx;
         border-color: #FFFFFF;
         border-style: solid;
@@ -230,6 +228,14 @@ page {
                 box-shadow: 1px 1px 5px #888888;
         background-color: #FFFFFF;
         border-radius: 10rpx;
+        height: 50rpx;
+}
+.point-text {
+        width: 100%;
+        font-family: texticons;
+        font-size: 34rpx;
+        color: #555;
+        text-align: center;
 }
 .center-list {
         position: relative;

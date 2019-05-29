@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "搜索结果",
-  "usingComponents": {
-    "m-search": "/components/mehaotian-search-revision/mehaotian-search-revision"
-  }
+  "usingComponents": {}
 }

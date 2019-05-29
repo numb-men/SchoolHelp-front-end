@@ -1,0 +1,36 @@
+@import "@/app.scss";
+.post {
+	
+	&-num {
+		box-sizing: border-box;
+		width: 750upx;
+		padding: 15upx 0;
+		padding-left: 30upx;
+		background: #f1f1f1;
+		@include font(30upx, 35upx, $align: left, $color: #666);
+	}
+	
+	&-box {
+		padding: 30upx 20upx;
+		background: #fefefe;
+		
+		&-title {
+			width: 710upx;
+			margin-bottom: 55upx;
+			@include font(32upx, 40upx, $align: left, $color: #343131);
+		}
+		
+		&-bottom {
+			@include row;
+			width: 710upx;
+			
+			&-time {
+				@include font(30upx, 40upx, $color: #a9a9a9);
+			}
+			
+			&-operation {
+				@include row;
+			}
+		}
+	}
+}

@@ -5,7 +5,7 @@
         <!-- 用户资料 -->
         <view class="userInfo">
             <!-- 用户头像 -->
-            <image class="userInfo-head-img" :src="userInfo.headUrl" @click="chooseImage"></image>
+            <image class="userInfo-head-img" :src="userInfo.headImageUrl" @click="goUploadImage"></image>
 
             <!-- 顶部 -->
             <view class="userInfo-top">
@@ -27,8 +27,7 @@
             <view class="devide-line"></view>
             <view class="userInfo-item">
                 <view class="userInfo-item-label">性别</view>
-                <input v-if="userInfo.sex" type="text" v-model="male" class="userInfo-item-edit-input" maxlength="1" />
-                <input v-else type="text" v-model="female" class="userInfo-item-edit-input" maxlength="1" />
+                <input type="text" v-model="userInfo.sex" class="userInfo-item-edit-input" maxlength="1" />
             </view>
             <view class="devide-line"></view>
             <view class="userInfo-item">
@@ -48,7 +47,7 @@
             <view class="devide-line"></view>
             <view class="userInfo-item">
                 <view class="userInfo-item-label">邮箱</view>
-                <input type="text" v-model="userInfo.password" class="userInfo-item-edit-input" maxlength="25" />
+                <input type="text" v-model="userInfo.mail" class="userInfo-item-edit-input" maxlength="25" />
             </view>
             <view class="devide-line"></view>
             <view class="userInfo-item">
@@ -73,26 +72,63 @@
                 female: '女'
             };
         },
-        onLoad() {},
+        onShow() {
+            api.req.getUserInfo()
+        },
         methods: {
-            chooseImage() {
-                uni.chooseImage({
-                    count: 1, //默认9
-                    // sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-                    sourceType: ['album'], //从相册选择
-                    success: function(res) {
-                        console.log(JSON.stringify(res.tempFilePaths));
-                        userInfo.headUrl = res.tempFilePaths[0];
-                    }
-                });
+            goUploadImage() {
+                uni.navigateTo({
+                    url:'upload'
+                })
             },
             saveChange() {
-                /* || userInfo.sex.length == 0 || userInfo.studentNum.length == 0 || userInfo.major.length == 0 || userInfo.college.length == 0 || userInfo.college.mail == 0*/
                 if (this.userInfo.name.length == 0) {
                     this.loading = false;
                     uni.showToast({
                         icon: 'none',
                         title: '用户名不能为空'
+                    });
+                    return;
+                } else if (this.userInfo.phone.length == 0) {
+                    this.loading = false;
+                    uni.showToast({
+                        icon: 'none',
+                        title: '手机号不能为空'
+                    });
+                    return;
+                } else if (this.userInfo.sex.length == 0) {
+                    this.loading = false;
+                    uni.showToast({
+                        icon: 'none',
+                        title: '性别不能为空'
+                    });
+                    return;
+                } else if (this.userInfo.studentNum.length == 0) {
+                    this.loading = false;
+                    uni.showToast({
+                        icon: 'none',
+                        title: '学号不能为空'
+                    });
+                    return;
+                } else if (this.userInfo.major.length == 0) {
+                    this.loading = false;
+                    uni.showToast({
+                        icon: 'none',
+                        title: '专业不能为空'
+                    });
+                    return;
+                } else if (this.userInfo.college.length == 0) {
+                    this.loading = false;
+                    uni.showToast({
+                        icon: 'none',
+                        title: '学院不能为空'
+                    });
+                    return;
+                } else if (this.userInfo.mail.length == 0) {
+                    this.loading = false;
+                    uni.showToast({
+                        icon: 'none',
+                        title: '邮箱不能为空'
                     });
                     return;
                 }
@@ -112,44 +148,57 @@
                     });
                     return;
                 }
-                if (this.userInfo.sex != this.male && this.userInfo.sex != this.female &&
-                    this.userInfo.sex != true && this.userInfo.sex != false) {
+                if (this.userInfo.sex != this.male && this.userInfo.sex != this.female) {
                     this.loading = false;
                     uni.showToast({
                         icon: 'none',
                         title: '性别只能为“男”或“女”'
                     });
+                    console.log(this.userInfo.sex)
                     return;
                 }
-                if (this.userInfo.studentNum.length > 0) {
-                    if (this.userInfo.studentNum.length != 9) {
-                        this.loading = false;
-                        uni.showToast({
-                            icon: 'none',
-                            title: '请输入9位数正确学号或者不填'
-                        });
-                        return;
-                    }
+                if (this.userInfo.studentNum.length != 9) {
+                    this.loading = false;
+                    uni.showToast({
+                        icon: 'none',
+                        title: '请输入9位数正确学号'
+                    });
+                    return;
                 }
                 var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
-                if (this.userInfo.mail.length > 0) {
-                    if (!reg.test(this.userInfo.mail)) {
-                        this.loading = false;
-                        uni.showToast({
-                            icon: 'none',
-                            title: '请输入有效邮箱地址'
-                        });
-                        return;
-                    }
+                if (!reg.test(this.userInfo.mail)) {
+                    this.loading = false;
+                    uni.showToast({
+                        icon: 'none',
+                        title: '请输入有效邮箱地址'
+                    });
+                    return;
                 }
                 var that = this
                 var url = api.urls.changeUserInfomation;
                 var data = {
-                    phone: this.userInfo.phone,
+                    name: that.userInfo.name,
+                    phone: that.userInfo.phone,
+                    sex: that.userInfo.sex,
+                    studentNum: that.userInfo.studentNum,
+                    major: that.userInfo.major,
+                    college: that.userInfo.college,
+                    mail: that.userInfo.mail
                 };
 
-                api.req.post(url, data, (res) => {
-                    if (res.code === 0) {}
+                api.req.put(url, data, (res) => {
+                    if (res.code === 0) {
+                        uni.showToast({
+                            icon: 'none',
+                            title: '修改成功！'
+                        });
+                        uni.navigateBack()
+                    } else {
+                        uni.showModal({
+                            content: res.msg,
+                            showCancel: false
+                        })
+                    }
                 });
             }
         },

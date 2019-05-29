@@ -8,32 +8,62 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));var _urls;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.6";
-// var root = "http://24l687f160.qicp.vip:43882";
-// var root = "/schoolhelp/schoolhelp-1.0.1"; // h5测试使用
+var root = "http://250r7838l8.qicp.vip";
+// var root = "http://134.175.16.143:8080/schoolhelp-1.0.7"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
-var urls = {
-  login: "".concat(root, "/login"),
+var urls = (_urls = {
   register: "".concat(root, "/register"),
+  login: "".concat(root, "/login"),
   sendMessage: "".concat(root, "/user/message"),
   updateUserInfo: "".concat(root, "/user"),
   deleteCollect: "".concat(root, "/user/collect"),
-  getMessageList: "".concat(root, "/user/message"),
+  getMessage: "".concat(root, "/user/message"),
   getSelfUserInfo: "".concat(root, "/user"),
-  getHead: "".concat(root, "/download/head"),
-  feedback: "".concat(root, "/feedback/"),
-  getPostList: "".concat(root, "/post/pages"),
-  changeUserInfomation: "".concat(root, "/user"),
-  changePassword: "".concat(root, "/user/password")
+  sendPost: "".concat(root, "/post"),
+  getPostDetail: "".concat(root, "/post/id/"), //获取帖子详情，+id
+  addComment: "".concat(root, "/post/comment"),
+  getAllComments: "".concat(root, "/post/comment/all/"), //获取帖子所有评论，+id
+  collectPost: "".concat(root, "/user/collect"),
+  approvalPost: "".concat(root, "/post/approval"),
+  reportPost: "".concat(root, "/post/report"),
+  getMyPosts: "".concat(root, "/user/post"),
+  getEasyPost: "".concat(root, "/post/id/brief/"), //获取帖子简要信息，+id
+  searchPost: "".concat(root, "/post/search/"), //搜索关键词，+关键词
+  getHotSearch: "".concat(root, "/post/search/hot"),
+  getSearchHistroy: "".concat(root, "/user/searches"),
+  deleteAllSearchHistroy: "".concat(root, "/user/searches"),
+  deleteASearchHistroy: "".concat(root, "/user/search"),
+  getAllUserComments: "".concat(root, "/user/comments"),
+  deleteAPost: "".concat(root, "/post"),
+  deleteAComment: "".concat(root, "/post/delete/comment"),
+  getAllCollects: "".concat(root, "/user/collects"),
+  getAttentions: "".concat(root, "/user/attention"),
+  cancelAttention: "".concat(root, "/user/attention"),
+  attentionSomeone: "".concat(root, "/user/attention"),
+  getChatList: "".concat(root, "/message/chatlist"),
+  getOtherUserInfo: "".concat(root, "/user/"), //获取其他用户的非隐私信息，+userId
+  getMessageListForUser: "".concat(root, "/user/message/Corresponding"), //获取与对应用户的消息列表
+  getSelfHeadImg: "".concat(root, "/download/head"), //获取用户自己的头像
+
+  /**********************************************/
+
+  getMessageList: "".concat(root, "/user/message") }, _defineProperty(_urls, "getSelfUserInfo", "".concat(
+root, "/user")), _defineProperty(_urls, "getHead", "".concat(
+root, "/download/head")), _defineProperty(_urls, "feedback", "".concat(
+root, "/feedback/")), _defineProperty(_urls, "getPostList", "".concat(
+root, "/post/pages")), _defineProperty(_urls, "changeUserInfomation", "".concat(
+root, "/user")), _defineProperty(_urls, "changePassword", "".concat(
+root, "/user/password")), _urls);
 
 
-  // 封装请求方法
-};var req = {
-  request: function request(url, data, method, _success, _fail) {
+// 封装请求方法
+var req = {
+  request: function request(url, data, method, _success, fail) {
+    console.log(method, url);
     uni.request({
       url: url,
       data: data,
@@ -44,11 +74,31 @@ var urls = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(method, url, res.data);
-        _success(res.data);
+        console.log(res.data);
+        if (res.data.code == 0) {
+          _success(res.data);
+        } else {
+          // 打印错误提示
+          uni.showToast({
+            icon: "none",
+            title: res.data.msg });
+
+          if (fail) fail(err);
+        }
+        uni.hideLoading();
+        uni.stopPullDownRefresh();
       },
       fail: function fail(err) {
-        if (_fail) _fail(err); // 如果失败方法非空，执行失败方法
+        setTimeout(function () {
+          uni.hideLoading();
+          uni.stopPullDownRefresh();
+          uni.showToast({
+            icon: 'none',
+            title: '请稍后再试' });
+
+        }, 4000);
+        // console.log("fail");
+        // if (fail) fail(err); // 如果失败方法非空，执行失败方法
       } });
 
   },
@@ -63,6 +113,43 @@ var urls = {
   },
   del: function del(url, data, success, fail) {
     this.request(url, data, 'DELETE', success, fail);
+  },
+
+  // 获取用户信息
+  getUserInfo: function getUserInfo() {
+    var url = urls.getSelfUserInfo;
+    var data = {};
+    this.get(url, data, function (res) {
+      var userInfo = res.data;
+      delete userInfo.password;
+      _index.default.commit("saveUserInfo", userInfo);
+    });
+  },
+
+  // 登录，并且获取用户信息
+  login: function login(phone, password) {var _this = this;
+    var url = urls.login;
+    var data = {
+      phone: phone,
+      password: password };
+
+    this.get(url, data, function (res) {
+      _index.default.commit("login", res.data);
+      _this.getUserInfo();
+    });
+  },
+
+  // 注册，并获取用户信息
+  register: function register(phone, password) {var _this2 = this;
+    var url = urls.register;
+    var data = {
+      phone: phone,
+      password: password };
+
+    this.post(url, data, function (res) {
+      _index.default.commit("login", res.data);
+      _this2.getUserInfo();
+    });
   } };var _default =
 
 
@@ -423,11 +510,16 @@ function cutString(str, needSize) {
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../SchoolHelp-front-end/App.vue"));
 
-var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _api = _interopRequireDefault(__webpack_require__(/*! api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));
+var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _util = _interopRequireDefault(__webpack_require__(/*! common/util.js */ "../../../../SchoolHelp-front-end/common/util.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.config.productionTip = false;
 
 _vue.default.prototype.$store = _store.default;
+
+// 挂载api模块
+_vue.default.prototype.$api = _api.default;
 
 _App.default.mpType = 'app';
 
@@ -610,6 +702,23 @@ createPage(_feedback.default);
 
 /***/ }),
 
+/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fforget-password%2Fforget-password\"}":
+/*!*******************************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fforget-password%2Fforget-password"} ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../SchoolHelp-front-end/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _forgetPassword = _interopRequireDefault(__webpack_require__(/*! ./pages/my/forget-password/forget-password.vue */ "../../../../SchoolHelp-front-end/pages/my/forget-password/forget-password.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_forgetPassword.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Flogin%2Flogin\"}":
 /*!***********************************************************************************************!*\
   !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Flogin%2Flogin"} ***!
@@ -695,9 +804,9 @@ createPage(_myData.default);
 
 /***/ }),
 
-/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fmy-fallows%2Fmy-fallows\"}":
+/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fmy-follows%2Fmy-follows\"}":
 /*!*********************************************************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fmy-fallows%2Fmy-fallows"} ***!
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fmy-follows%2Fmy-follows"} ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -706,8 +815,8 @@ createPage(_myData.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../SchoolHelp-front-end/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _myFallows = _interopRequireDefault(__webpack_require__(/*! ./pages/my/my-fallows/my-fallows.vue */ "../../../../SchoolHelp-front-end/pages/my/my-fallows/my-fallows.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_myFallows.default);
+var _myFollows = _interopRequireDefault(__webpack_require__(/*! ./pages/my/my-follows/my-follows.vue */ "../../../../SchoolHelp-front-end/pages/my/my-follows/my-follows.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_myFollows.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
@@ -877,6 +986,43 @@ createPage(_setting.default);
 
 /***/ }),
 
+/***/ "../../../../SchoolHelp-front-end/service.js":
+/*!************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/service.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 管理账号信息
+var USERS_KEY = 'USERS_KEY';
+var STATE_KEY = 'STATE_KEY';
+
+var getUsers = function getUsers() {
+  var ret = '';
+  ret = uni.getStorageSync(USERS_KEY);
+  if (!ret) {
+    ret = '[]';
+  }
+  return JSON.parse(ret);
+};
+
+var addUser = function addUser(userInfo) {
+  var users = getUsers();
+  users.push({
+    account: userInfo.account,
+    password: userInfo.password });
+
+  uni.setStorageSync(USERS_KEY, JSON.stringify(users));
+};var _default =
+
+{
+  getUsers: getUsers,
+  addUser: addUser };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
+
+/***/ }),
+
 /***/ "../../../../SchoolHelp-front-end/store/index.js":
 /*!****************************************************************!*\
   !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/store/index.js ***!
@@ -894,7 +1040,8 @@ var store = new _vuex.default.Store({
   state: {
     userInfo: {},
     hasLogin: false,
-    token: '' },
+    token: '',
+    searchHistroy: [] },
 
   mutations: {
     // 保存登录状态
@@ -918,7 +1065,7 @@ var store = new _vuex.default.Store({
     // 保存用户信息
     saveUserInfo: function saveUserInfo(state, userInfo) {
       state.userInfo = userInfo;
-      // console.log("save userInfo", userInfo)
+      console.log("save userInfo", userInfo);
       uni.setStorage({
         key: 'userInfo',
         data: userInfo });
@@ -929,6 +1076,38 @@ var store = new _vuex.default.Store({
       state.userInfo = {};
       uni.removeStorage({
         key: 'userInfo' });
+
+    },
+    // 删除某条搜索历史
+    deleteASearchHistroy: function deleteASearchHistroy(state, index) {
+      state.searchHistroy.splice(index, 1);
+    },
+    // 获取搜索历史
+    getSearchHistroy: function getSearchHistroy(state) {
+      uni.getStorage({
+        key: "searchHistroy",
+        success: function success(res) {
+          state.searchHistroy = res.data;
+        },
+        fail: function fail(err) {
+          state.searchHistroy = [];
+          console.log(err);
+        } });
+
+    },
+    // 清空搜索历史
+    clearSearchHistroy: function clearSearchHistroy(state) {
+      state.searchHistroy = [];
+      uni.removeStorage({
+        key: 'searchHistroy' });
+
+    },
+    // 保存搜索历史
+    saveSearchHistroy: function saveSearchHistroy(state, searchHistroy) {
+      state.searchHistroy = searchHistroy;
+      uni.setStorage({
+        key: "searchHistroy",
+        data: searchHistroy });
 
     } } });var _default =
 
@@ -1402,7 +1581,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7498,7 +7677,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7519,14 +7698,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7595,7 +7774,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));

@@ -98,101 +98,102 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {
-      myHeadImg: "/static/images/img_3.jpg",
-      chat: {
-        userName: "Lora",
-        userHeadImg: "/static/images/img_4.jpg",
-        msgs: [
-        {
-          id: 1,
-          sendTime: "11:05",
-          isMe: true,
-          msgContent: "你的快递我拿了，你看什么时候我给你拿一下。" },
-
-        {
-          id: 2,
-          sendTime: "12:15",
-          isMe: false,
-          msgContent: "太谢谢啦，下午五点送到6#809行吗？" },
-
-        {
-          id: 3,
-          sendTime: "12:17",
-          isMe: true,
-          msgContent: "809?????你妹啊，不是最高6楼吗？" },
-
-        {
-          id: 4,
-          sendTime: "12:19",
-          isMe: false,
-          msgContent: "sorry，打错了，是309..." },
-
-        {
-          id: 5,
-          sendTime: "12:20",
-          isMe: true,
-          msgContent: "ok." },
-
-        {
-          id: 6,
-          sendTime: "12:20",
-          isMe: true,
-          msgContent: "ok." },
-
-        {
-          id: 7,
-          sendTime: "12:20",
-          isMe: true,
-          msgContent: "ok." }] } };
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
 
-  },
-  onLoad: function onLoad(option) {
-    var msgId = option.msgId;
-    console.log(msgId);
-    uni.setNavigationBarTitle({
-      title: this.chat.userName });
 
-  },
-  methods: {} };exports.default = _default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _util = __webpack_require__(/*! @/common/util.js */ "../../../../SchoolHelp-front-end/common/util.js"); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { myUserId: "", myHeadImg: "", messageInput: "", chat: { userName: "", userHeadImg: "", userId: "", isOnline: "", msgs: [] } };}, onLoad: function onLoad(option) {var detail = JSON.parse(option.detail);this.myUserId = this.$store.state.userInfo.id;this.chat.userHeadImg = detail.chatUserHeadImg;this.chat.userName = detail.chatUserName;this.chat.userId = detail.chatUserId;this.chat.isOnline = detail.chatUser.online;console.log(detail.chatUser.online);this.getSelfHeadImg();this.getMessageList();uni.setNavigationBarTitle({ title: this.chat.userName + "\uFF08".concat(this.chat.isOnline ? "在线" : "离线", "\uFF09") });},
+  methods: {
+    getSelfHeadImg: function getSelfHeadImg() {var _this = this;
+      var url = this.$api.urls.getSelfHeadImg;
+      var data = {};
+      this.$api.req.get(url, data, function (res) {
+        _this.myHeadImg = "http://" + res.data;
+      });
+    },
+    getMessageList: function getMessageList() {var _this2 = this;
+      var url = this.$api.urls.getMessageListForUser;
+      var data = { accept: this.chat.userId };
+      this.$api.req.get(url, data, function (res) {
+        _this2.chat.msgs = res.data.map(function (item, index) {
+          return {
+            id: index,
+            sendTime: (0, _util.friendlyDate)(new Date(item.sendTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
+            isMe: item.send == _this2.myUserId,
+            msgContent: item.messageContent };
+
+        });
+      });
+    },
+    sendMessage: function sendMessage() {var _this3 = this;
+      var url = this.$api.urls.sendMessage;
+      var data = { messageContent: this.messageInput, accept: this.chat.userId };
+      this.$api.req.post(url, data, function (res) {
+        console.log(res);
+        _this3.getMessageList();
+      });
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),

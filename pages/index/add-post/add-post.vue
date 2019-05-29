@@ -1,34 +1,40 @@
 <template>
-	<view class="content">
+    <view class="content">
 		<!-- 新建帖子输入盒 -->
 		<view class="add-post-box">
 			<view class="title-word-count">{{post.titleWordCount}}/15</view>
-			<input type="text" :value="post.postTitle" placeholder="输入标题" placeholder-class="title-placeholder" class="post-title"
-			 maxlength="15" focus="true" confirm-type="done" @input="bindTitleInput" />
+			<input type="text" :value="post.postTitle" placeholder="输入标题" placeholder-class="title-placeholder"
+				class="post-title" maxlength="15" focus="true" confirm-type="done" @input="bindTitleInput"/>
 			<view class="devide-line"></view>
-			<textarea :value="post.postContent" placeholder="添加内容(至少10个字)" maxlength="3000" class="post-content"
-			 placeholder-class="content-placeholder" @input="bindContentInput" />
-			</view>
-		<view class="content-word-count">{{post.contentWordCount}}/3000</view>
+			<textarea :value="post.postContent" placeholder="添加内容(至少10个字)" maxlength="400" 
+				class="post-content" placeholder-class="content-placeholder" @input="bindContentInput"/>
+		</view>
+		<view class="content-word-count">{{post.contentWordCount}}/400</view>
 		<!-- 标签盒 -->
-		<scroll-view scroll-x>
-			<view class="tags-box">
-				<view class="tag">添加标签</view>
-				<view class="tag" v-for="(tag, index) in post.tags" :key="index" :id="'tag'+index">
-					{{tag}}
-				</view>
+		<view class="tags-box">
+			<view class="tag" @click="showTagInputBox">添加标签</view>
+			<view class="tag" v-for="(tag, index) in post.tags" :key="index" :id="'tag'+index">
+				{{tag}}
 			</view>
-		</scroll-view>
+		</view>
+		<!-- 标签输入盒 -->
+		<view class="tag-input-box" v-if="showTagInput">
+			<input class="tag-input-box-input" type="text" v-model="tagInputContent" placeholder="七个字以内" maxlength="7">
+			<view class="tag-input-box-add-btn" @click="addTag">添加</view>
+			<image src="/static/icons/delete-gray.png" class="tag-input-box-icon-cancel" @click="hideTagInputBox"></image>
+		</view>
 		<!-- 底部操作栏 -->
 		<view class="add-post-bottom">
 			<view class="row-left">
-				<view class="set-points">设置分数</view>
-				<view class="set-sort">设置分类</view>
+				<picker class="set-points" :range="pointsRange" :value="pointsSelected" @change="selectPoints">设置分数</picker>
+				<view class="post-points" v-show="post.points!=-1">{{post.points}}</view>
+				<picker class="set-sort" :range="postTypeRange"  :value="postTypeSelected" @change="selectPostType">设置分类</picker>
+				<view class="post-sorted" v-show="post.postType!=-1">{{postTypeComputed}}</view>
 			</view>
 			<view class="row-right">
-				<image src="../../../static/icons/emoji.png" class="normal-icon" mode=""></image>
-				<image src="../../../static/icons/pic.png" class="normal-icon" mode=""></image>
-				<view class="send" @tap="commitPost">发送</view>
+				<image src="/static/icons/emoji.png" class="normal-icon" mode=""></image>
+				<image src="/static/icons/pic.png" class="normal-icon" mode=""></image>
+				<view class="send" @tap="sendPost">发送</view>
 			</view>
 		</view>
     </view>
@@ -43,132 +49,124 @@
 					content: "",
 					tags: ["标签1", "标签2", "标签3"],
 					titleWordCount: 0,
-					contentWordCount: 0
-				}
+					contentWordCount: 0,
+					points: -1,
+					postType: -1
+				},
+				showTagInput: false,
+				tagInputContent: "",
+				pointsRange: [0, 5, 10, 20, 50, 100, 200],
+				postTypeRange: ["学术论坛", "校园动态", "二手交易", "缺个伴吗", "帮你干活", "经验交流"],
+				pointsSelected: 0,
+				postTypeSelected: 0
             }
         },
+		computed: {
+			postTypeComputed() {
+				return this.postTypeRange[this.post.postType];
+			}
+		},
         methods: {
 			bindTitleInput: function(e){
 				this.post.title = e.target.value;
 				this.post.titleWordCount = e.target.value.length;
+				console.log(this.post.title, this.post.titleWordCount, this.post.title.length);
 			},
 			bindContentInput: function(e){
 				this.post.content = e.target.value;
 				this.post.contentWordCount = e.target.value.length;
 			},
-			commitPost: function(){
-				if(this.post.titleWordCount<3){
-					uni.showModal({
-						content: "标题至少3个汉字",
-						showCancel: false
-					});
-					return;
-				}
-				if(this.post.contentWordCount<5){
-					uni.showModal({
-						content: "帖子内容至少5个汉字",
-						showCancel: false
-					});
-					return;
-				}
-				
-				
-				
+			goBack: function(){
 				uni.navigateBack({
 					delta: 1
 				});
+			},
+			showTagInputBox() {
+				if (this.post.tags.length < 5) {
+					this.showTagInput = true;
+				}
+				else {
+					uni.showToast({
+						icon: "none",
+						title: "最多添加5个标签哦"  
+					});
+				}
+			},
+			hideTagInputBox() {
+				this.showTagInput = false;
+			},
+			addTag() {
+				if (this.post.tags.length < 5) {
+					this.post.tags.push(this.tagInputContent);
+					this.tagInputContent = "";
+				}
+				else {
+					uni.showToast({
+						icon: "none",
+						title: "最多添加5个标签哦"  
+					});
+					this.tagInputContent = "";
+					this.hideTagInputBox();
+				}
+			},
+			selectPoints(e) {
+				this.post.points = this.pointsRange[e.detail.value];
+			},
+			selectPostType(e) {
+				this.post.postType = e.detail.value;
+			},
+			sendPost() {
+				if (this.post.points == -1) {
+					uni.showToast({
+						icon: "none",
+						title: "请设置帖子积分"
+					});
+					return;
+				}
+				if (this.post.postType == -1) {
+					uni.showToast({
+						icon: "none",
+						title: "请设置帖子分类"
+					});
+					return;
+				}
+				if (this.post.title.length < 5 || this.post.title.length > 15) {
+					uni.showToast({
+						icon: "none",
+						title: "帖子标题长度应在5-15之间"
+					});
+					return;
+				}
+				if (this.post.content.length < 15 || this.post.content.length > 400) {
+					uni.showToast({
+						icon: "none",
+						title: "帖子内容长度应在15-400之间"
+					});
+					return;
+				}
+				var url = this.$api.urls.sendPost;
+				var data = this.post;
+				this.$api.req.post(url, data, (res)=>{
+					console.log(res);
+					if (res.code < 0){
+						uni.showToast({
+							icon: "none",
+							title: res.msg
+						});
+					}
+					else {
+						uni.showToast({
+							icon: "none",
+							title: "发帖成功"
+						});
+						setTimeout(()=>{this.goBack()}, 1500);
+					}
+				})
 			}
         }
     }
 </script>
 
-<style lang="scss">
-	@import "@/app.scss";
-	.add-post-box {
-		padding: 0 15upx;
-	}
-	.post-title {
-		width: 100%;
-		box-sizing: border-box;
-		padding: 10upx 5upx;
-		@include font(45upx, 50upx, #666, $align: left);
-	}
-	.title-placeholder {
-		padding: 10upx 5upx;
-		@include font(45upx, 50upx, #666, $align: left);
-	}
-	.post-content {
-		width: 100%;
-		box-sizing: border-box;
-		height: 600upx;
-		padding: 10upx 5upx;
-		@include font(30upx, 40upx, #666, $align: left);
-	}
-	.title-word-count {
-		@include font(22upx, 40upx, #666, $align: right);
-	}
-	.content-placeholder {
-		@include font(30upx, 40upx, #666, $align: left);
-		color: #c9c9c9;
-	}
-	.content-word-count {
-		@extend .title-word-count;
-		position: fixed;
-		bottom: 190upx;
-		right: 35upx;
-	}
-	.tags-box {
-		@include row($space: left);
-		padding: 15upx 10upx;
-		position: fixed;
-		bottom: 120upx;
-		left: 0;
-		min-width: 750upx;
-		box-sizing: border-box;
-	}
-	.tag {
-		@include font(28upx, 40upx, #666);
-		height: 40upx;
-		max-width: 120upx;
-		padding: 5upx 10upx;
-		border-radius: 5upx;
-		margin: 0 5upx;
-		background: #f6f6f6;
-	}
-	.add-post-bottom {
-		@include row;
-		width: 100%;
-		height: 120upx;
-		padding: 30upx 10upx;
-		position: fixed;
-		box-sizing: border-box;
-		bottom: 0;
-		left: 0;
-		border-top: 1px solid #c9c9c9;
-	}
-	.row-left {
-		@include row;
-	}
-	.set-points {
-		@extend .tag;
-	}
-	.set-sort {
-		@extend .tag;
-	}
-	.row-right {
-		@include row;
-		margin-right: 25upx;
-	}
-	.normal-icon {
-		@include icon(40upx);
-		margin: 7upx 15upx;
-	}
-	.send {
-		@include font(32upx, 45upx, #fefefe);
-		height: 45upx;
-		padding: 5upx 15upx;
-		border-radius: 5upx;
-		background: rgb(0, 153, 255);
-		margin-left: 25upx;
-	}
+<style lang="scss" scoped>
+	@import "add-post.scss";
 </style>

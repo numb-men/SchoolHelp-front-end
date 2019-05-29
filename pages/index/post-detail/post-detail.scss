@@ -1,0 +1,129 @@
+@import "@/app.scss";
+.post-detail {
+	width: 750upx;
+	padding: 0 15upx;
+	box-sizing: border-box;
+}
+.show-user {
+	@include row;
+	width: 730upx;
+	box-sizing: border-box;
+}
+.user-head-img {
+	@include circle(100upx);
+	margin: 10upx 0;
+	margin-right: 25upx;
+}
+.show-user-right {
+	@include column;
+	padding: 15upx 0;
+}
+.show-user-right-top {
+	@include row;
+	width: 600upx;
+}
+.user-info {
+	@include row($space: left);
+	width: 450upx;
+}
+.user-name {
+	@include font(32upx, 45upx, #343131, $bold:bold, $align: left);
+	padding-right: 10upx;
+}
+.has-certified {
+	background: rgb(0, 153, 255);
+	@include font(25upx, 40upx, #fefefe, $bold: bold);
+	border-radius: 5upx;
+	margin-bottom: 6upx;
+	width: 105upx;
+}
+.not-certified {
+	@extend .has-certified;
+	background: #ccc;
+}
+.post-points {
+	@include font(32upx, 45upx, #ffcc00, $bold:bold, $align: left);
+}
+.post-publish-time {
+	@include font(23upx, 45upx, #343131, $align: left);
+}
+.post-title {
+	width: 720upx;
+	padding: 10upx 0;
+	@include font(38upx, 45upx, $bold:bold, $align: left);
+}
+.post-content {
+	width: 700upx;
+	word-break: break-all;
+	padding: 10upx;
+	@include font(28upx, 45upx, #343131, $align: left);
+}
+.operation-box {
+	@include row($space: flex-end);
+	width: 720upx;
+}
+.operation-icon {
+	@include icon(45upx);
+	margin: 7upx 5upx 7upx 25upx;
+}
+.operation-icon-comment {
+	@include icon(35upx);
+	margin: 12upx 5upx 12upx 25upx;
+}
+.operation-times {
+	@include font(34upx, 45upx, #a9a9a9);
+	margin: 7upx 5upx;
+}
+.add-comment-box {
+	margin: 10upx 15upx;
+	width: 720upx;
+	border: 1px solid #bfbfbf;
+	border-radius: 10upx;
+	
+	&-textarea {
+		width: 680upx;
+		height: 240upx;
+		padding: 10upx 20upx;
+		
+		@include font(32upx, 45upx, #343131, $align: left);
+		
+		&-pr {
+			@include font(32upx, 45upx, #a9a9a9, $align: left);
+		}
+	}
+	&-bottom {
+		@include row;
+		padding: 10upx 20upx;
+		
+		&-submit {
+			@include font(32upx, 45upx, #fefefe);
+			height: 45upx;
+			padding: 2upx 15upx;
+			border-radius: 5upx;
+			background: rgb(0, 153, 255);
+			margin: 5upx 5upx 5upx 25upx;
+		}
+	}
+}
+.post-devide-line {
+	@extend .devide-line;
+	background: #c9c9c9;
+	margin: 20upx 0;
+}
+.comment-item {
+	@include column;
+	padding: 5upx 15upx;
+	width: 730upx;
+}
+.help-ok {
+	@include icon(45upx);
+	margin: 0 15upx;
+}
+.help-not-ok {
+	@extend .help-ok;
+}
+.comment-content {
+	width: 720upx;
+	@include font(30upx, 45upx, #343131, $align: left);
+	padding: 15upx 5upx;
+}

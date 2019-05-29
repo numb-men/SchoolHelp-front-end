@@ -132,11 +132,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _util = __webpack_require__(/*! @/common/util.js */ "../../../../SchoolHelp-front-end/common/util.js");
 
 
-
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+var _util = __webpack_require__(/*! @/common/util.js */ "../../../../SchoolHelp-front-end/common/util.js"); //
 //
 //
 //
@@ -169,48 +167,28 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
 //
 //
 //
-var _default = { data: function data() {return { msgs: [{ id: 1, chatUserHeadImg: "/static/images/img_1.jpg", chatUserName: "小马达", latestMsgContent: "你什么时候回家？", notReadMsgNum: 1, latestMsgTime: "7:00" }, { id: 2, chatUserHeadImg: "/static/images/img_2.jpg", chatUserName: "真有钱", latestMsgContent: "你需要钱吗？我借钱给你，5千够吗？", notReadMsgNum: 1, latestMsgTime: "14:00" }, { id: 3, chatUserHeadImg: "/static/images/img_3.jpg", chatUserName: "好厉害", latestMsgContent: "我真的太菜了，还是你厉害。", notReadMsgNum: 0, latestMsgTime: "19:00" }, { id: 4, chatUserHeadImg: "/static/images/img_4.jpg", chatUserName: "真滴烦",
-        latestMsgContent: "哇哇哇——啊啊啊——好气啊——气死我了——啊啊啊——",
-        notReadMsgNum: 100,
-        latestMsgTime: "5-3" }] };
-
-
-
-  },
-  onLoad: function onLoad() {var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
-      for (var _iterator = this.msgs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var msgItem = _step.value;
-        // 裁剪过长的消息内容
-        msgItem.latestMsgContent = (0, _util.cutString)(msgItem.latestMsgContent, 15);
-        // 隐藏过多的未读消息
-        msgItem.notReadMsgNum = msgItem.notReadMsgNum > 99 ? '99+' : '' + msgItem.notReadMsgNum;
-      }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
-    var url = _api.default.urls.getMessageList;
-    var data = {};
-    // 延时请求，防止请求之前还未登录
-    setTimeout(function () {
-      _api.default.req.get(url, data, function (res) {
-        console.log(res);
-      });
-    }, 1000);
-    // 发送消息接口
-
-    var url2 = _api.default.urls.sendMessage;
-    var data2 = { accept: 138 };
-    setTimeout(function () {
-      console.log(data2, url2);
-      _api.default.req.post(url2, data2, function (res) {
-        console.log(res);
-      });
-    }, 1000);
-  },
-  methods: {
+//
+//
+var _default = { data: function data() {return { msgs: [] };}, onShow: function onShow() {var _this = this;var url = this.$api.urls.getChatList;var data = {};this.$api.req.get(url, data, function (res) {console.log(res);_this.msgs = res.data.map(function (item, index) {return { id: index, chatUserHeadImg: "http://" + item.headIimage, chatUserId: item.userId, chatUserName: "", chatUser: {}, latestMsgContent: item.latedMessage, notReadMsgNum: item.newMessageNum, latestMsgTime: (0, _util.friendlyDate)(new Date(item.latedTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()) };});_this.getUserData();});var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {for (var _iterator = this.msgs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var msgItem = _step.value; // 裁剪过长的消息内容
+        msgItem.latestMsgContent = (0, _util.cutString)(msgItem.latestMsgContent, 15); // 隐藏过多的未读消息
+        msgItem.notReadMsgNum = msgItem.notReadMsgNum > 99 ? '99+' : '' + msgItem.notReadMsgNum;}} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}}, methods: {
     showMsgDetail: function showMsgDetail(e) {
-      var msgId = e.currentTarget.id;
-      // let msgIndex = e.currentTarget.dataset.index;
-      // console.log(msgId, msgIndex);
+      console.log(e);
+      var detail = this.msgs[e.currentTarget.dataset.index];
       uni.navigateTo({
-        url: "message-detail/message-detail?msgId=" + msgId });
+        url: "message-detail/message-detail?detail=" + encodeURIComponent(JSON.stringify(detail)) });
 
+    },
+    getUserData: function getUserData() {var _this2 = this;
+      this.msgs.map(function (item) {
+        var url = _this2.$api.urls.getOtherUserInfo + item.chatUserId;
+        var data = {};
+        _this2.$api.req.get(url, data, function (res) {
+          // console.log(res);
+          item.chatUser = res.data;
+          item.chatUserName = res.data.name;
+        });
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 

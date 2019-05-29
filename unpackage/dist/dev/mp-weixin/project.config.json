@@ -26,7 +26,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"name": "message",
@@ -35,9 +35,15 @@
 					"pathName": "pages/messages/messages"
 				},
 				{
-					"name": "new-index",
+					"name": "my",
 					"query": "",
 					"id": 1,
+					"pathName": "pages/my/my"
+				},
+				{
+					"name": "index",
+					"query": "",
+					"id": 2,
 					"pathName": "pages/index/index"
 				}
 			]

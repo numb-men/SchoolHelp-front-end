@@ -1,0 +1,104 @@
+@import "@/app.scss";
+
+.search {
+	@include row;
+	padding: 15upx;
+	width: 720upx;
+	
+	&-box {
+		@include row;
+		margin-left: 25upx;
+		border: 1px solid #e9e9e9;
+		padding: 10upx;
+		width: 600upx;
+		height: 50upx;
+		border-radius: 15upx;
+		
+		&-icon-search-in {
+			@include square(42upx);
+			padding: 4upx;
+		}
+		
+		&-input {
+			width: 490upx;
+			@include font(32upx, 34upx, $align: left, $color: #343131);
+			padding: 0 8upx;
+			
+			&-placeholder {
+				@include font(32upx, 34upx, $align: left, $color: #bfbfbf);
+				padding: 0 8upx;
+			}
+		}
+		
+		&-icon-speech-in {
+			@include square(42upx);
+			padding: 4upx;
+		}
+	}
+	
+	&-icon-search {
+		@include square(54upx);
+		padding: 8upx;
+	}
+}
+
+.hot-search {
+	padding: 25upx;
+	width: 700upx;
+	min-height: 270upx;
+	
+	&-label {
+		margin-bottom: 15upx;
+		@include font(32upx, 50upx, $align: left, $color: #343131);
+	}
+	
+	&-list {
+		@include row($space: none);
+		flex-wrap: wrap;
+		
+		&-item {
+			background: #c0e5f9;
+			border-radius: 10upx;
+			margin: 8upx 15upx;
+			padding: 0 10upx;
+			height: 50upx;
+			@include font(30upx, 50upx, $align: left, $color: #7dc5eb);
+		}
+	}
+}
+
+.search-histroy {
+	padding: 25upx;
+	width: 700upx;
+	
+	&-label {
+		@include row;
+		margin-bottom: 20upx;
+		&-left {
+			@include font(32upx, 50upx, $align: left, $color: #343131);
+		}
+		&-right {
+			@include font(32upx, 50upx, $align: left, $color: #bfbfbf);
+		}
+	}
+	
+	&-item {
+		@include row;
+		padding: 10upx 0;
+		
+		&-icon-search {
+			@include square(42upx);
+			padding: 4upx;
+		}
+		
+		&-content {
+			width: 560upx;
+			@include font(30upx, 50upx, $align: left, $color: #bfbfbf);
+		}
+		
+		&-icon-delete {
+			@include square(36upx);
+			padding: 7upx;
+		}
+	}
+}

@@ -79,9 +79,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-var _index = _interopRequireDefault(__webpack_require__(/*! ./store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 
 {
   onLaunch: function onLaunch() {
@@ -89,67 +87,34 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ "../..
   },
   methods: {
     // 获取用户信息，检查是否登录，如果已经登录，存储登录状态token和用户信息
-    init: function init() {
+    init: function init() {var _this = this;
+      /**
+                                              * TODO 开发环境 测试使用
+                                              */
+      // this.$store.commit("logout");
+      // this.$api.req.login("13067247166", "1515491ccc");
+      // this.$api.req.register("13078901271", "12345abc");
+      /*
+       * 
+      **/
+      this.$store.commit("getSearchHistroy");
+      console.log(this.$store.state.searchHistroy, " at App.vue:20");
+
       uni.getStorage({
         key: 'token',
         success: function success(res) {
-          console.log("已登录", " at App.vue:15");
-          // this.login("13078901232", "12345abc");
-          _index.default.commit("login", res.data);
+          console.log("已登录", " at App.vue:25");
+          _this.$store.commit("login", res.data);
           uni.getStorage({
             key: "userInfo",
             success: function success(res2) {
-              _index.default.commit("saveUserInfo", res2.data);
+              _this.$store.commit("saveUserInfo", res2.data);
             } });
 
-          // this.logout();
         },
         fail: function fail(err) {
-          console.log("未登录", " at App.vue:27");
-          /**
-                                                 * 
-                                                 * TODO 开发环境 测试使用
-                                                 * 
-                                                 */
-          // this.login("13078901232", "12345abc");
-        } });
-
-    },
-    // 登录，同时获取用户信息 
-    login: function login(phone, password) {var _this = this;
-      console.log("模拟登录", " at App.vue:39");
-      var url = _api.default.urls.login;
-      var data = { phone: phone, password: password };
-      _api.default.req.get(url, data, function (res) {
-        _index.default.commit("login", res.data);
-        _this.getUserInfo();
-      });
-    },
-    // 获取用户信息
-    getUserInfo: function getUserInfo() {
-      var url = _api.default.urls.getSelfUserInfo;
-      var data = {};
-      _api.default.req.get(url, data, function (res) {
-        var userInfo = res.data;
-        delete userInfo.password;
-        _index.default.commit("saveUserInfo", userInfo);
-      });
-    },
-    addFeedback: function addFeedback() {
-      uni.request({
-        url: "http://24l687f160.qicp.vip:43882/feedback/",
-        data: { feedbackContent: "1235gfasgasdga" },
-        method: "POST",
-        header: {
-          //取值：application/json(默认) / application/x-www-form-urlencoded
-          'content-type': 'application/json',
-          'token': _index.default.state.token //默认携带token，未登录时，token为''
-        },
-        success: function success(res) {
-          console.log(res.data, " at App.vue:68");
-        },
-        fail: function fail(err) {
-          console.log(err, " at App.vue:71");
+          console.log("未登录", " at App.vue:35");
+          console.log(err, " at App.vue:36");
         } });
 
     } } };exports.default = _default;

@@ -183,9 +183,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
@@ -200,14 +197,18 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
   onPullDownRefresh: function onPullDownRefresh() {
     if (this.hasLogin) {
       this.reFresh();
+      uni.stopPullDownRefresh();
     } else {
       uni.stopPullDownRefresh();
       return;
     }
-    setTimeout(function () {
-      uni.hideLoading();
-      uni.stopPullDownRefresh();
-    }, 1000);
+  },
+  onShow: function onShow() {
+    if (this.hasLogin) {
+      this.reFresh();
+    } else {
+      return;
+    }
   },
   methods: _objectSpread({
     bindLogin: function bindLogin() {
@@ -233,43 +234,26 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
     },
     goMessage: function goMessage() {
       if (this.hasLogin) {
-        uni.navigateTo({
+        uni.reLaunch({
           url: '../../pages/messages/messages' });
 
       }
     },
-    reFresh: function reFresh() {var _this = this;
-      var url = _api.default.urls.getSelfUserInfo;
-      var data = {};
-      _api.default.req.get(url, data, function (res) {
-        if (res.code === 0) {
-          var urlHead = _api.default.urls.getHead;
-          var dataHead = {};
-          var userInfoGet = res.data;
-          _api.default.req.get(urlHead, dataHead, function (resHead) {
-            if (resHead.code === 0) {
-              userInfoGet.headUrl = 'http://' + resHead.data;
-              console.log(userInfoGet.headUrl, " at pages\\my\\my.vue:152");
-              delete userInfoGet.password;
-              _index.default.commit("saveUserInfo", userInfoGet);
-            } else {
-              userInfoGet.headUrl = '/static/icons/logo.png';
-            }
-          });
-          console.log(_this.userInfo, " at pages\\my\\my.vue:159");
-          uni.stopPullDownRefresh();
-        } else {
-          uni.showModal({
-            content: res.msg,
-            showCancel: false });
-
-        }
-      });
+    goPoints: function goPoints() {
+      if (this.hasLogin) {
+        // console.log("in2")
+        // uni.reLaunch({
+        //     url: '../../pages/my/point'
+        // })
+      }
+    },
+    reFresh: function reFresh() {
+      _api.default.req.getUserInfo();
     },
     goFollow: function goFollow() {
       if (this.hasLogin) {
         uni.navigateTo({
-          url: 'my-fallows/my-fallows' //关注界面路径
+          url: 'my-follows/my-follows' //关注界面路径
         });
       }
     },
@@ -297,7 +281,7 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
     goEditInformation: function goEditInformation() {
       if (this.hasLogin) {
         uni.navigateTo({
-          url: '../../pages/my/setting/change-userInfo/change-userInfo' //修改用户资料路径
+          url: '../../pages/my/setting/change-userInfo/change-userInfo' //我的评论界面路径
         });
       }
     } },

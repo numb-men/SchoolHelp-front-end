@@ -1,5 +1,5 @@
 <template>
-	<view class="content">
+	<view id="message-detail" class="content">
 		<block v-for="(msgItem, index) in chat.msgs" :key="msgItem.id">
 			<view class="chat-box" :data-index="index" :id="msgItem.id">
 				<!-- 对方发的消息 头像在左边 -->
@@ -24,76 +24,76 @@
 		</block>
 		<view class="end"></view>
 		<view class="msg-input-box">
-			<input class="msg-input" maxlength="200" placeholder="输入..." />
-			<image class="msg-input-icon" src="/static/icons/send.png"></image>
+			<input class="msg-input" maxlength="200" placeholder="输入..." v-model="messageInput"/>
+			<image class="msg-input-icon" src="/static/icons/send.png" @click="sendMessage"></image>
 		</view>
 	</view>
 </template>
 
 <script>
+	import {
+		friendlyDate
+	} from '@/common/util.js';
+	
 	export default {
 		data() {
 			return {
-				myHeadImg: "/static/images/img_3.jpg",
+				myUserId: "",
+				myHeadImg: "",
+				messageInput: "",
 				chat: {
-					userName: "Lora",
-					userHeadImg: "/static/images/img_4.jpg",
-					msgs: [
-						{
-							id: 1,
-							sendTime: "11:05",
-							isMe: true,
-							msgContent: "你的快递我拿了，你看什么时候我给你拿一下。"
-						},
-						{
-							id: 2,
-							sendTime: "12:15",
-							isMe: false,
-							msgContent: "太谢谢啦，下午五点送到6#809行吗？"
-						},
-						{
-							id: 3,
-							sendTime: "12:17",
-							isMe: true,
-							msgContent: "809?????你妹啊，不是最高6楼吗？"
-						},
-						{
-							id: 4,
-							sendTime: "12:19",
-							isMe: false,
-							msgContent: "sorry，打错了，是309..."
-						},
-						{
-							id: 5,
-							sendTime: "12:20",
-							isMe: true,
-							msgContent: "ok."
-						},
-						{
-							id: 6,
-							sendTime: "12:20",
-							isMe: true,
-							msgContent: "ok."
-						},
-						{
-							id: 7,
-							sendTime: "12:20",
-							isMe: true,
-							msgContent: "ok."
-						}
-					]
+					userName: "",
+					userHeadImg: "",
+					userId: "",
+					isOnline: "",
+					msgs: []
 				}
 			}
 		},
 		onLoad: function(option) {
-			var msgId = option.msgId;
-			console.log(msgId);
+			var detail = JSON.parse(option.detail);
+			this.myUserId = this.$store.state.userInfo.id;
+			this.chat.userHeadImg = detail.chatUserHeadImg;
+			this.chat.userName = detail.chatUserName;
+			this.chat.userId = detail.chatUserId;
+			this.chat.isOnline = detail.chatUser.online;
+			console.log(detail.chatUser.online);
+			this.getSelfHeadImg();
+			this.getMessageList();
 			uni.setNavigationBarTitle({
-				title: this.chat.userName
+				title: this.chat.userName + `（${this.chat.isOnline?"在线":"离线"}）`
 			});
 		},
 		methods: {
-			
+			getSelfHeadImg() {
+				var url = this.$api.urls.getSelfHeadImg;
+				var data = {};
+				this.$api.req.get(url, data, (res) =>{
+					this.myHeadImg = "http://"+res.data;
+				})
+			},
+			getMessageList() {
+				var url = this.$api.urls.getMessageListForUser;
+				var data = { accept: this.chat.userId };
+				this.$api.req.get(url, data, (res) =>{
+					this.chat.msgs = res.data.map((item, index) =>{
+						return {
+								id: index,
+								sendTime: friendlyDate(new Date(item.sendTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
+								isMe: item.send==this.myUserId,
+								msgContent: item.messageContent
+							}
+					})
+				})
+			},
+			sendMessage() {
+				var url = this.$api.urls.sendMessage;
+				var data = { messageContent: this.messageInput, accept: this.chat.userId };
+				this.$api.req.post(url, data, (res) =>{
+					console.log(res);
+					this.getMessageList();
+				})
+			}
 		}
 	}
 </script>

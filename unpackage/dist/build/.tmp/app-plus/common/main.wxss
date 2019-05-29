@@ -42,41 +42,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*每个页面公共css */
 page,
 page {
@@ -96,23 +61,12 @@ m-input {
 	display: -ms-flexbox;
 	display: flex;
 }
-.content {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
+/* .content {
 	display: flex;
-	-webkit-box-flex: 1;
-	-webkit-flex: 1;
-	    -ms-flex: 1;
-	        flex: 1;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	    -ms-flex-direction: column;
-	        flex-direction: column;
+	flex: 1;
+	flex-direction: column;
 	background-color: #efeff4;
-	padding: 20rpx;
-}
+} */
 .input-group {
 	background-color: #ffffff;
 	margin-top: 40rpx;
@@ -155,14 +109,14 @@ m-input {
 	position: relative;
 }
 .input-row .title {
-	text-align: left;
+	text-align: right;
 	width: 35%;
 	height: 50rpx;
 	min-height: 50rpx;
 	font-size: 34rpx;
 	padding: 15rpx 0;
 	padding-left: 30rpx;
-	line-height: 60rpx;
+	line-height: 50rpx;
 }
 .input-row.border::after {
 	position: absolute;

@@ -16,7 +16,7 @@
         <view class="action-row">
             <navigator url="../register/register">注册账号</navigator>
             <text>|</text>
-            <navigator url="../change-password/change-password">忘记密码</navigator>
+            <navigator url="../forget-password/forget-password">忘记密码</navigator>
         </view>
         <!-- 第三方授权登录 -->
         <!-- <view class="oauth-row" v-if="hasProvider" v-bind:style="{top: positionTop + 'px'}">
@@ -38,7 +38,7 @@
     import {
         hex_md5
     } from "../../../api/md5.js";
-    
+
 
     export default {
         components: {
@@ -140,17 +140,17 @@
                     phone: this.account,
                     password: this.password
                 };
-                
+
                 // var hash = hex_md5(loginData.password);
-                
+
                 // var hash2 = hex_md5(loginData.password);
                 // var hash = hemd5_vm_testx_md5();
                 // console.log("没有加密之前的是：" + loginData.password);
                 // console.log("加密以后是：" + hash);
                 // 
                 // console.log("加密以后是：" + hash2);
-                
-                
+
+
                 var url = api.urls.login;
                 var data = {
                     phone: loginData.phone,
@@ -244,6 +244,13 @@
 </script>
 
 <style>
+    .content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        background-color: #efeff4;
+    }
+
     .action-row {
         display: flex;
         flex-direction: row;

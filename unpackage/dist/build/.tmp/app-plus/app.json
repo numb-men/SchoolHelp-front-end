@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/messages/message-detail/message-detail",
     "pages/messages/messages",
+    "pages/messages/message-detail/message-detail",
     "pages/extensions/extensions",
     "pages/my/my",
     "pages/index/post-detail/post-detail",
@@ -12,8 +12,8 @@
     "pages/extensions/questionaire/questionaire",
     "pages/my/login/login",
     "pages/my/register/register",
-    "pages/my/change-password/change-password",
-    "pages/my/my-fallows/my-fallows",
+    "pages/my/forget-password/forget-password",
+    "pages/my/my-follows/my-follows",
     "pages/my/my-collects/my-collects",
     "pages/my/feedback/feedback",
     "pages/my/setting/setting",
@@ -25,7 +25,7 @@
     "pages/my/setting/help/help",
     "pages/my/setting/about-SchoolHelp/about-SchoolHelp",
     "pages/my/setting/account-security/change-password/change-password",
-    "pages/my/setting/edit-information/edit-information"
+    "pages/my/setting/change-userInfo/change-userInfo"
   ],
   "subPackages": [],
   "window": {

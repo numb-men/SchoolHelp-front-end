@@ -1,0 +1,84 @@
+@import "@/app.scss";
+
+.search {
+	@include row;
+	padding: 15upx;
+	width: 720upx;
+	
+	&-box {
+		@include row;
+		margin-left: 25upx;
+		border: 1px solid #e9e9e9;
+		padding: 10upx;
+		width: 600upx;
+		height: 50upx;
+		border-radius: 15upx;
+		
+		&-icon-search-in {
+			@include square(42upx);
+			padding: 4upx;
+		}
+		
+		&-input {
+			width: 490upx;
+			@include font(32upx, 34upx, $align: left, $color: #343131);
+			padding: 0 8upx;
+			
+			&-placeholder {
+				@include font(32upx, 34upx, $align: left, $color: #bfbfbf);
+				padding: 0 8upx;
+			}
+		}
+		
+		&-icon-speech-in {
+			@include square(42upx);
+			padding: 4upx;
+		}
+	}
+	
+	&-icon-search {
+		@include square(54upx);
+		padding: 8upx;
+	}
+}
+
+.post-item {
+	@include column;
+	padding: 17upx 35upx;
+	&-top {
+		@include row;
+		&-title {
+			@include font(34upx, 50upx, #343131, $bold: bold, $align: left);
+		}
+		&-publish-time {
+			@include font(26upx, 30upx, #343131);
+			padding: 5upx 0 15upx 0;
+			margin-right: 30upx;
+		}
+	}
+	&-center {
+		@include font(32upx, 50upx, #666, $align: left);
+		margin: 15upx 0;
+	}
+	&-bottom {
+		@include row;
+		&-user-box {
+			@include row($space: left);
+			width: 300upx;
+			
+			&-head-img {
+				@include circle(60upx);
+				margin-right: 10upx;
+			}
+			&-name {
+				margin-top: 10upx;
+				@include font(32upx, 50upx, #666);
+			}
+		}
+		
+		&-points {
+			margin-top: 10upx;
+			@include font(32upx, 50upx, #FFCC00);
+		}
+	}
+}

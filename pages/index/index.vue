@@ -3,7 +3,7 @@
         <view class="head"></view>
         <view class="head-nav">
             <text class="head-title">校园帮</text>
-            <image src="/static/icons/searchMirror.png" class="head-search" @click="goToSearch()"></image>
+            <image src="/static/icons/searchMirror.png" class="head-search" @click="goSearch()"></image>
         </view>
 
         <view class="index-body">
@@ -27,7 +27,8 @@
             <swiper :current="currentTab" @change="swiperTab" :style="{height: isHeight}">
                 <swiper-item v-for="(item,index) in agents" :key="index">
                     <view class='content'>
-                        <view class='card' v-for="(listItem,listIndex) in item.list" v-if="item.list.length > 0" :key="listIndex">
+                        <view class='card' v-for="(listItem,listIndex) in item.list" v-if="item.list.length > 0" :key="listIndex"
+                            :data-index="listIndex" @click="goDetail">
                             <view class="media-title">
                                 <text class="media-title-text">{{listItem.title}}</text>
                             </view>
@@ -60,6 +61,9 @@
 
         <!-- <view class="index-body" :style="{height:isHeight}"> -->
         <!-- </view> -->
+
+        <!-- 新建帖子 -->
+        <image src="../../static/icons/add.png" mode="" class="add-post" @click="goAddPost"></image>
     </view>
 </template>
 
@@ -69,6 +73,7 @@
     import {
         friendlyDate
     } from '../../common/util.js';
+
     export default {
         data() {
             return {
@@ -127,7 +132,7 @@
         mounted() {
             // 设置swiper高度
             this.isHeight = this.agents[this.currentTab].list.length * 300 + 160 + 'rpx'
-            console.log(this.isHeight)
+            // console.log(this.isHeight)
             var that = this
             // 获取设备宽度
             // uni.getSystemInfo({
@@ -137,10 +142,26 @@
             // })
         },
         methods: {
-            goToSearch() {
+            goAddPost() {
                 uni.navigateTo({
-                    url: '../../pages/index/search-result/search-result'
-                })
+                    url: 'add-post/add-post'
+                });
+            },
+            goDetail(e) {
+                var index = e.currentTarget.dataset.index;
+                var postId = this.agents[this.currentTab].list[index].postId;
+                console.log(postId);
+                var detail = {
+                    postId
+                };
+                uni.navigateTo({
+                    url: 'post-detail/post-detail?query=' + encodeURIComponent(JSON.stringify(detail))
+                });
+            },
+            goSearch() {
+                uni.navigateTo({
+                    url: 'search-post/search-post'
+                });
             },
             // 导航栏点击
             navClick(index) {
@@ -161,6 +182,15 @@
                         that.agents[index].list = res.data.content
                         console.log(that.agents[index].list.length)
                     }
+                }, (fail) => {
+                    setTimeout(() => {
+                        uni.hideLoading()
+                        uni.stopPullDownRefresh()
+                        uni.showToast({
+                            icon: 'none',
+                            title: '刷新失败，请稍后再试'
+                        });
+                    }, 4000)
                 });
             },
             // swiper 滑动
@@ -177,12 +207,9 @@
                 } else if (this.currentTab == 5) {
                     this.scrollLeft = 150
                 }
-                if (this.currentTab == 1) {
-                    this.scrollLeft = 0
-                } else if (this.currentTab == 0) {
+                if (this.currentTab == 1 || this.currentTab == 0) {
                     this.scrollLeft = 0
                 }
-
                 if (this.agents[index].list.length === 0) {
                     var that = this
                     var url = api.urls.getPostList;
@@ -200,15 +227,21 @@
                             that.agents[that.currentTab].list = res.data.content
                             that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx'
                         }
+                    }, (fail) => {
+                        setTimeout(() => {
+                            uni.hideLoading()
+                            uni.stopPullDownRefresh()
+                            uni.showToast({
+                                icon: 'none',
+                                title: '刷新失败，请稍后再试'
+                            });
+                        }, 4000)
                     });
                 }
             }
         },
         onPullDownRefresh() {
             console.log(`刷新第${this.currentTab}项`)
-            uni.showLoading({
-                content: '刷新中'
-            })
             var that = this
             var url = api.urls.getPostList;
             var data = {
@@ -226,11 +259,16 @@
                     that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx'
                     uni.stopPullDownRefresh()
                 }
+            }, (fail) => {
+                setTimeout(() => {
+                    uni.hideLoading()
+                    uni.stopPullDownRefresh()
+                    uni.showToast({
+                        icon: 'none',
+                        title: '刷新失败，请稍后再试'
+                    });
+                }, 4000)
             });
-            setTimeout(() => {
-                uni.hideLoading()
-                uni.stopPullDownRefresh()
-            }, 1000)
         },
         onReachBottom() {
             console.log(`加载${this.currentTab}`)
@@ -266,6 +304,15 @@
                             title: '你已经看到我的底线啦！',
                         });
                     }
+                }, (fail) => {
+                    setTimeout(() => {
+                        uni.hideLoading()
+                        uni.stopPullDownRefresh()
+                        uni.showToast({
+                            icon: 'none',
+                            title: '刷新失败，请稍后再试'
+                        });
+                    }, 4000)
                 });
             } else {
                 uni.hideLoading()
@@ -274,12 +321,8 @@
                     title: '你已经看到我的底线啦！',
                 });
             }
-
-            setTimeout(() => {
-                uni.hideLoading()
-            }, 1000)
         },
-        onLoad() {
+        onShow() {
             var that = this
             var url = api.urls.getPostList;
             var data = {
@@ -297,6 +340,15 @@
                     that.agents[that.currentTab].list = res.data.content
                     that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx'
                 }
+            }, (fail) => {
+                setTimeout(() => {
+                    uni.hideLoading()
+                    uni.stopPullDownRefresh()
+                    uni.showToast({
+                        icon: 'none',
+                        title: '刷新失败，请稍后再试'
+                    });
+                }, 4000)
             });
         }
     }
@@ -304,7 +356,7 @@
 
 
 
-<style>
+<style scoped>
     .container {
         /* position: absolute; */
         width: 750upx;
@@ -356,7 +408,7 @@
 
     .slider {
         position: relative;
-        /* height: 400upx; */
+        height: 400upx;
     }
 
     .frame {
@@ -537,7 +589,7 @@
     .media-points-view-comment {
         position: relative;
         top: -60upx;
-        left: 480upx;
+        left: 490upx;
     }
 
     .media-points-view-comment-text {
@@ -562,5 +614,14 @@
         text-align: left;
         font-size: 30upx;
         color: #555555;
+    }
+
+    .add-post {
+        width: 90upx;
+        height: 90upx;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 80upx;
+        right: 30upx;
     }
 </style>

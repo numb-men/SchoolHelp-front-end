@@ -158,7 +158,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
@@ -223,33 +222,89 @@ var _api = _interopRequireDefault(__webpack_require__(/*! @/api/api.js */ "../..
 //
 //
 //
-//
-var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), data: function data() {return { male: '男', female: '女' };}, onLoad: function onLoad() {}, methods: { chooseImage: function chooseImage() {uni.chooseImage({ count: 1, //默认9
+var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), data: function data() {return { male: '男', female: '女' };}, onShow: function onShow() {_api.default.req.getUserInfo();}, methods: { chooseImage: function chooseImage() {uni.chooseImage({ count: 1, //默认9
         // sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album'], //从相册选择
-        success: function success(res) {console.log(JSON.stringify(res.tempFilePaths));userInfo.headUrl = res.tempFilePaths[0];} });}, saveChange: function saveChange() {/* || userInfo.sex.length == 0 || userInfo.studentNum.length == 0 || userInfo.major.length == 0 || userInfo.college.length == 0 || userInfo.college.mail == 0*/if (this.userInfo.name.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '用户名不能为空' });return;}if (this.userInfo.phone.length != 11) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号为11位数字' });return;}if (!/^1(3|4|5|7|8)\d{9}$/.test(this.userInfo.phone)) {this.loading = false;uni.showToast({ icon: 'none', title: '请检查手机号是否正确' });return;}if (this.userInfo.sex != this.male && this.userInfo.sex != this.female && this.userInfo.sex != true && this.userInfo.sex != false) {this.loading = false;uni.showToast({ icon: 'none', title: '性别只能为“男”或“女”' });return;}if (this.userInfo.studentNum.length > 0) {if (this.userInfo.studentNum.length != 9) {this.loading = false;uni.showToast({ icon: 'none', title: '请输入9位数正确学号或者不填' });
-          return;
-        }
+        success: function success(res) {console.log(JSON.stringify(res.tempFilePaths));userInfo.headUrl = res.tempFilePaths[0];} });}, saveChange: function saveChange() {if (this.userInfo.name.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '用户名不能为空' });return;} else if (this.userInfo.phone.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号不能为空' });return;} else if (this.userInfo.sex.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '性别不能为空' });return;} else if (this.userInfo.studentNum.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '学号不能为空' });return;} else if (this.userInfo.major.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '专业不能为空' });return;} else if (this.userInfo.college.length == 0) {this.loading = false;uni.showToast({
+          icon: 'none',
+          title: '学院不能为空' });
+
+        return;
+      } else if (this.userInfo.mail.length == 0) {
+        this.loading = false;
+        uni.showToast({
+          icon: 'none',
+          title: '邮箱不能为空' });
+
+        return;
+      }
+      if (this.userInfo.phone.length != 11) {
+        this.loading = false;
+        uni.showToast({
+          icon: 'none',
+          title: '手机号为11位数字' });
+
+        return;
+      }
+      if (!/^1(3|4|5|7|8)\d{9}$/.test(this.userInfo.phone)) {
+        this.loading = false;
+        uni.showToast({
+          icon: 'none',
+          title: '请检查手机号是否正确' });
+
+        return;
+      }
+      if (this.userInfo.sex != this.male && this.userInfo.sex != this.female) {
+        this.loading = false;
+        uni.showToast({
+          icon: 'none',
+          title: '性别只能为“男”或“女”' });
+
+        console.log(this.userInfo.sex);
+        return;
+      }
+      if (this.userInfo.studentNum.length != 9) {
+        this.loading = false;
+        uni.showToast({
+          icon: 'none',
+          title: '请输入9位数正确学号' });
+
+        return;
       }
       var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
-      if (this.userInfo.mail.length > 0) {
-        if (!reg.test(this.userInfo.mail)) {
-          this.loading = false;
-          uni.showToast({
-            icon: 'none',
-            title: '请输入有效邮箱地址' });
+      if (!reg.test(this.userInfo.mail)) {
+        this.loading = false;
+        uni.showToast({
+          icon: 'none',
+          title: '请输入有效邮箱地址' });
 
-          return;
-        }
+        return;
       }
       var that = this;
       var url = _api.default.urls.changeUserInfomation;
       var data = {
-        phone: this.userInfo.phone };
+        name: that.userInfo.name,
+        phone: that.userInfo.phone,
+        sex: that.userInfo.sex,
+        studentNum: that.userInfo.studentNum,
+        major: that.userInfo.major,
+        college: that.userInfo.college,
+        mail: that.userInfo.mail };
 
 
-      _api.default.req.post(url, data, function (res) {
-        if (res.code === 0) {}
+      _api.default.req.put(url, data, function (res) {
+        if (res.code === 0) {
+          uni.showToast({
+            icon: 'none',
+            title: '修改成功！' });
+
+          uni.navigateBack();
+        } else {
+          uni.showModal({
+            content: res.msg,
+            showCancel: false });
+
+        }
       });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
