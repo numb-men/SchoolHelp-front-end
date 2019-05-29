@@ -107,37 +107,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+
 
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../../../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
-
-{
-  components: {
-    mInput: mInput },
-
-  data: function data() {
-    return {
-      account: '',
-      password: '',
-      oldPassword: '' };
-
-  },
-  methods: {
-    register: function register() {
-      var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
-      if (this.password.length < 8) {
-        uni.showToast({
-          icon: 'none',
-          title: '密码最短为 8 个字符' });
-
-        return;
-      }
-      if (!regString.test(this.password)) {
-        uni.showToast({
-          icon: 'none',
-          title: '密码必须为字母和数字的组合' });
-
-        return;
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));
+var _md = __webpack_require__(/*! ../../../../../api/md5.js */ "../../../../SchoolHelp-front-end/api/md5.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), components: { mInput: mInput }, data: function data() {return {};}, methods: { register: function register() {var _this = this;var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
+      if (this.password.length < 8) {uni.showToast({ icon: 'none', title: '密码最短为 8 个字符' });return;}if (!regString.test(this.password)) {uni.showToast({ icon: 'none', title: '密码必须为字母和数字的组合' });return;
       }
       if (!(this.password == this.checkPassword)) {
         uni.showToast({
@@ -146,33 +150,78 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../../api/api
 
         return;
       }
+      var that = this;
+      var url = _api.default.urls.changePassword;
+      var data = {
+        oldPassword: (0, _md.hex_md5)(that.oldPassword),
+        newPassword: (0, _md.hex_md5)(that.password) };
 
-      // var url = api.urls.register;
-      // var data = {
-      // 	phone: this.account,
-      // 	password: this.password
-      // };
-      // api.req.post(url, data, (res) => {
-      // 	if (res.code === 0) {
-      // 		uni.showToast({
-      // 			icon: 'none',
-      // 			title: '注册成功',
-      // 		});
-      // 		uni.navigateBack();
-      // 	} else if (res.code === -200) {
-      // 		uni.showModal({
-      // 			content: "无效手机号！请检查手机号是否正确。",
-      // 			showCancel: false
-      // 		});
-      // 		return;
-      // 	} else if (res.code === -4) {
-      // 		uni.showModal({
-      // 			content: "密码应由长度至少为8位的数字和字母组成！",
-      // 			showCancel: false
-      // 		});
-      // 		return;
-      // 	}
-      // });
+      _api.default.req.put(url, data, function (res) {
+        if (res.code === 0) {
+          uni.showToast({
+            icon: 'none',
+            title: '修改成功' });
+
+          var urlLogin = _api.default.urls.login;
+          var dataLogin = {
+            phone: _this.userInfo.phone,
+            password: (0, _md.hex_md5)(that.password) };
+
+          _api.default.req.get(urlLogin, dataLogin, function (resLogin) {
+            if (resLogin.code === 0) {
+              _index.default.commit("login", resLogin.data);
+              uni.showToast({
+                icon: 'none',
+                title: '登陆成功' });
+
+              var urlInfo = _api.default.urls.getSelfUserInfo;
+              var dataInfo = {};
+              _api.default.req.get(urlInfo, dataInfo, function (resInfo) {
+                if (resInfo.code === 0) {
+                  var urlHead = _api.default.urls.getHead;
+                  var dataHead = {};
+                  _api.default.req.get(urlHead, dataHead, function (resHead) {
+                    if (resHead.code === 0) {
+                      var userInfoAndHead = resInfo.data;
+                      userInfoAndHead.headUrl = 'http://' +
+                      resHead.data;
+                      delete userInfoAndHead.password;
+                      _index.default.commit("saveUserInfo",
+                      userInfoAndHead);
+                    } else {
+                      var _userInfoAndHead = resInfo.data;
+                      _userInfoAndHead.headUrl =
+                      '/static/icons/logo.png';
+                      delete _userInfoAndHead.password;
+                      _index.default.commit("saveUserInfo",
+                      _userInfoAndHead);
+                    }
+                  });
+                } else {
+                  uni.showModal({
+                    content: resInfo.msg,
+                    showCancel: false });
+
+                }
+              });
+              uni.navigateBack();
+            } else {
+              uni.showModal({
+                content: resLogin.msg,
+                showCancel: false });
+
+              return;
+            }
+          });
+          uni.navigateBack();
+        } else {
+          uni.showModal({
+            content: res.msg,
+            showCancel: false });
+
+          return;
+        }
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

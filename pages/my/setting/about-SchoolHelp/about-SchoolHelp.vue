@@ -104,7 +104,16 @@
 		padding: 30upx 0;
 		flex-direction: column;
 		/* box-sizing: border-box; */
-		background-color: #AF94FF;
+        
+		background: -webkit-linear-gradient(right, #FFCC66, #FF0066);
+		/* Safari 5.1 - 6.0 */
+		background: -o-linear-gradient(right, #FFCC66, #FF0066);
+		/* Opera 11.1 - 12.0 */
+		background: -moz-linear-gradient(right, #FFCC66, #FF0066);
+		/* Firefox 3.6 - 15 */
+		background: linear-gradient(right, #FFCC66, #FF0066);
+		/* 标准的语法（必须放在最后） */
+        
 		/* text-align: center; */
 		align-items: center;
 		/* justify-content: center; */

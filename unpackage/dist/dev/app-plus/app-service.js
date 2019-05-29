@@ -1202,24 +1202,11 @@ function gz$gwx_13(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_13)return __WXML_GLOBAL__.ops_cached.$gwx_13
 __WXML_GLOBAL__.ops_cached.$gwx_13=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'__l'])
-Z([3,'content'])
-Z([3,'__e'])
-Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'email']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
-Z([3,'请输入邮箱..'])
-Z([3,'text'])
-Z([[7],[3,'email']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_13);return __WXML_GLOBAL__.ops_cached.$gwx_13
 }
 function gz$gwx_14(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_14)return __WXML_GLOBAL__.ops_cached.$gwx_14
 __WXML_GLOBAL__.ops_cached.$gwx_14=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
-})(__WXML_GLOBAL__.ops_cached.$gwx_14);return __WXML_GLOBAL__.ops_cached.$gwx_14
-}
-function gz$gwx_15(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_15)return __WXML_GLOBAL__.ops_cached.$gwx_15
-__WXML_GLOBAL__.ops_cached.$gwx_15=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
 Z([3,'__e'])
@@ -1236,20 +1223,20 @@ Z([[7],[3,'account']])
 Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'password']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
 Z([3,'16'])
-Z([3,'至少8位数字与字母组合'])
+Z([3,'至少8~16位数字与字母组合'])
 Z([3,'password'])
 Z([[7],[3,'password']])
+})(__WXML_GLOBAL__.ops_cached.$gwx_14);return __WXML_GLOBAL__.ops_cached.$gwx_14
+}
+function gz$gwx_15(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_15)return __WXML_GLOBAL__.ops_cached.$gwx_15
+__WXML_GLOBAL__.ops_cached.$gwx_15=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_15);return __WXML_GLOBAL__.ops_cached.$gwx_15
 }
 function gz$gwx_16(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_16)return __WXML_GLOBAL__.ops_cached.$gwx_16
 __WXML_GLOBAL__.ops_cached.$gwx_16=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
-})(__WXML_GLOBAL__.ops_cached.$gwx_16);return __WXML_GLOBAL__.ops_cached.$gwx_16
-}
-function gz$gwx_17(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_17)return __WXML_GLOBAL__.ops_cached.$gwx_17
-__WXML_GLOBAL__.ops_cached.$gwx_17=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
 Z([3,'__e'])
@@ -1265,6 +1252,12 @@ Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'getDetai
 Z([3,'uni-list-cell-hover'])
 Z([[2,'+'],[[2,'+'],[1,'width:'],[[2,'+'],[[7],[3,'Screen_width']],[1,'px']]],[1,';']])
 Z([[6],[[7],[3,'item']],[3,'name']])
+})(__WXML_GLOBAL__.ops_cached.$gwx_16);return __WXML_GLOBAL__.ops_cached.$gwx_16
+}
+function gz$gwx_17(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_17)return __WXML_GLOBAL__.ops_cached.$gwx_17
+__WXML_GLOBAL__.ops_cached.$gwx_17=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_17);return __WXML_GLOBAL__.ops_cached.$gwx_17
 }
 function gz$gwx_18(){
@@ -1276,12 +1269,6 @@ __WXML_GLOBAL__.ops_cached.$gwx_18=[];
 function gz$gwx_19(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_19)return __WXML_GLOBAL__.ops_cached.$gwx_19
 __WXML_GLOBAL__.ops_cached.$gwx_19=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
-})(__WXML_GLOBAL__.ops_cached.$gwx_19);return __WXML_GLOBAL__.ops_cached.$gwx_19
-}
-function gz$gwx_20(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_20)return __WXML_GLOBAL__.ops_cached.$gwx_20
-__WXML_GLOBAL__.ops_cached.$gwx_20=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
 Z([3,'__e'])
@@ -1297,17 +1284,17 @@ Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'getDetai
 Z([3,'uni-list-cell-hover'])
 Z([[2,'+'],[[2,'+'],[1,'width:'],[[2,'+'],[[7],[3,'Screen_width']],[1,'px']]],[1,';']])
 Z([[6],[[7],[3,'item']],[3,'name']])
+})(__WXML_GLOBAL__.ops_cached.$gwx_19);return __WXML_GLOBAL__.ops_cached.$gwx_19
+}
+function gz$gwx_20(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_20)return __WXML_GLOBAL__.ops_cached.$gwx_20
+__WXML_GLOBAL__.ops_cached.$gwx_20=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_20);return __WXML_GLOBAL__.ops_cached.$gwx_20
 }
 function gz$gwx_21(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_21)return __WXML_GLOBAL__.ops_cached.$gwx_21
 __WXML_GLOBAL__.ops_cached.$gwx_21=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
-})(__WXML_GLOBAL__.ops_cached.$gwx_21);return __WXML_GLOBAL__.ops_cached.$gwx_21
-}
-function gz$gwx_22(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_22)return __WXML_GLOBAL__.ops_cached.$gwx_22
-__WXML_GLOBAL__.ops_cached.$gwx_22=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
 Z([3,'__e'])
@@ -1323,7 +1310,7 @@ Z([[7],[3,'account']])
 Z(z[1])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^input']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'__set_model']],[[4],[[5],[[5],[[5],[1,'$0']],[1,'password']],[1,'$event']]]],[[4],[[5],[1,'']]]]]]]]]]])
 Z([3,'16'])
-Z([3,'至少8位数字与字母组合'])
+Z([3,'至少8~16位数字与字母组合'])
 Z([3,'password'])
 Z([[7],[3,'password']])
 Z(z[1])
@@ -1332,6 +1319,12 @@ Z(z[13])
 Z([3,'请输入密码'])
 Z(z[15])
 Z([[7],[3,'checkPassword']])
+})(__WXML_GLOBAL__.ops_cached.$gwx_21);return __WXML_GLOBAL__.ops_cached.$gwx_21
+}
+function gz$gwx_22(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_22)return __WXML_GLOBAL__.ops_cached.$gwx_22
+__WXML_GLOBAL__.ops_cached.$gwx_22=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_22);return __WXML_GLOBAL__.ops_cached.$gwx_22
 }
 function gz$gwx_23(){
@@ -1343,12 +1336,6 @@ __WXML_GLOBAL__.ops_cached.$gwx_23=[];
 function gz$gwx_24(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_24)return __WXML_GLOBAL__.ops_cached.$gwx_24
 __WXML_GLOBAL__.ops_cached.$gwx_24=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
-})(__WXML_GLOBAL__.ops_cached.$gwx_24);return __WXML_GLOBAL__.ops_cached.$gwx_24
-}
-function gz$gwx_25(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_25)return __WXML_GLOBAL__.ops_cached.$gwx_25
-__WXML_GLOBAL__.ops_cached.$gwx_25=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
 Z([3,'__e'])
@@ -1373,6 +1360,12 @@ Z(z[7])
 Z([3,'请输入密码'])
 Z(z[9])
 Z([[7],[3,'checkPassword']])
+})(__WXML_GLOBAL__.ops_cached.$gwx_24);return __WXML_GLOBAL__.ops_cached.$gwx_24
+}
+function gz$gwx_25(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_25)return __WXML_GLOBAL__.ops_cached.$gwx_25
+__WXML_GLOBAL__.ops_cached.$gwx_25=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_25);return __WXML_GLOBAL__.ops_cached.$gwx_25
 }
 function gz$gwx_26(){
@@ -1393,17 +1386,11 @@ __WXML_GLOBAL__.ops_cached.$gwx_28=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_28);return __WXML_GLOBAL__.ops_cached.$gwx_28
 }
-function gz$gwx_29(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_29)return __WXML_GLOBAL__.ops_cached.$gwx_29
-__WXML_GLOBAL__.ops_cached.$gwx_29=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
-})(__WXML_GLOBAL__.ops_cached.$gwx_29);return __WXML_GLOBAL__.ops_cached.$gwx_29
-}
 __WXML_GLOBAL__.ops_set.$gwx=z;
 __WXML_GLOBAL__.ops_init.$gwx=true;
 var nv_require=function(){var nnm={};var nom={};return function(n){return function(){if(!nnm[n]) return undefined;try{if(!nom[n])nom[n]=nnm[n]();return nom[n];}catch(e){e.message=e.message.replace(/nv_/g,'');var tmp = e.stack.substring(0,e.stack.lastIndexOf(n));e.stack = tmp.substring(0,tmp.lastIndexOf('\n'));e.stack = e.stack.replace(/\snv_/g,' ');e.stack = $gstack(e.stack);e.stack += '\n    at ' + n.substring(2);console.error(e);}
 }}}()
-var x=['./components/m-icon/m-icon.wxml','./components/m-input.wxml','./components/mehaotian-search-revision/mehaotian-search-revision.wxml','./pages/extensions/extensions.wxml','./pages/extensions/questionaire/questionaire.wxml','./pages/index/add-post/add-post.wxml','./pages/index/index.wxml','./pages/index/post-detail/post-detail.wxml','./pages/index/search-post/search-post.wxml','./pages/index/search-result/search-result.wxml','./pages/messages/message-detail/message-detail.wxml','./pages/messages/messages.wxml','./pages/my/change-password/change-password.wxml','./pages/my/feedback/feedback.wxml','./pages/my/login/login.wxml','./pages/my/my-collects/my-collects.wxml','./pages/my/my-comments/my-comments.wxml','./pages/my/my-data/my-data.wxml','./pages/my/my-fallows/my-fallows.wxml','./pages/my/my-post/my-post.wxml','./pages/my/my.wxml','./pages/my/register/register.wxml','./pages/my/setting/about-SchoolHelp/about-SchoolHelp.wxml','./pages/my/setting/account-security/account-security.wxml','./pages/my/setting/account-security/change-password/change-password.wxml','./pages/my/setting/account-security/change-phone/change-phone.wxml','./pages/my/setting/edit-information/edit-information.wxml','./pages/my/setting/help/help.wxml','./pages/my/setting/setting.wxml'];d_[x[0]]={}
+var x=['./components/m-icon/m-icon.wxml','./components/m-input.wxml','./components/mehaotian-search-revision/mehaotian-search-revision.wxml','./pages/extensions/extensions.wxml','./pages/extensions/questionaire/questionaire.wxml','./pages/index/add-post/add-post.wxml','./pages/index/index.wxml','./pages/index/post-detail/post-detail.wxml','./pages/index/search-post/search-post.wxml','./pages/index/search-result/search-result.wxml','./pages/messages/message-detail/message-detail.wxml','./pages/messages/messages.wxml','./pages/my/feedback/feedback.wxml','./pages/my/login/login.wxml','./pages/my/my-collects/my-collects.wxml','./pages/my/my-comments/my-comments.wxml','./pages/my/my-data/my-data.wxml','./pages/my/my-fallows/my-fallows.wxml','./pages/my/my-post/my-post.wxml','./pages/my/my.wxml','./pages/my/register/register.wxml','./pages/my/setting/about-SchoolHelp/about-SchoolHelp.wxml','./pages/my/setting/account-security/account-security.wxml','./pages/my/setting/account-security/change-password/change-password.wxml','./pages/my/setting/account-security/change-phone/change-phone.wxml','./pages/my/setting/change-userInfo/change-userInfo.wxml','./pages/my/setting/help/help.wxml','./pages/my/setting/setting.wxml'];d_[x[0]]={}
 var m0=function(e,s,r,gg){
 var z=gz$gwx_1()
 return r
@@ -1659,79 +1646,71 @@ e_[x[11]]={f:m11,j:[],i:[],ti:[],ic:[]}
 d_[x[12]]={}
 var m12=function(e,s,r,gg){
 var z=gz$gwx_13()
-cs.push("./pages/my/change-password/change-password.wxml:view:1:1")
-var oXB=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
-cs.push("./pages/my/change-password/change-password.wxml:m-input:1:124")
-var fYB=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',2,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
-cs.pop()
-_(oXB,fYB)
-cs.pop()
-_(r,oXB)
 return r
 }
 e_[x[12]]={f:m12,j:[],i:[],ti:[],ic:[]}
 d_[x[13]]={}
 var m13=function(e,s,r,gg){
 var z=gz$gwx_14()
+cs.push("./pages/my/login/login.wxml:form:1:1")
+var fYB=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+cs.push("./pages/my/login/login.wxml:view:1:117")
+var cZB=_n('view')
+_rz(z,cZB,'class',4,e,s,gg)
+cs.push("./pages/my/login/login.wxml:m-input:1:213")
+var h1B=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'class',1,'data-event-opts',2,'maxlength',3,'placeholder',4,'type',5,'value',6],[],e,s,gg)
+cs.pop()
+_(cZB,h1B)
+cs.push("./pages/my/login/login.wxml:m-input:1:527")
+var o2B=_mz(z,'m-input',['displayable',-1,'bind:input',12,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+cs.pop()
+_(cZB,o2B)
+cs.pop()
+_(fYB,cZB)
+cs.pop()
+_(r,fYB)
 return r
 }
 e_[x[13]]={f:m13,j:[],i:[],ti:[],ic:[]}
 d_[x[14]]={}
 var m14=function(e,s,r,gg){
 var z=gz$gwx_15()
-cs.push("./pages/my/login/login.wxml:form:1:1")
-var o2B=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
-cs.push("./pages/my/login/login.wxml:view:1:117")
-var c3B=_n('view')
-_rz(z,c3B,'class',4,e,s,gg)
-cs.push("./pages/my/login/login.wxml:m-input:1:213")
-var o4B=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'class',1,'data-event-opts',2,'maxlength',3,'placeholder',4,'type',5,'value',6],[],e,s,gg)
-cs.pop()
-_(c3B,o4B)
-cs.push("./pages/my/login/login.wxml:m-input:1:527")
-var l5B=_mz(z,'m-input',['displayable',-1,'bind:input',12,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
-cs.pop()
-_(c3B,l5B)
-cs.pop()
-_(o2B,c3B)
-cs.pop()
-_(r,o2B)
 return r
 }
 e_[x[14]]={f:m14,j:[],i:[],ti:[],ic:[]}
 d_[x[15]]={}
 var m15=function(e,s,r,gg){
 var z=gz$gwx_16()
+cs.push("./pages/my/my-comments/my-comments.wxml:view:1:1")
+var l5B=_mz(z,'view',['bind:__l',0,'bindtap',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var a6B=_v()
+_(l5B,a6B)
+cs.push("./pages/my/my-comments/my-comments.wxml:block:1:369")
+var t7B=function(b9B,e8B,o0B,gg){
+cs.push("./pages/my/my-comments/my-comments.wxml:view:1:498")
+var oBC=_mz(z,'view',['bindtap',8,'class',1,'data-event-opts',2,'hoverClass',3,'style',4],[],b9B,e8B,gg)
+var fCC=_v()
+_(oBC,fCC)
+if(_oz(z,13,b9B,e8B,gg)){fCC.wxVkey=1
+cs.push("./pages/my/my-comments/my-comments.wxml:block:1:756")
+cs.pop()
+}
+fCC.wxXCkey=1
+cs.pop()
+_(o0B,oBC)
+return o0B
+}
+a6B.wxXCkey=2
+_2z(z,6,t7B,e,s,gg,a6B,'item','index','index')
+cs.pop()
+cs.pop()
+_(r,l5B)
 return r
 }
 e_[x[15]]={f:m15,j:[],i:[],ti:[],ic:[]}
 d_[x[16]]={}
 var m16=function(e,s,r,gg){
 var z=gz$gwx_17()
-cs.push("./pages/my/my-comments/my-comments.wxml:view:1:1")
-var e8B=_mz(z,'view',['bind:__l',0,'bindtap',1,'class',1,'data-event-opts',2],[],e,s,gg)
-var b9B=_v()
-_(e8B,b9B)
-cs.push("./pages/my/my-comments/my-comments.wxml:block:1:369")
-var o0B=function(oBC,xAC,fCC,gg){
-cs.push("./pages/my/my-comments/my-comments.wxml:view:1:498")
-var hEC=_mz(z,'view',['bindtap',8,'class',1,'data-event-opts',2,'hoverClass',3,'style',4],[],oBC,xAC,gg)
-var oFC=_v()
-_(hEC,oFC)
-if(_oz(z,13,oBC,xAC,gg)){oFC.wxVkey=1
-cs.push("./pages/my/my-comments/my-comments.wxml:block:1:756")
-cs.pop()
-}
-oFC.wxXCkey=1
-cs.pop()
-_(fCC,hEC)
-return fCC
-}
-b9B.wxXCkey=2
-_2z(z,6,o0B,e,s,gg,b9B,'item','index','index')
-cs.pop()
-cs.pop()
-_(r,e8B)
 return r
 }
 e_[x[16]]={f:m16,j:[],i:[],ti:[],ic:[]}
@@ -1744,69 +1723,69 @@ e_[x[17]]={f:m17,j:[],i:[],ti:[],ic:[]}
 d_[x[18]]={}
 var m18=function(e,s,r,gg){
 var z=gz$gwx_19()
+cs.push("./pages/my/my-post/my-post.wxml:view:1:1")
+var cGC=_mz(z,'view',['bind:__l',0,'bindtap',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var oHC=_v()
+_(cGC,oHC)
+cs.push("./pages/my/my-post/my-post.wxml:block:1:380")
+var lIC=function(tKC,aJC,eLC,gg){
+cs.push("./pages/my/my-post/my-post.wxml:view:1:509")
+var oNC=_mz(z,'view',['bindtap',8,'class',1,'data-event-opts',2,'hoverClass',3,'style',4],[],tKC,aJC,gg)
+var xOC=_v()
+_(oNC,xOC)
+if(_oz(z,13,tKC,aJC,gg)){xOC.wxVkey=1
+cs.push("./pages/my/my-post/my-post.wxml:block:1:767")
+cs.pop()
+}
+xOC.wxXCkey=1
+cs.pop()
+_(eLC,oNC)
+return eLC
+}
+oHC.wxXCkey=2
+_2z(z,6,lIC,e,s,gg,oHC,'item','index','index')
+cs.pop()
+cs.pop()
+_(r,cGC)
 return r
 }
 e_[x[18]]={f:m18,j:[],i:[],ti:[],ic:[]}
 d_[x[19]]={}
 var m19=function(e,s,r,gg){
 var z=gz$gwx_20()
-cs.push("./pages/my/my-post/my-post.wxml:view:1:1")
-var aJC=_mz(z,'view',['bind:__l',0,'bindtap',1,'class',1,'data-event-opts',2],[],e,s,gg)
-var tKC=_v()
-_(aJC,tKC)
-cs.push("./pages/my/my-post/my-post.wxml:block:1:380")
-var eLC=function(oNC,bMC,xOC,gg){
-cs.push("./pages/my/my-post/my-post.wxml:view:1:509")
-var fQC=_mz(z,'view',['bindtap',8,'class',1,'data-event-opts',2,'hoverClass',3,'style',4],[],oNC,bMC,gg)
-var cRC=_v()
-_(fQC,cRC)
-if(_oz(z,13,oNC,bMC,gg)){cRC.wxVkey=1
-cs.push("./pages/my/my-post/my-post.wxml:block:1:767")
-cs.pop()
-}
-cRC.wxXCkey=1
-cs.pop()
-_(xOC,fQC)
-return xOC
-}
-tKC.wxXCkey=2
-_2z(z,6,eLC,e,s,gg,tKC,'item','index','index')
-cs.pop()
-cs.pop()
-_(r,aJC)
 return r
 }
 e_[x[19]]={f:m19,j:[],i:[],ti:[],ic:[]}
 d_[x[20]]={}
 var m20=function(e,s,r,gg){
 var z=gz$gwx_21()
+cs.push("./pages/my/register/register.wxml:form:1:1")
+var cRC=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+cs.push("./pages/my/register/register.wxml:view:1:116")
+var hSC=_n('view')
+_rz(z,hSC,'class',4,e,s,gg)
+cs.push("./pages/my/register/register.wxml:m-input:1:220")
+var oTC=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+cs.pop()
+_(hSC,oTC)
+cs.push("./pages/my/register/register.wxml:m-input:1:533")
+var cUC=_mz(z,'m-input',['displayable',-1,'bind:input',11,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+cs.pop()
+_(hSC,cUC)
+cs.push("./pages/my/register/register.wxml:m-input:1:847")
+var oVC=_mz(z,'m-input',['displayable',-1,'bind:input',17,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+cs.pop()
+_(hSC,oVC)
+cs.pop()
+_(cRC,hSC)
+cs.pop()
+_(r,cRC)
 return r
 }
 e_[x[20]]={f:m20,j:[],i:[],ti:[],ic:[]}
 d_[x[21]]={}
 var m21=function(e,s,r,gg){
 var z=gz$gwx_22()
-cs.push("./pages/my/register/register.wxml:form:1:1")
-var cUC=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
-cs.push("./pages/my/register/register.wxml:view:1:116")
-var oVC=_n('view')
-_rz(z,oVC,'class',4,e,s,gg)
-cs.push("./pages/my/register/register.wxml:m-input:1:220")
-var lWC=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
-cs.pop()
-_(oVC,lWC)
-cs.push("./pages/my/register/register.wxml:m-input:1:533")
-var aXC=_mz(z,'m-input',['displayable',-1,'bind:input',11,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
-cs.pop()
-_(oVC,aXC)
-cs.push("./pages/my/register/register.wxml:m-input:1:844")
-var tYC=_mz(z,'m-input',['displayable',-1,'bind:input',17,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
-cs.pop()
-_(oVC,tYC)
-cs.pop()
-_(cUC,oVC)
-cs.pop()
-_(r,cUC)
 return r
 }
 e_[x[21]]={f:m21,j:[],i:[],ti:[],ic:[]}
@@ -1819,33 +1798,33 @@ e_[x[22]]={f:m22,j:[],i:[],ti:[],ic:[]}
 d_[x[23]]={}
 var m23=function(e,s,r,gg){
 var z=gz$gwx_24()
+cs.push("./pages/my/setting/account-security/change-password/change-password.wxml:form:1:1")
+var eZC=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+cs.push("./pages/my/setting/account-security/change-password/change-password.wxml:view:1:116")
+var b1C=_n('view')
+_rz(z,b1C,'class',4,e,s,gg)
+cs.push("./pages/my/setting/account-security/change-password/change-password.wxml:m-input:1:220")
+var o2C=_mz(z,'m-input',['displayable',-1,'bind:input',5,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+cs.pop()
+_(b1C,o2C)
+cs.push("./pages/my/setting/account-security/change-password/change-password.wxml:m-input:1:541")
+var x3C=_mz(z,'m-input',['displayable',-1,'bind:input',11,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+cs.pop()
+_(b1C,x3C)
+cs.push("./pages/my/setting/account-security/change-password/change-password.wxml:m-input:1:852")
+var o4C=_mz(z,'m-input',['displayable',-1,'bind:input',17,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+cs.pop()
+_(b1C,o4C)
+cs.pop()
+_(eZC,b1C)
+cs.pop()
+_(r,eZC)
 return r
 }
 e_[x[23]]={f:m23,j:[],i:[],ti:[],ic:[]}
 d_[x[24]]={}
 var m24=function(e,s,r,gg){
 var z=gz$gwx_25()
-cs.push("./pages/my/setting/account-security/change-password/change-password.wxml:form:1:1")
-var x3C=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
-cs.push("./pages/my/setting/account-security/change-password/change-password.wxml:view:1:116")
-var o4C=_n('view')
-_rz(z,o4C,'class',4,e,s,gg)
-cs.push("./pages/my/setting/account-security/change-password/change-password.wxml:m-input:1:220")
-var f5C=_mz(z,'m-input',['displayable',-1,'bind:input',5,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
-cs.pop()
-_(o4C,f5C)
-cs.push("./pages/my/setting/account-security/change-password/change-password.wxml:m-input:1:541")
-var c6C=_mz(z,'m-input',['displayable',-1,'bind:input',11,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
-cs.pop()
-_(o4C,c6C)
-cs.push("./pages/my/setting/account-security/change-password/change-password.wxml:m-input:1:852")
-var h7C=_mz(z,'m-input',['displayable',-1,'bind:input',17,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
-cs.pop()
-_(o4C,h7C)
-cs.pop()
-_(x3C,o4C)
-cs.pop()
-_(r,x3C)
 return r
 }
 e_[x[24]]={f:m24,j:[],i:[],ti:[],ic:[]}
@@ -1867,12 +1846,6 @@ var z=gz$gwx_28()
 return r
 }
 e_[x[27]]={f:m27,j:[],i:[],ti:[],ic:[]}
-d_[x[28]]={}
-var m28=function(e,s,r,gg){
-var z=gz$gwx_29()
-return r
-}
-e_[x[28]]={f:m28,j:[],i:[],ti:[],ic:[]}
 if(path&&e_[path]){
 return function(env,dd,global){$gwxc=0;var root={"tag":"wx-page"};root.children=[]
 var main=e_[path].f
@@ -1893,7 +1866,7 @@ return root;
 
 
 
-__wxAppCode__['app.json']={"pages":["pages/index/index","pages/messages/message-detail/message-detail","pages/messages/messages","pages/extensions/extensions","pages/my/my","pages/index/post-detail/post-detail","pages/index/add-post/add-post","pages/index/search-post/search-post","pages/index/search-result/search-result","pages/extensions/questionaire/questionaire","pages/my/login/login","pages/my/register/register","pages/my/change-password/change-password","pages/my/my-fallows/my-fallows","pages/my/my-collects/my-collects","pages/my/feedback/feedback","pages/my/setting/setting","pages/my/my-data/my-data","pages/my/my-comments/my-comments","pages/my/my-post/my-post","pages/my/setting/account-security/account-security","pages/my/setting/account-security/change-phone/change-phone","pages/my/setting/help/help","pages/my/setting/about-SchoolHelp/about-SchoolHelp","pages/my/setting/account-security/change-password/change-password","pages/my/setting/edit-information/edit-information"],"subPackages":[],"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"校园帮","navigationBarBackgroundColor":"#fefefe","backgroundColor":"#fefefe"},"tabBar":{"color":"#343131","selectedColor":"#2F85FC","backgroundColor":"#fefefe","borderStyle":"black","list":[{"pagePath":"pages/index/index","iconPath":"static/icons/index.png","selectedIconPath":"static/icons/index-active.png","text":"主页"},{"pagePath":"pages/messages/messages","iconPath":"static/icons/message.png","selectedIconPath":"static/icons/message-active.png","text":"消息"},{"pagePath":"pages/extensions/extensions","iconPath":"static/icons/extensions.png","selectedIconPath":"static/icons/extensions-active.png","text":"扩展"},{"pagePath":"pages/my/my","iconPath":"static/icons/my.png","selectedIconPath":"static/icons/my-active.png","text":"我的"}]},"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"校园帮","compilerVersion":"1.9.9","usingComponents":{}};
+__wxAppCode__['app.json']={"pages":["pages/index/index","pages/messages/message-detail/message-detail","pages/messages/messages","pages/extensions/extensions","pages/my/my","pages/index/post-detail/post-detail","pages/index/add-post/add-post","pages/index/search-post/search-post","pages/index/search-result/search-result","pages/extensions/questionaire/questionaire","pages/my/login/login","pages/my/register/register","pages/my/my-fallows/my-fallows","pages/my/my-collects/my-collects","pages/my/feedback/feedback","pages/my/setting/setting","pages/my/my-data/my-data","pages/my/my-comments/my-comments","pages/my/my-post/my-post","pages/my/setting/account-security/account-security","pages/my/setting/account-security/change-phone/change-phone","pages/my/setting/help/help","pages/my/setting/about-SchoolHelp/about-SchoolHelp","pages/my/setting/account-security/change-password/change-password","pages/my/setting/change-userInfo/change-userInfo"],"subPackages":[],"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"校园帮","navigationBarBackgroundColor":"#fefefe","backgroundColor":"#fefefe"},"tabBar":{"color":"#343131","selectedColor":"#2F85FC","backgroundColor":"#fefefe","borderStyle":"black","list":[{"pagePath":"pages/index/index","iconPath":"static/icons/index.png","selectedIconPath":"static/icons/index-active.png","text":"主页"},{"pagePath":"pages/messages/messages","iconPath":"static/icons/message.png","selectedIconPath":"static/icons/message-active.png","text":"消息"},{"pagePath":"pages/extensions/extensions","iconPath":"static/icons/extensions.png","selectedIconPath":"static/icons/extensions-active.png","text":"扩展"},{"pagePath":"pages/my/my","iconPath":"static/icons/my.png","selectedIconPath":"static/icons/my-active.png","text":"我的"}]},"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"校园帮","compilerVersion":"1.9.9","usingComponents":{}};
 __wxAppCode__['app.wxml']=$gwx('./app.wxml');
 
 __wxAppCode__['components/m-icon/m-icon.json']={"usingComponents":{},"component":true};
@@ -1931,9 +1904,6 @@ __wxAppCode__['pages/messages/message-detail/message-detail.wxml']=$gwx('./pages
 
 __wxAppCode__['pages/messages/messages.json']={"navigationBarTitleText":"消息","usingComponents":{}};
 __wxAppCode__['pages/messages/messages.wxml']=$gwx('./pages/messages/messages.wxml');
-
-__wxAppCode__['pages/my/change-password/change-password.json']={"navigationBarTitleText":"修改密码","usingComponents":{"m-input":"/components/m-input"}};
-__wxAppCode__['pages/my/change-password/change-password.wxml']=$gwx('./pages/my/change-password/change-password.wxml');
 
 __wxAppCode__['pages/my/feedback/feedback.json']={"navigationBarTitleText":"问题反馈","usingComponents":{}};
 __wxAppCode__['pages/my/feedback/feedback.wxml']=$gwx('./pages/my/feedback/feedback.wxml');
@@ -1974,8 +1944,8 @@ __wxAppCode__['pages/my/setting/account-security/change-password/change-password
 __wxAppCode__['pages/my/setting/account-security/change-phone/change-phone.json']={"navigationBarTitleText":"手机号绑定","usingComponents":{}};
 __wxAppCode__['pages/my/setting/account-security/change-phone/change-phone.wxml']=$gwx('./pages/my/setting/account-security/change-phone/change-phone.wxml');
 
-__wxAppCode__['pages/my/setting/edit-information/edit-information.json']={"navigationBarTitleText":"修改资料","usingComponents":{}};
-__wxAppCode__['pages/my/setting/edit-information/edit-information.wxml']=$gwx('./pages/my/setting/edit-information/edit-information.wxml');
+__wxAppCode__['pages/my/setting/change-userInfo/change-userInfo.json']={"navigationBarTitleText":"修改资料","usingComponents":{}};
+__wxAppCode__['pages/my/setting/change-userInfo/change-userInfo.wxml']=$gwx('./pages/my/setting/change-userInfo/change-userInfo.wxml');
 
 __wxAppCode__['pages/my/setting/help/help.json']={"navigationBarTitleText":"帮助","usingComponents":{}};
 __wxAppCode__['pages/my/setting/help/help.wxml']=$gwx('./pages/my/setting/help/help.wxml');
@@ -2438,7 +2408,7 @@ define('common/vendor.js',function(require, module, exports, window, document, f
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.5";
+var root = "http://134.175.16.143:8080/schoolhelp-1.0.6";
 // var root = "http://24l687f160.qicp.vip:43882";
 // var root = "/schoolhelp/schoolhelp-1.0.1"; // h5测试使用
 
@@ -2453,7 +2423,9 @@ var urls = {
   getSelfUserInfo: "".concat(root, "/user"),
   getHead: "".concat(root, "/download/head"),
   feedback: "".concat(root, "/feedback/"),
-  getPostList: "".concat(root, "/post/pages")
+  getPostList: "".concat(root, "/post/pages"),
+  changeUserInfomation: "".concat(root, "/user"),
+  changePassword: "".concat(root, "/user/password")
 
 
   // 封装请求方法
@@ -2469,7 +2441,7 @@ var urls = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(method, url, res.data, " at api\\api.js:35");
+        console.log(method, url, res.data, " at api\\api.js:37");
         _success(res.data);
       },
       fail: function fail(err) {
@@ -2496,6 +2468,276 @@ var urls = {
   urls: urls,
   req: req };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
+
+/***/ }),
+
+/***/ "../../../../SchoolHelp-front-end/api/md5.js":
+/*!************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/api/md5.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.hex_md5 = hex_md5; /*
+                                                                                                       * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
+                                                                                                       * Digest Algorithm, as defined in RFC 1321.
+                                                                                                       * Version 2.1 Copyright (C) Paul Johnston 1999 - 2002.
+                                                                                                       * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
+                                                                                                       * Distributed under the BSD License
+                                                                                                       * See http://pajhome.org.uk/crypt/md5 for more info.
+                                                                                                       */
+
+/*
+                                                                                                           * Configurable variables. You may need to tweak these to be compatible with
+                                                                                                           * the server-side, but the defaults work in most cases.
+                                                                                                           */
+var hexcase = 0; /* hex output format. 0 - lowercase; 1 - uppercase        */
+var b64pad = ""; /* base-64 pad character. "=" for strict RFC compliance   */
+var chrsz = 8; /* bits per input character. 8 - ASCII; 16 - Unicode      */
+
+/*
+                                                                             * These are the functions you'll usually want to call
+                                                                             * They take string arguments and return either hex or base-64 encoded strings
+                                                                             */
+function hex_md5(s) {
+  return binl2hex(core_md5(str2binl(s), s.length * chrsz));
+}
+
+function b64_md5(s) {
+  return binl2b64(core_md5(str2binl(s), s.length * chrsz));
+}
+
+function str_md5(s) {
+  return binl2str(core_md5(str2binl(s), s.length * chrsz));
+}
+
+function hex_hmac_md5(key, data) {
+  return binl2hex(core_hmac_md5(key, data));
+}
+
+function b64_hmac_md5(key, data) {
+  return binl2b64(core_hmac_md5(key, data));
+}
+
+function str_hmac_md5(key, data) {
+  return binl2str(core_hmac_md5(key, data));
+}
+
+/*
+   * Perform a simple self-test to see if the VM is working
+   */
+function md5_vm_test() {
+  return hex_md5("abc") == "900150983cd24fb0d6963f7d28e17f72";
+}
+
+/*
+   * Calculate the MD5 of an array of little-endian words, and a bit length
+   */
+function core_md5(x, len) {
+  /* append padding */
+  x[len >> 5] |= 0x80 << len % 32;
+  x[(len + 64 >>> 9 << 4) + 14] = len;
+
+  var a = 1732584193;
+  var b = -271733879;
+  var c = -1732584194;
+  var d = 271733878;
+
+  for (var i = 0; i < x.length; i += 16) {
+    var olda = a;
+    var oldb = b;
+    var oldc = c;
+    var oldd = d;
+
+    a = md5_ff(a, b, c, d, x[i + 0], 7, -680876936);
+    d = md5_ff(d, a, b, c, x[i + 1], 12, -389564586);
+    c = md5_ff(c, d, a, b, x[i + 2], 17, 606105819);
+    b = md5_ff(b, c, d, a, x[i + 3], 22, -1044525330);
+    a = md5_ff(a, b, c, d, x[i + 4], 7, -176418897);
+    d = md5_ff(d, a, b, c, x[i + 5], 12, 1200080426);
+    c = md5_ff(c, d, a, b, x[i + 6], 17, -1473231341);
+    b = md5_ff(b, c, d, a, x[i + 7], 22, -45705983);
+    a = md5_ff(a, b, c, d, x[i + 8], 7, 1770035416);
+    d = md5_ff(d, a, b, c, x[i + 9], 12, -1958414417);
+    c = md5_ff(c, d, a, b, x[i + 10], 17, -42063);
+    b = md5_ff(b, c, d, a, x[i + 11], 22, -1990404162);
+    a = md5_ff(a, b, c, d, x[i + 12], 7, 1804603682);
+    d = md5_ff(d, a, b, c, x[i + 13], 12, -40341101);
+    c = md5_ff(c, d, a, b, x[i + 14], 17, -1502002290);
+    b = md5_ff(b, c, d, a, x[i + 15], 22, 1236535329);
+
+    a = md5_gg(a, b, c, d, x[i + 1], 5, -165796510);
+    d = md5_gg(d, a, b, c, x[i + 6], 9, -1069501632);
+    c = md5_gg(c, d, a, b, x[i + 11], 14, 643717713);
+    b = md5_gg(b, c, d, a, x[i + 0], 20, -373897302);
+    a = md5_gg(a, b, c, d, x[i + 5], 5, -701558691);
+    d = md5_gg(d, a, b, c, x[i + 10], 9, 38016083);
+    c = md5_gg(c, d, a, b, x[i + 15], 14, -660478335);
+    b = md5_gg(b, c, d, a, x[i + 4], 20, -405537848);
+    a = md5_gg(a, b, c, d, x[i + 9], 5, 568446438);
+    d = md5_gg(d, a, b, c, x[i + 14], 9, -1019803690);
+    c = md5_gg(c, d, a, b, x[i + 3], 14, -187363961);
+    b = md5_gg(b, c, d, a, x[i + 8], 20, 1163531501);
+    a = md5_gg(a, b, c, d, x[i + 13], 5, -1444681467);
+    d = md5_gg(d, a, b, c, x[i + 2], 9, -51403784);
+    c = md5_gg(c, d, a, b, x[i + 7], 14, 1735328473);
+    b = md5_gg(b, c, d, a, x[i + 12], 20, -1926607734);
+
+    a = md5_hh(a, b, c, d, x[i + 5], 4, -378558);
+    d = md5_hh(d, a, b, c, x[i + 8], 11, -2022574463);
+    c = md5_hh(c, d, a, b, x[i + 11], 16, 1839030562);
+    b = md5_hh(b, c, d, a, x[i + 14], 23, -35309556);
+    a = md5_hh(a, b, c, d, x[i + 1], 4, -1530992060);
+    d = md5_hh(d, a, b, c, x[i + 4], 11, 1272893353);
+    c = md5_hh(c, d, a, b, x[i + 7], 16, -155497632);
+    b = md5_hh(b, c, d, a, x[i + 10], 23, -1094730640);
+    a = md5_hh(a, b, c, d, x[i + 13], 4, 681279174);
+    d = md5_hh(d, a, b, c, x[i + 0], 11, -358537222);
+    c = md5_hh(c, d, a, b, x[i + 3], 16, -722521979);
+    b = md5_hh(b, c, d, a, x[i + 6], 23, 76029189);
+    a = md5_hh(a, b, c, d, x[i + 9], 4, -640364487);
+    d = md5_hh(d, a, b, c, x[i + 12], 11, -421815835);
+    c = md5_hh(c, d, a, b, x[i + 15], 16, 530742520);
+    b = md5_hh(b, c, d, a, x[i + 2], 23, -995338651);
+
+    a = md5_ii(a, b, c, d, x[i + 0], 6, -198630844);
+    d = md5_ii(d, a, b, c, x[i + 7], 10, 1126891415);
+    c = md5_ii(c, d, a, b, x[i + 14], 15, -1416354905);
+    b = md5_ii(b, c, d, a, x[i + 5], 21, -57434055);
+    a = md5_ii(a, b, c, d, x[i + 12], 6, 1700485571);
+    d = md5_ii(d, a, b, c, x[i + 3], 10, -1894986606);
+    c = md5_ii(c, d, a, b, x[i + 10], 15, -1051523);
+    b = md5_ii(b, c, d, a, x[i + 1], 21, -2054922799);
+    a = md5_ii(a, b, c, d, x[i + 8], 6, 1873313359);
+    d = md5_ii(d, a, b, c, x[i + 15], 10, -30611744);
+    c = md5_ii(c, d, a, b, x[i + 6], 15, -1560198380);
+    b = md5_ii(b, c, d, a, x[i + 13], 21, 1309151649);
+    a = md5_ii(a, b, c, d, x[i + 4], 6, -145523070);
+    d = md5_ii(d, a, b, c, x[i + 11], 10, -1120210379);
+    c = md5_ii(c, d, a, b, x[i + 2], 15, 718787259);
+    b = md5_ii(b, c, d, a, x[i + 9], 21, -343485551);
+
+    a = safe_add(a, olda);
+    b = safe_add(b, oldb);
+    c = safe_add(c, oldc);
+    d = safe_add(d, oldd);
+  }
+  return Array(a, b, c, d);
+
+}
+
+/*
+   * These functions implement the four basic operations the algorithm uses.
+   */
+function md5_cmn(q, a, b, x, s, t) {
+  return safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b);
+}
+
+function md5_ff(a, b, c, d, x, s, t) {
+  return md5_cmn(b & c | ~b & d, a, b, x, s, t);
+}
+
+function md5_gg(a, b, c, d, x, s, t) {
+  return md5_cmn(b & d | c & ~d, a, b, x, s, t);
+}
+
+function md5_hh(a, b, c, d, x, s, t) {
+  return md5_cmn(b ^ c ^ d, a, b, x, s, t);
+}
+
+function md5_ii(a, b, c, d, x, s, t) {
+  return md5_cmn(c ^ (b | ~d), a, b, x, s, t);
+}
+
+/*
+   * Calculate the HMAC-MD5, of a key and some data
+   */
+function core_hmac_md5(key, data) {
+  var bkey = str2binl(key);
+  if (bkey.length > 16) bkey = core_md5(bkey, key.length * chrsz);
+
+  var ipad = Array(16),
+  opad = Array(16);
+  for (var i = 0; i < 16; i++) {
+    ipad[i] = bkey[i] ^ 0x36363636;
+    opad[i] = bkey[i] ^ 0x5C5C5C5C;
+  }
+
+  var hash = core_md5(ipad.concat(str2binl(data)), 512 + data.length * chrsz);
+  return core_md5(opad.concat(hash), 512 + 128);
+}
+
+/*
+   * Add integers, wrapping at 2^32. This uses 16-bit operations internally
+   * to work around bugs in some JS interpreters.
+   */
+function safe_add(x, y) {
+  var lsw = (x & 0xFFFF) + (y & 0xFFFF);
+  var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+  return msw << 16 | lsw & 0xFFFF;
+}
+
+/*
+   * Bitwise rotate a 32-bit number to the left.
+   */
+function bit_rol(num, cnt) {
+  return num << cnt | num >>> 32 - cnt;
+}
+
+/*
+   * Convert a string to an array of little-endian words
+   * If chrsz is ASCII, characters >255 have their hi-byte silently ignored.
+   */
+function str2binl(str) {
+  var bin = Array();
+  var mask = (1 << chrsz) - 1;
+  for (var i = 0; i < str.length * chrsz; i += chrsz) {
+    bin[i >> 5] |= (str.charCodeAt(i / chrsz) & mask) << i % 32;}
+  return bin;
+}
+
+/*
+   * Convert an array of little-endian words to a string
+   */
+function binl2str(bin) {
+  var str = "";
+  var mask = (1 << chrsz) - 1;
+  for (var i = 0; i < bin.length * 32; i += chrsz) {
+    str += String.fromCharCode(bin[i >> 5] >>> i % 32 & mask);}
+  return str;
+}
+
+/*
+   * Convert an array of little-endian words to a hex string.
+   */
+function binl2hex(binarray) {
+  var hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
+  var str = "";
+  for (var i = 0; i < binarray.length * 4; i++) {
+    str += hex_tab.charAt(binarray[i >> 2] >> i % 4 * 8 + 4 & 0xF) +
+    hex_tab.charAt(binarray[i >> 2] >> i % 4 * 8 & 0xF);
+  }
+  return str;
+}
+
+/*
+   * Convert an array of little-endian words to a base-64 string
+   */
+function binl2b64(binarray) {
+  var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  var str = "";
+  for (var i = 0; i < binarray.length * 4; i += 3) {
+    var triplet = (binarray[i >> 2] >> 8 * (i % 4) & 0xFF) << 16 |
+    (binarray[i + 1 >> 2] >> 8 * ((i + 1) % 4) & 0xFF) << 8 |
+    binarray[i + 2 >> 2] >> 8 * ((i + 2) % 4) & 0xFF;
+    for (var j = 0; j < 4; j++) {
+      if (i * 8 + j * 6 > binarray.length * 32) str += b64pad;else
+      str += tab.charAt(triplet >> 6 * (3 - j) & 0x3F);
+    }
+  }
+  return str;
+}
 
 /***/ }),
 
@@ -2748,23 +2990,6 @@ createPage(_messages.default);
 
 /***/ }),
 
-/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fchange-password%2Fchange-password\"}":
-/*!*******************************************************************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fchange-password%2Fchange-password"} ***!
-  \*******************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../SchoolHelp-front-end/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _changePassword = _interopRequireDefault(__webpack_require__(/*! ./pages/my/change-password/change-password.vue */ "../../../../SchoolHelp-front-end/pages/my/change-password/change-password.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_changePassword.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
-
-/***/ }),
-
 /***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Ffeedback%2Ffeedback\"}":
 /*!*****************************************************************************************************!*\
   !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Ffeedback%2Ffeedback"} ***!
@@ -2986,10 +3211,10 @@ createPage(_changePhone.default);
 
 /***/ }),
 
-/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Fedit-information%2Fedit-information\"}":
-/*!*******************************************************************************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fsetting%2Fedit-information%2Fedit-information"} ***!
-  \*******************************************************************************************************************************/
+/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Fchange-userInfo%2Fchange-userInfo\"}":
+/*!*****************************************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fsetting%2Fchange-userInfo%2Fchange-userInfo"} ***!
+  \*****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2997,8 +3222,8 @@ createPage(_changePhone.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../SchoolHelp-front-end/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _editInformation = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/edit-information/edit-information.vue */ "../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_editInformation.default);
+var _changeUserInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/change-userInfo/change-userInfo.vue */ "../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_changeUserInfo.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),
@@ -3046,43 +3271,6 @@ createPage(_setting.default);
 
 "use strict";
 
-
-/***/ }),
-
-/***/ "../../../../SchoolHelp-front-end/service.js":
-/*!************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/service.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 管理账号信息
-var USERS_KEY = 'USERS_KEY';
-var STATE_KEY = 'STATE_KEY';
-
-var getUsers = function getUsers() {
-  var ret = '';
-  ret = uni.getStorageSync(USERS_KEY);
-  if (!ret) {
-    ret = '[]';
-  }
-  return JSON.parse(ret);
-};
-
-var addUser = function addUser(userInfo) {
-  var users = getUsers();
-  users.push({
-    account: userInfo.account,
-    password: userInfo.password });
-
-  uni.setStorageSync(USERS_KEY, JSON.stringify(users));
-};var _default =
-
-{
-  getUsers: getUsers,
-  addUser: addUser };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 
@@ -3614,7 +3802,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -9688,7 +9876,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -9709,14 +9897,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9785,7 +9973,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -12235,7 +12423,8 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
         this.scrollLeft = 150;
       } else if (this.currentTab == 5) {
         this.scrollLeft = 150;
-      }if (this.currentTab == 1) {
+      }
+      if (this.currentTab == 1) {
         this.scrollLeft = 0;
       } else if (this.currentTab == 0) {
         this.scrollLeft = 0;
@@ -12263,7 +12452,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     } },
 
   onPullDownRefresh: function onPullDownRefresh() {
-    console.log("\u5237\u65B0\u7B2C".concat(this.currentTab, "\u9879"), " at pages\\index\\index.vue:207");
+    console.log("\u5237\u65B0\u7B2C".concat(this.currentTab, "\u9879"), " at pages\\index\\index.vue:208");
     uni.showLoading({
       content: '刷新中' });
 
@@ -12291,7 +12480,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     }, 1000);
   },
   onReachBottom: function onReachBottom() {var _this = this;
-    console.log("\u52A0\u8F7D".concat(this.currentTab), " at pages\\index\\index.vue:235");
+    console.log("\u52A0\u8F7D".concat(this.currentTab), " at pages\\index\\index.vue:236");
     uni.showLoading({
       content: '加载中' });
 
@@ -12337,7 +12526,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
       uni.hideLoading();
     }, 1000);
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad() {var _this2 = this;
     var that = this;
     var url = _api.default.urls.getPostList;
     var data = {
@@ -12351,6 +12540,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
           /\-/g, '/').replace(
           /\T/g,
           ' ').substring(0, 19)).getTime());}
+        that.agents[_this2.currentTab].pages = that.agents[_this2.currentTab].pages + 1;
         that.agents[that.currentTab].list = res.data.content;
         that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx';
       }
@@ -13313,6 +13503,10 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
       uni.stopPullDownRefresh();
       return;
     }
+    setTimeout(function () {
+      uni.hideLoading();
+      uni.stopPullDownRefresh();
+    }, 1000);
   },
   methods: _objectSpread({
     bindLogin: function bindLogin() {
@@ -13354,18 +13548,18 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
           _api.default.req.get(urlHead, dataHead, function (resHead) {
             if (resHead.code === 0) {
               userInfoGet.headUrl = 'http://' + resHead.data;
-              console.log(userInfoGet.headUrl, " at pages\\my\\my.vue:148");
+              console.log(userInfoGet.headUrl, " at pages\\my\\my.vue:152");
               delete userInfoGet.password;
               _index.default.commit("saveUserInfo", userInfoGet);
             } else {
               userInfoGet.headUrl = '/static/icons/logo.png';
             }
           });
-          console.log(_this.userInfo, " at pages\\my\\my.vue:155");
+          console.log(_this.userInfo, " at pages\\my\\my.vue:159");
           uni.stopPullDownRefresh();
         } else {
           uni.showModal({
-            content: "获取用户信息失败！",
+            content: res.msg,
             showCancel: false });
 
         }
@@ -13402,7 +13596,7 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
     goEditInformation: function goEditInformation() {
       if (this.hasLogin) {
         uni.navigateTo({
-          url: '../../pages/my/setting/edit-information/edit-information' //我的评论界面路径
+          url: '../../pages/my/setting/change-userInfo/change-userInfo' //修改用户资料路径
         });
       }
     } },
@@ -14693,7 +14887,11 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
 
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));
+var _md = __webpack_require__(/*! ../../../api/md5.js */ "../../../../SchoolHelp-front-end/api/md5.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
+
+
+
 
 {
   components: {
@@ -14758,7 +14956,7 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
         this.loading = false;
         uni.showToast({
           icon: 'none',
-          title: '请检查手机号是否正确' });
+          title: '手机号为11位数字' });
 
         return;
       }
@@ -14766,7 +14964,7 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
         this.loading = false;
         uni.showToast({
           icon: 'none',
-          title: '手机号只能为11位数字' });
+          title: '请检查手机号是否正确' });
 
         return;
       }
@@ -14795,10 +14993,21 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
         phone: this.account,
         password: this.password };
 
+
+      // var hash = hex_md5(loginData.password);
+
+      // var hash2 = hex_md5(loginData.password);
+      // var hash = hemd5_vm_testx_md5();
+      // console.log("没有加密之前的是：" + loginData.password);
+      // console.log("加密以后是：" + hash);
+      // 
+      // console.log("加密以后是：" + hash2);
+
+
       var url = _api.default.urls.login;
       var data = {
         phone: loginData.phone,
-        password: loginData.password };
+        password: (0, _md.hex_md5)(loginData.password) };
 
       _api.default.req.get(url, data, function (res) {
         if (res.code === 0) {
@@ -14834,33 +15043,9 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
             }
           });
           uni.navigateBack();
-        } else if (res.code === -200) {
-          uni.showModal({
-            content: "无效手机号！",
-            showCancel: false });
-
-          return;
-        } else if (res.code === -6) {
-          uni.showModal({
-            content: "密码错误！",
-            showCancel: false });
-
-          return;
-        } else if (res.code === -2) {
-          uni.showModal({
-            content: "用户不存在！",
-            showCancel: false });
-
-          return;
-        } else if (res.code === -100) {
-          uni.showModal({
-            content: "手机号和密码不能为空！",
-            showCancel: false });
-
-          return;
         } else {
           uni.showModal({
-            content: "未知错误！",
+            content: res.msg,
             showCancel: false });
 
           return;
@@ -15059,7 +15244,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));
+var _md = __webpack_require__(/*! ../../../api/md5.js */ "../../../../SchoolHelp-front-end/api/md5.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
+
+
 
 {
   components: {
@@ -15117,7 +15305,7 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
       var url = _api.default.urls.register;
       var data = {
         phone: that.account,
-        password: that.password };
+        password: (0, _md.hex_md5)(that.password) };
 
       _api.default.req.post(url, data, function (res) {
         if (res.code === 0) {
@@ -15129,14 +15317,14 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
             phone: that.account,
             password: that.password };
 
-          var url = _api.default.urls.login;
-          var data = {
+          var urlLogin = _api.default.urls.login;
+          var dataLogin = {
             phone: loginData.phone,
-            password: loginData.password };
+            password: (0, _md.hex_md5)(loginData.password) };
 
-          _api.default.req.get(url, data, function (res) {
-            if (res.code === 0) {
-              _index.default.commit("login", res.data);
+          _api.default.req.get(urlLogin, dataLogin, function (resLogin) {
+            if (resLogin.code === 0) {
+              _index.default.commit("login", resLogin.data);
               uni.showToast({
                 icon: 'none',
                 title: '登陆成功' });
@@ -15166,39 +15354,15 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
                   });
                 } else {
                   uni.showModal({
-                    content: "获取用户信息失败！",
+                    content: resInfo.msg,
                     showCancel: false });
 
                 }
               });
               uni.navigateBack();
-            } else if (res.code === -200) {
-              uni.showModal({
-                content: "无效手机号！",
-                showCancel: false });
-
-              return;
-            } else if (res.code === -6) {
-              uni.showModal({
-                content: "密码错误！",
-                showCancel: false });
-
-              return;
-            } else if (res.code === -2) {
-              uni.showModal({
-                content: "用户不存在！",
-                showCancel: false });
-
-              return;
-            } else if (res.code === -100) {
-              uni.showModal({
-                content: "手机号和密码不能为空！",
-                showCancel: false });
-
-              return;
             } else {
               uni.showModal({
-                content: "未知错误！",
+                content: resLogin.msg,
                 showCancel: false });
 
               return;
@@ -15207,15 +15371,9 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
           uni.reLaunch({
             url: '../../../pages/my/my' });
 
-        } else if (res.code === -200) {
+        } else {
           uni.showModal({
-            content: "无效手机号！请检查手机号是否正确。",
-            showCancel: false });
-
-          return;
-        } else if (res.code === -4) {
-          uni.showModal({
-            content: "密码应由长度至少为8位的数字和字母组成！",
+            content: res.msg,
             showCancel: false });
 
           return;
@@ -15252,167 +15410,6 @@ render._withStripped = true
 },[["../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fregister%2Fregister\"}","common/runtime","common/vendor"]]]);
 });
 require('pages/my/register/register.js');
-__wxRoute = 'pages/my/change-password/change-password';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/my/change-password/change-password.js';
-
-define('pages/my/change-password/change-password.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/my/change-password/change-password"],{
-
-/***/ "../../../../SchoolHelp-front-end/pages/my/change-password/change-password.vue":
-/*!**********************************************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/change-password/change-password.vue ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _change_password_vue_vue_type_template_id_8653cb0a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./change-password.vue?vue&type=template&id=8653cb0a& */ "../../../../SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=template&id=8653cb0a&");
-/* harmony import */ var _change_password_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./change-password.vue?vue&type=script&lang=js& */ "../../../../SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _change_password_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _change_password_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _change_password_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _change_password_vue_vue_type_template_id_8653cb0a___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _change_password_vue_vue_type_template_id_8653cb0a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "SchoolHelp-front-end/pages/my/change-password/change-password.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "../../../../SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_password_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/babel-loader/lib!../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./change-password.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=script&lang=js&");
-/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_password_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_password_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_password_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_password_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_password_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "../../../../SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=template&id=8653cb0a&":
-/*!*****************************************************************************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=template&id=8653cb0a& ***!
-  \*****************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_password_vue_vue_type_template_id_8653cb0a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./change-password.vue?vue&type=template&id=8653cb0a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=template&id=8653cb0a&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_password_vue_vue_type_template_id_8653cb0a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_password_vue_vue_type_template_id_8653cb0a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var _service = _interopRequireDefault(__webpack_require__(/*! ../../../service.js */ "../../../../SchoolHelp-front-end/service.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default = { components: { mInput: mInput }, data: function data() {return { email: '' };}, methods: { findPassword: function findPassword() {/**
-                                                                                                                                                                                                                                                                                 * 仅做示例
-                                                                                                                                                                                                                                                                                 */if (this.email.length < 3 || !~this.email.indexOf('@')) {
-        uni.showToast({
-          icon: 'none',
-          title: '邮箱地址不合法' });
-
-        return;
-      }
-      uni.showToast({
-        icon: 'none',
-        title: '已发送重置邮件至注册邮箱，请注意查收。',
-        duration: 3000 });
-
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=template&id=8653cb0a&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/change-password/change-password.vue?vue&type=template&id=8653cb0a& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ })
-
-},[["../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fchange-password%2Fchange-password\"}","common/runtime","common/vendor"]]]);
-});
-require('pages/my/change-password/change-password.js');
 __wxRoute = 'pages/my/my-fallows/my-fallows';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/my/my-fallows/my-fallows.js';
 
 define('pages/my/my-fallows/my-fallows.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
@@ -17801,37 +17798,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+
 
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../../../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
-
-{
-  components: {
-    mInput: mInput },
-
-  data: function data() {
-    return {
-      account: '',
-      password: '',
-      oldPassword: '' };
-
-  },
-  methods: {
-    register: function register() {
-      var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
-      if (this.password.length < 8) {
-        uni.showToast({
-          icon: 'none',
-          title: '密码最短为 8 个字符' });
-
-        return;
-      }
-      if (!regString.test(this.password)) {
-        uni.showToast({
-          icon: 'none',
-          title: '密码必须为字母和数字的组合' });
-
-        return;
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));
+var _md = __webpack_require__(/*! ../../../../../api/md5.js */ "../../../../SchoolHelp-front-end/api/md5.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), components: { mInput: mInput }, data: function data() {return {};}, methods: { register: function register() {var _this = this;var regString = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/; //验证数字、字母至少出现一次，且只能为数字和字母的组合。
+      if (this.password.length < 8) {uni.showToast({ icon: 'none', title: '密码最短为 8 个字符' });return;}if (!regString.test(this.password)) {uni.showToast({ icon: 'none', title: '密码必须为字母和数字的组合' });return;
       }
       if (!(this.password == this.checkPassword)) {
         uni.showToast({
@@ -17840,33 +17841,78 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../../api/api
 
         return;
       }
+      var that = this;
+      var url = _api.default.urls.changePassword;
+      var data = {
+        oldPassword: (0, _md.hex_md5)(that.oldPassword),
+        newPassword: (0, _md.hex_md5)(that.password) };
 
-      // var url = api.urls.register;
-      // var data = {
-      // 	phone: this.account,
-      // 	password: this.password
-      // };
-      // api.req.post(url, data, (res) => {
-      // 	if (res.code === 0) {
-      // 		uni.showToast({
-      // 			icon: 'none',
-      // 			title: '注册成功',
-      // 		});
-      // 		uni.navigateBack();
-      // 	} else if (res.code === -200) {
-      // 		uni.showModal({
-      // 			content: "无效手机号！请检查手机号是否正确。",
-      // 			showCancel: false
-      // 		});
-      // 		return;
-      // 	} else if (res.code === -4) {
-      // 		uni.showModal({
-      // 			content: "密码应由长度至少为8位的数字和字母组成！",
-      // 			showCancel: false
-      // 		});
-      // 		return;
-      // 	}
-      // });
+      _api.default.req.put(url, data, function (res) {
+        if (res.code === 0) {
+          uni.showToast({
+            icon: 'none',
+            title: '修改成功' });
+
+          var urlLogin = _api.default.urls.login;
+          var dataLogin = {
+            phone: _this.userInfo.phone,
+            password: (0, _md.hex_md5)(that.password) };
+
+          _api.default.req.get(urlLogin, dataLogin, function (resLogin) {
+            if (resLogin.code === 0) {
+              _index.default.commit("login", resLogin.data);
+              uni.showToast({
+                icon: 'none',
+                title: '登陆成功' });
+
+              var urlInfo = _api.default.urls.getSelfUserInfo;
+              var dataInfo = {};
+              _api.default.req.get(urlInfo, dataInfo, function (resInfo) {
+                if (resInfo.code === 0) {
+                  var urlHead = _api.default.urls.getHead;
+                  var dataHead = {};
+                  _api.default.req.get(urlHead, dataHead, function (resHead) {
+                    if (resHead.code === 0) {
+                      var userInfoAndHead = resInfo.data;
+                      userInfoAndHead.headUrl = 'http://' +
+                      resHead.data;
+                      delete userInfoAndHead.password;
+                      _index.default.commit("saveUserInfo",
+                      userInfoAndHead);
+                    } else {
+                      var _userInfoAndHead = resInfo.data;
+                      _userInfoAndHead.headUrl =
+                      '/static/icons/logo.png';
+                      delete _userInfoAndHead.password;
+                      _index.default.commit("saveUserInfo",
+                      _userInfoAndHead);
+                    }
+                  });
+                } else {
+                  uni.showModal({
+                    content: resInfo.msg,
+                    showCancel: false });
+
+                }
+              });
+              uni.navigateBack();
+            } else {
+              uni.showModal({
+                content: resLogin.msg,
+                showCancel: false });
+
+              return;
+            }
+          });
+          uni.navigateBack();
+        } else {
+          uni.showModal({
+            content: res.msg,
+            showCancel: false });
+
+          return;
+        }
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -17898,24 +17944,24 @@ render._withStripped = true
 },[["../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Faccount-security%2Fchange-password%2Fchange-password\"}","common/runtime","common/vendor"]]]);
 });
 require('pages/my/setting/account-security/change-password/change-password.js');
-__wxRoute = 'pages/my/setting/edit-information/edit-information';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/my/setting/edit-information/edit-information.js';
+__wxRoute = 'pages/my/setting/change-userInfo/change-userInfo';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/my/setting/change-userInfo/change-userInfo.js';
 
-define('pages/my/setting/edit-information/edit-information.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/my/setting/edit-information/edit-information"],{
+define('pages/my/setting/change-userInfo/change-userInfo.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
+(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/my/setting/change-userInfo/change-userInfo"],{
 
-/***/ "../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue":
-/*!********************************************************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue ***!
-  \********************************************************************************************************/
+/***/ "../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue":
+/*!******************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _edit_information_vue_vue_type_template_id_2e64fcac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit-information.vue?vue&type=template&id=2e64fcac& */ "../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=template&id=2e64fcac&");
-/* harmony import */ var _edit_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit-information.vue?vue&type=script&lang=js& */ "../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _edit_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _edit_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _edit_information_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit-information.vue?vue&type=style&index=0&lang=css& */ "../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _change_userInfo_vue_vue_type_template_id_51d21190___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./change-userInfo.vue?vue&type=template&id=51d21190& */ "../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=template&id=51d21190&");
+/* harmony import */ var _change_userInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./change-userInfo.vue?vue&type=script&lang=js& */ "../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _change_userInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _change_userInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _change_userInfo_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./change-userInfo.vue?vue&type=style&index=0&lang=scss& */ "../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=style&index=0&lang=scss&");
 /* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -17926,9 +17972,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _edit_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _edit_information_vue_vue_type_template_id_2e64fcac___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _edit_information_vue_vue_type_template_id_2e64fcac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _change_userInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _change_userInfo_vue_vue_type_template_id_51d21190___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _change_userInfo_vue_vue_type_template_id_51d21190___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -17938,65 +17984,65 @@ var component = Object(_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_c
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue"
+component.options.__file = "SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************/
+/***/ "../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/babel-loader/lib!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./edit-information.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=script&lang=js&");
-/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/babel-loader/lib!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./change-userInfo.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=script&lang=js&");
+/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ "../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=style&index=0&lang=css&":
-/*!*****************************************************************************************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=style&index=0&lang=css& ***!
-  \*****************************************************************************************************************************************/
+/***/ "../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader??ref--6-oneOf-1-2!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/postcss-loader/src??ref--6-oneOf-1-3!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./edit-information.vue?vue&type=style&index=0&lang=css& */ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-1!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader??ref--8-oneOf-1-2!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/postcss-loader/src??ref--8-oneOf-1-3!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/sass-loader/lib/loader.js??ref--8-oneOf-1-4!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./change-userInfo.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ "../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=template&id=2e64fcac&":
-/*!***************************************************************************************************************************************!*\
-  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=template&id=2e64fcac& ***!
-  \***************************************************************************************************************************************/
+/***/ "../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=template&id=51d21190&":
+/*!*************************************************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=template&id=51d21190& ***!
+  \*************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_template_id_2e64fcac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./edit-information.vue?vue&type=template&id=2e64fcac& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=template&id=2e64fcac&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_template_id_2e64fcac___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_template_id_51d21190___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!../../../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./change-userInfo.vue?vue&type=template&id=51d21190& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=template&id=51d21190&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_template_id_51d21190___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_information_vue_vue_type_template_id_2e64fcac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_change_userInfo_vue_vue_type_template_id_51d21190___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18040,62 +18086,129 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 
-var _index = _interopRequireDefault(__webpack_require__(/*! ../../../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
-{
-  computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']),
-  data: function data() {
-    return {
-      phone: '' };
-
-  },
-  methods: _objectSpread({},
-  (0, _vuex.mapMutations)(['logout']), {
-    logoOut: function logoOut() {
-      if (this.hasLogin) {
-        uni.showToast({
-          icon: 'none',
-          title: '注销成功' });
-
-        this.logout();
-        uni.navigateBack();
-      } else {
-        uni.showToast({
-          icon: 'none',
-          title: '您尚未登录哟~' });
-
+var _index = _interopRequireDefault(__webpack_require__(/*! @/store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! @/api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), data: function data() {return { male: '男', female: '女' };}, onLoad: function onLoad() {}, methods: { chooseImage: function chooseImage() {uni.chooseImage({ count: 1, //默认9
+        // sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album'], //从相册选择
+        success: function success(res) {console.log(JSON.stringify(res.tempFilePaths), " at pages\\my\\setting\\change-userInfo\\change-userInfo.vue:84");userInfo.headUrl = res.tempFilePaths[0];} });}, saveChange: function saveChange() {/* || userInfo.sex.length == 0 || userInfo.studentNum.length == 0 || userInfo.major.length == 0 || userInfo.college.length == 0 || userInfo.college.mail == 0*/if (this.userInfo.name.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '用户名不能为空' });return;}if (this.userInfo.phone.length != 11) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号为11位数字' });return;}if (!/^1(3|4|5|7|8)\d{9}$/.test(this.userInfo.phone)) {this.loading = false;uni.showToast({ icon: 'none', title: '请检查手机号是否正确' });return;}if (this.userInfo.sex != this.male && this.userInfo.sex != this.female && this.userInfo.sex != true && this.userInfo.sex != false) {this.loading = false;uni.showToast({ icon: 'none', title: '性别只能为“男”或“女”' });return;}if (this.userInfo.studentNum.length > 0) {if (this.userInfo.studentNum.length != 9) {this.loading = false;uni.showToast({ icon: 'none', title: '请输入9位数正确学号或者不填' });
+          return;
+        }
       }
-    },
-    send: function send() {
-      if (this.phone.length != 11) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '请检查手机号是否正确' });
+      var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+      if (this.userInfo.mail.length > 0) {
+        if (!reg.test(this.userInfo.mail)) {
+          this.loading = false;
+          uni.showToast({
+            icon: 'none',
+            title: '请输入有效邮箱地址' });
 
-        return;
+          return;
+        }
       }
-      if (!/^1(3|4|5|7|8)\d{9}$/.test(this.phone)) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '请检查手机号是否正确！' });
+      var that = this;
+      var url = _api.default.urls.changeUserInfomation;
+      var data = {
+        phone: this.userInfo.phone };
 
-        return;
-      }
-    } }) };exports.default = _default;
+
+      _api.default.req.post(url, data, function (res) {
+        if (res.code === 0) {}
+      });
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 
-/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=style&index=0&lang=css&":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=style&index=0&lang=css& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-1!./node_modules/css-loader??ref--8-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/lib/loader.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18103,10 +18216,10 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../api/api.js
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=template&id=2e64fcac&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue?vue&type=template&id=2e64fcac& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=template&id=51d21190&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue?vue&type=template&id=51d21190& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -18126,9 +18239,9 @@ render._withStripped = true
 
 /***/ })
 
-},[["../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Fedit-information%2Fedit-information\"}","common/runtime","common/vendor"]]]);
+},[["../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Fchange-userInfo%2Fchange-userInfo\"}","common/runtime","common/vendor"]]]);
 });
-require('pages/my/setting/edit-information/edit-information.js');
+require('pages/my/setting/change-userInfo/change-userInfo.js');
 ;(function(global) {
     __uni_launch_ready(function() {
         var entryPagePath = __wxConfig.entryPagePath.replace('.html', '')

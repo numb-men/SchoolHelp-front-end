@@ -134,7 +134,11 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
 
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));
+var _md = __webpack_require__(/*! ../../../api/md5.js */ "../../../../SchoolHelp-front-end/api/md5.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
+
+
+
 
 {
   components: {
@@ -199,7 +203,7 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
         this.loading = false;
         uni.showToast({
           icon: 'none',
-          title: '请检查手机号是否正确' });
+          title: '手机号为11位数字' });
 
         return;
       }
@@ -207,7 +211,7 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
         this.loading = false;
         uni.showToast({
           icon: 'none',
-          title: '手机号只能为11位数字' });
+          title: '请检查手机号是否正确' });
 
         return;
       }
@@ -236,10 +240,21 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
         phone: this.account,
         password: this.password };
 
+
+      // var hash = hex_md5(loginData.password);
+
+      // var hash2 = hex_md5(loginData.password);
+      // var hash = hemd5_vm_testx_md5();
+      // console.log("没有加密之前的是：" + loginData.password);
+      // console.log("加密以后是：" + hash);
+      // 
+      // console.log("加密以后是：" + hash2);
+
+
       var url = _api.default.urls.login;
       var data = {
         phone: loginData.phone,
-        password: loginData.password };
+        password: (0, _md.hex_md5)(loginData.password) };
 
       _api.default.req.get(url, data, function (res) {
         if (res.code === 0) {
@@ -275,33 +290,9 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
             }
           });
           uni.navigateBack();
-        } else if (res.code === -200) {
-          uni.showModal({
-            content: "无效手机号！",
-            showCancel: false });
-
-          return;
-        } else if (res.code === -6) {
-          uni.showModal({
-            content: "密码错误！",
-            showCancel: false });
-
-          return;
-        } else if (res.code === -2) {
-          uni.showModal({
-            content: "用户不存在！",
-            showCancel: false });
-
-          return;
-        } else if (res.code === -100) {
-          uni.showModal({
-            content: "手机号和密码不能为空！",
-            showCancel: false });
-
-          return;
         } else {
           uni.showModal({
-            content: "未知错误！",
+            content: res.msg,
             showCancel: false });
 
           return;

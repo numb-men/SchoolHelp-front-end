@@ -204,6 +204,10 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
       uni.stopPullDownRefresh();
       return;
     }
+    setTimeout(function () {
+      uni.hideLoading();
+      uni.stopPullDownRefresh();
+    }, 1000);
   },
   methods: _objectSpread({
     bindLogin: function bindLogin() {
@@ -245,18 +249,18 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
           _api.default.req.get(urlHead, dataHead, function (resHead) {
             if (resHead.code === 0) {
               userInfoGet.headUrl = 'http://' + resHead.data;
-              console.log(userInfoGet.headUrl, " at pages\\my\\my.vue:148");
+              console.log(userInfoGet.headUrl, " at pages\\my\\my.vue:152");
               delete userInfoGet.password;
               _index.default.commit("saveUserInfo", userInfoGet);
             } else {
               userInfoGet.headUrl = '/static/icons/logo.png';
             }
           });
-          console.log(_this.userInfo, " at pages\\my\\my.vue:155");
+          console.log(_this.userInfo, " at pages\\my\\my.vue:159");
           uni.stopPullDownRefresh();
         } else {
           uni.showModal({
-            content: "获取用户信息失败！",
+            content: res.msg,
             showCancel: false });
 
         }
@@ -293,7 +297,7 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
     goEditInformation: function goEditInformation() {
       if (this.hasLogin) {
         uni.navigateTo({
-          url: '../../pages/my/setting/edit-information/edit-information' //我的评论界面路径
+          url: '../../pages/my/setting/change-userInfo/change-userInfo' //修改用户资料路径
         });
       }
     } },

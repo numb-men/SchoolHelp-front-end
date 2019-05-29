@@ -7,7 +7,7 @@
             </view>
             <view class="input-row border">
                 <text class="title">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</text>
-                <m-input type="password" displayable v-model="password" maxlength="16" placeholder="至少8位数字与字母组合"></m-input>
+                <m-input type="password" displayable v-model="password" maxlength="16" placeholder="至少8~16位数字与字母组合"></m-input>
             </view>
             <view class="input-row border">
                 <text class="title">确认密码：</text>
@@ -24,6 +24,9 @@
     import mInput from '../../../components/m-input.vue';
     import store from "../../../store/index.js";
     import api from "../../../api/api.js";
+    import {
+        hex_md5
+    } from "../../../api/md5.js";
 
     export default {
         components: {
@@ -81,7 +84,7 @@
                 var url = api.urls.register;
                 var data = {
                     phone: that.account,
-                    password: that.password
+                    password: hex_md5(that.password)
                 };
                 api.req.post(url, data, (res) => {
                     if (res.code === 0) {
@@ -93,14 +96,14 @@
                             phone: that.account,
                             password: that.password
                         };
-                        var url = api.urls.login;
-                        var data = {
+                        var urlLogin = api.urls.login;
+                        var dataLogin = {
                             phone: loginData.phone,
-                            password: loginData.password
+                            password: hex_md5(loginData.password)
                         };
-                        api.req.get(url, data, (res) => {
-                            if (res.code === 0) {
-                                store.commit("login", res.data);
+                        api.req.get(urlLogin, dataLogin, (resLogin) => {
+                            if (resLogin.code === 0) {
+                                store.commit("login", resLogin.data);
                                 uni.showToast({
                                     icon: 'none',
                                     title: '登陆成功',
@@ -130,39 +133,15 @@
                                         });
                                     } else {
                                         uni.showModal({
-                                            content: "获取用户信息失败！",
+                                            content: resInfo.msg,
                                             showCancel: false
                                         })
                                     }
                                 });
                                 uni.navigateBack();
-                            } else if (res.code === -200) {
-                                uni.showModal({
-                                    content: "无效手机号！",
-                                    showCancel: false
-                                });
-                                return;
-                            } else if (res.code === -6) {
-                                uni.showModal({
-                                    content: "密码错误！",
-                                    showCancel: false
-                                });
-                                return;
-                            } else if (res.code === -2) {
-                                uni.showModal({
-                                    content: "用户不存在！",
-                                    showCancel: false
-                                });
-                                return;
-                            } else if (res.code === -100) {
-                                uni.showModal({
-                                    content: "手机号和密码不能为空！",
-                                    showCancel: false
-                                });
-                                return;
                             } else {
                                 uni.showModal({
-                                    content: "未知错误！",
+                                    content: resLogin.msg,
                                     showCancel: false
                                 });
                                 return;
@@ -171,15 +150,9 @@
                         uni.reLaunch({
                             url: '../../../pages/my/my'
                         })
-                    } else if (res.code === -200) {
+                    } else {
                         uni.showModal({
-                            content: "无效手机号！请检查手机号是否正确。",
-                            showCancel: false
-                        });
-                        return;
-                    } else if (res.code === -4) {
-                        uni.showModal({
-                            content: "密码应由长度至少为8位的数字和字母组成！",
+                            content: res.msg,
                             showCancel: false
                         });
                         return;

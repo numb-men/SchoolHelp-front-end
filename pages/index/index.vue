@@ -176,7 +176,8 @@
                     this.scrollLeft = 150
                 } else if (this.currentTab == 5) {
                     this.scrollLeft = 150
-                }if (this.currentTab == 1) {
+                }
+                if (this.currentTab == 1) {
                     this.scrollLeft = 0
                 } else if (this.currentTab == 0) {
                     this.scrollLeft = 0
@@ -292,6 +293,7 @@
                             /\-/g, '/').replace(
                             /\T/g,
                             ' ').substring(0, 19)).getTime())
+                    that.agents[this.currentTab].pages = that.agents[this.currentTab].pages + 1
                     that.agents[that.currentTab].list = res.data.content
                     that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx'
                 }
@@ -354,7 +356,7 @@
 
     .slider {
         position: relative;
-        height: 400upx;
+        /* height: 400upx; */
     }
 
     .frame {
@@ -535,7 +537,7 @@
     .media-points-view-comment {
         position: relative;
         top: -60upx;
-        left: 490upx;
+        left: 480upx;
     }
 
     .media-points-view-comment-text {

@@ -276,7 +276,8 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
         this.scrollLeft = 150;
       } else if (this.currentTab == 5) {
         this.scrollLeft = 150;
-      }if (this.currentTab == 1) {
+      }
+      if (this.currentTab == 1) {
         this.scrollLeft = 0;
       } else if (this.currentTab == 0) {
         this.scrollLeft = 0;
@@ -304,7 +305,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     } },
 
   onPullDownRefresh: function onPullDownRefresh() {
-    console.log("\u5237\u65B0\u7B2C".concat(this.currentTab, "\u9879"), " at pages\\index\\index.vue:207");
+    console.log("\u5237\u65B0\u7B2C".concat(this.currentTab, "\u9879"), " at pages\\index\\index.vue:208");
     uni.showLoading({
       content: '刷新中' });
 
@@ -332,7 +333,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     }, 1000);
   },
   onReachBottom: function onReachBottom() {var _this = this;
-    console.log("\u52A0\u8F7D".concat(this.currentTab), " at pages\\index\\index.vue:235");
+    console.log("\u52A0\u8F7D".concat(this.currentTab), " at pages\\index\\index.vue:236");
     uni.showLoading({
       content: '加载中' });
 
@@ -378,7 +379,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
       uni.hideLoading();
     }, 1000);
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad() {var _this2 = this;
     var that = this;
     var url = _api.default.urls.getPostList;
     var data = {
@@ -392,6 +393,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
           /\-/g, '/').replace(
           /\T/g,
           ' ').substring(0, 19)).getTime());}
+        that.agents[_this2.currentTab].pages = that.agents[_this2.currentTab].pages + 1;
         that.agents[that.currentTab].list = res.data.content;
         that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx';
       }

@@ -105,7 +105,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));
+var _md = __webpack_require__(/*! ../../../api/md5.js */ "../../../../SchoolHelp-front-end/api/md5.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../../components/m-input.vue */ "../../../../SchoolHelp-front-end/components/m-input.vue"));};var _default =
+
+
 
 {
   components: {
@@ -163,7 +166,7 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
       var url = _api.default.urls.register;
       var data = {
         phone: that.account,
-        password: that.password };
+        password: (0, _md.hex_md5)(that.password) };
 
       _api.default.req.post(url, data, function (res) {
         if (res.code === 0) {
@@ -175,14 +178,14 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
             phone: that.account,
             password: that.password };
 
-          var url = _api.default.urls.login;
-          var data = {
+          var urlLogin = _api.default.urls.login;
+          var dataLogin = {
             phone: loginData.phone,
-            password: loginData.password };
+            password: (0, _md.hex_md5)(loginData.password) };
 
-          _api.default.req.get(url, data, function (res) {
-            if (res.code === 0) {
-              _index.default.commit("login", res.data);
+          _api.default.req.get(urlLogin, dataLogin, function (resLogin) {
+            if (resLogin.code === 0) {
+              _index.default.commit("login", resLogin.data);
               uni.showToast({
                 icon: 'none',
                 title: '登陆成功' });
@@ -212,39 +215,15 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
                   });
                 } else {
                   uni.showModal({
-                    content: "获取用户信息失败！",
+                    content: resInfo.msg,
                     showCancel: false });
 
                 }
               });
               uni.navigateBack();
-            } else if (res.code === -200) {
-              uni.showModal({
-                content: "无效手机号！",
-                showCancel: false });
-
-              return;
-            } else if (res.code === -6) {
-              uni.showModal({
-                content: "密码错误！",
-                showCancel: false });
-
-              return;
-            } else if (res.code === -2) {
-              uni.showModal({
-                content: "用户不存在！",
-                showCancel: false });
-
-              return;
-            } else if (res.code === -100) {
-              uni.showModal({
-                content: "手机号和密码不能为空！",
-                showCancel: false });
-
-              return;
             } else {
               uni.showModal({
-                content: "未知错误！",
+                content: resLogin.msg,
                 showCancel: false });
 
               return;
@@ -253,15 +232,9 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../api/api.js */
           uni.reLaunch({
             url: '../../../pages/my/my' });
 
-        } else if (res.code === -200) {
+        } else {
           uni.showModal({
-            content: "无效手机号！请检查手机号是否正确。",
-            showCancel: false });
-
-          return;
-        } else if (res.code === -4) {
-          uni.showModal({
-            content: "密码应由长度至少为8位的数字和字母组成！",
+            content: res.msg,
             showCancel: false });
 
           return;

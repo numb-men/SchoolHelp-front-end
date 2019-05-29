@@ -12,7 +12,6 @@
     "pages/extensions/questionaire/questionaire",
     "pages/my/login/login",
     "pages/my/register/register",
-    "pages/my/change-password/change-password",
     "pages/my/my-fallows/my-fallows",
     "pages/my/my-collects/my-collects",
     "pages/my/feedback/feedback",
@@ -25,7 +24,7 @@
     "pages/my/setting/help/help",
     "pages/my/setting/about-SchoolHelp/about-SchoolHelp",
     "pages/my/setting/account-security/change-password/change-password",
-    "pages/my/setting/edit-information/edit-information"
+    "pages/my/setting/change-userInfo/change-userInfo"
   ],
   "subPackages": [],
   "window": {
