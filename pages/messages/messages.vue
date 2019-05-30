@@ -52,7 +52,7 @@
 				this.msgs = res.data.map((item, index) =>{
 					return {
 						id: index,
-						chatUserHeadImg: "http://"+item.headIimage,
+						chatUserHeadImg: item.headIimage,
 						chatUserId: item.userId,
 						chatUserName: "",
 						chatUser: {},
@@ -79,7 +79,7 @@
 			},
 			getUserData() {
 				this.msgs.map((item) =>{
-					var url = this.$api.urls.getOrtherUserInfo + item.chatUserId;
+					var url = this.$api.urls.getOtherUserInfo + item.chatUserId;
 					var data = {};
 					this.$api.req.get(url, data, (res) =>{
 						item.chatUser = res.data;

@@ -95,7 +95,7 @@ export default {
 					commentUserName: item.commentUserName,
 					content: cutString(item.commentContent, 20),
 					time: friendlyDate(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
-					headImageUrl: "http://"+item.headImageUrl
+					headImageUrl: item.headImageUrl
 				}
 			});
 			this.loadPostData();

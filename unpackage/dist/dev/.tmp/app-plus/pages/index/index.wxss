@@ -15,7 +15,7 @@
         position: fixed;
         top: 60rpx;
         width: 750rpx;
-        background-color: #D3D3D3;
+        background-color: #2F85FC;
         height: 140rpx;
         /* padding-top: 60upx; */
         z-index: 9990;
@@ -27,20 +27,20 @@
 }
 .head-title.data-v-26492055 {
         position: relative;
-        top: 30rpx;
-        font-size: 60rpx;
+        top: 32rpx;
+        font-size: 58rpx;
         text-align: left;
         font-weight: bold;
         height: 160rpx;
-        color: #7d7c7c;
+        color: #fefefe;
         margin-left: 40rpx;
 }
 .head-search.data-v-26492055 {
         position: relative;
-        top: -45rpx;
-        height: 80rpx;
-        width: 80rpx;
-        margin-left: 640rpx;
+        top: -37rpx;
+        height: 70rpx;
+        width: 70rpx;
+        margin-left: 630rpx;
 }
 .index-body.data-v-26492055 {
         position: relative;
@@ -189,14 +189,16 @@ swiper.data-v-26492055 {
 }
 .media-title.data-v-26492055 {
         position: relative;
-        top: 30rpx;
+        top: 25rpx;
         left: 30rpx;
         width: 100px;
 }
 .media-title-text.data-v-26492055 {
-        font-size: 45rpx;
-        color: #555555;
-        width: 100px;
+        font-size: 38rpx;
+		line-height: 45rpx;
+		font-weight: bold;
+        color: #343131;
+        width: 450rpx;
         overflow: hidden;
         -o-text-overflow: ellipsis;
            text-overflow: ellipsis;
@@ -206,13 +208,15 @@ swiper.data-v-26492055 {
         position: relative;
         top: 40rpx;
         left: 30rpx;
+		margin-top: 15rpx;
 }
 .media-preview-text.data-v-26492055 {
-        font-size: 35rpx;
-        color: #999999;
+        font-size: 32rpx;
+        color: #666666;
 
-        width: 300px;
-        height: 48px;
+        width: 700rpx;
+        height: 100rpx;
+		word-break: break-all;
         overflow: hidden;
         -o-text-overflow: ellipsis;
            text-overflow: ellipsis;
@@ -223,7 +227,7 @@ swiper.data-v-26492055 {
 }
 .media-head-image.data-v-26492055 {
         position: relative;
-        top: 50rpx;
+        top: 60rpx;
         left: 30rpx;
 }
 .media-head-image-detail.data-v-26492055 {
@@ -234,26 +238,29 @@ swiper.data-v-26492055 {
 .media-name.data-v-26492055 {
         position: relative;
         top: -10rpx;
-        left: 100rpx;
+        left: 115rpx;
+		line-height: 50rpx;
 }
 .media-name-text.data-v-26492055 {
         text-align: left;
-        color: #AF94FF;
-        font-size: 30rpx;
+        color: #2F85FC;
+        font-size: 32rpx;
 }
 .media-points.data-v-26492055 {
         position: relative;
         top: -30rpx;
-        left: 400rpx;
+        left: 420rpx;
+		line-height: 50rpx;
 }
 .media-points-view-comment.data-v-26492055 {
         position: relative;
         top: -60rpx;
-        left: 490rpx;
+        left: 510rpx;
+		line-height: 50rpx;
 }
 .media-points-view-comment-text.data-v-26492055 {
-        font-size: 30rpx;
-        color: #555555;
+        font-size: 28rpx;
+        color: #666;
 }
 .media-points-text.data-v-26492055 {
         text-align: left;
@@ -263,20 +270,21 @@ swiper.data-v-26492055 {
 }
 .media-time.data-v-26492055 {
         position: relative;
-        top: -300rpx;
-        left: 600rpx;
+        top: -330rpx;
+        left: 620rpx;
 }
 .media-time-text.data-v-26492055 {
         text-align: left;
-        font-size: 30rpx;
-        color: #555555;
+        font-size: 28rpx;
+		line-height: 45rpx;
+        color: #c9c9c9;
 }
 .add-post.data-v-26492055 {
-		width: 90rpx;
-		height: 90rpx;
-		border-radius: 50%;
-		position: fixed;
-		bottom: 80rpx;
-		right: 30rpx;
+        width: 100rpx;
+        height: 100rpx;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 90rpx;
+        right: 40rpx;
 }
 

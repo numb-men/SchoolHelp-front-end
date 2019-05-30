@@ -167,7 +167,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));
 var _util = __webpack_require__(/*! ../../common/util.js */ "../../../../../校园帮/SchoolHelp-front-end/common/util.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
@@ -238,9 +237,9 @@ var _util = __webpack_require__(/*! ../../common/util.js */ "../../../../../校�
 //
 //
 //
-//
 var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, tabClick: 0, isHeight: '', isLeft: 0, agents: [{ title: '学术论坛', list: [], id: 0, pages: 0 }, { title: '校园动态', list: [], id: 1, pages: 0 }, { title: '二手交易', list: [], id: 2, pages: 0 }, { title: '缺个伴吗', list: [], id: 3, pages: 0 }, { title: '帮你干活', list: [], id: 4, pages: 0 }, { title: '经验交流', list: [], id: 5, pages: 0 }], isWidth: 0, imageList: [{ src: '../../static/images/news-1.png' }, { src: '../../static/images/news-2.png' }, { src: '../../static/images/news-3.png' }, { src: '../../static/images/news-4.png' }] };}, mounted: function mounted() {// 设置swiper高度
-    this.isHeight = this.agents[this.currentTab].list.length * 300 + 160 + 'rpx';console.log(this.isHeight, " at pages\\index\\index.vue:135");var that = this; // 获取设备宽度
+    this.isHeight = this.agents[this.currentTab].list.length * 300 + 160 + 'rpx'; // console.log(this.isHeight)
+    var that = this; // 获取设备宽度
     // uni.getSystemInfo({
     // 	success(e) {
     // 		that.isWidth = e.windowWidth / that.agents.length
@@ -250,8 +249,10 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     goDetail: function goDetail(e) {
       var index = e.currentTarget.dataset.index;
       var postId = this.agents[this.currentTab].list[index].postId;
-      console.log(postId, " at pages\\index\\index.vue:153");
-      var detail = { postId: postId };
+      console.log(postId, " at pages\\index\\index.vue:152");
+      var detail = {
+        postId: postId };
+
       uni.navigateTo({
         url: 'post-detail/post-detail?query=' + encodeURIComponent(JSON.stringify(detail)) });
 
@@ -278,13 +279,22 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
             replace(/\-/g, '/').replace(/\T/g,
             ' ').substring(0, 19)).getTime());}
           that.agents[index].list = res.data.content;
-          console.log(that.agents[index].list.length, " at pages\\index\\index.vue:181");
+          console.log(that.agents[index].list.length, " at pages\\index\\index.vue:182");
         }
+      }, function (fail) {
+        setTimeout(function () {
+          uni.hideLoading();
+          uni.stopPullDownRefresh();
+          uni.showToast({
+            icon: 'none',
+            title: '刷新失败，请稍后再试' });
+
+        }, 4000);
       });
     },
     // swiper 滑动
     swiperTab: function swiperTab(e) {
-      console.log(e, " at pages\\index\\index.vue:187");
+      console.log(e, " at pages\\index\\index.vue:197");
       var index = e.detail.current; //获取索引
       this.isHeight = this.agents[index].list.length * 300 + 160 + 'rpx'; //设置swiper高度
       this.isLeft = index * this.isWidth; //设置下划线位置
@@ -295,12 +305,10 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
         this.scrollLeft = 150;
       } else if (this.currentTab == 5) {
         this.scrollLeft = 150;
-      }if (this.currentTab == 1) {
-        this.scrollLeft = 0;
-      } else if (this.currentTab == 0) {
+      }
+      if (this.currentTab == 1 || this.currentTab == 0) {
         this.scrollLeft = 0;
       }
-
       if (this.agents[index].list.length === 0) {
         var that = this;
         var url = _api.default.urls.getPostList;
@@ -318,15 +326,21 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
             that.agents[that.currentTab].list = res.data.content;
             that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx';
           }
+        }, function (fail) {
+          setTimeout(function () {
+            uni.hideLoading();
+            uni.stopPullDownRefresh();
+            uni.showToast({
+              icon: 'none',
+              title: '刷新失败，请稍后再试' });
+
+          }, 4000);
         });
       }
     } },
 
   onPullDownRefresh: function onPullDownRefresh() {
-    console.log("\u5237\u65B0\u7B2C".concat(this.currentTab, "\u9879"), " at pages\\index\\index.vue:226");
-    uni.showLoading({
-      content: '刷新中' });
-
+    console.log("\u5237\u65B0\u7B2C".concat(this.currentTab, "\u9879"), " at pages\\index\\index.vue:243");
     var that = this;
     var url = _api.default.urls.getPostList;
     var data = {
@@ -344,18 +358,21 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
         that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx';
         uni.stopPullDownRefresh();
       }
+    }, function (fail) {
+      setTimeout(function () {
+        uni.hideLoading();
+        uni.stopPullDownRefresh();
+        uni.showToast({
+          icon: 'none',
+          title: '刷新失败，请稍后再试' });
+
+      }, 4000);
     });
-    setTimeout(function () {
-      uni.hideLoading();
-      uni.stopPullDownRefresh();
-    }, 1000);
   },
   onReachBottom: function onReachBottom() {var _this = this;
-    console.log("\u52A0\u8F7D".concat(this.currentTab), " at pages\\index\\index.vue:254");
+    console.log("\u52A0\u8F7D".concat(this.currentTab), " at pages\\index\\index.vue:273");
     uni.showLoading({
       content: '加载中' });
-
-
 
     var that = this;
     if (that.agents[that.currentTab].list.length !== 0) {
@@ -384,6 +401,15 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
             title: '你已经看到我的底线啦！' });
 
         }
+      }, function (fail) {
+        setTimeout(function () {
+          uni.hideLoading();
+          uni.stopPullDownRefresh();
+          uni.showToast({
+            icon: 'none',
+            title: '刷新失败，请稍后再试' });
+
+        }, 4000);
       });
     } else {
       uni.hideLoading();
@@ -392,12 +418,8 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
         title: '你已经看到我的底线啦！' });
 
     }
-
-    setTimeout(function () {
-      uni.hideLoading();
-    }, 1000);
   },
-  onShow: function onShow() {
+  onShow: function onShow() {var _this2 = this;
     var that = this;
     var url = _api.default.urls.getPostList;
     var data = {
@@ -411,9 +433,19 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
           /\-/g, '/').replace(
           /\T/g,
           ' ').substring(0, 19)).getTime());}
+        that.agents[_this2.currentTab].pages = that.agents[_this2.currentTab].pages + 1;
         that.agents[that.currentTab].list = res.data.content;
         that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx';
       }
+    }, function (fail) {
+      setTimeout(function () {
+        uni.hideLoading();
+        uni.stopPullDownRefresh();
+        uni.showToast({
+          icon: 'none',
+          title: '刷新失败，请稍后再试' });
+
+      }, 4000);
     });
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))

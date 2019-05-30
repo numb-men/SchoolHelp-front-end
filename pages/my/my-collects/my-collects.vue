@@ -53,7 +53,7 @@
 				this.posts = res.data.map((item) =>{
 					return {
 						id: item.postId,
-						userHeadImg: "http://"+item.imageUrl,
+						userHeadImg: item.imageUrl,
 						title: item.title,
 						content: cutString(item.content, 20),
 						userName: item.name,

@@ -169,7 +169,7 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { posts: [] };}, onLoad: function onLoad() {var _this = this;var url = this.$api.urls.getAllCollects;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\my\\my-collects\\my-collects.vue:52");_this.posts = res.data.map(function (item) {return { id: item.postId, userHeadImg: "http://" + item.imageUrl, title: item.title, content: (0, _util.cutString)(item.content, 20), userName: item.name, publishTime: "8:00", points: 10, watchNum: 43, commentNum: 2 };});_this.getPosts();});}, methods: { getPosts: function getPosts() {var _this2 = this;this.posts.map(function (item) {var postId = item.id;
+var _default = { data: function data() {return { posts: [] };}, onLoad: function onLoad() {var _this = this;var url = this.$api.urls.getAllCollects;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\my\\my-collects\\my-collects.vue:52");_this.posts = res.data.map(function (item) {return { id: item.postId, userHeadImg: item.imageUrl, title: item.title, content: (0, _util.cutString)(item.content, 20), userName: item.name, publishTime: "8:00", points: 10, watchNum: 43, commentNum: 2 };});_this.getPosts();});}, methods: { getPosts: function getPosts() {var _this2 = this;this.posts.map(function (item) {var postId = item.id;
         var url = _this2.$api.urls.getEasyPost + postId;
         var data = {};
         _this2.$api.req.get(url, data, function (res) {

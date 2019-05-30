@@ -163,8 +163,8 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { myUserId: "", myHeadImg: "", messageInput: "", chat: { userName: "", userHeadImg: "", userId: "", isOnline: "", msgs: [] } };}, onLoad: function onLoad(option) {var detail = JSON.parse(option.detail);this.myUserId = this.$store.state.userInfo.id;this.chat.userId = detail.chatUserId;this.getEasyUserInfo();this.myHeadImg = this.$store.state.userInfo.headImageUrl;this.getMessageList();}, methods: { getEasyUserInfo: function getEasyUserInfo() {var _this = this;var url = this.$api.urls.getOrtherUserInfo + this.chat.userId;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:66");
-        _this.chat.userHeadImg = "http://" + res.data.headImageUrl;
+var _default = { data: function data() {return { myUserId: "", myHeadImg: "", messageInput: "", chat: { userName: "", userHeadImg: "", userId: "", isOnline: "", msgs: [] } };}, onLoad: function onLoad(option) {var detail = JSON.parse(option.detail);this.myUserId = this.$store.state.userInfo.id;this.chat.userId = detail.chatUserId;this.getEasyUserInfo();this.myHeadImg = this.$store.state.userInfo.headImageUrl;this.getMessageList();}, methods: { getEasyUserInfo: function getEasyUserInfo() {var _this = this;var url = this.$api.urls.getOtherUserInfo + this.chat.userId;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:66");
+        _this.chat.userHeadImg = res.data.headImageUrl;
         _this.chat.userName = res.data.name;
         _this.chat.isOnline = res.data.online;
         uni.setNavigationBarTitle({

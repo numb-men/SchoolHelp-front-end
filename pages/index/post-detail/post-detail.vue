@@ -2,7 +2,7 @@
 	<view id="post-detail" class="content">
 		<view class="post-detail">
 			<view class="show-user">
-				<image class="user-head-img" :src="post.user.headImg" :data-userId="post.user.id" @click.stop="goChat"></image>
+				<image class="user-head-img" :src="post.user.headImg" :data-userId="post.user.id" @click.stop="goUserData"></image>
 				<view class="show-user-right">
 					<view class="show-user-right-top">
 						<view class="user-info">
@@ -44,7 +44,7 @@
 			<block v-for="(comment, index) in post.comments" :key="comment.id">
 				<view class="comment-item"  :data-index="index" :id="'comment-'+comment.id">
 					<view class="show-user">
-						<image class="user-head-img" :src="comment.user.headImg" :data-userId="comment.user.id" @click.stop="goChat"></image>
+						<image class="user-head-img" :src="comment.user.headImg" :data-userId="comment.user.id" @click.stop="goUserData"></image>
 						<view class="show-user-right">
 							<view class="show-user-right-top">
 								<view class="user-info">
@@ -92,14 +92,12 @@
 			hideAddCommentBox() {
 				this.showAddComment = false;
 			},
-			goChat(e) {
-				console.log(e);
+			goUserData(e) {
 				console.log(e.currentTarget.dataset.userid, this.$store.state.userInfo.id);
 				if (e.currentTarget.dataset.userId != this.$store.state.userInfo.id){
-					// 和非自身的用户发消息
+					// 非自身的用户
 					uni.navigateTo({
-						url: "../../messages/message-detail/message-detail?detail=" + encodeURIComponent(JSON.stringify(
-							{chatUserId: e.currentTarget.dataset.userid}))
+						url: "../../otherUsers/otherUsers?userId=" + e.currentTarget.dataset.userid
 					})
 				}
 			},
@@ -127,7 +125,7 @@
 								id: item.commentId,
 								user: {
 									id: item.userId,
-									headImg: "http://"+item.headImageUrl,
+									headImg: item.headImageUrl,
 									isCertified: true,
 									name: item.commentUserName
 								},
@@ -243,7 +241,7 @@
 								id: item.commentId,
 								user: {
 									id: item.userId,
-									headImg: "http://"+item.headImageUrl,
+									headImg: item.headImageUrl,
 									isCertified: true,
 									name: item.commentUserName
 								},
@@ -258,7 +256,7 @@
 						id: resPost.postId,
 						user: {
 							id: resPost.userId,
-							headImg: "http://"+resPost.headImageUrl,
+							headImg: resPost.headImageUrl,
 							isCertified: true,
 							name: resPost.userName
 						},

@@ -82,11 +82,11 @@
 			}
 		},
 		{
-			"path": "pages/my/change-password/change-password",
-			"style": {
-				"navigationBarTitleText": "修改密码"
-			}
-		},
+            "path": "pages/my/forget-password/forget-password",
+            "style": {
+                "navigationBarTitleText": "忘记密码"
+            }
+        },
 		{
 			"path" : "pages/my/my-follows/my-follows",
 			"style" : {
@@ -112,12 +112,6 @@
 			}
 		},
 		{
-			"path": "pages/my/my-data/my-data",
-			"style": {
-				"navigationBarTitleText": "我的资料"
-			}
-		},
-		{
 			"path": "pages/my/my-comments/my-comments",
 			"style": {
 				"navigationBarTitleText": "我的评论"
@@ -129,12 +123,6 @@
 				"navigationBarTitleText": "我的帖子"
 			}
 		},
-		{
-            "path" : "pages/my/change-userInfo/change-userInfo",
-            "style" : {
-				"navigationBarTitleText": "修改资料"
-			}
-        }, 
 		{
             "path": "pages/my/setting/account-security/account-security",
             "style": {
@@ -166,9 +154,21 @@
             }
         }, 
 		{
-            "path": "pages/my/setting/edit-information/edit-information",
+		    "path": "pages/my/setting/change-userInfo/change-userInfo",
+		    "style": {
+		        "navigationBarTitleText": "修改资料"
+		    }
+		},
+		{
+            "path": "pages/my/setting/change-userInfo/upload",
             "style": {
-                "navigationBarTitleText": "修改资料"
+                "navigationBarTitleText": "上传头像"
+            }
+        }, 
+		{
+            "path": "pages/otherUsers/otherUsers",
+            "style": {
+                "navigationBarTitleText": "个人资料"
             }
         }
     ],

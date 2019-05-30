@@ -8,15 +8,15 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));var _urls;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 // API 请求根路径
-var root = "http://250r7838l8.qicp.vip";
-// var root = "http://134.175.16.143:8080/schoolhelp-1.0.7";
-// var root = "/schoolhelp/schoolhelp-1.0.4"; // h5测试使用，使用了manifest.json中的h5代理配置
+// var root = "http://250r7838l8.qicp.vip"
+var root = "http://134.175.16.143:8080/schoolhelp-1.1.0";
+// var root = "/schoolhelp"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
-var urls = {
+var urls = (_urls = {
   register: "".concat(root, "/register"),
   login: "".concat(root, "/login"),
   sendMessage: "".concat(root, "/user/message"),
@@ -46,7 +46,7 @@ var urls = {
   cancelAttention: "".concat(root, "/user/attention"),
   attentionSomeone: "".concat(root, "/user/attention"),
   getChatList: "".concat(root, "/message/chatlist"),
-  getOrtherUserInfo: "".concat(root, "/user/"), //获取其他用户的非隐私信息，+userId
+  getOtherUserInfo: "".concat(root, "/user/"), //获取其他用户的非隐私信息，+userId
   getMessageListForUser: "".concat(root, "/user/message/user"), //获取与对应用户的消息列表
   getSelfHeadImg: "".concat(root, "/download/head"), //获取用户自己的头像
   setMessageRead: "".concat(root, "/message/state"), //设置消息已读
@@ -54,13 +54,18 @@ var urls = {
 
   /**********************************************/
 
-  getHead: "".concat(root, "/download/head"),
-  feedback: "".concat(root, "/feedback/"),
-  getPostList: "".concat(root, "/post/pages")
+  getMessageList: "".concat(root, "/user/message") }, _defineProperty(_urls, "getSelfUserInfo", "".concat(
+root, "/user")), _defineProperty(_urls, "getHead", "".concat(
+root, "/download/head")), _defineProperty(_urls, "feedback", "".concat(
+root, "/feedback/")), _defineProperty(_urls, "getPostList", "".concat(
+root, "/post/pages")), _defineProperty(_urls, "changeUserInfomation", "".concat(
+root, "/user")), _defineProperty(_urls, "changePassword", "".concat(
+root, "/user/password")), _defineProperty(_urls, "postHead", "".concat(
+root, "/uploadimg/head")), _urls);
 
 
-  // 封装请求方法
-};var req = {
+// 封装请求方法
+var req = {
   request: function request(url, data, method, _success, _fail) {
     uni.request({
       url: url,
@@ -72,7 +77,7 @@ var urls = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(res.data, method, url, " at api\\api.js:65");
+        console.log(res.data, method, url, " at api\\api.js:70");
         if (res.data.code == 0) {
           _success(res.data);
         } else {
@@ -85,7 +90,7 @@ var urls = {
         }
       },
       fail: function fail(err) {
-        console.log(method, url, "fail", " at api\\api.js:78");
+        console.log(method, url, "fail", " at api\\api.js:83");
         if (_fail) _fail(err); // 如果失败方法非空，执行失败方法
       } });
 
@@ -138,6 +143,1002 @@ var urls = {
   root: root,
   urls: urls,
   req: req };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
+
+/***/ }),
+
+/***/ "../../../../../校园帮/SchoolHelp-front-end/api/md5.js":
+/*!***************************************************************!*\
+  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/api/md5.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.hex_md5 = hex_md5; /*
+                                                                                                       * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
+                                                                                                       * Digest Algorithm, as defined in RFC 1321.
+                                                                                                       * Version 2.1 Copyright (C) Paul Johnston 1999 - 2002.
+                                                                                                       * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
+                                                                                                       * Distributed under the BSD License
+                                                                                                       * See http://pajhome.org.uk/crypt/md5 for more info.
+                                                                                                       */
+
+/*
+                                                                                                           * Configurable variables. You may need to tweak these to be compatible with
+                                                                                                           * the server-side, but the defaults work in most cases.
+                                                                                                           */
+var hexcase = 0; /* hex output format. 0 - lowercase; 1 - uppercase        */
+var b64pad = ""; /* base-64 pad character. "=" for strict RFC compliance   */
+var chrsz = 8; /* bits per input character. 8 - ASCII; 16 - Unicode      */
+
+/*
+                                                                             * These are the functions you'll usually want to call
+                                                                             * They take string arguments and return either hex or base-64 encoded strings
+                                                                             */
+function hex_md5(s) {
+  return binl2hex(core_md5(str2binl(s), s.length * chrsz));
+}
+
+function b64_md5(s) {
+  return binl2b64(core_md5(str2binl(s), s.length * chrsz));
+}
+
+function str_md5(s) {
+  return binl2str(core_md5(str2binl(s), s.length * chrsz));
+}
+
+function hex_hmac_md5(key, data) {
+  return binl2hex(core_hmac_md5(key, data));
+}
+
+function b64_hmac_md5(key, data) {
+  return binl2b64(core_hmac_md5(key, data));
+}
+
+function str_hmac_md5(key, data) {
+  return binl2str(core_hmac_md5(key, data));
+}
+
+/*
+   * Perform a simple self-test to see if the VM is working
+   */
+function md5_vm_test() {
+  return hex_md5("abc") == "900150983cd24fb0d6963f7d28e17f72";
+}
+
+/*
+   * Calculate the MD5 of an array of little-endian words, and a bit length
+   */
+function core_md5(x, len) {
+  /* append padding */
+  x[len >> 5] |= 0x80 << len % 32;
+  x[(len + 64 >>> 9 << 4) + 14] = len;
+
+  var a = 1732584193;
+  var b = -271733879;
+  var c = -1732584194;
+  var d = 271733878;
+
+  for (var i = 0; i < x.length; i += 16) {
+    var olda = a;
+    var oldb = b;
+    var oldc = c;
+    var oldd = d;
+
+    a = md5_ff(a, b, c, d, x[i + 0], 7, -680876936);
+    d = md5_ff(d, a, b, c, x[i + 1], 12, -389564586);
+    c = md5_ff(c, d, a, b, x[i + 2], 17, 606105819);
+    b = md5_ff(b, c, d, a, x[i + 3], 22, -1044525330);
+    a = md5_ff(a, b, c, d, x[i + 4], 7, -176418897);
+    d = md5_ff(d, a, b, c, x[i + 5], 12, 1200080426);
+    c = md5_ff(c, d, a, b, x[i + 6], 17, -1473231341);
+    b = md5_ff(b, c, d, a, x[i + 7], 22, -45705983);
+    a = md5_ff(a, b, c, d, x[i + 8], 7, 1770035416);
+    d = md5_ff(d, a, b, c, x[i + 9], 12, -1958414417);
+    c = md5_ff(c, d, a, b, x[i + 10], 17, -42063);
+    b = md5_ff(b, c, d, a, x[i + 11], 22, -1990404162);
+    a = md5_ff(a, b, c, d, x[i + 12], 7, 1804603682);
+    d = md5_ff(d, a, b, c, x[i + 13], 12, -40341101);
+    c = md5_ff(c, d, a, b, x[i + 14], 17, -1502002290);
+    b = md5_ff(b, c, d, a, x[i + 15], 22, 1236535329);
+
+    a = md5_gg(a, b, c, d, x[i + 1], 5, -165796510);
+    d = md5_gg(d, a, b, c, x[i + 6], 9, -1069501632);
+    c = md5_gg(c, d, a, b, x[i + 11], 14, 643717713);
+    b = md5_gg(b, c, d, a, x[i + 0], 20, -373897302);
+    a = md5_gg(a, b, c, d, x[i + 5], 5, -701558691);
+    d = md5_gg(d, a, b, c, x[i + 10], 9, 38016083);
+    c = md5_gg(c, d, a, b, x[i + 15], 14, -660478335);
+    b = md5_gg(b, c, d, a, x[i + 4], 20, -405537848);
+    a = md5_gg(a, b, c, d, x[i + 9], 5, 568446438);
+    d = md5_gg(d, a, b, c, x[i + 14], 9, -1019803690);
+    c = md5_gg(c, d, a, b, x[i + 3], 14, -187363961);
+    b = md5_gg(b, c, d, a, x[i + 8], 20, 1163531501);
+    a = md5_gg(a, b, c, d, x[i + 13], 5, -1444681467);
+    d = md5_gg(d, a, b, c, x[i + 2], 9, -51403784);
+    c = md5_gg(c, d, a, b, x[i + 7], 14, 1735328473);
+    b = md5_gg(b, c, d, a, x[i + 12], 20, -1926607734);
+
+    a = md5_hh(a, b, c, d, x[i + 5], 4, -378558);
+    d = md5_hh(d, a, b, c, x[i + 8], 11, -2022574463);
+    c = md5_hh(c, d, a, b, x[i + 11], 16, 1839030562);
+    b = md5_hh(b, c, d, a, x[i + 14], 23, -35309556);
+    a = md5_hh(a, b, c, d, x[i + 1], 4, -1530992060);
+    d = md5_hh(d, a, b, c, x[i + 4], 11, 1272893353);
+    c = md5_hh(c, d, a, b, x[i + 7], 16, -155497632);
+    b = md5_hh(b, c, d, a, x[i + 10], 23, -1094730640);
+    a = md5_hh(a, b, c, d, x[i + 13], 4, 681279174);
+    d = md5_hh(d, a, b, c, x[i + 0], 11, -358537222);
+    c = md5_hh(c, d, a, b, x[i + 3], 16, -722521979);
+    b = md5_hh(b, c, d, a, x[i + 6], 23, 76029189);
+    a = md5_hh(a, b, c, d, x[i + 9], 4, -640364487);
+    d = md5_hh(d, a, b, c, x[i + 12], 11, -421815835);
+    c = md5_hh(c, d, a, b, x[i + 15], 16, 530742520);
+    b = md5_hh(b, c, d, a, x[i + 2], 23, -995338651);
+
+    a = md5_ii(a, b, c, d, x[i + 0], 6, -198630844);
+    d = md5_ii(d, a, b, c, x[i + 7], 10, 1126891415);
+    c = md5_ii(c, d, a, b, x[i + 14], 15, -1416354905);
+    b = md5_ii(b, c, d, a, x[i + 5], 21, -57434055);
+    a = md5_ii(a, b, c, d, x[i + 12], 6, 1700485571);
+    d = md5_ii(d, a, b, c, x[i + 3], 10, -1894986606);
+    c = md5_ii(c, d, a, b, x[i + 10], 15, -1051523);
+    b = md5_ii(b, c, d, a, x[i + 1], 21, -2054922799);
+    a = md5_ii(a, b, c, d, x[i + 8], 6, 1873313359);
+    d = md5_ii(d, a, b, c, x[i + 15], 10, -30611744);
+    c = md5_ii(c, d, a, b, x[i + 6], 15, -1560198380);
+    b = md5_ii(b, c, d, a, x[i + 13], 21, 1309151649);
+    a = md5_ii(a, b, c, d, x[i + 4], 6, -145523070);
+    d = md5_ii(d, a, b, c, x[i + 11], 10, -1120210379);
+    c = md5_ii(c, d, a, b, x[i + 2], 15, 718787259);
+    b = md5_ii(b, c, d, a, x[i + 9], 21, -343485551);
+
+    a = safe_add(a, olda);
+    b = safe_add(b, oldb);
+    c = safe_add(c, oldc);
+    d = safe_add(d, oldd);
+  }
+  return Array(a, b, c, d);
+
+}
+
+/*
+   * These functions implement the four basic operations the algorithm uses.
+   */
+function md5_cmn(q, a, b, x, s, t) {
+  return safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b);
+}
+
+function md5_ff(a, b, c, d, x, s, t) {
+  return md5_cmn(b & c | ~b & d, a, b, x, s, t);
+}
+
+function md5_gg(a, b, c, d, x, s, t) {
+  return md5_cmn(b & d | c & ~d, a, b, x, s, t);
+}
+
+function md5_hh(a, b, c, d, x, s, t) {
+  return md5_cmn(b ^ c ^ d, a, b, x, s, t);
+}
+
+function md5_ii(a, b, c, d, x, s, t) {
+  return md5_cmn(c ^ (b | ~d), a, b, x, s, t);
+}
+
+/*
+   * Calculate the HMAC-MD5, of a key and some data
+   */
+function core_hmac_md5(key, data) {
+  var bkey = str2binl(key);
+  if (bkey.length > 16) bkey = core_md5(bkey, key.length * chrsz);
+
+  var ipad = Array(16),
+  opad = Array(16);
+  for (var i = 0; i < 16; i++) {
+    ipad[i] = bkey[i] ^ 0x36363636;
+    opad[i] = bkey[i] ^ 0x5C5C5C5C;
+  }
+
+  var hash = core_md5(ipad.concat(str2binl(data)), 512 + data.length * chrsz);
+  return core_md5(opad.concat(hash), 512 + 128);
+}
+
+/*
+   * Add integers, wrapping at 2^32. This uses 16-bit operations internally
+   * to work around bugs in some JS interpreters.
+   */
+function safe_add(x, y) {
+  var lsw = (x & 0xFFFF) + (y & 0xFFFF);
+  var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+  return msw << 16 | lsw & 0xFFFF;
+}
+
+/*
+   * Bitwise rotate a 32-bit number to the left.
+   */
+function bit_rol(num, cnt) {
+  return num << cnt | num >>> 32 - cnt;
+}
+
+/*
+   * Convert a string to an array of little-endian words
+   * If chrsz is ASCII, characters >255 have their hi-byte silently ignored.
+   */
+function str2binl(str) {
+  var bin = Array();
+  var mask = (1 << chrsz) - 1;
+  for (var i = 0; i < str.length * chrsz; i += chrsz) {
+    bin[i >> 5] |= (str.charCodeAt(i / chrsz) & mask) << i % 32;}
+  return bin;
+}
+
+/*
+   * Convert an array of little-endian words to a string
+   */
+function binl2str(bin) {
+  var str = "";
+  var mask = (1 << chrsz) - 1;
+  for (var i = 0; i < bin.length * 32; i += chrsz) {
+    str += String.fromCharCode(bin[i >> 5] >>> i % 32 & mask);}
+  return str;
+}
+
+/*
+   * Convert an array of little-endian words to a hex string.
+   */
+function binl2hex(binarray) {
+  var hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
+  var str = "";
+  for (var i = 0; i < binarray.length * 4; i++) {
+    str += hex_tab.charAt(binarray[i >> 2] >> i % 4 * 8 + 4 & 0xF) +
+    hex_tab.charAt(binarray[i >> 2] >> i % 4 * 8 & 0xF);
+  }
+  return str;
+}
+
+/*
+   * Convert an array of little-endian words to a base-64 string
+   */
+function binl2b64(binarray) {
+  var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  var str = "";
+  for (var i = 0; i < binarray.length * 4; i += 3) {
+    var triplet = (binarray[i >> 2] >> 8 * (i % 4) & 0xFF) << 16 |
+    (binarray[i + 1 >> 2] >> 8 * ((i + 1) % 4) & 0xFF) << 8 |
+    binarray[i + 2 >> 2] >> 8 * ((i + 2) % 4) & 0xFF;
+    for (var j = 0; j < 4; j++) {
+      if (i * 8 + j * 6 > binarray.length * 32) str += b64pad;else
+      str += tab.charAt(triplet >> 6 * (3 - j) & 0x3F);
+    }
+  }
+  return str;
+}
+
+/***/ }),
+
+/***/ "../../../../../校园帮/SchoolHelp-front-end/api/weCropper.js":
+/*!*********************************************************************!*\
+  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/api/weCropper.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {(function (global, factory) {
+   true ? module.exports = factory() :
+  undefined;
+})(void 0, function () {
+  'use strict';
+
+  /**
+                 * Created by sail on 2017/6/11.
+                 */
+  var device = void 0;
+  var TOUCH_STATE = ['touchstarted', 'touchmoved', 'touchended'];
+
+  function firstLetterUpper(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  function setTouchState(instance) {
+    for (var _len = arguments.length, arg = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      arg[_key - 1] = arguments[_key];
+    }
+
+    TOUCH_STATE.forEach(function (key, i) {
+      if (arg[i] !== undefined) {
+        instance[key] = arg[i];
+      }
+    });
+  }
+
+  function validator(instance, o) {
+    Object.defineProperties(instance, o);
+  }
+
+  function getDevice() {
+    if (!device) {
+      device = wx.getSystemInfoSync();
+    }
+    return device;
+  }
+
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ?
+    "symbol" : typeof obj;
+  };
+
+
+
+
+  var classCallCheck = function classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  };
+
+  var createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
+
+
+
+
+  var slicedToArray = function () {
+    function sliceIterator(arr, i) {
+      var _arr = [];
+      var _n = true;
+      var _d = false;
+      var _e = undefined;
+
+      try {
+        for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+          _arr.push(_s.value);
+
+          if (i && _arr.length === i) break;
+        }
+      } catch (err) {
+        _d = true;
+        _e = err;
+      } finally {
+        try {
+          if (!_n && _i["return"]) _i["return"]();
+        } finally {
+          if (_d) throw _e;
+        }
+      }
+
+      return _arr;
+    }
+
+    return function (arr, i) {
+      if (Array.isArray(arr)) {
+        return arr;
+      } else if (Symbol.iterator in Object(arr)) {
+        return sliceIterator(arr, i);
+      } else {
+        throw new TypeError("Invalid attempt to destructure non-iterable instance");
+      }
+    };
+  }();
+
+  var tmp = {};
+
+  var DEFAULT = {
+    id: {
+      default: 'cropper',
+      get: function get$$1() {
+        return tmp.id;
+      },
+      set: function set$$1(value) {
+        if (typeof value !== 'string') {}
+        tmp.id = value;
+      } },
+
+    width: {
+      default: 750,
+      get: function get$$1() {
+        return tmp.width;
+      },
+      set: function set$$1(value) {
+        tmp.width = value;
+      } },
+
+    height: {
+      default: 750,
+      get: function get$$1() {
+        return tmp.height;
+      },
+      set: function set$$1(value) {
+        tmp.height = value;
+      } },
+
+    scale: {
+      default: 2.5,
+      get: function get$$1() {
+        return tmp.scale;
+      },
+      set: function set$$1(value) {
+        tmp.scale = value;
+      } },
+
+    zoom: {
+      default: 5,
+      get: function get$$1() {
+        return tmp.zoom;
+      },
+      set: function set$$1(value) {
+        tmp.zoom = value;
+      } },
+
+    src: {
+      default: 'cropper',
+      get: function get$$1() {
+        return tmp.src;
+      },
+      set: function set$$1(value) {
+        tmp.src = value;
+      } },
+
+    cut: {
+      default: {},
+      get: function get$$1() {
+        return tmp.cut;
+      },
+      set: function set$$1(value) {
+        tmp.cut = value;
+      } },
+
+    onReady: {
+      default: null,
+      get: function get$$1() {
+        return tmp.ready;
+      },
+      set: function set$$1(value) {
+        tmp.ready = value;
+      } },
+
+    onBeforeImageLoad: {
+      default: null,
+      get: function get$$1() {
+        return tmp.beforeImageLoad;
+      },
+      set: function set$$1(value) {
+        tmp.beforeImageLoad = value;
+      } },
+
+    onImageLoad: {
+      default: null,
+      get: function get$$1() {
+        return tmp.imageLoad;
+      },
+      set: function set$$1(value) {
+        tmp.imageLoad = value;
+      } },
+
+    onBeforeDraw: {
+      default: null,
+      get: function get$$1() {
+        return tmp.beforeDraw;
+      },
+      set: function set$$1(value) {
+        tmp.beforeDraw = value;
+      } } };
+
+
+
+  /**
+              * Created by sail on 2017/6/11.
+              */
+  function prepare() {
+    var self = this;
+
+    var _getDevice = getDevice(),
+    windowWidth = _getDevice.windowWidth;
+
+    self.attachPage = function () {
+      var pages = getCurrentPages
+      //  获取到当前page上下文
+      ();
+      var pageContext = pages[pages.length - 1];
+      //  把this依附在Page上下文的wecropper属性上，便于在page钩子函数中访问
+      pageContext.wecropper = self;
+    };
+
+    self.createCtx = function () {
+      var id = self.id;
+
+      if (id) {
+        self.ctx = wx.createCanvasContext(id);
+      }
+    };
+
+    self.deviceRadio = windowWidth / 750;
+    self.deviceRadio = self.deviceRadio.toFixed(2);
+  }
+
+  /**
+     *
+     */
+  function observer() {
+    var self = this;
+
+    var EVENT_TYPE = ['ready', 'beforeImageLoad', 'beforeDraw', 'imageLoad'];
+
+    self.on = function (event, fn) {
+      if (EVENT_TYPE.indexOf(event) > -1) {
+        if (typeof fn === 'function') {
+          event === 'ready' ? fn(self) : self['on' + firstLetterUpper(event)] = fn;
+        }
+      }
+      return self;
+    };
+  }
+
+  /**
+     * Created by sail on 2017/6/11.
+     */
+  function methods() {
+    var self = this;
+
+    var deviceRadio = self.deviceRadio;
+    console.log(JSON.stringify(self), " at api\\weCropper.js:276");
+
+    var boundWidth = self.width; // 裁剪框默认宽度，即整个画布宽度
+    var boundHeight = self.height; // 裁剪框默认高度，即整个画布高度
+    var _self$cut = self.cut,
+    _self$cut$x = _self$cut.x,
+    x = _self$cut$x === undefined ? 0 : _self$cut$x,
+    _self$cut$y = _self$cut.y,
+    y = _self$cut$y === undefined ? 0 : _self$cut$y,
+    _self$cut$width = _self$cut.width,
+    width = _self$cut$width === undefined ? boundWidth : _self$cut$width,
+    _self$cut$height = _self$cut.height,
+    height = _self$cut$height === undefined ? boundHeight : _self$cut$height;
+
+
+    self.updateCanvas = function () {
+      if (self.croperTarget) {
+
+        //  画布绘制图片
+        self.ctx.drawImage(self.croperTarget, self.imgLeft, self.imgTop, self.scaleWidth, self.scaleHeight);
+      }
+      typeof self.onBeforeDraw === 'function' && self.onBeforeDraw(self.ctx, self);
+
+      self.setBoundStyle //	设置边界样式
+      ();
+      self.ctx.draw();
+      return self;
+    };
+
+    self.pushOrign = function (src) {
+      self.src = src;
+
+      typeof self.onBeforeImageLoad === 'function' && self.onBeforeImageLoad(self.ctx, self);
+
+      uni.getImageInfo({
+        src: src,
+        success: function success(res) {
+          var innerAspectRadio = res.width / res.height;
+          self.croperTarget = res.path || src;
+          if (innerAspectRadio < width / height) {
+            self.rectX = x;
+            self.baseWidth = width;
+            self.baseHeight = width / innerAspectRadio;
+            self.rectY = y - Math.abs((height - self.baseHeight) / 2);
+          } else {
+            self.rectY = y;
+            self.baseWidth = height * innerAspectRadio;
+            self.baseHeight = height;
+            self.rectX = x - Math.abs((width - self.baseWidth) / 2);
+          }
+
+          self.imgLeft = self.rectX;
+          self.imgTop = self.rectY;
+          self.scaleWidth = self.baseWidth;
+          self.scaleHeight = self.baseHeight;
+
+          self.updateCanvas();
+
+          typeof self.onImageLoad === 'function' && self.onImageLoad(self.ctx,
+          self);
+        } });
+
+
+      self.update();
+      return self;
+    };
+
+    self.getCropperImage = function () {
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      var id = self.id;
+
+      var ARG_TYPE = toString.call(args[0]);
+      switch (ARG_TYPE) {
+        case '[object Object]':
+          var _args$0$quality = args[0].quality,
+          quality = _args$0$quality === undefined ? 10 : _args$0$quality;
+          console.log("quality--" + quality, " at api\\weCropper.js:355");
+
+          uni.canvasToTempFilePath({
+            canvasId: id,
+            x: x,
+            y: y,
+            width: width,
+            height: height,
+            destWidth: width * quality / (deviceRadio * 10),
+            destHeight: height * quality / (deviceRadio * 10),
+            success: function success(res) {
+              console.log(res, " at api\\weCropper.js:366");
+              typeof args[args.length - 1] === 'function' && args[args.length -
+              1](res.tempFilePath);
+            } });
+
+          break;
+        case '[object Function]':
+          uni.canvasToTempFilePath({
+            canvasId: id,
+            x: x,
+            y: y,
+            fileType: "jpg",
+            width: width,
+            height: height,
+            destWidth: width,
+            destHeight: height,
+            success: function success(res) {
+
+              typeof args[args.length - 1] === 'function' && args[args.length -
+              1](res.tempFilePath);
+            } });
+
+          break;}
+
+
+      return self;
+    };
+  }
+
+  /**
+     * Created by sail on 2017/6/11.
+     */
+  function update() {
+    var self = this;
+    if (!self.src) return;
+
+    self.__oneTouchStart = function (touch) {
+      self.touchX0 = touch.x;
+      self.touchY0 = touch.y;
+    };
+
+    self.__oneTouchMove = function (touch) {
+      var xMove = void 0,
+      yMove = void 0;
+      //计算单指移动的距离
+      if (self.touchended) {
+        return self.updateCanvas();
+      }
+      xMove = touch.x - self.touchX0;
+      yMove = touch.y - self.touchY0;
+
+      var imgLeft = self.rectX + xMove;
+      var imgTop = self.rectY + yMove;
+
+      self.outsideBound(imgLeft, imgTop);
+
+      self.updateCanvas();
+    };
+
+    self.__twoTouchStart = function (touch0, touch1) {
+      var xMove = void 0,
+      yMove = void 0,
+      oldDistance = void 0;
+
+      self.touchX1 = self.rectX + self.scaleWidth / 2;
+      self.touchY1 = self.rectY + self.scaleHeight / 2;
+
+      //计算两指距离
+      xMove = touch1.x - touch0.x;
+      yMove = touch1.y - touch0.y;
+      oldDistance = Math.sqrt(xMove * xMove + yMove * yMove);
+
+      self.oldDistance = oldDistance;
+    };
+
+    self.__twoTouchMove = function (touch0, touch1) {
+      var xMove = void 0,
+      yMove = void 0,
+      newDistance = void 0;
+      var scale = self.scale,
+      zoom = self.zoom;
+      // 计算二指最新距离
+
+      xMove = touch1.x - touch0.x;
+      yMove = touch1.y - touch0.y;
+      newDistance = Math.sqrt(xMove * xMove + yMove * yMove
+
+      //  使用0.005的缩放倍数具有良好的缩放体验
+      );
+      self.newScale = self.oldScale + 0.001 * zoom * (newDistance - self.oldDistance);
+
+      //  设定缩放范围
+      self.newScale <= 1 && (self.newScale = 1);
+      self.newScale >= scale && (self.newScale = scale);
+
+      self.scaleWidth = self.newScale * self.baseWidth;
+      self.scaleHeight = self.newScale * self.baseHeight;
+      var imgLeft = self.touchX1 - self.scaleWidth / 2;
+      var imgTop = self.touchY1 - self.scaleHeight / 2;
+
+      self.outsideBound(imgLeft, imgTop);
+
+      self.updateCanvas();
+    };
+
+    self.__xtouchEnd = function () {
+      self.oldScale = self.newScale;
+      self.rectX = self.imgLeft;
+      self.rectY = self.imgTop;
+    };
+  }
+
+  /**
+     * Created by sail on 2017/6/11.
+     */
+
+  var handle = {
+    //  图片手势初始监测
+    touchStart: function touchStart(e) {
+      var self = this;
+      var _e$touches = slicedToArray(e.touches, 2),
+      touch0 = _e$touches[0],
+      touch1 = _e$touches[1];
+
+      console.log(JSON.stringify(touch1), " at api\\weCropper.js:490");
+      if (!touch0.x) {
+        touch0.x = touch0.clientX;
+        touch0.y = touch0.clientY;
+        if (touch1) {
+          touch1.x = touch1.clientX;
+          touch1.y = touch1.clientY;
+        }
+      }
+
+      setTouchState(self, true, null, null
+
+      //计算第一个触摸点的位置，并参照改点进行缩放
+      );
+      self.__oneTouchStart(touch0
+
+      // 两指手势触发
+      );
+      if (e.touches.length >= 2) {
+        self.__twoTouchStart(touch0, touch1);
+      }
+    },
+
+
+    //  图片手势动态缩放
+    touchMove: function touchMove(e) {
+      var self = this;
+
+      var _e$touches2 = slicedToArray(e.touches, 2),
+      touch0 = _e$touches2[0],
+      touch1 = _e$touches2[1];
+      if (!touch0.x) {
+        touch0.x = touch0.clientX;
+        touch0.y = touch0.clientY;
+        if (touch1) {
+          touch1.x = touch1.clientX;
+          touch1.y = touch1.clientY;
+        }
+      }
+      setTouchState(self, null, true
+
+      // 单指手势时触发
+      );
+      if (e.touches.length === 1) {
+        self.__oneTouchMove(touch0);
+      }
+      // 两指手势触发
+      if (e.touches.length >= 2) {
+        self.__twoTouchMove(touch0, touch1);
+      }
+    },
+    touchEnd: function touchEnd(e) {
+      var self = this;
+
+      setTouchState(self, false, false, true);
+      self.__xtouchEnd();
+    } };
+
+
+  /**
+          * Created by sail on 1017/6/12.
+          */
+  function cut() {
+    var self = this;
+    var deviceRadio = self.deviceRadio;
+
+    var boundWidth = self.width; // 裁剪框默认宽度，即整个画布宽度
+    var boundHeight = self.height;
+    // 裁剪框默认高度，即整个画布高度
+    var _self$cut = self.cut,
+    _self$cut$x = _self$cut.x,
+    x = _self$cut$x === undefined ? 0 : _self$cut$x,
+    _self$cut$y = _self$cut.y,
+    y = _self$cut$y === undefined ? 0 : _self$cut$y,
+    _self$cut$width = _self$cut.width,
+    width = _self$cut$width === undefined ? boundWidth : _self$cut$width,
+    _self$cut$height = _self$cut.height,
+    height = _self$cut$height === undefined ? boundHeight : _self$cut$height;
+
+    /**
+                                                                               * 设置边界
+                                                                               * @param imgLeft 图片左上角横坐标值
+                                                                               * @param imgTop 图片左上角纵坐标值
+                                                                               */
+
+    self.outsideBound = function (imgLeft, imgTop) {
+      self.imgLeft = imgLeft >= x ? x : self.scaleWidth + imgLeft - x <= width ? x + width - self.
+      scaleWidth : imgLeft;
+
+      self.imgTop = imgTop >= y ? y : self.scaleHeight + imgTop - y <= height ? y + height - self.
+      scaleHeight : imgTop;
+    };
+
+    /**
+        * 设置边界样式
+        * @param color	边界颜色
+        */
+    self.setBoundStyle = function () {
+      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      _ref$color = _ref.color,
+      color = _ref$color === undefined ? '#04b00f' : _ref$color,
+      _ref$mask = _ref.mask,
+      mask = _ref$mask === undefined ? 'rgba(0, 0, 0, 0.3)' : _ref$mask,
+      _ref$lineWidth = _ref.lineWidth,
+      lineWidth = _ref$lineWidth === undefined ? 1 : _ref$lineWidth;
+
+      // 绘制半透明层
+      self.ctx.beginPath();
+      self.ctx.setFillStyle(mask);
+      self.ctx.fillRect(0, 0, x, boundHeight);
+      self.ctx.fillRect(x, 0, width, y);
+      self.ctx.fillRect(x, y + height, width, boundHeight - y - height);
+      self.ctx.fillRect(x + width, 0, boundWidth - x - width, boundHeight);
+      self.ctx.fill
+
+      // 设置边界左上角样式
+      // 为使边界样式处于边界外边缘，此时x、y均要减少lineWidth
+      ();
+      self.ctx.beginPath();
+      self.ctx.setStrokeStyle(color);
+      self.ctx.setLineWidth(lineWidth);
+      self.ctx.moveTo(x - lineWidth, y + 10 - lineWidth);
+      self.ctx.lineTo(x - lineWidth, y - lineWidth);
+      self.ctx.lineTo(x + 10 - lineWidth, y - lineWidth);
+      self.ctx.stroke
+
+      // 设置边界左下角样式
+      // 为使边界样式处于边界外边缘，此时x要减少lineWidth、y要增加lineWidth
+      ();
+      self.ctx.beginPath();
+      self.ctx.setStrokeStyle(color);
+      self.ctx.setLineWidth(lineWidth);
+      self.ctx.moveTo(x - lineWidth, y + height - 10 + lineWidth);
+      self.ctx.lineTo(x - lineWidth, y + height + lineWidth);
+      self.ctx.lineTo(x + 10 - lineWidth, y + height + lineWidth);
+      self.ctx.stroke
+
+      // 设置边界右上角样式
+      // 为使边界样式处于边界外边缘，此时x要增加lineWidth、y要减少lineWidth
+      ();
+      self.ctx.beginPath();
+      self.ctx.setStrokeStyle(color);
+      self.ctx.setLineWidth(lineWidth);
+      self.ctx.moveTo(x + width - 10 + lineWidth, y - lineWidth);
+      self.ctx.lineTo(x + width + lineWidth, y - lineWidth);
+      self.ctx.lineTo(x + width + lineWidth, y + 10 - lineWidth);
+      self.ctx.stroke
+
+      // 设置边界右下角样式
+      // 为使边界样式处于边界外边缘，此时x、y均要增加lineWidth
+      ();
+      self.ctx.beginPath();
+      self.ctx.setStrokeStyle(color);
+      self.ctx.setLineWidth(lineWidth);
+      self.ctx.moveTo(x + width + lineWidth, y + height - 10 + lineWidth);
+      self.ctx.lineTo(x + width + lineWidth, y + height + lineWidth);
+      self.ctx.lineTo(x + width - 10 + lineWidth, y + height + lineWidth);
+      self.ctx.stroke();
+    };
+  }
+
+  var __version__ = '1.1.4';
+
+  var weCropper = function () {
+    function weCropper(params) {
+      classCallCheck(this, weCropper);
+
+      var self = this;
+      var _default = {};
+
+      validator(self, DEFAULT);
+
+      Object.keys(DEFAULT).forEach(function (key) {
+        _default[key] = DEFAULT[key].default;
+      });
+      Object.assign(self, _default, params);
+
+      self.prepare();
+      self.attachPage();
+      self.createCtx();
+      self.observer();
+      self.cutt();
+      self.methods();
+      self.init();
+      self.update();
+
+      return self;
+    }
+
+    createClass(weCropper, [{
+      key: 'init',
+      value: function init() {
+        var self = this;
+        var src = self.src;
+
+
+        self.version = __version__;
+
+        typeof self.onReady === 'function' && self.onReady(self.ctx, self);
+
+        if (src) {
+          self.pushOrign(src);
+        }
+        setTouchState(self, false, false, false);
+
+        self.oldScale = 1;
+        self.newScale = 1;
+
+        return self;
+      } }]);
+
+    return weCropper;
+  }();
+
+  Object.assign(weCropper.prototype, handle);
+
+
+  weCropper.prototype.prepare = prepare;
+  weCropper.prototype.observer = observer;
+  weCropper.prototype.methods = methods;
+  weCropper.prototype.cutt = cut;
+  weCropper.prototype.update = update;
+
+  return weCropper;
+
+});
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
@@ -222,8 +1223,7 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../../校园帮/SchoolHelp-front-end/App.vue"));
 
 var _api = _interopRequireDefault(__webpack_require__(/*! api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));
-var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));
-var _util = _interopRequireDefault(__webpack_require__(/*! common/util.js */ "../../../../../校园帮/SchoolHelp-front-end/common/util.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.config.productionTip = false;
 
@@ -396,40 +1396,6 @@ createPage(_messages.default);
 
 /***/ }),
 
-/***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fchange-password%2Fchange-password\"}":
-/*!**********************************************************************************************************************!*\
-  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fchange-password%2Fchange-password"} ***!
-  \**********************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../校园帮/SchoolHelp-front-end/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _changePassword = _interopRequireDefault(__webpack_require__(/*! ./pages/my/change-password/change-password.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/change-password/change-password.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_changePassword.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fchange-userInfo%2Fchange-userInfo\"}":
-/*!**********************************************************************************************************************!*\
-  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fchange-userInfo%2Fchange-userInfo"} ***!
-  \**********************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../校园帮/SchoolHelp-front-end/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _changeUserInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/my/change-userInfo/change-userInfo.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/change-userInfo/change-userInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_changeUserInfo.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
-
-/***/ }),
-
 /***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Ffeedback%2Ffeedback\"}":
 /*!********************************************************************************************************!*\
   !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Ffeedback%2Ffeedback"} ***!
@@ -443,6 +1409,23 @@ createPage(_changeUserInfo.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _feedback = _interopRequireDefault(__webpack_require__(/*! ./pages/my/feedback/feedback.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/feedback/feedback.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_feedback.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fforget-password%2Fforget-password\"}":
+/*!**********************************************************************************************************************!*\
+  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fforget-password%2Fforget-password"} ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../校园帮/SchoolHelp-front-end/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _forgetPassword = _interopRequireDefault(__webpack_require__(/*! ./pages/my/forget-password/forget-password.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/forget-password/forget-password.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_forgetPassword.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),
@@ -511,23 +1494,6 @@ createPage(_myCollects.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _myComments = _interopRequireDefault(__webpack_require__(/*! ./pages/my/my-comments/my-comments.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/my-comments/my-comments.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_myComments.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fmy-data%2Fmy-data\"}":
-/*!******************************************************************************************************!*\
-  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fmy-data%2Fmy-data"} ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../校园帮/SchoolHelp-front-end/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _myData = _interopRequireDefault(__webpack_require__(/*! ./pages/my/my-data/my-data.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/my-data/my-data.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_myData.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),
@@ -651,10 +1617,10 @@ createPage(_changePhone.default);
 
 /***/ }),
 
-/***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Fedit-information%2Fedit-information\"}":
-/*!**********************************************************************************************************************************!*\
-  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fsetting%2Fedit-information%2Fedit-information"} ***!
-  \**********************************************************************************************************************************/
+/***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Fchange-userInfo%2Fchange-userInfo\"}":
+/*!********************************************************************************************************************************!*\
+  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fsetting%2Fchange-userInfo%2Fchange-userInfo"} ***!
+  \********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -662,8 +1628,25 @@ createPage(_changePhone.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../校园帮/SchoolHelp-front-end/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _editInformation = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/edit-information/edit-information.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/setting/edit-information/edit-information.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_editInformation.default);
+var _changeUserInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/change-userInfo/change-userInfo.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/setting/change-userInfo/change-userInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_changeUserInfo.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Fchange-userInfo%2Fupload\"}":
+/*!***********************************************************************************************************************!*\
+  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2Fmy%2Fsetting%2Fchange-userInfo%2Fupload"} ***!
+  \***********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../校园帮/SchoolHelp-front-end/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _upload = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/change-userInfo/upload.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/setting/change-userInfo/upload.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_upload.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),
@@ -698,6 +1681,23 @@ createPage(_help.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _setting = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/setting.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/my/setting/setting.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_setting.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../校园帮/SchoolHelp-front-end/main.js?{\"page\":\"pages%2FotherUsers%2FotherUsers\"}":
+/*!*******************************************************************************************************!*\
+  !*** C:/Users/le/Desktop/校园帮/SchoolHelp-front-end/main.js?{"page":"pages%2FotherUsers%2FotherUsers"} ***!
+  \*******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../校园帮/SchoolHelp-front-end/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _otherUsers = _interopRequireDefault(__webpack_require__(/*! ./pages/otherUsers/otherUsers.vue */ "../../../../../校园帮/SchoolHelp-front-end/pages/otherUsers/otherUsers.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_otherUsers.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),

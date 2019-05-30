@@ -35,7 +35,7 @@
 				this.myFollows = res.data.map((item) =>{
 					return {
 						id: item.id,
-						userHeadImg: "http://"+item.imageUrl,
+						userHeadImg: item.imageUrl,
 						name: item.name,
 						isCertified: item.isCertified
 					}

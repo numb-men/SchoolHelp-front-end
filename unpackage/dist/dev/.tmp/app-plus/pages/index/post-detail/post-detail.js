@@ -245,14 +245,12 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { showAddComment: false, commentEnter: "", postDetail: {}, post: {} };}, methods: { showAddCommentBox: function showAddCommentBox() {this.showAddComment = true;}, hideAddCommentBox: function hideAddCommentBox() {this.showAddComment = false;}, goChat: function goChat(e) {console.log(e, " at pages\\index\\post-detail\\post-detail.vue:96");console.log(e.currentTarget.dataset.userid, this.$store.state.userInfo.id, " at pages\\index\\post-detail\\post-detail.vue:97");if (e.currentTarget.dataset.userId != this.$store.state.userInfo.id) {// 和非自身的用户发消息
-        uni.navigateTo({ url: "../../messages/message-detail/message-detail?detail=" + encodeURIComponent(JSON.stringify({ chatUserId: e.currentTarget.dataset.userid })) });}}, addComment: function addComment() {var _this = this;var url = this.$api.urls.addComment;var data = { postId: this.post.id, commentContent: this.commentEnter };console.log(data, " at pages\\index\\post-detail\\post-detail.vue:109");this.$api.req.post(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:111");_this.commentEnter = "";_this.updateComments();_this.hideAddCommentBox();});}, updateComments: function updateComments() {var _this2 = this;var url = this.$api.urls.getAllComments + this.post.id;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:121");var helpUserId = _this2.post.helpUserId;var comments = [];if (res.data) {comments = res.data.map(function (item) {return { id: item.commentId, user: { id: item.userId, headImg: "http://" + item.headImageUrl, isCertified: true, name: item.commentUserName }, publishTime: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()), content: item.commentContent, helpOk: item.userId == helpUserId };});_this2.post.comments = comments;_this2.checkCertified();}});}, checkCertified: function checkCertified() {var _this3 = this;var url = this.$api.urls.checkCertified;var userIds = [];userIds.push(this.post.user.id);this.post.comments.map(function (comment) {if (!userIds.includes(comment.user.id))
-        userIds.push(comment.user.id);
-      });
+var _default = { data: function data() {return { showAddComment: false, commentEnter: "", postDetail: {}, post: {} };}, methods: { showAddCommentBox: function showAddCommentBox() {this.showAddComment = true;}, hideAddCommentBox: function hideAddCommentBox() {this.showAddComment = false;}, goUserData: function goUserData(e) {console.log(e.currentTarget.dataset.userid, this.$store.state.userInfo.id, " at pages\\index\\post-detail\\post-detail.vue:96");if (e.currentTarget.dataset.userId != this.$store.state.userInfo.id) {// 非自身的用户
+        uni.navigateTo({ url: "../../otherUsers/otherUsers?userId=" + e.currentTarget.dataset.userid });}}, addComment: function addComment() {var _this = this;var url = this.$api.urls.addComment;var data = { postId: this.post.id, commentContent: this.commentEnter };console.log(data, " at pages\\index\\post-detail\\post-detail.vue:107");this.$api.req.post(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:109");_this.commentEnter = "";_this.updateComments();_this.hideAddCommentBox();});}, updateComments: function updateComments() {var _this2 = this;var url = this.$api.urls.getAllComments + this.post.id;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:119");var helpUserId = _this2.post.helpUserId;var comments = [];if (res.data) {comments = res.data.map(function (item) {return { id: item.commentId, user: { id: item.userId, headImg: item.headImageUrl, isCertified: true, name: item.commentUserName }, publishTime: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()), content: item.commentContent, helpOk: item.userId == helpUserId };});_this2.post.comments = comments;_this2.checkCertified();}});}, checkCertified: function checkCertified() {var _this3 = this;var url = this.$api.urls.checkCertified;var userIds = [];userIds.push(this.post.user.id);this.post.comments.map(function (comment) {if (!userIds.includes(comment.user.id)) userIds.push(comment.user.id);});
       var data = { userIds: userIds };
-      console.log(data, " at pages\\index\\post-detail\\post-detail.vue:153");
+      console.log(data, " at pages\\index\\post-detail\\post-detail.vue:151");
       this.$api.req.put(url, data, function (res) {
-        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:155");
+        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:153");
         for (var i in userIds) {
           if (i == 0) {
             _this3.post.user.isCertified = res.data[0];
@@ -264,14 +262,14 @@ var _default = { data: function data() {return { showAddComment: false, commentE
               }
             }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
         }
-        console.log(_this3.post, " at pages\\index\\post-detail\\post-detail.vue:167");
+        console.log(_this3.post, " at pages\\index\\post-detail\\post-detail.vue:165");
       });
     },
     approvalPost: function approvalPost() {var _this4 = this;
       var url = this.$api.urls.approvalPost;
       var data = { postId: this.post.id };
       this.$api.req.post(url, data, function (res) {
-        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:174");
+        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:172");
         if (res.code == 0) {
           uni.showToast({
             icon: "none",
@@ -334,7 +332,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
       var url = this.$api.urls.getPostDetail + this.postDetail.postId;
       var data = {};
       this.$api.req.get(url, data, function (res) {
-        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:237");
+        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:235");
         var helpUserId = res.data.post.helpUserId;
         var comments = [];
         if (res.data.comments) {
@@ -343,7 +341,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
               id: item.commentId,
               user: {
                 id: item.userId,
-                headImg: "http://" + item.headImageUrl,
+                headImg: item.headImageUrl,
                 isCertified: true,
                 name: item.commentUserName },
 
@@ -358,7 +356,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
           id: resPost.postId,
           user: {
             id: resPost.userId,
-            headImg: "http://" + resPost.headImageUrl,
+            headImg: resPost.headImageUrl,
             isCertified: true,
             name: resPost.userName },
 
@@ -387,7 +385,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
   onLoad: function onLoad(option) {
     this.postDetail = JSON.parse(option.query);
     for (var key in this.postDetail) {
-      console.log(key, "---", this.postDetail[key], " at pages\\index\\post-detail\\post-detail.vue:290");
+      console.log(key, "---", this.postDetail[key], " at pages\\index\\post-detail\\post-detail.vue:288");
     }
     this.getPostDetail();
   } };exports.default = _default;

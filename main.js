@@ -3,7 +3,6 @@ import App from './App'
 
 import api from 'api/api.js'
 import store from './store'
-import utils from 'common/util.js'
 
 Vue.config.productionTip = false
 

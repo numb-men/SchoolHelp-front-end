@@ -60,11 +60,11 @@
 		},
 		methods: {
 			getEasyUserInfo() {
-				var url = this.$api.urls.getOrtherUserInfo + this.chat.userId;
+				var url = this.$api.urls.getOtherUserInfo + this.chat.userId;
 				var data = {};
 				this.$api.req.get(url, data, (res) =>{
 					console.log(res);
-					this.chat.userHeadImg = "http://"+res.data.headImageUrl;
+					this.chat.userHeadImg = res.data.headImageUrl;
 					this.chat.userName = res.data.name;
 					this.chat.isOnline = res.data.online;
 					uni.setNavigationBarTitle({

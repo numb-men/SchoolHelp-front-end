@@ -135,7 +135,7 @@ var _default =
       _this.myFollows = res.data.map(function (item) {
         return {
           id: item.id,
-          userHeadImg: "http://" + item.imageUrl,
+          userHeadImg: item.imageUrl,
           name: item.name,
           isCertified: item.isCertified };
 

@@ -2,8 +2,8 @@ import store from "../store/index.js";
 
 // API 请求根路径
 // var root = "http://250r7838l8.qicp.vip"
-// var root = "http://134.175.16.143:8080/schoolhelp-1.0.7";
-var root = "/schoolhelp"; // h5测试使用，使用了manifest.json中的h5代理配置
+var root = "http://134.175.16.143:8080/schoolhelp-1.1.0";
+// var root = "/schoolhelp"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
 var urls = {
@@ -36,7 +36,7 @@ var urls = {
 	cancelAttention: `${root}/user/attention`,
 	attentionSomeone: `${root}/user/attention`,
 	getChatList: `${root}/message/chatlist`,
-	getOrtherUserInfo: `${root}/user/`, //获取其他用户的非隐私信息，+userId
+	getOtherUserInfo: `${root}/user/`, //获取其他用户的非隐私信息，+userId
 	getMessageListForUser: `${root}/user/message/user`, //获取与对应用户的消息列表
 	getSelfHeadImg: `${root}/download/head`, //获取用户自己的头像
 	setMessageRead: `${root}/message/state`, //设置消息已读
@@ -44,9 +44,14 @@ var urls = {
 	
 	/**********************************************/
 	
-	getHead: `${root}/download/head`,
-	feedback: `${root}/feedback/`,
-	getPostList:`${root}/post/pages`
+    getMessageList: `${root}/user/message`,
+    getSelfUserInfo: `${root}/user`,
+    getHead: `${root}/download/head`,
+    feedback: `${root}/feedback/`,
+    getPostList: `${root}/post/pages`,
+    changeUserInfomation: `${root}/user`,
+    changePassword: `${root}/user/password`,
+    postHead: `${root}/uploadimg/head`
 }
 
 // 封装请求方法

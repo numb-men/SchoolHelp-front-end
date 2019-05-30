@@ -195,7 +195,7 @@ var _default = { name: 'slide-list', data: function data() {return { commentList
           commentUserName: item.commentUserName,
           content: (0, _util.cutString)(item.commentContent, 20),
           time: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
-          headImageUrl: "http://" + item.headImageUrl };
+          headImageUrl: item.headImageUrl };
 
       });
       _this3.loadPostData();

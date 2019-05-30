@@ -82,7 +82,14 @@ page {
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 	/* box-sizing: border-box; */
-	background-color: #AF94FF;
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #FFCC66, #FF0066);
+	/* Opera 11.1 - 12.0 */
+	/* Firefox 3.6 - 15 */
+	background: -webkit-gradient(linear, right top, left top, from(#FFCC66), to(#FF0066));
+	background: linear-gradient(right, #FFCC66, #FF0066);
+	/* 标准的语法（必须放在最后） */
+       
 	/* text-align: center; */
 	-webkit-box-align: center;
 	-webkit-align-items: center;

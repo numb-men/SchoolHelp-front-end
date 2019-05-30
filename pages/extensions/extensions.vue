@@ -29,7 +29,7 @@
 			</div>
 		</view>
 		<view class="box-wrap">
-			<div class="box-wrap-item">
+			<div class="box-wrap-item" style="justify-content: flex-start;">
 				<image class="exapp-image" src="../../static/icons/biaobaiqiang.png" />
 				<text style="display: block;">表白墙</text>
 			</div>
@@ -70,25 +70,28 @@
 
 <style>
 	.basicStyle {
+		margin-top: 20upx;
 		width: 100%;
 		height: 100%;
 	}
 
 	.box-wrap {
 		display: flex;
-		width: 100%;
+		width: 640upx;
+		padding: 10upx 55upx;
 		text-align: center;
 		background-color: #FFFFFF;
 		flex-direction: row;
-		justify-content: space-around;
+		justify-content: space-between;
 	}
 
 	.box-wrap-item {
 		border: 1px solid #CCCCCC;
-		width: 100px;
-		height: 100px;
+		width: 90px;
+		height: 90px;
 		margin-top: 5px;
-		border-radius: 10%;
+		font-size: 30upx;
+		border-radius: 25upx;
 		background-color: FFFFFF;
 	}
 
@@ -97,8 +100,12 @@
 	}
 
 	.swiper {
-		margin-top: 100upx;
-		height: 300upx;
+		position: fixed;
+		bottom: 40upx;
+		left: 0;
+		margin-top: 30upx;
+		width: 750upx;
+		height: 350upx;
 	}
 
 	.adds {
@@ -108,12 +115,9 @@
 
 	.exapp-image {
 		text-align: center;
-		border-radius: 30px;
-		margin-top: 2px;
-		width: 60px;
-		height: 60px;
-		max-width: 100%;
-		max-height: 100%;
+		margin-top: 5px;
+		width: 45px;
+		height: 45px;
 	}
 
 

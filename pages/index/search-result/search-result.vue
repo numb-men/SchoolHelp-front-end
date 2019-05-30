@@ -79,7 +79,7 @@ import {
 							return {
 								id: item.postId,
 								userId: item.userId,
-								userHeadImg: "http://"+item.headImageUrl,
+								userHeadImg: item.headImageUrl,
 								title: item.title,
 								publishTime: friendlyDate(new Date(item.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
 								content: cutString(item.content, 20),
