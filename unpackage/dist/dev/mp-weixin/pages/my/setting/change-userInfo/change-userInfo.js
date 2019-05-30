@@ -222,10 +222,21 @@ var _api = _interopRequireDefault(__webpack_require__(/*! @/api/api.js */ "../..
 //
 //
 //
-var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), data: function data() {return { male: '男', female: '女' };}, onShow: function onShow() {_api.default.req.getUserInfo();}, methods: { chooseImage: function chooseImage() {uni.chooseImage({ count: 1, //默认9
-        // sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-        sourceType: ['album'], //从相册选择
-        success: function success(res) {console.log(JSON.stringify(res.tempFilePaths));userInfo.headUrl = res.tempFilePaths[0];} });}, saveChange: function saveChange() {if (this.userInfo.name.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '用户名不能为空' });return;} else if (this.userInfo.phone.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号不能为空' });return;} else if (this.userInfo.sex.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '性别不能为空' });return;} else if (this.userInfo.studentNum.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '学号不能为空' });return;} else if (this.userInfo.major.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '专业不能为空' });return;} else if (this.userInfo.college.length == 0) {this.loading = false;uni.showToast({
+var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), data: function data() {return { male: '男', female: '女' };}, onLoad: function onLoad(option) {var avatar = option.avatar;if (avatar) {this.userInfo.headImageUrl = avatar;}}, // onShow() {
+  //     api.req.getUserInfo()
+  // },
+  methods: { goUploadImage: function goUploadImage() {uni.chooseImage({ count: 1, // 默认9
+        sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function success(res) {var src = res.tempFilePaths[0];uni.redirectTo({ url: 'upload?src=' + src });} });}, saveChange: function saveChange() {if (this.userInfo.name.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '用户名不能为空' });return;} else if (this.userInfo.phone.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号不能为空' });return;} else if (this.userInfo.sex.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '性别不能为空' });return;} else if (this.userInfo.studentNum.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '学号不能为空' });return;} else if (this.userInfo.major.length == 0) {this.loading = false;
+        uni.showToast({
+          icon: 'none',
+          title: '专业不能为空' });
+
+        return;
+      } else if (this.userInfo.college.length == 0) {
+        this.loading = false;
+        uni.showToast({
           icon: 'none',
           title: '学院不能为空' });
 

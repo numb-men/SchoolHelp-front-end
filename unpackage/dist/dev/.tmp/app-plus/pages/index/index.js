@@ -167,11 +167,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));
 var _util = __webpack_require__(/*! ../../common/util.js */ "../../../../SchoolHelp-front-end/common/util.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
 //
 //
 //
@@ -247,10 +245,11 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     // 		that.isWidth = e.windowWidth / that.agents.length
     // 	}
     // })
-  }, methods: { goAddPost: function goAddPost() {uni.navigateTo({ url: 'add-post/add-post' });}, goDetail: function goDetail(e) {
+  }, methods: { goAddPost: function goAddPost() {uni.navigateTo({ url: 'add-post/add-post' });},
+    goDetail: function goDetail(e) {
       var index = e.currentTarget.dataset.index;
       var postId = this.agents[this.currentTab].list[index].postId;
-      console.log(postId, " at pages\\index\\index.vue:153");
+      console.log(postId, " at pages\\index\\index.vue:152");
       var detail = {
         postId: postId };
 
@@ -280,7 +279,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
             replace(/\-/g, '/').replace(/\T/g,
             ' ').substring(0, 19)).getTime());}
           that.agents[index].list = res.data.content;
-          console.log(that.agents[index].list.length, " at pages\\index\\index.vue:183");
+          console.log(that.agents[index].list.length, " at pages\\index\\index.vue:182");
         }
       }, function (fail) {
         setTimeout(function () {
@@ -295,7 +294,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     },
     // swiper 滑动
     swiperTab: function swiperTab(e) {
-      console.log(e, " at pages\\index\\index.vue:198");
+      console.log(e, " at pages\\index\\index.vue:197");
       var index = e.detail.current; //获取索引
       this.isHeight = this.agents[index].list.length * 300 + 160 + 'rpx'; //设置swiper高度
       this.isLeft = index * this.isWidth; //设置下划线位置
@@ -341,7 +340,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     } },
 
   onPullDownRefresh: function onPullDownRefresh() {
-    console.log("\u5237\u65B0\u7B2C".concat(this.currentTab, "\u9879"), " at pages\\index\\index.vue:244");
+    console.log("\u5237\u65B0\u7B2C".concat(this.currentTab, "\u9879"), " at pages\\index\\index.vue:243");
     var that = this;
     var url = _api.default.urls.getPostList;
     var data = {
@@ -371,11 +370,9 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     });
   },
   onReachBottom: function onReachBottom() {var _this = this;
-    console.log("\u52A0\u8F7D".concat(this.currentTab), " at pages\\index\\index.vue:274");
+    console.log("\u52A0\u8F7D".concat(this.currentTab), " at pages\\index\\index.vue:273");
     uni.showLoading({
       content: '加载中' });
-
-
 
     var that = this;
     if (that.agents[that.currentTab].list.length !== 0) {

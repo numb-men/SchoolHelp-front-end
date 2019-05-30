@@ -63,6 +63,7 @@ page {
 }
 .basic-data {
         /* height: 120upx; */
+        margin-top: 20rpx;
         width: 100%;
         margin: 10px;
         display: -webkit-box;
@@ -215,6 +216,24 @@ page {
         width: 70rpx;
         height: 70rpx;
 }
+.certify {
+        margin-left: 10rpx;
+        width: 90rpx;
+        border-width: 1rpx;
+        border-color: #007AFF;
+        border-style: solid;
+        background-color: #007AFF;
+        border-radius: 10rpx;
+        height: 40rpx;
+        text-align: center;
+}
+.certify-text {
+        width: 100%;
+        font-size: 28rpx;
+        color: #FFFFFF;
+        text-align: center;
+        margin-left: 5rpx;
+}
 .points {
         position: absolute;
         top: 90rpx;
@@ -299,6 +318,7 @@ page {
         font-family: texticons;
 }
 .image-con {
+        margin-top: 20rpx;
         position: relative;
         top: 80rpx;
         width: 750rpx;

@@ -167,11 +167,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));
 var _util = __webpack_require__(/*! ../../common/util.js */ "../../../../SchoolHelp-front-end/common/util.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
 //
 //
 //
@@ -247,7 +245,8 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     // 		that.isWidth = e.windowWidth / that.agents.length
     // 	}
     // })
-  }, methods: { goAddPost: function goAddPost() {uni.navigateTo({ url: 'add-post/add-post' });}, goDetail: function goDetail(e) {
+  }, methods: { goAddPost: function goAddPost() {uni.navigateTo({ url: 'add-post/add-post' });},
+    goDetail: function goDetail(e) {
       var index = e.currentTarget.dataset.index;
       var postId = this.agents[this.currentTab].list[index].postId;
       console.log(postId);
@@ -374,8 +373,6 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     console.log("\u52A0\u8F7D".concat(this.currentTab));
     uni.showLoading({
       content: '加载中' });
-
-
 
     var that = this;
     if (that.agents[that.currentTab].list.length !== 0) {

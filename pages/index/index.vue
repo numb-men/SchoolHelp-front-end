@@ -18,7 +18,7 @@
 				</view> -->
             </view>
             <view class="news" v-show="currentTab==0">
-                <swiper class="slider" indicator-dots="false" autoplay="true" interval="2000" duration="500">
+                <swiper class="slider" indicator-dots="false" autoplay="true" interval="2000" duration="1000">
                     <swiper-item class="frame" v-for="(img,index) in imageList" :key="index">
                         <image class="image" resize="cover" :src="img.src"></image>
                     </swiper-item>
@@ -36,9 +36,8 @@
                                 <text class="media-preview-text">{{listItem.content}}</text>
                             </view>
                             <view class="media-head-image">
-                                <!-- v-if="listItem.image_url" :src="listItem.image_url" -->
-                                <image v-if="listItem.image_url" :src="listItem.image_url" class="media-head-image-detail"></image>
-                                <image else class="media-head-image-detail" src="../../static/icons/logo.png"></image>
+                                <image v-if="listItem.headImageUrl" :src="listItem.headImageUrl" class="media-head-image-detail"></image>
+                                <image v-else class="media-head-image-detail" src="../../static/icons/logo.png"></image>
                             </view>
                             <view class="media-name">
                                 <text class="media-name-text">{{listItem.userName}}</text>
@@ -275,8 +274,6 @@
             uni.showLoading({
                 content: '加载中'
             })
-
-
             var that = this
             if (that.agents[that.currentTab].list.length !== 0) {
                 var url = api.urls.getPostList;

@@ -183,6 +183,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
@@ -284,6 +288,11 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
           url: '../../pages/my/setting/change-userInfo/change-userInfo' //我的评论界面路径
         });
       }
+    },
+    goOther: function goOther() {
+      // uni.navigateTo({
+      //     url: '../../pages/otherUsers/otherUsers'
+      // })
     } },
   (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

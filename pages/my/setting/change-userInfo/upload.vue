@@ -1,8 +1,11 @@
 <template>
     <view class="content">
         <view class="cropper-wrapper" style="height:617px">
+            <!-- <canvas class="cropper" disable-scroll="true" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd"
+                :style="{ width: cropperOpt.width, height: cropperOpt.height }" canvas-id="cropper"></canvas> -->
             <canvas class="cropper" disable-scroll="true" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd"
-                :style="{ width: cropperOpt.width, height: cropperOpt.height }" canvas-id="cropper"></canvas>
+                 :style=" {width: width, height: width }" canvas-id="cropper"></canvas>
+                 <!-- -->
         </view>
         <view class="cropper-buttons">
             <view class="upload" @tap="uploadTap">重新选择</view>
@@ -12,12 +15,19 @@
 </template>
 
 <script>
-    import weCropper from '../../../../api/weCropper.js';
+    import {
+        mapState,
+        mapMutations
+    } from 'vuex';
+    import weCropper from '../../../../api/weCropper';
+    import store from "@/store/index.js";
+    import api from "@/api/api.js";
     const device = uni.getSystemInfoSync();
     const width = device.windowWidth;
     const height = device.windowHeight - 50;
     console.log(device);
     export default {
+        computed: mapState(['hasLogin', 'userInfo', 'token']),
         data() {
             return {
                 cropperOpt: {
@@ -39,7 +49,7 @@
         methods: {
             back() {
                 uni.redirectTo({
-                    url: '../infoDetail/infoDetail'
+                    url: 'change-userInfo'
                 });
             },
             touchStart(e) {
@@ -73,40 +83,46 @@
             },
             getCropperImage() {
                 let _this = this;
-                //let pathurl = url + '/user/upload';上传服务器地址
+                let pathurl = api.urls.postHead;
+                // 上传服务器地址
                 this.weCropper.getCropperImage(avatar => {
                     if (avatar) {
                         //  获取到裁剪后的图片
                         //  获取到裁剪后的图片
+                        console.log(avatar);
+                        // this.blobToDataURL(avatar);
                         wx.redirectTo({
-                            url: '../index/index?avatar=' + avatar
+                            url: 'change-userInfo?avatar=' + avatar
                         })
+                        var that = this
                         //下面是上传到服务器的方法
-                        // 					uni.uploadFile({
-                        // 						url: pathurl,
-                        // 						filePath: avatar,
-                        // 						name: 'file',
-                        // 						formData: { token: token, userId: userId},
-                        // 						success: res => {
-                        // 							console.log('uploadImage success, res is:', res);
-                        // 								uni.showToast({
-                        // 								title: '上传成功',
-                        // 								icon: 'success',
-                        // 								duration: 1000
-                        // 							});
-                        // 						},
-                        // 						ail: err => {
-                        // 							console.log('uploadImage fail', err);
-                        // 							uni.showModal({
-                        // 								content: err.errMsg,
-                        // 								showCancel: false
-                        // 							});
-                        // 							uni.hideLoading();
-                        // 						},
-                        // 						complete: () => {
-                        // 							console.log('complate');
-                        // 						}
-                        // 					});
+                        uni.uploadFile({
+                            url: pathurl,
+                            filePath: avatar,
+                            name: 'image',
+                            header: {
+                                token: that.token
+                            },
+                            success: res => {
+                                console.log('uploadImage success, res is:', res);
+                                uni.showToast({
+                                    title: '上传成功',
+                                    icon: 'success',
+                                    duration: 1000
+                                });
+                            },
+                            fail: err => {
+                                console.log('uploadImage fail', err);
+                                uni.showModal({
+                                    content: err.errMsg,
+                                    showCancel: false
+                                });
+                                uni.hideLoading();
+                            },
+                            complete: () => {
+                                console.log('complate');
+                            }
+                        });
                     } else {
                         console.log('获取图片失败，请稍后重试');
                     }
@@ -129,6 +145,7 @@
             }
         },
         onLoad(option) {
+            console.log(width, height, device);
             // do something
             const cropperOpt = this.cropperOpt;
             const src = option.src;
@@ -136,18 +153,22 @@
                 Object.assign(cropperOpt, {
                     src
                 });
-
+                console.log(src);
                 this.weCropper = new weCropper(cropperOpt)
-                    .on('ready', function(ctx) {})
+                    .on('ready', function(ctx) {
+                        console.log("reday");
+                    })
                     .on('beforeImageLoad', ctx => {
                         uni.showToast({
                             title: '上传中',
                             icon: 'loading',
                             duration: 3000
                         });
+                        console.log("beforeImageLoad");
                     })
                     .on('imageLoad', ctx => {
                         uni.hideToast();
+                        console.log("imageLoad");
                     });
             }
         }
@@ -161,7 +182,7 @@
 
     .head-list {
         height: 43px;
-        width: 100%;
+        width: 750upx;
         background: #ffffff;
         justify-content: center;
         align-items: center;
@@ -226,7 +247,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
+        width: 750upx;
         background-color: #F0F0F0;
     }
 
@@ -245,7 +266,7 @@
 
     .cropper-buttons .upload,
     .cropper-buttons .getCropperImage {
-        width: 50%;
+        width: 375upx;
         text-align: center;
     }
 </style>

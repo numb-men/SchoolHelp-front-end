@@ -47,7 +47,8 @@ var urls = {
     feedback: `${root}/feedback/`,
     getPostList: `${root}/post/pages`,
     changeUserInfomation: `${root}/user`,
-    changePassword: `${root}/user/password`
+    changePassword: `${root}/user/password`,
+    postHead: `${root}/uploadimg/head`
 }
 
 // 封装请求方法

@@ -26,7 +26,8 @@
     "pages/my/setting/about-SchoolHelp/about-SchoolHelp",
     "pages/my/setting/account-security/change-password/change-password",
     "pages/my/setting/change-userInfo/change-userInfo",
-    "pages/my/setting/change-userInfo/upload"
+    "pages/my/setting/change-userInfo/upload",
+    "pages/otherUsers/otherUsers"
   ],
   "subPackages": [],
   "window": {

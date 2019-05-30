@@ -113,7 +113,7 @@
         }
       }
     },
-    "arguments": "{\"name\":\"index\",\"query\":\"\",\"id\":2,\"pathName\":\"pages/index/index\"}",
+    "arguments": "{\"name\":\"others\",\"query\":\"\",\"id\":3,\"pathName\":\"pages/otherUsers/otherUsers\"}",
     "allowsInlineMediaPlayback": true,
     "safearea": {
       "background": "#fefefe",
@@ -128,10 +128,7 @@
     "secondwebview": {
       "id": "1",
       "launch_path": "__uniappview.html",
-      "kernel": "WKWebview",
-      "mode": "child",
-      "top": 0,
-      "bottom": 56
+      "kernel": "WKWebview"
     }
   }
 }

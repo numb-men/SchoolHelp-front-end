@@ -112,7 +112,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _weCropper = _interopRequireDefault(__webpack_require__(/*! ../../../../api/weCropper.js */ "../../../../SchoolHelp-front-end/api/weCropper.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+
+var _weCropper = _interopRequireDefault(__webpack_require__(/*! ../../../../api/weCropper */ "../../../../SchoolHelp-front-end/api/weCropper.js"));
+var _index = _interopRequireDefault(__webpack_require__(/*! @/store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! @/api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -125,9 +134,10 @@ var _weCropper = _interopRequireDefault(__webpack_require__(/*! ../../../../api/
 //
 //
 //
-var device = uni.getSystemInfoSync();var width = device.windowWidth;var height = device.windowHeight - 50;console.log(device, " at pages\\my\\setting\\change-userInfo\\upload.vue:19");var _default = { data: function data() {return { cropperOpt: { id: 'cropper', width: width, height: height, scale: 2.5, zoom: 8,
-        cut: {
-          x: (width - 295) / 2,
+//
+//
+//
+var device = uni.getSystemInfoSync();var width = device.windowWidth;var height = device.windowHeight - 50;console.log(device, " at pages\\my\\setting\\change-userInfo\\upload.vue:28");var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), data: function data() {return { cropperOpt: { id: 'cropper', width: width, height: height, scale: 2.5, zoom: 8, cut: { x: (width - 295) / 2,
           y: (height - 413) / 2,
           width: 295,
           height: 413 } },
@@ -139,7 +149,7 @@ var device = uni.getSystemInfoSync();var width = device.windowWidth;var height =
   methods: {
     back: function back() {
       uni.redirectTo({
-        url: '../infoDetail/infoDetail' });
+        url: 'change-userInfo' });
 
     },
     touchStart: function touchStart(e) {
@@ -168,47 +178,53 @@ var device = uni.getSystemInfoSync();var width = device.windowWidth;var height =
       a.readAsDataURL(blob); //读取文件保存在result中
       a.onload = function (e) {
         var getRes = e.target.result; //读取的结果在result中
-        console.log(getRes, " at pages\\my\\setting\\change-userInfo\\upload.vue:71");
+        console.log(getRes, " at pages\\my\\setting\\change-userInfo\\upload.vue:81");
       };
     },
-    getCropperImage: function getCropperImage() {
+    getCropperImage: function getCropperImage() {var _this2 = this;
       var _this = this;
-      //let pathurl = url + '/user/upload';上传服务器地址
+      var pathurl = _api.default.urls.postHead;
+      // 上传服务器地址
       this.weCropper.getCropperImage(function (avatar) {
         if (avatar) {
           //  获取到裁剪后的图片
           //  获取到裁剪后的图片
+          console.log(avatar, " at pages\\my\\setting\\change-userInfo\\upload.vue:92");
+          // this.blobToDataURL(avatar);
           wx.redirectTo({
-            url: '../index/index?avatar=' + avatar });
+            url: 'change-userInfo?avatar=' + avatar });
 
+          var that = _this2;
           //下面是上传到服务器的方法
-          // 					uni.uploadFile({
-          // 						url: pathurl,
-          // 						filePath: avatar,
-          // 						name: 'file',
-          // 						formData: { token: token, userId: userId},
-          // 						success: res => {
-          // 							console.log('uploadImage success, res is:', res);
-          // 								uni.showToast({
-          // 								title: '上传成功',
-          // 								icon: 'success',
-          // 								duration: 1000
-          // 							});
-          // 						},
-          // 						ail: err => {
-          // 							console.log('uploadImage fail', err);
-          // 							uni.showModal({
-          // 								content: err.errMsg,
-          // 								showCancel: false
-          // 							});
-          // 							uni.hideLoading();
-          // 						},
-          // 						complete: () => {
-          // 							console.log('complate');
-          // 						}
-          // 					});
+          uni.uploadFile({
+            url: pathurl,
+            filePath: avatar,
+            name: 'image',
+            header: {
+              token: that.token },
+
+            success: function success(res) {
+              console.log('uploadImage success, res is:', res, " at pages\\my\\setting\\change-userInfo\\upload.vue:107");
+              uni.showToast({
+                title: '上传成功',
+                icon: 'success',
+                duration: 1000 });
+
+            },
+            fail: function fail(err) {
+              console.log('uploadImage fail', err, " at pages\\my\\setting\\change-userInfo\\upload.vue:115");
+              uni.showModal({
+                content: err.errMsg,
+                showCancel: false });
+
+              uni.hideLoading();
+            },
+            complete: function complete() {
+              console.log('complate', " at pages\\my\\setting\\change-userInfo\\upload.vue:123");
+            } });
+
         } else {
-          console.log('获取图片失败，请稍后重试', " at pages\\my\\setting\\change-userInfo\\upload.vue:111");
+          console.log('获取图片失败，请稍后重试', " at pages\\my\\setting\\change-userInfo\\upload.vue:127");
         }
       });
     },
@@ -229,6 +245,7 @@ var device = uni.getSystemInfoSync();var width = device.windowWidth;var height =
     } },
 
   onLoad: function onLoad(option) {
+    console.log(width, height, device, " at pages\\my\\setting\\change-userInfo\\upload.vue:148");
     // do something
     var cropperOpt = this.cropperOpt;
     var src = option.src;
@@ -236,18 +253,22 @@ var device = uni.getSystemInfoSync();var width = device.windowWidth;var height =
       Object.assign(cropperOpt, {
         src: src });
 
-
+      console.log(src, " at pages\\my\\setting\\change-userInfo\\upload.vue:156");
       this.weCropper = new _weCropper.default(cropperOpt).
-      on('ready', function (ctx) {}).
+      on('ready', function (ctx) {
+        console.log("reday", " at pages\\my\\setting\\change-userInfo\\upload.vue:159");
+      }).
       on('beforeImageLoad', function (ctx) {
         uni.showToast({
           title: '上传中',
           icon: 'loading',
           duration: 3000 });
 
+        console.log("beforeImageLoad", " at pages\\my\\setting\\change-userInfo\\upload.vue:167");
       }).
       on('imageLoad', function (ctx) {
         uni.hideToast();
+        console.log("imageLoad", " at pages\\my\\setting\\change-userInfo\\upload.vue:171");
       });
     }
   } };exports.default = _default;

@@ -8,13 +8,17 @@
         <view class="center">
             <view class="logo-backgroud">
                 <view class="logo">
-                    <view class="img">
+                    <view class="img" @click="goOther">
                         <image v-if="!hasLogin" class="logo-img" @click="goLogin" hover-class="logo-hover" src="/static/icons/logo.png"></image>
                         <image v-else class="logo-img" :src="userInfo.headImageUrl"></image>
                     </view>
                     <view class="logo-title">
                         <view v-if="!hasLogin" @click="goLogin" class="user-name">登录</view>
                         <view v-else class="user-name">{{userInfo.name}}</view>
+                        <view class="certify" v-if="hasLogin" @click="goPoints">
+                            <view v-if="userInfo.isCertified" class="certify-text">已认证</view>
+                            <view v-else class="certify-text">未认证</view>
+                        </view>
                     </view>
                 </view>
                 <view>
@@ -185,6 +189,11 @@
                     });
                 }
             },
+            goOther() {
+                // uni.navigateTo({
+                //     url: '../../pages/otherUsers/otherUsers'
+                // })
+            },
             ...mapMutations(['login'])
         }
     }
@@ -254,6 +263,7 @@
 
     .basic-data {
         /* height: 120upx; */
+        margin-top: 20upx;
         width: 100%;
         margin: 10px;
         display: flex;
@@ -369,6 +379,26 @@
         height: 70upx;
     }
 
+    .certify {
+        margin-left: 10upx;
+        width: 90upx;
+        border-width: 1upx;
+        border-color: #007AFF;
+        border-style: solid;
+        background-color: #007AFF;
+        border-radius: 10upx;
+        height: 40upx;
+        text-align: center;
+    }
+
+    .certify-text {
+        width: 100%;
+        font-size: 28upx;
+        color: #FFFFFF;
+        text-align: center;
+        margin-left: 5upx;
+    }
+
     .points {
         position: absolute;
         top: 90upx;
@@ -449,6 +479,7 @@
     }
 
     .image-con {
+        margin-top: 20upx;
         position: relative;
         top: 80upx;
         width: 750upx;

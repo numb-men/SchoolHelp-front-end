@@ -1125,11 +1125,6 @@ Z([3,'listItem'])
 Z([[6],[[7],[3,'item']],[3,'list']])
 Z(z[12])
 Z([[2,'>'],[[6],[[6],[[7],[3,'item']],[3,'list']],[3,'length']],[1,0]])
-Z(z[2])
-Z([3,'card data-v-8e4c3830'])
-Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[1,'goDetail']],[[4],[[5],[1,'$event']]]]]]]]]]])
-Z([[7],[3,'listIndex']])
-Z([[6],[[7],[3,'listItem']],[3,'image_url']])
 Z([[2,'==='],[[6],[[6],[[7],[3,'item']],[3,'list']],[3,'length']],[1,0]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_6);return __WXML_GLOBAL__.ops_cached.$gwx_6
 }
@@ -1255,6 +1250,9 @@ function gz$gwx_20(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_20)return __WXML_GLOBAL__.ops_cached.$gwx_20
 __WXML_GLOBAL__.ops_cached.$gwx_20=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'__l'])
+Z([3,'root'])
+Z([[7],[3,'hasLogin']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_20);return __WXML_GLOBAL__.ops_cached.$gwx_20
 }
 function gz$gwx_21(){
@@ -1357,11 +1355,17 @@ __WXML_GLOBAL__.ops_cached.$gwx_29=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_29);return __WXML_GLOBAL__.ops_cached.$gwx_29
 }
+function gz$gwx_30(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_30)return __WXML_GLOBAL__.ops_cached.$gwx_30
+__WXML_GLOBAL__.ops_cached.$gwx_30=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+})(__WXML_GLOBAL__.ops_cached.$gwx_30);return __WXML_GLOBAL__.ops_cached.$gwx_30
+}
 __WXML_GLOBAL__.ops_set.$gwx=z;
 __WXML_GLOBAL__.ops_init.$gwx=true;
 var nv_require=function(){var nnm={};var nom={};return function(n){return function(){if(!nnm[n]) return undefined;try{if(!nom[n])nom[n]=nnm[n]();return nom[n];}catch(e){e.message=e.message.replace(/nv_/g,'');var tmp = e.stack.substring(0,e.stack.lastIndexOf(n));e.stack = tmp.substring(0,tmp.lastIndexOf('\n'));e.stack = e.stack.replace(/\snv_/g,' ');e.stack = $gstack(e.stack);e.stack += '\n    at ' + n.substring(2);console.error(e);}
 }}}()
-var x=['./components/m-icon/m-icon.wxml','./components/m-input.wxml','./pages/extensions/extensions.wxml','./pages/extensions/questionaire/questionaire.wxml','./pages/index/add-post/add-post.wxml','./pages/index/index.wxml','./pages/index/post-detail/post-detail.wxml','./pages/index/search-post/search-post.wxml','./pages/index/search-result/search-result.wxml','./pages/messages/message-detail/message-detail.wxml','./pages/messages/messages.wxml','./pages/my/feedback/feedback.wxml','./pages/my/forget-password/forget-password.wxml','./pages/my/login/login.wxml','./pages/my/my-collects/my-collects.wxml','./pages/my/my-comments/my-comments.wxml','./pages/my/my-data/my-data.wxml','./pages/my/my-follows/my-follows.wxml','./pages/my/my-post/my-post.wxml','./pages/my/my.wxml','./pages/my/register/register.wxml','./pages/my/setting/about-SchoolHelp/about-SchoolHelp.wxml','./pages/my/setting/account-security/account-security.wxml','./pages/my/setting/account-security/change-password/change-password.wxml','./pages/my/setting/account-security/change-phone/change-phone.wxml','./pages/my/setting/change-userInfo/change-userInfo.wxml','./pages/my/setting/change-userInfo/upload.wxml','./pages/my/setting/help/help.wxml','./pages/my/setting/setting.wxml'];d_[x[0]]={}
+var x=['./components/m-icon/m-icon.wxml','./components/m-input.wxml','./pages/extensions/extensions.wxml','./pages/extensions/questionaire/questionaire.wxml','./pages/index/add-post/add-post.wxml','./pages/index/index.wxml','./pages/index/post-detail/post-detail.wxml','./pages/index/search-post/search-post.wxml','./pages/index/search-result/search-result.wxml','./pages/messages/message-detail/message-detail.wxml','./pages/messages/messages.wxml','./pages/my/feedback/feedback.wxml','./pages/my/forget-password/forget-password.wxml','./pages/my/login/login.wxml','./pages/my/my-collects/my-collects.wxml','./pages/my/my-comments/my-comments.wxml','./pages/my/my-data/my-data.wxml','./pages/my/my-follows/my-follows.wxml','./pages/my/my-post/my-post.wxml','./pages/my/my.wxml','./pages/my/register/register.wxml','./pages/my/setting/about-SchoolHelp/about-SchoolHelp.wxml','./pages/my/setting/account-security/account-security.wxml','./pages/my/setting/account-security/change-password/change-password.wxml','./pages/my/setting/account-security/change-phone/change-phone.wxml','./pages/my/setting/change-userInfo/change-userInfo.wxml','./pages/my/setting/change-userInfo/upload.wxml','./pages/my/setting/help/help.wxml','./pages/my/setting/setting.wxml','./pages/otherUsers/otherUsers.wxml'];d_[x[0]]={}
 var m0=function(e,s,r,gg){
 var z=gz$gwx_1()
 return r
@@ -1435,34 +1439,23 @@ var m5=function(e,s,r,gg){
 var z=gz$gwx_6()
 cs.push("./pages/index/index.wxml:view:1:1")
 var eN=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
-cs.push("./pages/index/index.wxml:swiper:1:1227")
+cs.push("./pages/index/index.wxml:swiper:1:1228")
 var bO=_mz(z,'swiper',['bindchange',2,'class',1,'current',2,'data-event-opts',3,'style',4],[],e,s,gg)
 var oP=_v()
 _(bO,oP)
-cs.push("./pages/index/index.wxml:block:1:1400")
+cs.push("./pages/index/index.wxml:block:1:1401")
 var xQ=function(fS,oR,cT,gg){
-cs.push("./pages/index/index.wxml:swiper-item:1:1482")
+cs.push("./pages/index/index.wxml:swiper-item:1:1483")
 var oV=_n('swiper-item')
 _rz(z,oV,'class',11,fS,oR,gg)
 var oX=_v()
 _(oV,oX)
-cs.push("./pages/index/index.wxml:block:1:1557")
+cs.push("./pages/index/index.wxml:block:1:1558")
 var lY=function(t1,aZ,e2,gg){
 var o4=_v()
 _(e2,o4)
 if(_oz(z,16,t1,aZ,gg)){o4.wxVkey=1
-cs.push("./pages/index/index.wxml:block:1:1654")
-cs.push("./pages/index/index.wxml:view:1:1692")
-var x5=_mz(z,'view',['bindtap',17,'class',1,'data-event-opts',2,'data-index',3],[],t1,aZ,gg)
-var o6=_v()
-_(x5,o6)
-if(_oz(z,21,t1,aZ,gg)){o6.wxVkey=1
-cs.push("./pages/index/index.wxml:block:1:2121")
-cs.pop()
-}
-o6.wxXCkey=1
-cs.pop()
-_(o4,x5)
+cs.push("./pages/index/index.wxml:block:1:1655")
 cs.pop()
 }
 o4.wxXCkey=1
@@ -1473,8 +1466,8 @@ _2z(z,14,lY,fS,oR,gg,oX,'listItem','listIndex','listIndex')
 cs.pop()
 var cW=_v()
 _(oV,cW)
-if(_oz(z,22,fS,oR,gg)){cW.wxVkey=1
-cs.push("./pages/index/index.wxml:block:1:2911")
+if(_oz(z,17,fS,oR,gg)){cW.wxVkey=1
+cs.push("./pages/index/index.wxml:block:1:2936")
 cs.pop()
 }
 cW.wxXCkey=1
@@ -1514,55 +1507,55 @@ d_[x[9]]={}
 var m9=function(e,s,r,gg){
 var z=gz$gwx_10()
 cs.push("./pages/messages/message-detail/message-detail.wxml:view:1:1")
-var cAB=_mz(z,'view',['bind:__l',0,'class',1,'id',1],[],e,s,gg)
-var oBB=_v()
-_(cAB,oBB)
+var h9=_mz(z,'view',['bind:__l',0,'class',1,'id',1],[],e,s,gg)
+var o0=_v()
+_(h9,o0)
 cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:58")
-var lCB=function(tEB,aDB,eFB,gg){
+var cAB=function(lCB,oBB,aDB,gg){
 cs.push("./pages/messages/message-detail/message-detail.wxml:view:1:150")
-var oHB=_mz(z,'view',['class',7,'data-index',1,'id',2],[],tEB,aDB,gg)
-var xIB=_v()
-_(oHB,xIB)
-if(_oz(z,10,tEB,aDB,gg)){xIB.wxVkey=1
+var eFB=_mz(z,'view',['class',7,'data-index',1,'id',2],[],lCB,oBB,gg)
+var bGB=_v()
+_(eFB,bGB)
+if(_oz(z,10,lCB,oBB,gg)){bGB.wxVkey=1
 cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:216")
 cs.pop()
 }
 cs.push("./pages/messages/message-detail/message-detail.wxml:view:1:329")
-var fKB=_n('view')
-_rz(z,fKB,'class',11,tEB,aDB,gg)
-var cLB=_v()
-_(fKB,cLB)
-if(_oz(z,12,tEB,aDB,gg)){cLB.wxVkey=1
+var xIB=_n('view')
+_rz(z,xIB,'class',11,lCB,oBB,gg)
+var oJB=_v()
+_(xIB,oJB)
+if(_oz(z,12,lCB,oBB,gg)){oJB.wxVkey=1
 cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:352")
 cs.pop()
 }
-var hMB=_v()
-_(fKB,hMB)
-if(_oz(z,13,tEB,aDB,gg)){hMB.wxVkey=1
+var fKB=_v()
+_(xIB,fKB)
+if(_oz(z,13,lCB,oBB,gg)){fKB.wxVkey=1
 cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:619")
 cs.pop()
 }
-cLB.wxXCkey=1
-hMB.wxXCkey=1
+oJB.wxXCkey=1
+fKB.wxXCkey=1
 cs.pop()
-_(oHB,fKB)
-var oJB=_v()
-_(oHB,oJB)
-if(_oz(z,14,tEB,aDB,gg)){oJB.wxVkey=1
+_(eFB,xIB)
+var oHB=_v()
+_(eFB,oHB)
+if(_oz(z,14,lCB,oBB,gg)){oHB.wxVkey=1
 cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:695")
 cs.pop()
 }
-xIB.wxXCkey=1
-oJB.wxXCkey=1
+bGB.wxXCkey=1
+oHB.wxXCkey=1
 cs.pop()
-_(eFB,oHB)
-return eFB
+_(aDB,eFB)
+return aDB
 }
-oBB.wxXCkey=2
-_2z(z,5,lCB,e,s,gg,oBB,'msgItem','index','id')
+o0.wxXCkey=2
+_2z(z,5,cAB,e,s,gg,o0,'msgItem','index','id')
 cs.pop()
 cs.pop()
-_(r,cAB)
+_(r,h9)
 return r
 }
 e_[x[9]]={f:m9,j:[],i:[],ti:[],ic:[]}
@@ -1582,13 +1575,13 @@ d_[x[12]]={}
 var m12=function(e,s,r,gg){
 var z=gz$gwx_13()
 cs.push("./pages/my/forget-password/forget-password.wxml:view:1:1")
-var lQB=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
+var cOB=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
 cs.push("./pages/my/forget-password/forget-password.wxml:m-input:1:124")
-var aRB=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',2,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
+var oPB=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',2,'data-event-opts',1,'placeholder',2,'type',3,'value',4],[],e,s,gg)
 cs.pop()
-_(lQB,aRB)
+_(cOB,oPB)
 cs.pop()
-_(r,lQB)
+_(r,cOB)
 return r
 }
 e_[x[12]]={f:m12,j:[],i:[],ti:[],ic:[]}
@@ -1596,22 +1589,22 @@ d_[x[13]]={}
 var m13=function(e,s,r,gg){
 var z=gz$gwx_14()
 cs.push("./pages/my/login/login.wxml:form:1:1")
-var eTB=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var aRB=_mz(z,'form',['bind:__l',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
 cs.push("./pages/my/login/login.wxml:view:1:117")
-var bUB=_n('view')
-_rz(z,bUB,'class',4,e,s,gg)
+var tSB=_n('view')
+_rz(z,tSB,'class',4,e,s,gg)
 cs.push("./pages/my/login/login.wxml:m-input:1:213")
-var oVB=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'class',1,'data-event-opts',2,'maxlength',3,'placeholder',4,'type',5,'value',6],[],e,s,gg)
+var eTB=_mz(z,'m-input',['clearable',-1,'focus',-1,'bind:input',5,'class',1,'data-event-opts',2,'maxlength',3,'placeholder',4,'type',5,'value',6],[],e,s,gg)
 cs.pop()
-_(bUB,oVB)
+_(tSB,eTB)
 cs.push("./pages/my/login/login.wxml:m-input:1:527")
-var xWB=_mz(z,'m-input',['displayable',-1,'bind:input',12,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
+var bUB=_mz(z,'m-input',['displayable',-1,'bind:input',12,'data-event-opts',1,'maxlength',2,'placeholder',3,'type',4,'value',5],[],e,s,gg)
 cs.pop()
-_(bUB,xWB)
+_(tSB,bUB)
 cs.pop()
-_(eTB,bUB)
+_(aRB,tSB)
 cs.pop()
-_(r,eTB)
+_(r,aRB)
 return r
 }
 e_[x[13]]={f:m13,j:[],i:[],ti:[],ic:[]}
@@ -1648,6 +1641,17 @@ e_[x[18]]={f:m18,j:[],i:[],ti:[],ic:[]}
 d_[x[19]]={}
 var m19=function(e,s,r,gg){
 var z=gz$gwx_20()
+cs.push("./pages/my/my.wxml:view:1:1")
+var o2B=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
+var c3B=_v()
+_(o2B,c3B)
+if(_oz(z,2,e,s,gg)){c3B.wxVkey=1
+cs.push("./pages/my/my.wxml:block:1:1092")
+cs.pop()
+}
+c3B.wxXCkey=1
+cs.pop()
+_(r,o2B)
 return r
 }
 e_[x[19]]={f:m19,j:[],i:[],ti:[],ic:[]}
@@ -1747,6 +1751,12 @@ var z=gz$gwx_29()
 return r
 }
 e_[x[28]]={f:m28,j:[],i:[],ti:[],ic:[]}
+d_[x[29]]={}
+var m29=function(e,s,r,gg){
+var z=gz$gwx_30()
+return r
+}
+e_[x[29]]={f:m29,j:[],i:[],ti:[],ic:[]}
 if(path&&e_[path]){
 return function(env,dd,global){$gwxc=0;var root={"tag":"wx-page"};root.children=[]
 var main=e_[path].f
@@ -1767,7 +1777,7 @@ return root;
 
 
 
-__wxAppCode__['app.json']={"pages":["pages/index/index","pages/messages/messages","pages/messages/message-detail/message-detail","pages/extensions/extensions","pages/my/my","pages/index/post-detail/post-detail","pages/index/add-post/add-post","pages/index/search-post/search-post","pages/index/search-result/search-result","pages/extensions/questionaire/questionaire","pages/my/login/login","pages/my/register/register","pages/my/forget-password/forget-password","pages/my/my-follows/my-follows","pages/my/my-collects/my-collects","pages/my/feedback/feedback","pages/my/setting/setting","pages/my/my-data/my-data","pages/my/my-comments/my-comments","pages/my/my-post/my-post","pages/my/setting/account-security/account-security","pages/my/setting/account-security/change-phone/change-phone","pages/my/setting/help/help","pages/my/setting/about-SchoolHelp/about-SchoolHelp","pages/my/setting/account-security/change-password/change-password","pages/my/setting/change-userInfo/change-userInfo","pages/my/setting/change-userInfo/upload"],"subPackages":[],"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"校园帮","navigationBarBackgroundColor":"#fefefe","backgroundColor":"#fefefe"},"tabBar":{"color":"#343131","selectedColor":"#2F85FC","backgroundColor":"#fefefe","borderStyle":"black","list":[{"pagePath":"pages/index/index","iconPath":"static/icons/index.png","selectedIconPath":"static/icons/index-active.png","text":"主页"},{"pagePath":"pages/messages/messages","iconPath":"static/icons/message.png","selectedIconPath":"static/icons/message-active.png","text":"消息"},{"pagePath":"pages/extensions/extensions","iconPath":"static/icons/extensions.png","selectedIconPath":"static/icons/extensions-active.png","text":"扩展"},{"pagePath":"pages/my/my","iconPath":"static/icons/my.png","selectedIconPath":"static/icons/my-active.png","text":"我的"}]},"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"校园帮","compilerVersion":"1.9.9","usingComponents":{}};
+__wxAppCode__['app.json']={"pages":["pages/index/index","pages/messages/messages","pages/messages/message-detail/message-detail","pages/extensions/extensions","pages/my/my","pages/index/post-detail/post-detail","pages/index/add-post/add-post","pages/index/search-post/search-post","pages/index/search-result/search-result","pages/extensions/questionaire/questionaire","pages/my/login/login","pages/my/register/register","pages/my/forget-password/forget-password","pages/my/my-follows/my-follows","pages/my/my-collects/my-collects","pages/my/feedback/feedback","pages/my/setting/setting","pages/my/my-data/my-data","pages/my/my-comments/my-comments","pages/my/my-post/my-post","pages/my/setting/account-security/account-security","pages/my/setting/account-security/change-phone/change-phone","pages/my/setting/help/help","pages/my/setting/about-SchoolHelp/about-SchoolHelp","pages/my/setting/account-security/change-password/change-password","pages/my/setting/change-userInfo/change-userInfo","pages/my/setting/change-userInfo/upload","pages/otherUsers/otherUsers"],"subPackages":[],"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"校园帮","navigationBarBackgroundColor":"#fefefe","backgroundColor":"#fefefe"},"tabBar":{"color":"#343131","selectedColor":"#2F85FC","backgroundColor":"#fefefe","borderStyle":"black","list":[{"pagePath":"pages/index/index","iconPath":"static/icons/index.png","selectedIconPath":"static/icons/index-active.png","text":"主页"},{"pagePath":"pages/messages/messages","iconPath":"static/icons/message.png","selectedIconPath":"static/icons/message-active.png","text":"消息"},{"pagePath":"pages/extensions/extensions","iconPath":"static/icons/extensions.png","selectedIconPath":"static/icons/extensions-active.png","text":"扩展"},{"pagePath":"pages/my/my","iconPath":"static/icons/my.png","selectedIconPath":"static/icons/my-active.png","text":"我的"}]},"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"校园帮","compilerVersion":"1.9.9","usingComponents":{}};
 __wxAppCode__['app.wxml']=$gwx('./app.wxml');
 
 __wxAppCode__['components/m-icon/m-icon.json']={"usingComponents":{},"component":true};
@@ -1856,6 +1866,9 @@ __wxAppCode__['pages/my/setting/help/help.wxml']=$gwx('./pages/my/setting/help/h
 
 __wxAppCode__['pages/my/setting/setting.json']={"navigationBarTitleText":"设置","usingComponents":{}};
 __wxAppCode__['pages/my/setting/setting.wxml']=$gwx('./pages/my/setting/setting.wxml');
+
+__wxAppCode__['pages/otherUsers/otherUsers.json']={"navigationBarTitleText":"个人资料","enablePullDownRefresh":true,"usingComponents":{}};
+__wxAppCode__['pages/otherUsers/otherUsers.wxml']=$gwx('./pages/otherUsers/otherUsers.wxml');
 
 
 
@@ -2323,13 +2336,14 @@ root, "/download/head")), _defineProperty(_urls, "feedback", "".concat(
 root, "/feedback/")), _defineProperty(_urls, "getPostList", "".concat(
 root, "/post/pages")), _defineProperty(_urls, "changeUserInfomation", "".concat(
 root, "/user")), _defineProperty(_urls, "changePassword", "".concat(
-root, "/user/password")), _urls);
+root, "/user/password")), _defineProperty(_urls, "postHead", "".concat(
+root, "/uploadimg/head")), _urls);
 
 
 // 封装请求方法
 var req = {
   request: function request(url, data, method, _success, fail) {
-    console.log(method, url, " at api\\api.js:56");
+    console.log(method, url, " at api\\api.js:57");
     uni.request({
       url: url,
       data: data,
@@ -2340,7 +2354,7 @@ var req = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(res.data, " at api\\api.js:67");
+        console.log(res.data, " at api\\api.js:68");
         if (res.data.code == 0) {
           _success(res.data);
         } else {
@@ -3979,6 +3993,23 @@ createPage(_help.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _setting = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/setting.vue */ "../../../../SchoolHelp-front-end/pages/my/setting/setting.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_setting.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2FotherUsers%2FotherUsers\"}":
+/*!****************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2FotherUsers%2FotherUsers"} ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../SchoolHelp-front-end/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _otherUsers = _interopRequireDefault(__webpack_require__(/*! ./pages/otherUsers/otherUsers.vue */ "../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_otherUsers.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),
@@ -12825,11 +12856,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));
 var _util = __webpack_require__(/*! ../../common/util.js */ "../../../../SchoolHelp-front-end/common/util.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
 //
 //
 //
@@ -12905,10 +12934,11 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     // 		that.isWidth = e.windowWidth / that.agents.length
     // 	}
     // })
-  }, methods: { goAddPost: function goAddPost() {uni.navigateTo({ url: 'add-post/add-post' });}, goDetail: function goDetail(e) {
+  }, methods: { goAddPost: function goAddPost() {uni.navigateTo({ url: 'add-post/add-post' });},
+    goDetail: function goDetail(e) {
       var index = e.currentTarget.dataset.index;
       var postId = this.agents[this.currentTab].list[index].postId;
-      console.log(postId, " at pages\\index\\index.vue:153");
+      console.log(postId, " at pages\\index\\index.vue:152");
       var detail = {
         postId: postId };
 
@@ -12938,7 +12968,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
             replace(/\-/g, '/').replace(/\T/g,
             ' ').substring(0, 19)).getTime());}
           that.agents[index].list = res.data.content;
-          console.log(that.agents[index].list.length, " at pages\\index\\index.vue:183");
+          console.log(that.agents[index].list.length, " at pages\\index\\index.vue:182");
         }
       }, function (fail) {
         setTimeout(function () {
@@ -12953,7 +12983,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     },
     // swiper 滑动
     swiperTab: function swiperTab(e) {
-      console.log(e, " at pages\\index\\index.vue:198");
+      console.log(e, " at pages\\index\\index.vue:197");
       var index = e.detail.current; //获取索引
       this.isHeight = this.agents[index].list.length * 300 + 160 + 'rpx'; //设置swiper高度
       this.isLeft = index * this.isWidth; //设置下划线位置
@@ -12999,7 +13029,7 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     } },
 
   onPullDownRefresh: function onPullDownRefresh() {
-    console.log("\u5237\u65B0\u7B2C".concat(this.currentTab, "\u9879"), " at pages\\index\\index.vue:244");
+    console.log("\u5237\u65B0\u7B2C".concat(this.currentTab, "\u9879"), " at pages\\index\\index.vue:243");
     var that = this;
     var url = _api.default.urls.getPostList;
     var data = {
@@ -13029,11 +13059,9 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
     });
   },
   onReachBottom: function onReachBottom() {var _this = this;
-    console.log("\u52A0\u8F7D".concat(this.currentTab), " at pages\\index\\index.vue:274");
+    console.log("\u52A0\u8F7D".concat(this.currentTab), " at pages\\index\\index.vue:273");
     uni.showLoading({
       content: '加载中' });
-
-
 
     var that = this;
     if (that.agents[that.currentTab].list.length !== 0) {
@@ -14024,6 +14052,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
@@ -14125,6 +14157,11 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ ".
           url: '../../pages/my/setting/change-userInfo/change-userInfo' //我的评论界面路径
         });
       }
+    },
+    goOther: function goOther() {
+      // uni.navigateTo({
+      //     url: '../../pages/otherUsers/otherUsers'
+      // })
     } },
   (0, _vuex.mapMutations)(['login'])) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
@@ -19227,7 +19264,24 @@ var _api = _interopRequireDefault(__webpack_require__(/*! @/api/api.js */ "../..
 //
 //
 //
-var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), data: function data() {return { male: '男', female: '女' };}, onShow: function onShow() {_api.default.req.getUserInfo();}, methods: { goUploadImage: function goUploadImage() {uni.navigateTo({ url: 'upload' });}, saveChange: function saveChange() {if (this.userInfo.name.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '用户名不能为空' });return;} else if (this.userInfo.phone.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号不能为空' });return;} else if (this.userInfo.sex.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '性别不能为空' });return;} else if (this.userInfo.studentNum.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '学号不能为空' });return;} else if (this.userInfo.major.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '专业不能为空' });return;} else if (this.userInfo.college.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '学院不能为空' });
+var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), data: function data() {return { male: '男', female: '女' };}, onLoad: function onLoad(option) {var avatar = option.avatar;if (avatar) {this.userInfo.headImageUrl = avatar;}}, // onShow() {
+  //     api.req.getUserInfo()
+  // },
+  methods: { goUploadImage: function goUploadImage() {uni.chooseImage({ count: 1, // 默认9
+        sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function success(res) {var src = res.tempFilePaths[0];uni.redirectTo({ url: 'upload?src=' + src });} });}, saveChange: function saveChange() {if (this.userInfo.name.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '用户名不能为空' });return;} else if (this.userInfo.phone.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号不能为空' });return;} else if (this.userInfo.sex.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '性别不能为空' });return;} else if (this.userInfo.studentNum.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '学号不能为空' });return;} else if (this.userInfo.major.length == 0) {this.loading = false;
+        uni.showToast({
+          icon: 'none',
+          title: '专业不能为空' });
+
+        return;
+      } else if (this.userInfo.college.length == 0) {
+        this.loading = false;
+        uni.showToast({
+          icon: 'none',
+          title: '学院不能为空' });
+
         return;
       } else if (this.userInfo.mail.length == 0) {
         this.loading = false;
@@ -19259,7 +19313,7 @@ var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']
           icon: 'none',
           title: '性别只能为“男”或“女”' });
 
-        console.log(this.userInfo.sex, " at pages\\my\\setting\\change-userInfo\\change-userInfo.vue:157");
+        console.log(this.userInfo.sex, " at pages\\my\\setting\\change-userInfo\\change-userInfo.vue:174");
         return;
       }
       if (this.userInfo.studentNum.length != 9) {
@@ -19464,7 +19518,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _weCropper = _interopRequireDefault(__webpack_require__(/*! ../../../../api/weCropper.js */ "../../../../SchoolHelp-front-end/api/weCropper.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+
+var _weCropper = _interopRequireDefault(__webpack_require__(/*! ../../../../api/weCropper */ "../../../../SchoolHelp-front-end/api/weCropper.js"));
+var _index = _interopRequireDefault(__webpack_require__(/*! @/store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! @/api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -19477,9 +19540,10 @@ var _weCropper = _interopRequireDefault(__webpack_require__(/*! ../../../../api/
 //
 //
 //
-var device = uni.getSystemInfoSync();var width = device.windowWidth;var height = device.windowHeight - 50;console.log(device, " at pages\\my\\setting\\change-userInfo\\upload.vue:19");var _default = { data: function data() {return { cropperOpt: { id: 'cropper', width: width, height: height, scale: 2.5, zoom: 8,
-        cut: {
-          x: (width - 295) / 2,
+//
+//
+//
+var device = uni.getSystemInfoSync();var width = device.windowWidth;var height = device.windowHeight - 50;console.log(device, " at pages\\my\\setting\\change-userInfo\\upload.vue:28");var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), data: function data() {return { cropperOpt: { id: 'cropper', width: width, height: height, scale: 2.5, zoom: 8, cut: { x: (width - 295) / 2,
           y: (height - 413) / 2,
           width: 295,
           height: 413 } },
@@ -19491,7 +19555,7 @@ var device = uni.getSystemInfoSync();var width = device.windowWidth;var height =
   methods: {
     back: function back() {
       uni.redirectTo({
-        url: '../infoDetail/infoDetail' });
+        url: 'change-userInfo' });
 
     },
     touchStart: function touchStart(e) {
@@ -19520,47 +19584,53 @@ var device = uni.getSystemInfoSync();var width = device.windowWidth;var height =
       a.readAsDataURL(blob); //读取文件保存在result中
       a.onload = function (e) {
         var getRes = e.target.result; //读取的结果在result中
-        console.log(getRes, " at pages\\my\\setting\\change-userInfo\\upload.vue:71");
+        console.log(getRes, " at pages\\my\\setting\\change-userInfo\\upload.vue:81");
       };
     },
-    getCropperImage: function getCropperImage() {
+    getCropperImage: function getCropperImage() {var _this2 = this;
       var _this = this;
-      //let pathurl = url + '/user/upload';上传服务器地址
+      var pathurl = _api.default.urls.postHead;
+      // 上传服务器地址
       this.weCropper.getCropperImage(function (avatar) {
         if (avatar) {
           //  获取到裁剪后的图片
           //  获取到裁剪后的图片
+          console.log(avatar, " at pages\\my\\setting\\change-userInfo\\upload.vue:92");
+          // this.blobToDataURL(avatar);
           wx.redirectTo({
-            url: '../index/index?avatar=' + avatar });
+            url: 'change-userInfo?avatar=' + avatar });
 
+          var that = _this2;
           //下面是上传到服务器的方法
-          // 					uni.uploadFile({
-          // 						url: pathurl,
-          // 						filePath: avatar,
-          // 						name: 'file',
-          // 						formData: { token: token, userId: userId},
-          // 						success: res => {
-          // 							console.log('uploadImage success, res is:', res);
-          // 								uni.showToast({
-          // 								title: '上传成功',
-          // 								icon: 'success',
-          // 								duration: 1000
-          // 							});
-          // 						},
-          // 						ail: err => {
-          // 							console.log('uploadImage fail', err);
-          // 							uni.showModal({
-          // 								content: err.errMsg,
-          // 								showCancel: false
-          // 							});
-          // 							uni.hideLoading();
-          // 						},
-          // 						complete: () => {
-          // 							console.log('complate');
-          // 						}
-          // 					});
+          uni.uploadFile({
+            url: pathurl,
+            filePath: avatar,
+            name: 'image',
+            header: {
+              token: that.token },
+
+            success: function success(res) {
+              console.log('uploadImage success, res is:', res, " at pages\\my\\setting\\change-userInfo\\upload.vue:107");
+              uni.showToast({
+                title: '上传成功',
+                icon: 'success',
+                duration: 1000 });
+
+            },
+            fail: function fail(err) {
+              console.log('uploadImage fail', err, " at pages\\my\\setting\\change-userInfo\\upload.vue:115");
+              uni.showModal({
+                content: err.errMsg,
+                showCancel: false });
+
+              uni.hideLoading();
+            },
+            complete: function complete() {
+              console.log('complate', " at pages\\my\\setting\\change-userInfo\\upload.vue:123");
+            } });
+
         } else {
-          console.log('获取图片失败，请稍后重试', " at pages\\my\\setting\\change-userInfo\\upload.vue:111");
+          console.log('获取图片失败，请稍后重试', " at pages\\my\\setting\\change-userInfo\\upload.vue:127");
         }
       });
     },
@@ -19581,6 +19651,7 @@ var device = uni.getSystemInfoSync();var width = device.windowWidth;var height =
     } },
 
   onLoad: function onLoad(option) {
+    console.log(width, height, device, " at pages\\my\\setting\\change-userInfo\\upload.vue:148");
     // do something
     var cropperOpt = this.cropperOpt;
     var src = option.src;
@@ -19588,18 +19659,22 @@ var device = uni.getSystemInfoSync();var width = device.windowWidth;var height =
       Object.assign(cropperOpt, {
         src: src });
 
-
+      console.log(src, " at pages\\my\\setting\\change-userInfo\\upload.vue:156");
       this.weCropper = new _weCropper.default(cropperOpt).
-      on('ready', function (ctx) {}).
+      on('ready', function (ctx) {
+        console.log("reday", " at pages\\my\\setting\\change-userInfo\\upload.vue:159");
+      }).
       on('beforeImageLoad', function (ctx) {
         uni.showToast({
           title: '上传中',
           icon: 'loading',
           duration: 3000 });
 
+        console.log("beforeImageLoad", " at pages\\my\\setting\\change-userInfo\\upload.vue:167");
       }).
       on('imageLoad', function (ctx) {
         uni.hideToast();
+        console.log("imageLoad", " at pages\\my\\setting\\change-userInfo\\upload.vue:171");
       });
     }
   } };exports.default = _default;
@@ -19644,6 +19719,350 @@ render._withStripped = true
 },[["../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2Fmy%2Fsetting%2Fchange-userInfo%2Fupload\"}","common/runtime","common/vendor"]]]);
 });
 require('pages/my/setting/change-userInfo/upload.js');
+__wxRoute = 'pages/otherUsers/otherUsers';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/otherUsers/otherUsers.js';
+
+define('pages/otherUsers/otherUsers.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
+(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/otherUsers/otherUsers"],{
+
+/***/ "../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue":
+/*!*********************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/otherUsers/otherUsers.vue ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _otherUsers_vue_vue_type_template_id_36cc5b7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./otherUsers.vue?vue&type=template&id=36cc5b7c& */ "../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=template&id=36cc5b7c&");
+/* harmony import */ var _otherUsers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./otherUsers.vue?vue&type=script&lang=js& */ "../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _otherUsers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _otherUsers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _otherUsers_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./otherUsers.vue?vue&type=style&index=0&lang=css& */ "../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _otherUsers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _otherUsers_vue_vue_type_template_id_36cc5b7c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _otherUsers_vue_vue_type_template_id_36cc5b7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "SchoolHelp-front-end/pages/otherUsers/otherUsers.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/babel-loader/lib!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./otherUsers.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=script&lang=js&");
+/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader??ref--6-oneOf-1-2!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/postcss-loader/src??ref--6-oneOf-1-3!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./otherUsers.vue?vue&type=style&index=0&lang=css& */ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=template&id=36cc5b7c&":
+/*!****************************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=template&id=36cc5b7c& ***!
+  \****************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_template_id_36cc5b7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!../../../HBuilderX.1.9.9.20190522.full/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./otherUsers.vue?vue&type=template&id=36cc5b7c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=template&id=36cc5b7c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_template_id_36cc5b7c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_HBuilderX_1_9_9_20190522_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_otherUsers_vue_vue_type_template_id_36cc5b7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+
+var _index = _interopRequireDefault(__webpack_require__(/*! ../../store/index.js */ "../../../../SchoolHelp-front-end/store/index.js"));
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo']), data: function data() {return { targetUserInfo: {}, targetUserId: '' };}, onShow: function onShow(id) {// let {
+    //     id
+    // } = option
+    // console.log(option.id)
+    //id为点击头像传进来的id
+    this.targetUserId = id;var url = _api.default.urls.getOtherUserInfo + id;var data = {};var that = this;_api.default.req.get(url, data, function (res) {if (res.code === 0) {that.targetUserInfo = res.data;} else {uni.showModal({ content: res.msg, showCancel: false });}});}, methods: { follow: function follow() {if (this.hasLogin) {if (!this.targetUserInfo.hasFollow) {var that = this;var url = _api.default.urls.attentionSomeone;var data = { beAttentionUserId: that.targetUserId // beAttentionUserId: 225
+          };_api.default.req.post(url, data, function (res) {if (res.code === 0) {that.targetUserInfo.followerNum = that.targetUserInfo.followerNum + 1;uni.showToast({ title: '关注成功', icon: 'success', duration: 1000 });that.targetUserInfo.hasFollow = true;} else {uni.showModal({ content: res.msg, showCancel: false });}});} else {var that = this;var url = _api.default.urls.cancelAttention;var data = { beAttentionUserId: that.targetUserId // beAttentionUserId: 225
+          };_api.default.req.del(url, data, function (res) {if (res.code === 0) {that.targetUserInfo.followerNum = that.targetUserInfo.followerNum - 1;uni.showToast({ title: '取关成功', icon: 'success', duration: 1000 });that.targetUserInfo.hasFollow = false;} else {uni.showModal({ content: res.msg, showCancel: false });}});}} else {uni.showModal({ content: "关注需要登录，您想马上登录吗？", success: function success(res) {if (res.confirm) {uni.navigateTo({ url: '../../pages/my/login/login' });
+
+            } else if (res.cancel) {
+              return;
+            }
+          } });
+
+      }
+    },
+    goChat: function goChat() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '../../pages/messages/message-detail/message-detail' });
+
+      } else {
+        uni.showModal({
+          content: "发消息需要登录，您想马上登录吗？",
+          success: function success(res) {
+            if (res.confirm) {
+              uni.navigateTo({
+                url: '../../pages/my/login/login' });
+
+            } else if (res.cancel) {
+              return;
+            }
+          } });
+
+      }
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
+
+/***/ }),
+
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=template&id=36cc5b7c&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/ZPC/Desktop/SchoolHelp-front-end/pages/otherUsers/otherUsers.vue?vue&type=template&id=36cc5b7c& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ })
+
+},[["../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2FotherUsers%2FotherUsers\"}","common/runtime","common/vendor"]]]);
+});
+require('pages/otherUsers/otherUsers.js');
 ;(function(global) {
     __uni_launch_ready(function() {
         var entryPagePath = __wxConfig.entryPagePath.replace('.html', '')

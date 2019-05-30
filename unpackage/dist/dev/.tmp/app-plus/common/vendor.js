@@ -57,13 +57,14 @@ root, "/download/head")), _defineProperty(_urls, "feedback", "".concat(
 root, "/feedback/")), _defineProperty(_urls, "getPostList", "".concat(
 root, "/post/pages")), _defineProperty(_urls, "changeUserInfomation", "".concat(
 root, "/user")), _defineProperty(_urls, "changePassword", "".concat(
-root, "/user/password")), _urls);
+root, "/user/password")), _defineProperty(_urls, "postHead", "".concat(
+root, "/uploadimg/head")), _urls);
 
 
 // 封装请求方法
 var req = {
   request: function request(url, data, method, _success, fail) {
-    console.log(method, url, " at api\\api.js:56");
+    console.log(method, url, " at api\\api.js:57");
     uni.request({
       url: url,
       data: data,
@@ -74,7 +75,7 @@ var req = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(res.data, " at api\\api.js:67");
+        console.log(res.data, " at api\\api.js:68");
         if (res.data.code == 0) {
           _success(res.data);
         } else {
@@ -1713,6 +1714,23 @@ createPage(_help.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _setting = _interopRequireDefault(__webpack_require__(/*! ./pages/my/setting/setting.vue */ "../../../../SchoolHelp-front-end/pages/my/setting/setting.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_setting.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../SchoolHelp-front-end/main.js?{\"page\":\"pages%2FotherUsers%2FotherUsers\"}":
+/*!****************************************************************************************************!*\
+  !*** C:/Users/ZPC/Desktop/SchoolHelp-front-end/main.js?{"page":"pages%2FotherUsers%2FotherUsers"} ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../SchoolHelp-front-end/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _otherUsers = _interopRequireDefault(__webpack_require__(/*! ./pages/otherUsers/otherUsers.vue */ "../../../../SchoolHelp-front-end/pages/otherUsers/otherUsers.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_otherUsers.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),
