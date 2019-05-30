@@ -12,7 +12,7 @@
 				</view>
 				<view class="my-follow-item-right">
 					<image class="normal-icon" src="/static/icons/more.png"></image>
-					<image class="normal-icon" src="/static/icons/cancel-follow.png" @click="cancelAttention" :data-index="index"></image>
+					<image class="normal-icon" src="/static/icons/cancel-follow.png" @click.stop="cancelAttention" :data-index="index"></image>
 				</view>
 			</view>
 			<view class="devide-line"></view>

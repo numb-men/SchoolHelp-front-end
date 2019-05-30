@@ -23,7 +23,7 @@
 							<image src="/static/icons/edit.png" class="big-icon-box-icon"></image>
 							<view class="big-icon-box-text">修改</view>
 						</view> -->
-						<view class="big-icon-box" @click="deleteAComment" :data-index="index">
+						<view class="big-icon-box" @click.stop="deleteAComment" :data-index="index">
 							<image src="/static/icons/delete.png" class="big-icon-box-icon"></image>
 							<view class="big-icon-box-text">删除</view>
 						</view>

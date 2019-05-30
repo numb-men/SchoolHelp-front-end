@@ -180,7 +180,7 @@
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
-  width: 80rpx;
+  width: 150rpx;
 }
 .latest-msg-time {
   font-size: 28rpx;
@@ -202,6 +202,7 @@
   font-weight: normal;
   padding: 0 5rpx;
   margin: 10rpx auto;
+  margin-left: 30rpx;
 }
 .not-new-message {
   width: 75rpx;

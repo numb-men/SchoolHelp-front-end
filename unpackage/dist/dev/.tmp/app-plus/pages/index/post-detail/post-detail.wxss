@@ -229,9 +229,9 @@
   font-weight: bold;
 }
 .post-content.data-v-7d9ace20 {
-  width: 700rpx;
+  width: 680rpx;
   word-break: break-all;
-  padding: 10rpx;
+  padding: 45rpx 20rpx 60rpx 20rpx;
   font-size: 28rpx;
   line-height: 45rpx;
   color: #343131;
@@ -353,12 +353,12 @@
   margin: 0 15rpx;
 }
 .comment-content.data-v-7d9ace20 {
-  width: 720rpx;
+  width: 680rpx;
   font-size: 30rpx;
   line-height: 45rpx;
   color: #343131;
   text-align: left;
   font-weight: normal;
-  padding: 15rpx 5rpx;
+  padding: 30rpx 25rpx 45rpx 25rpx;
 }
 

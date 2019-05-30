@@ -53,9 +53,9 @@
 	@include font(38upx, 45upx, $bold:bold, $align: left);
 }
 .post-content {
-	width: 700upx;
+	width: 680upx;
 	word-break: break-all;
-	padding: 10upx;
+	padding: 45upx 20upx 60upx 20upx;
 	@include font(28upx, 45upx, #343131, $align: left);
 }
 .operation-box {
@@ -123,7 +123,7 @@
 	@extend .help-ok;
 }
 .comment-content {
-	width: 720upx;
+	width: 680upx;
 	@include font(30upx, 45upx, #343131, $align: left);
-	padding: 15upx 5upx;
+	padding: 30upx 25upx 45upx 25upx;
 }

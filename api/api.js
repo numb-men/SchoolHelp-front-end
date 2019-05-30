@@ -1,8 +1,9 @@
 import store from "../store/index.js";
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.6";
-// var root = "/schoolhelp/schoolhelp-1.0.4"; // h5测试使用，使用了manifest.json中的h5代理配置
+// var root = "http://250r7838l8.qicp.vip"
+// var root = "http://134.175.16.143:8080/schoolhelp-1.0.7";
+var root = "/schoolhelp"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
 var urls = {
@@ -35,9 +36,11 @@ var urls = {
 	cancelAttention: `${root}/user/attention`,
 	attentionSomeone: `${root}/user/attention`,
 	getChatList: `${root}/message/chatlist`,
-	getOtherUserInfo: `${root}/user/`, //获取其他用户的非隐私信息，+userId
-	getMessageListForUser: `${root}/user/message/Corresponding`, //获取与对应用户的消息列表
+	getOrtherUserInfo: `${root}/user/`, //获取其他用户的非隐私信息，+userId
+	getMessageListForUser: `${root}/user/message/user`, //获取与对应用户的消息列表
 	getSelfHeadImg: `${root}/download/head`, //获取用户自己的头像
+	setMessageRead: `${root}/message/state`, //设置消息已读
+	checkCertified: `${root}/user/checkCertified`, //判断用户Id列表是否已经认证
 	
 	/**********************************************/
 	
@@ -49,7 +52,6 @@ var urls = {
 // 封装请求方法
 var req = {
 	request(url, data, method, success, fail) {
-		console.log(method, url);
 		uni.request({
 			url: url,
 			data: data,
@@ -60,7 +62,7 @@ var req = {
 				'token': store.state.token	//默认携带token，未登录时，token为''
 			},
 			success: (res) => {
-				console.log(res.data);
+				console.log(res.data, method, url);
 				if (res.data.code == 0){
 					success(res.data);
 				} else {
@@ -69,11 +71,11 @@ var req = {
 						icon: "none",
 						title: res.data.msg
 					})
-					if (fail) fail(err);
+					if (fail) fail(res.data);
 				}
 			},
 			fail: (err) => {
-				console.log("fail");
+				console.log(method, url, "fail");
 				if (fail) fail(err);  // 如果失败方法非空，执行失败方法
 			}
 		});
@@ -97,7 +99,6 @@ var req = {
 		var data = {};
 		this.get(url, data, (res) => {
 			let userInfo = res.data;
-			delete userInfo.password;
 			store.commit("saveUserInfo", userInfo);
 		});
 	},

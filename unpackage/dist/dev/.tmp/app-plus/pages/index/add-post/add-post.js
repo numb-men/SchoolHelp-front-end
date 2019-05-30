@@ -147,7 +147,7 @@ var _default =
       post: {
         title: "",
         content: "",
-        tags: ["标签1", "标签2", "标签3"],
+        tags: [],
         titleWordCount: 0,
         contentWordCount: 0,
         points: -1,

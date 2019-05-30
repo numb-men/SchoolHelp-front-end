@@ -169,11 +169,9 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { msgs: [] };}, onShow: function onShow() {var _this = this;var url = this.$api.urls.getChatList;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\messages\\messages.vue:52");_this.msgs = res.data.map(function (item, index) {return { id: index, chatUserHeadImg: "http://" + item.headIimage, chatUserId: item.userId, chatUserName: "", chatUser: {}, latestMsgContent: item.latedMessage, notReadMsgNum: item.newMessageNum, latestMsgTime: (0, _util.friendlyDate)(new Date(item.latedTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()) };});_this.getUserData();});var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {for (var _iterator = this.msgs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var msgItem = _step.value; // 裁剪过长的消息内容
+var _default = { data: function data() {return { msgs: [] };}, onShow: function onShow() {var _this = this;var url = this.$api.urls.getChatList;var data = {};this.$api.req.get(url, data, function (res) {_this.msgs = res.data.map(function (item, index) {return { id: index, chatUserHeadImg: "http://" + item.headIimage, chatUserId: item.userId, chatUserName: "", chatUser: {}, latestMsgContent: item.latedMessage, notReadMsgNum: item.newMessageNum, latestMsgTime: (0, _util.friendlyDate)(new Date(item.latedTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()) };});_this.getUserData();});var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {for (var _iterator = this.msgs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var msgItem = _step.value; // 裁剪过长的消息内容
         msgItem.latestMsgContent = (0, _util.cutString)(msgItem.latestMsgContent, 15); // 隐藏过多的未读消息
-        msgItem.notReadMsgNum = msgItem.notReadMsgNum > 99 ? '99+' : '' + msgItem.notReadMsgNum;}} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}}, methods: {
-    showMsgDetail: function showMsgDetail(e) {
-      console.log(e, " at pages\\messages\\messages.vue:76");
+        msgItem.notReadMsgNum = msgItem.notReadMsgNum > 99 ? '99+' : '' + msgItem.notReadMsgNum;}} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}}, methods: { showMsgDetail: function showMsgDetail(e) {
       var detail = this.msgs[e.currentTarget.dataset.index];
       uni.navigateTo({
         url: "message-detail/message-detail?detail=" + encodeURIComponent(JSON.stringify(detail)) });
@@ -181,10 +179,9 @@ var _default = { data: function data() {return { msgs: [] };}, onShow: function 
     },
     getUserData: function getUserData() {var _this2 = this;
       this.msgs.map(function (item) {
-        var url = _this2.$api.urls.getOtherUserInfo + item.chatUserId;
+        var url = _this2.$api.urls.getOrtherUserInfo + item.chatUserId;
         var data = {};
         _this2.$api.req.get(url, data, function (res) {
-          // console.log(res);
           item.chatUser = res.data;
           item.chatUserName = res.data.name;
         });

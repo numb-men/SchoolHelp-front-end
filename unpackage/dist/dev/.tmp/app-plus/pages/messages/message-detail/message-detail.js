@@ -163,14 +163,31 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { myUserId: "", myHeadImg: "", messageInput: "", chat: { userName: "", userHeadImg: "", userId: "", isOnline: "", msgs: [] } };}, onLoad: function onLoad(option) {var detail = JSON.parse(option.detail);this.myUserId = this.$store.state.userInfo.id;this.chat.userHeadImg = detail.chatUserHeadImg;this.chat.userName = detail.chatUserName;this.chat.userId = detail.chatUserId;this.chat.isOnline = detail.chatUser.online;console.log(detail.chatUser.online, " at pages\\messages\\message-detail\\message-detail.vue:60");this.getSelfHeadImg();this.getMessageList();uni.setNavigationBarTitle({ title: this.chat.userName + "\uFF08".concat(this.chat.isOnline ? "在线" : "离线", "\uFF09") });},
-  methods: {
-    getSelfHeadImg: function getSelfHeadImg() {var _this = this;
-      var url = this.$api.urls.getSelfHeadImg;
-      var data = {};
-      this.$api.req.get(url, data, function (res) {
-        _this.myHeadImg = "http://" + res.data;
+var _default = { data: function data() {return { myUserId: "", myHeadImg: "", messageInput: "", chat: { userName: "", userHeadImg: "", userId: "", isOnline: "", msgs: [] } };}, onLoad: function onLoad(option) {var detail = JSON.parse(option.detail);this.myUserId = this.$store.state.userInfo.id;this.chat.userId = detail.chatUserId;this.getEasyUserInfo();this.myHeadImg = this.$store.state.userInfo.headImageUrl;this.getMessageList();}, methods: { getEasyUserInfo: function getEasyUserInfo() {var _this = this;var url = this.$api.urls.getOrtherUserInfo + this.chat.userId;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:66");
+        _this.chat.userHeadImg = "http://" + res.data.headImageUrl;
+        _this.chat.userName = res.data.name;
+        _this.chat.isOnline = res.data.online;
+        uni.setNavigationBarTitle({
+          title: _this.chat.userName + "\uFF08".concat(_this.chat.isOnline ? "在线" : "离线", "\uFF09") });
+
       });
+    },
+    readAll: function readAll() {
+      var url = this.$api.urls.setMessageRead;
+      var data = { messageId: [] };
+      this.chat.msgs.map(function (item) {
+        if (!item.isMe) {
+          if (!item.state) {
+            // 如果对方发的帖子我方未读
+            data.messageId.push(item.id);
+          }
+        }
+      });
+      if (data.messageId.length > 0) {
+        this.$api.req.put(url, data, function (res) {
+          console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:88");
+        });
+      }
     },
     getMessageList: function getMessageList() {var _this2 = this;
       var url = this.$api.urls.getMessageListForUser;
@@ -178,20 +195,23 @@ var _default = { data: function data() {return { myUserId: "", myHeadImg: "", me
       this.$api.req.get(url, data, function (res) {
         _this2.chat.msgs = res.data.map(function (item, index) {
           return {
-            id: index,
+            id: item.messageId,
             sendTime: (0, _util.friendlyDate)(new Date(item.sendTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
             isMe: item.send == _this2.myUserId,
-            msgContent: item.messageContent };
+            msgContent: item.messageContent,
+            state: item.state };
 
         });
+        _this2.readAll();
       });
     },
     sendMessage: function sendMessage() {var _this3 = this;
       var url = this.$api.urls.sendMessage;
       var data = { messageContent: this.messageInput, accept: this.chat.userId };
       this.$api.req.post(url, data, function (res) {
-        console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:93");
+        console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:112");
         _this3.getMessageList();
+        _this3.messageInput = "";
       });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))

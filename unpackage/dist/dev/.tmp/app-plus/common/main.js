@@ -91,8 +91,8 @@ __webpack_require__.r(__webpack_exports__);
       /**
                                               * TODO 开发环境 测试使用
                                               */
-      // this.$store.commit("logout");
-      // this.$api.req.login("13067247166", "1515491ccc");
+      this.$store.commit("logout");
+      this.$api.req.login("13067247166", "1515491ccc");
       // this.$api.req.register("13078901271", "12345abc");
       /*
        * 

@@ -41,6 +41,7 @@
 		{
 			"path": "pages/index/post-detail/post-detail",
 			"style": {
+                "enablePullDownRefresh": true,
 				"navigationBarTitleText": "帖子详情"
 			}
 		},

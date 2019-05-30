@@ -1421,7 +1421,7 @@ var lK=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
 var aL=_v()
 _(lK,aL)
 if(_oz(z,2,e,s,gg)){aL.wxVkey=1
-cs.push("./pages/index/add-post/add-post.wxml:block:1:1216")
+cs.push("./pages/index/add-post/add-post.wxml:block:1:1217")
 cs.pop()
 }
 aL.wxXCkey=1
@@ -1527,19 +1527,19 @@ if(_oz(z,10,tEB,aDB,gg)){xIB.wxVkey=1
 cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:216")
 cs.pop()
 }
-cs.push("./pages/messages/message-detail/message-detail.wxml:view:1:329")
+cs.push("./pages/messages/message-detail/message-detail.wxml:view:1:336")
 var fKB=_n('view')
 _rz(z,fKB,'class',11,tEB,aDB,gg)
 var cLB=_v()
 _(fKB,cLB)
 if(_oz(z,12,tEB,aDB,gg)){cLB.wxVkey=1
-cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:352")
+cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:359")
 cs.pop()
 }
 var hMB=_v()
 _(fKB,hMB)
 if(_oz(z,13,tEB,aDB,gg)){hMB.wxVkey=1
-cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:619")
+cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:626")
 cs.pop()
 }
 cLB.wxXCkey=1
@@ -1549,7 +1549,7 @@ _(oHB,fKB)
 var oJB=_v()
 _(oHB,oJB)
 if(_oz(z,14,tEB,aDB,gg)){oJB.wxVkey=1
-cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:695")
+cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:702")
 cs.pop()
 }
 xIB.wxXCkey=1
@@ -1785,10 +1785,10 @@ __wxAppCode__['pages/extensions/questionaire/questionaire.wxml']=$gwx('./pages/e
 __wxAppCode__['pages/index/add-post/add-post.json']={"navigationBarTitleText":"新建帖子","usingComponents":{}};
 __wxAppCode__['pages/index/add-post/add-post.wxml']=$gwx('./pages/index/add-post/add-post.wxml');
 
-__wxAppCode__['pages/index/index.json']={"navigationBarTitleText":"校园帮","titleNView":false,"usingComponents":{}};
+__wxAppCode__['pages/index/index.json']={"enablePullDownRefresh":true,"titleNView":false,"usingComponents":{}};
 __wxAppCode__['pages/index/index.wxml']=$gwx('./pages/index/index.wxml');
 
-__wxAppCode__['pages/index/post-detail/post-detail.json']={"navigationBarTitleText":"帖子详情","usingComponents":{}};
+__wxAppCode__['pages/index/post-detail/post-detail.json']={"enablePullDownRefresh":true,"navigationBarTitleText":"帖子详情","usingComponents":{}};
 __wxAppCode__['pages/index/post-detail/post-detail.wxml']=$gwx('./pages/index/post-detail/post-detail.wxml');
 
 __wxAppCode__['pages/index/search-post/search-post.json']={"navigationBarTitleText":"搜索帖子","usingComponents":{}};
@@ -1953,8 +1953,8 @@ __webpack_require__.r(__webpack_exports__);
       /**
                                               * TODO 开发环境 测试使用
                                               */
-      // this.$store.commit("logout");
-      // this.$api.req.login("13067247166", "1515491ccc");
+      this.$store.commit("logout");
+      this.$api.req.login("13067247166", "1515491ccc");
       // this.$api.req.register("13078901271", "12345abc");
       /*
        * 
@@ -2277,7 +2277,8 @@ define('common/vendor.js',function(require, module, exports, window, document, f
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // API 请求根路径
-var root = "http://134.175.16.143:8080/schoolhelp-1.0.6";
+var root = "http://250r7838l8.qicp.vip";
+// var root = "http://134.175.16.143:8080/schoolhelp-1.0.7";
 // var root = "/schoolhelp/schoolhelp-1.0.4"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
@@ -2311,9 +2312,11 @@ var urls = {
   cancelAttention: "".concat(root, "/user/attention"),
   attentionSomeone: "".concat(root, "/user/attention"),
   getChatList: "".concat(root, "/message/chatlist"),
-  getOtherUserInfo: "".concat(root, "/user/"), //获取其他用户的非隐私信息，+userId
-  getMessageListForUser: "".concat(root, "/user/message/Corresponding"), //获取与对应用户的消息列表
+  getOrtherUserInfo: "".concat(root, "/user/"), //获取其他用户的非隐私信息，+userId
+  getMessageListForUser: "".concat(root, "/user/message/user"), //获取与对应用户的消息列表
   getSelfHeadImg: "".concat(root, "/download/head"), //获取用户自己的头像
+  setMessageRead: "".concat(root, "/message/state"), //设置消息已读
+  checkCertified: "".concat(root, "/user/checkCertified"), //判断用户Id列表是否已经认证
 
   /**********************************************/
 
@@ -2325,7 +2328,6 @@ var urls = {
   // 封装请求方法
 };var req = {
   request: function request(url, data, method, _success, _fail) {
-    console.log(method, url, " at api\\api.js:52");
     uni.request({
       url: url,
       data: data,
@@ -2336,7 +2338,7 @@ var urls = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(res.data, " at api\\api.js:63");
+        console.log(res.data, method, url, " at api\\api.js:65");
         if (res.data.code == 0) {
           _success(res.data);
         } else {
@@ -2345,11 +2347,11 @@ var urls = {
             icon: "none",
             title: res.data.msg });
 
-          if (_fail) _fail(err);
+          if (_fail) _fail(res.data);
         }
       },
       fail: function fail(err) {
-        console.log("fail", " at api\\api.js:76");
+        console.log(method, url, "fail", " at api\\api.js:78");
         if (_fail) _fail(err); // 如果失败方法非空，执行失败方法
       } });
 
@@ -2373,7 +2375,6 @@ var urls = {
     var data = {};
     this.get(url, data, function (res) {
       var userInfo = res.data;
-      delete userInfo.password;
       _index.default.commit("saveUserInfo", userInfo);
     });
   },
@@ -3577,7 +3578,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -9651,7 +9652,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -9672,14 +9673,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9748,7 +9749,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -12269,11 +12270,9 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { msgs: [] };}, onShow: function onShow() {var _this = this;var url = this.$api.urls.getChatList;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\messages\\messages.vue:52");_this.msgs = res.data.map(function (item, index) {return { id: index, chatUserHeadImg: "http://" + item.headIimage, chatUserId: item.userId, chatUserName: "", chatUser: {}, latestMsgContent: item.latedMessage, notReadMsgNum: item.newMessageNum, latestMsgTime: (0, _util.friendlyDate)(new Date(item.latedTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()) };});_this.getUserData();});var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {for (var _iterator = this.msgs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var msgItem = _step.value; // 裁剪过长的消息内容
+var _default = { data: function data() {return { msgs: [] };}, onShow: function onShow() {var _this = this;var url = this.$api.urls.getChatList;var data = {};this.$api.req.get(url, data, function (res) {_this.msgs = res.data.map(function (item, index) {return { id: index, chatUserHeadImg: "http://" + item.headIimage, chatUserId: item.userId, chatUserName: "", chatUser: {}, latestMsgContent: item.latedMessage, notReadMsgNum: item.newMessageNum, latestMsgTime: (0, _util.friendlyDate)(new Date(item.latedTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()) };});_this.getUserData();});var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {for (var _iterator = this.msgs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var msgItem = _step.value; // 裁剪过长的消息内容
         msgItem.latestMsgContent = (0, _util.cutString)(msgItem.latestMsgContent, 15); // 隐藏过多的未读消息
-        msgItem.notReadMsgNum = msgItem.notReadMsgNum > 99 ? '99+' : '' + msgItem.notReadMsgNum;}} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}}, methods: {
-    showMsgDetail: function showMsgDetail(e) {
-      console.log(e, " at pages\\messages\\messages.vue:76");
+        msgItem.notReadMsgNum = msgItem.notReadMsgNum > 99 ? '99+' : '' + msgItem.notReadMsgNum;}} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}}, methods: { showMsgDetail: function showMsgDetail(e) {
       var detail = this.msgs[e.currentTarget.dataset.index];
       uni.navigateTo({
         url: "message-detail/message-detail?detail=" + encodeURIComponent(JSON.stringify(detail)) });
@@ -12281,10 +12280,9 @@ var _default = { data: function data() {return { msgs: [] };}, onShow: function 
     },
     getUserData: function getUserData() {var _this2 = this;
       this.msgs.map(function (item) {
-        var url = _this2.$api.urls.getOtherUserInfo + item.chatUserId;
+        var url = _this2.$api.urls.getOrtherUserInfo + item.chatUserId;
         var data = {};
         _this2.$api.req.get(url, data, function (res) {
-          // console.log(res);
           item.chatUser = res.data;
           item.chatUserName = res.data.name;
         });
@@ -12499,14 +12497,31 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { myUserId: "", myHeadImg: "", messageInput: "", chat: { userName: "", userHeadImg: "", userId: "", isOnline: "", msgs: [] } };}, onLoad: function onLoad(option) {var detail = JSON.parse(option.detail);this.myUserId = this.$store.state.userInfo.id;this.chat.userHeadImg = detail.chatUserHeadImg;this.chat.userName = detail.chatUserName;this.chat.userId = detail.chatUserId;this.chat.isOnline = detail.chatUser.online;console.log(detail.chatUser.online, " at pages\\messages\\message-detail\\message-detail.vue:60");this.getSelfHeadImg();this.getMessageList();uni.setNavigationBarTitle({ title: this.chat.userName + "\uFF08".concat(this.chat.isOnline ? "在线" : "离线", "\uFF09") });},
-  methods: {
-    getSelfHeadImg: function getSelfHeadImg() {var _this = this;
-      var url = this.$api.urls.getSelfHeadImg;
-      var data = {};
-      this.$api.req.get(url, data, function (res) {
-        _this.myHeadImg = "http://" + res.data;
+var _default = { data: function data() {return { myUserId: "", myHeadImg: "", messageInput: "", chat: { userName: "", userHeadImg: "", userId: "", isOnline: "", msgs: [] } };}, onLoad: function onLoad(option) {var detail = JSON.parse(option.detail);this.myUserId = this.$store.state.userInfo.id;this.chat.userId = detail.chatUserId;this.getEasyUserInfo();this.myHeadImg = this.$store.state.userInfo.headImageUrl;this.getMessageList();}, methods: { getEasyUserInfo: function getEasyUserInfo() {var _this = this;var url = this.$api.urls.getOrtherUserInfo + this.chat.userId;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:66");
+        _this.chat.userHeadImg = "http://" + res.data.headImageUrl;
+        _this.chat.userName = res.data.name;
+        _this.chat.isOnline = res.data.online;
+        uni.setNavigationBarTitle({
+          title: _this.chat.userName + "\uFF08".concat(_this.chat.isOnline ? "在线" : "离线", "\uFF09") });
+
       });
+    },
+    readAll: function readAll() {
+      var url = this.$api.urls.setMessageRead;
+      var data = { messageId: [] };
+      this.chat.msgs.map(function (item) {
+        if (!item.isMe) {
+          if (!item.state) {
+            // 如果对方发的帖子我方未读
+            data.messageId.push(item.id);
+          }
+        }
+      });
+      if (data.messageId.length > 0) {
+        this.$api.req.put(url, data, function (res) {
+          console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:88");
+        });
+      }
     },
     getMessageList: function getMessageList() {var _this2 = this;
       var url = this.$api.urls.getMessageListForUser;
@@ -12514,20 +12529,23 @@ var _default = { data: function data() {return { myUserId: "", myHeadImg: "", me
       this.$api.req.get(url, data, function (res) {
         _this2.chat.msgs = res.data.map(function (item, index) {
           return {
-            id: index,
+            id: item.messageId,
             sendTime: (0, _util.friendlyDate)(new Date(item.sendTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
             isMe: item.send == _this2.myUserId,
-            msgContent: item.messageContent };
+            msgContent: item.messageContent,
+            state: item.state };
 
         });
+        _this2.readAll();
       });
     },
     sendMessage: function sendMessage() {var _this3 = this;
       var url = this.$api.urls.sendMessage;
       var data = { messageContent: this.messageInput, accept: this.chat.userId };
       this.$api.req.post(url, data, function (res) {
-        console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:93");
+        console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:112");
         _this3.getMessageList();
+        _this3.messageInput = "";
       });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
@@ -13300,6 +13318,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园帮/SchoolHelp-front-end/common/util.js"); //
 //
 //
@@ -13371,7 +13391,46 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { showAddComment: false, commentEnter: "", postDetail: {}, post: {} };}, methods: { showAddCommentBox: function showAddCommentBox() {this.showAddComment = true;}, hideAddCommentBox: function hideAddCommentBox() {this.showAddComment = false;}, addComment: function addComment() {var _this = this;var url = this.$api.urls.addComment;var data = { postId: this.post.id, commentContent: this.commentEnter };console.log(data, " at pages\\index\\post-detail\\post-detail.vue:96");this.$api.req.post(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:98");_this.updateComments();_this.hideAddCommentBox();});}, updateComments: function updateComments() {var _this2 = this;var url = this.$api.urls.getAllComments + this.post.id;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:107");var helpUserId = _this2.post.helpUserId;var comments = [];if (res.data) {comments = res.data.map(function (item) {return { id: item.commentId, user: { id: item.userId, headImg: "http://" + item.headImageUrl, isCertified: true, name: item.commentUserName }, publishTime: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()), content: item.commentContent, helpOk: item.userId == helpUserId };});_this2.post.comments = comments;}});}, approvalPost: function approvalPost() {var _this3 = this;var url = this.$api.urls.approvalPost;var data = { postId: this.post.id };this.$api.req.post(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:133");if (res.code == 0) {uni.showToast({ icon: "none", title: res.data });if (res.data == "点赞成功") {_this3.post.approvalNum++;} else if (res.data == "取消点赞") {_this3.post.approvalNum--;}
+//
+//
+var _default = { data: function data() {return { showAddComment: false, commentEnter: "", postDetail: {}, post: {} };}, methods: { showAddCommentBox: function showAddCommentBox() {this.showAddComment = true;}, hideAddCommentBox: function hideAddCommentBox() {this.showAddComment = false;}, goChat: function goChat(e) {console.log(e, " at pages\\index\\post-detail\\post-detail.vue:96");console.log(e.currentTarget.dataset.userid, this.$store.state.userInfo.id, " at pages\\index\\post-detail\\post-detail.vue:97");if (e.currentTarget.dataset.userId != this.$store.state.userInfo.id) {// 和非自身的用户发消息
+        uni.navigateTo({ url: "../../messages/message-detail/message-detail?detail=" + encodeURIComponent(JSON.stringify({ chatUserId: e.currentTarget.dataset.userid })) });}}, addComment: function addComment() {var _this = this;var url = this.$api.urls.addComment;var data = { postId: this.post.id, commentContent: this.commentEnter };console.log(data, " at pages\\index\\post-detail\\post-detail.vue:109");this.$api.req.post(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:111");_this.commentEnter = "";_this.updateComments();_this.hideAddCommentBox();});}, updateComments: function updateComments() {var _this2 = this;var url = this.$api.urls.getAllComments + this.post.id;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:121");var helpUserId = _this2.post.helpUserId;var comments = [];if (res.data) {comments = res.data.map(function (item) {return { id: item.commentId, user: { id: item.userId, headImg: "http://" + item.headImageUrl, isCertified: true, name: item.commentUserName }, publishTime: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()), content: item.commentContent, helpOk: item.userId == helpUserId };});_this2.post.comments = comments;_this2.checkCertified();}});}, checkCertified: function checkCertified() {var _this3 = this;var url = this.$api.urls.checkCertified;var userIds = [];userIds.push(this.post.user.id);this.post.comments.map(function (comment) {if (!userIds.includes(comment.user.id))
+        userIds.push(comment.user.id);
+      });
+      var data = { userIds: userIds };
+      console.log(data, " at pages\\index\\post-detail\\post-detail.vue:153");
+      this.$api.req.put(url, data, function (res) {
+        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:155");
+        for (var i in userIds) {
+          if (i == 0) {
+            _this3.post.user.isCertified = res.data[0];
+            continue;
+          }var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
+            for (var _iterator = _this3.post.comments[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var comment = _step.value;
+              if (comment.user.id == userIds[i]) {
+                comment.user.isCertified = res.data[i];
+              }
+            }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
+        }
+        console.log(_this3.post, " at pages\\index\\post-detail\\post-detail.vue:167");
+      });
+    },
+    approvalPost: function approvalPost() {var _this4 = this;
+      var url = this.$api.urls.approvalPost;
+      var data = { postId: this.post.id };
+      this.$api.req.post(url, data, function (res) {
+        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:174");
+        if (res.code == 0) {
+          uni.showToast({
+            icon: "none",
+            title: res.data });
+
+          if (res.data == "点赞成功") {
+            _this4.post.approvalNum++;
+          } else
+          if (res.data == "取消点赞") {
+            _this4.post.approvalNum--;
+          }
         } else
         {
           uni.showToast({
@@ -13381,7 +13440,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
         }
       });
     },
-    reportPost: function reportPost() {var _this4 = this;
+    reportPost: function reportPost() {var _this5 = this;
       var url = this.$api.urls.reportPost;
       var data = { postId: this.post.id, reportDes: "nonenonenonenonenonenonenone" };
       this.$api.req.post(url, data, function (res) {
@@ -13390,7 +13449,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
             icon: "none",
             title: "举报成功" });
 
-          _this4.post.reportNum++;
+          _this5.post.reportNum++;
         } else
         {
           uni.showToast({
@@ -13400,7 +13459,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
         }
       });
     },
-    collectPost: function collectPost() {var _this5 = this;
+    collectPost: function collectPost() {var _this6 = this;
       var url = this.$api.urls.collectPost;
       var data = { postId: this.post.id };
       this.$api.req.post(url, data, function (res) {
@@ -13409,7 +13468,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
             icon: "none",
             title: "收藏成功" });
 
-          _this5.post.collectNum++;
+          _this6.post.collectNum++;
         } else
         {
           uni.showToast({
@@ -13418,57 +13477,67 @@ var _default = { data: function data() {return { showAddComment: false, commentE
 
         }
       });
+    },
+    getPostDetail: function getPostDetail() {var _this7 = this;
+      var url = this.$api.urls.getPostDetail + this.postDetail.postId;
+      var data = {};
+      this.$api.req.get(url, data, function (res) {
+        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:237");
+        var helpUserId = res.data.post.helpUserId;
+        var comments = [];
+        if (res.data.comments) {
+          comments = res.data.comments.map(function (item) {
+            return {
+              id: item.commentId,
+              user: {
+                id: item.userId,
+                headImg: "http://" + item.headImageUrl,
+                isCertified: true,
+                name: item.commentUserName },
+
+              publishTime: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
+              content: item.commentContent,
+              helpOk: item.userId == helpUserId };
+
+          });
+        }
+        var resPost = res.data.post;
+        _this7.post = {
+          id: resPost.postId,
+          user: {
+            id: resPost.userId,
+            headImg: "http://" + resPost.headImageUrl,
+            isCertified: true,
+            name: resPost.userName },
+
+          title: resPost.title,
+          content: resPost.content,
+          publishTime: (0, _util.friendlyDate)(new Date(resPost.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
+          points: resPost.points,
+          comments: comments,
+          viewNum: resPost.viewNum,
+          approvalNum: resPost.approvalNum,
+          commentNum: resPost.commentNum,
+          reportNum: resPost.reportNum,
+          helpUserId: resPost.helpUserId,
+          helpOk: resPost.helpUserId != -1 };
+
+        _this7.checkCertified();
+      });
     } },
 
-  onLoad: function onLoad(option) {var _this6 = this;
+  onPullDownRefresh: function onPullDownRefresh() {
+    this.getPostDetail();
+    setTimeout(function () {
+      uni.stopPullDownRefresh();
+    }, 1000);
+  },
+  onLoad: function onLoad(option) {
     this.postDetail = JSON.parse(option.query);
     for (var key in this.postDetail) {
-      console.log(key, "---", this.postDetail[key], " at pages\\index\\post-detail\\post-detail.vue:196");
+      console.log(key, "---", this.postDetail[key], " at pages\\index\\post-detail\\post-detail.vue:290");
     }
-    var url = this.$api.urls.getPostDetail + this.postDetail.postId;
-    var data = {};
-    this.$api.req.get(url, data, function (res) {
-      console.log(res, " at pages\\index\\post-detail\\post-detail.vue:201");
-      var helpUserId = res.data.post.helpUserId;
-      var comments = [];
-      if (res.data.comments) {
-        comments = res.data.comments.map(function (item) {
-          return {
-            id: item.commentId,
-            user: {
-              id: item.userId,
-              headImg: "http://" + item.headImageUrl,
-              isCertified: true,
-              name: item.commentUserName },
-
-            publishTime: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
-            content: item.commentContent,
-            helpOk: item.userId == helpUserId };
-
-        });
-      }
-      var resPost = res.data.post;
-      _this6.post = {
-        id: resPost.postId,
-        user: {
-          id: resPost.userId,
-          headImg: "http://" + resPost.headImageUrl,
-          isCertified: true,
-          name: resPost.userName },
-
-        title: resPost.title,
-        content: resPost.content,
-        publishTime: (0, _util.friendlyDate)(new Date(resPost.issueTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
-        points: resPost.points,
-        comments: comments,
-        viewNum: resPost.viewNum,
-        approvalNum: resPost.approvalNum,
-        commentNum: resPost.commentNum,
-        reportNum: resPost.reportNum,
-        helpUserId: resPost.helpUserId,
-        helpOk: resPost.helpUserId != -1 };
-
-    });
+    this.getPostDetail();
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -13663,7 +13732,7 @@ var _default =
       post: {
         title: "",
         content: "",
-        tags: ["标签1", "标签2", "标签3"],
+        tags: [],
         titleWordCount: 0,
         contentWordCount: 0,
         points: -1,

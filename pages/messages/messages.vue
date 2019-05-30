@@ -49,7 +49,6 @@
 			var url = this.$api.urls.getChatList;
 			var data = {};
 			this.$api.req.get(url, data, (res) =>{
-				console.log(res);
 				this.msgs = res.data.map((item, index) =>{
 					return {
 						id: index,
@@ -73,7 +72,6 @@
 		},
 		methods: {
 			showMsgDetail: function(e){
-				console.log(e);
 				let detail = this.msgs[e.currentTarget.dataset.index];
 				uni.navigateTo({
 					url: "message-detail/message-detail?detail=" + encodeURIComponent(JSON.stringify(detail))
@@ -81,10 +79,9 @@
 			},
 			getUserData() {
 				this.msgs.map((item) =>{
-					var url = this.$api.urls.getOtherUserInfo + item.chatUserId;
+					var url = this.$api.urls.getOrtherUserInfo + item.chatUserId;
 					var data = {};
 					this.$api.req.get(url, data, (res) =>{
-						// console.log(res);
 						item.chatUser = res.data;
 						item.chatUserName = res.data.name;
 					})
@@ -126,7 +123,7 @@
 	}
 	.msg-item-right {
 		@include column($space: space-around);
-		width: 80upx;
+		width: 150upx;
 	}
 	.latest-msg-time {
 		@include font(28upx, 55upx, $align: center);
@@ -137,6 +134,7 @@
 		@include font(22upx, 36upx, white);
 		padding: 0 5upx;
 		margin: 10upx auto;
+		margin-left: 30upx;
 	}
 	.not-new-message {
 		width: 75upx;
