@@ -99,13 +99,13 @@
 			pointText() {
 				if (this.userInfo.points){
 					if (this.userInfo.points > 100000000){
-						return (this.userInfo.points/10000000).toFixed(2) + '千万';
+						return (this.userInfo.points/10000000).toFixed(1) + '千万';
 					}
 					else if (this.userInfo.points > 1000000){
-						return (this.userInfo.points/1000000).toFixed(2) + '百万';
+						return (this.userInfo.points/1000000).toFixed(1) + '百万';
 					}
 					else if (this.userInfo.points > 10000){
-						return (this.userInfo.points/1000).toFixed(2) + '千';
+						return (this.userInfo.points/1000).toFixed(1) + '千';
 					}
 					else {
 						return this.userInfo.points;
