@@ -6,7 +6,7 @@
 			<input type="text" :value="post.postTitle" placeholder="输入标题" placeholder-class="title-placeholder"
 				class="post-title" maxlength="15" focus="true" confirm-type="done" @input="bindTitleInput"/>
 			<view class="devide-line"></view>
-			<textarea :value="post.postContent" placeholder="添加内容(至少10个字)" maxlength="400" 
+			<textarea :value="post.postContent" placeholder="添加内容(至少15个字)" maxlength="400" 
 				class="post-content" placeholder-class="content-placeholder" @input="bindContentInput"/>
 		</view>
 		<view class="content-word-count">{{post.contentWordCount}}/400</view>
@@ -70,7 +70,7 @@
 			bindTitleInput: function(e){
 				this.post.title = e.target.value;
 				this.post.titleWordCount = e.target.value.length;
-				console.log(this.post.title, this.post.titleWordCount, this.post.title.length);
+				// console.log(this.post.title, this.post.titleWordCount, this.post.title.length);
 			},
 			bindContentInput: function(e){
 				this.post.content = e.target.value;

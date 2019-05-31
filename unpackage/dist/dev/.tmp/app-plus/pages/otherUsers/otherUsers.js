@@ -178,93 +178,120 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo']), data: function data() {return { targetUserInfo: {}, targetUserId: '' };}, onLoad: function onLoad(option) {this.targetUserId = option.userId;var url = _api.default.urls.getOtherUserInfo + option.userId;var data = {};var that = this;_api.default.req.get(url, data, function (res) {if (res.code === 0) {that.targetUserInfo = res.data;} else {uni.showModal({ content: res.msg, showCancel: false });}});}, methods: { follow: function follow() {if (this.hasLogin) {if (!this.targetUserInfo.hasFollow) {var that = this;var url = _api.default.urls.attentionSomeone;var data = { beAttentionUserId: that.targetUserId // beAttentionUserId: 225
-          };_api.default.req.post(url, data, function (res) {if (res.code === 0) {that.targetUserInfo.followerNum = that.targetUserInfo.followerNum + 1;uni.showToast({ title: '关注成功', icon: 'success', duration: 1000 });that.targetUserInfo.hasFollow = true;} else {uni.showModal({ content: res.msg, showCancel: false });}});} else {var that = this;var url = _api.default.urls.cancelAttention;var data = { beAttentionUserId: that.targetUserId // beAttentionUserId: 225
-          };_api.default.req.del(url, data, function (res) {if (res.code === 0) {that.targetUserInfo.followerNum = that.targetUserInfo.followerNum - 1;uni.showToast({ title: '取关成功', icon: 'success', duration: 1000 });that.targetUserInfo.hasFollow = false;} else {uni.showModal({ content: res.msg, showCancel: false });}});}} else {uni.showModal({ content: "关注需要登录，您想马上登录吗？", success: function success(res) {if (res.confirm) {uni.navigateTo({ url: '../../pages/my/login/login' });
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+{
+  computed: _objectSpread({},
+  (0, _vuex.mapState)(['hasLogin', 'userInfo']), {
+
+    pointText: function pointText() {
+      if (this.targetUserInfo.points) {
+        if (this.targetUserInfo.points > 100000000) {
+          return (this.targetUserInfo.points / 10000000).toFixed(1) + '千万';
+        } else
+        if (this.targetUserInfo.points > 10000000) {
+          return (this.targetUserInfo.points / 1000000).toFixed(1) + '百万';
+        } else
+        if (this.targetUserInfo.points > 10000) {
+          return (this.targetUserInfo.points / 1000).toFixed(1) + '千';
+        } else
+        {
+          return this.targetUserInfo.points;
+        }
+      }
+      return 0;
+    } }),
+
+  data: function data() {
+    return {
+      targetUserInfo: {
+        hasFollow: false },
+
+      targetUserId: '' };
+
+  },
+  onLoad: function onLoad(option) {
+    this.targetUserId = option.userId;
+    var url = _api.default.urls.getOtherUserInfo + option.userId;
+    var data = {};
+    var that = this;
+    _api.default.req.get(url, data, function (res) {
+      if (res.code === 0) {
+        that.targetUserInfo = res.data;
+      } else {
+        uni.showModal({
+          content: res.msg,
+          showCancel: false });
+
+      }
+    });
+  },
+  methods: {
+    follow: function follow() {
+      if (this.hasLogin) {
+        if (!this.targetUserInfo.hasFollow) {
+          var that = this;
+          var url = _api.default.urls.attentionSomeone;
+          var data = {
+            beAttentionUserId: that.targetUserId
+            // beAttentionUserId: 225
+          };
+          _api.default.req.post(url, data, function (res) {
+            if (res.code === 0) {
+              that.targetUserInfo.followerNum = that.targetUserInfo.followerNum + 1;
+              uni.showToast({
+                title: '关注成功',
+                icon: 'success',
+                duration: 1000 });
+
+              that.targetUserInfo.hasFollow = true;
+            } else {
+              uni.showModal({
+                content: res.msg,
+                showCancel: false });
+
+            }
+          });
+        } else {
+          var that = this;
+          var url = _api.default.urls.cancelAttention;
+          var data = {
+            beAttentionUserId: that.targetUserId
+            // beAttentionUserId: 225
+          };
+          _api.default.req.del(url, data, function (res) {
+            if (res.code === 0) {
+              that.targetUserInfo.followerNum = that.targetUserInfo.followerNum - 1;
+              uni.showToast({
+                title: '取关成功',
+                icon: 'success',
+                duration: 1000 });
+
+              that.targetUserInfo.hasFollow = false;
+            } else {
+              uni.showModal({
+                content: res.msg,
+                showCancel: false });
+
+            }
+          });
+        }
+      } else {
+        uni.showModal({
+          content: "关注需要登录，您想马上登录吗？",
+          success: function success(res) {
+            if (res.confirm) {
+              uni.navigateTo({
+                url: '../../pages/my/login/login' });
 
             } else if (res.cancel) {
               return;

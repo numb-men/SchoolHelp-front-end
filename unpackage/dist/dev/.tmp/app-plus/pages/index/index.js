@@ -356,8 +356,8 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
           ' ').substring(0, 19)).getTime());}
         that.agents[that.currentTab].list = res.data.content;
         that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx';
-        uni.stopPullDownRefresh();
       }
+      uni.stopPullDownRefresh();
     }, function (fail) {
       setTimeout(function () {
         uni.hideLoading();

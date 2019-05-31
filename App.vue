@@ -1,8 +1,11 @@
 <script>
 	
 	export default {
-		onLaunch: function() {
+		onShow: function() {
 			this.init();
+		},
+		onHide: function() {
+			this.logout();
 		},
 		methods: {
 			// 获取用户信息，检查是否登录，如果已经登录，存储登录状态token和用户信息
@@ -10,32 +13,32 @@
 				/**
 				 * TODO 开发环境 测试使用
 				 */
-				this.$store.commit("logout");
-				this.$api.req.login("13067247166", "1515491ccc");
+				// this.$store.commit("logout");
+				// this.$api.req.login("13067247166", "1515491ccc");
 				// this.$api.req.register("13078901271", "12345abc");
 				/*
 				 * 
 				**/
+				// this.$store.commit("clearLastLoginData");
+				
 				this.$store.commit("getSearchHistroy");
 				console.log(this.$store.state.searchHistroy);
 
 				uni.getStorage({
-					key: 'token',
+					key: 'lastLoginData',
 					success: (res) =>{
-						console.log("已登录");
-						this.$store.commit("login", res.data)
-						uni.getStorage({
-							key: "userInfo",
-							success: (res2) => {
-								this.$store.commit("saveUserInfo", res2.data);
-							}
-						})
+						// console.log(res);
+						console.log("之前登录过，用旧账号登录");
+						this.$api.req.login(res.data.phone, res.data.password);
 					},
 					fail: (err) =>{
-						console.log("未登录");
+						console.log("未登录过");
 						console.log(err);
 					}
 				});
+			},
+			logout() {
+				this.$api.req.logout();
 			}
 		}
 	}

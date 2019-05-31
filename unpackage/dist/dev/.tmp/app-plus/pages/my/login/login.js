@@ -258,7 +258,7 @@ var _md = __webpack_require__(/*! ../../../api/md5.js */ "../../../../../校园�
 
       _api.default.req.get(url, data, function (res) {
         if (res.code === 0) {
-          _index.default.commit("login", res.data);
+          _index.default.commit("login", res.data, data.phone, data.password);
           uni.showToast({
             icon: 'none',
             title: '登陆成功' });

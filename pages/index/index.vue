@@ -256,8 +256,8 @@
                             ' ').substring(0, 19)).getTime())
                     that.agents[that.currentTab].list = res.data.content
                     that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx'
-                    uni.stopPullDownRefresh()
                 }
+                uni.stopPullDownRefresh()
             }, (fail) => {
                 setTimeout(() => {
                     uni.hideLoading()

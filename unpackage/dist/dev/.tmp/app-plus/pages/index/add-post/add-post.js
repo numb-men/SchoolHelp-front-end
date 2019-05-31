@@ -170,7 +170,7 @@ var _default =
     bindTitleInput: function bindTitleInput(e) {
       this.post.title = e.target.value;
       this.post.titleWordCount = e.target.value.length;
-      console.log(this.post.title, this.post.titleWordCount, this.post.title.length, " at pages\\index\\add-post\\add-post.vue:73");
+      // console.log(this.post.title, this.post.titleWordCount, this.post.title.length);
     },
     bindContentInput: function bindContentInput(e) {
       this.post.content = e.target.value;

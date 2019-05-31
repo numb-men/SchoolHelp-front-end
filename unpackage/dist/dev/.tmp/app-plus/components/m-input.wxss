@@ -21,11 +21,13 @@
 	padding: 0 10rpx;
 }
 .m-input-input {
+	height: 90rpx;
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	    -ms-flex: 1;
 	        flex: 1;
 	width: 100%;
+	font-size: 30rpx;
 }
 .m-input-icon {
 	width: 20px;

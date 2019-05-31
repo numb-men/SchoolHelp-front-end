@@ -237,9 +237,9 @@ page {
 .points {
         position: absolute;
         top: 90rpx;
-        left: 510rpx;
+        right: 55rpx;
         /* width: 50upx; */
-        max-width: 200rpx;
+        max-width: 300rpx;
         border-width: 1rpx;
         border-color: #FFFFFF;
         border-style: solid;

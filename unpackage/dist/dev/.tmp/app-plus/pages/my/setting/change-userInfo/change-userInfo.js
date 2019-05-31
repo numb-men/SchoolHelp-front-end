@@ -228,35 +228,36 @@ var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']
   methods: { goUploadImage: function goUploadImage() {uni.chooseImage({ count: 1, // 默认9
         sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-        success: function success(res) {var src = res.tempFilePaths[0];uni.redirectTo({ url: 'upload?src=' + src });} });}, saveChange: function saveChange() {if (this.userInfo.name.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '用户名不能为空' });return;} else if (this.userInfo.phone.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号不能为空' });return;} else if (this.userInfo.sex.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '性别不能为空' });return;} else if (this.userInfo.studentNum.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '学号不能为空' });return;} else if (this.userInfo.major.length == 0) {this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '专业不能为空' });
-
-        return;
-      } else if (this.userInfo.college.length == 0) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '学院不能为空' });
-
-        return;
-      } else if (this.userInfo.mail.length == 0) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '邮箱不能为空' });
-
-        return;
-      }
-      if (this.userInfo.phone.length != 11) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '手机号为11位数字' });
-
-        return;
-      }
+        success: function success(res) {var src = res.tempFilePaths[0];uni.redirectTo({ url: 'upload?src=' + src });} });}, saveChange: function saveChange() {if (this.userInfo.name.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '用户名不能为空' });return;} else if (this.userInfo.phone.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号不能为空' });return;} else if (this.userInfo.sex.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '性别不能为空' });return;} //  else if (this.userInfo.studentNum.length == 0) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '学号不能为空'
+      //     });
+      //     return;
+      // } else if (this.userInfo.major.length == 0) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '专业不能为空'
+      //     });
+      //     return;
+      // } else if (this.userInfo.college.length == 0) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '学院不能为空'
+      //     });
+      //     return;
+      // } else if (this.userInfo.mail.length == 0) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '邮箱不能为空'
+      //     });
+      //     return;
+      // }
+      if (this.userInfo.phone.length != 11) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号为11位数字' });return;}
       if (!/^1(3|4|5|7|8)\d{9}$/.test(this.userInfo.phone)) {
         this.loading = false;
         uni.showToast({
@@ -271,26 +272,26 @@ var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']
           icon: 'none',
           title: '性别只能为“男”或“女”' });
 
-        console.log(this.userInfo.sex, " at pages\\my\\setting\\change-userInfo\\change-userInfo.vue:174");
+        console.log(this.userInfo.sex, " at pages\\my\\setting\\change-userInfo\\change-userInfo.vue:175");
         return;
       }
-      if (this.userInfo.studentNum.length != 9) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '请输入9位数正确学号' });
-
-        return;
-      }
-      var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
-      if (!reg.test(this.userInfo.mail)) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '请输入有效邮箱地址' });
-
-        return;
-      }
+      // if (this.userInfo.studentNum.length != 9) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '请输入9位数正确学号'
+      //     });
+      //     return;
+      // }
+      // var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+      // if (!reg.test(this.userInfo.mail)) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '请输入有效邮箱地址'
+      //     });
+      //     return;
+      // }
       var that = this;
       var url = _api.default.urls.changeUserInfomation;
       var data = {

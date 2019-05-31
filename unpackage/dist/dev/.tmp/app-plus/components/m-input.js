@@ -121,8 +121,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   props: {
     /**
-            * 输入类型
+            * 输入长度
             */
+    maxlength: 0,
+    /**
+                   * 输入类型
+                   */
     type: String,
     /**
                    * 值

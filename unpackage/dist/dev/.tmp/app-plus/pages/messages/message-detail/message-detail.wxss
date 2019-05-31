@@ -104,6 +104,9 @@
   height: 45rpx;
   margin: 7rpx 10rpx;
 }
+.scroll-messages {
+  width: 750rpx;
+}
 .no-use {
   width: 80rpx;
 }

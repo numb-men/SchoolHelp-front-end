@@ -53,7 +53,7 @@
 									<view class="not-certified" v-else>未认证</view>
 								</view>
 								<image class="help-ok" src="/static/icons/help-ok.png" v-if="comment.helpOk"></image>
-								<image class="help-not-ok" src="/static/icons/help-not-ok.png" v-else></image>
+								<image class="help-not-ok" src="/static/icons/help-not-ok.png" v-else @click.stop="setHelpOk" :data-index="index"></image>
 							</view>
 							<view class="post-publish-time">{{comment.publishTime}}</view>
 						</view>
@@ -82,7 +82,9 @@
 				showAddComment: false,
 				commentEnter: "",
 				postDetail: {},
-				post: {}
+				post: {
+					points: 0 ,
+				}
 			}
 		},
 		methods: {
@@ -126,7 +128,7 @@
 								user: {
 									id: item.userId,
 									headImg: item.headImageUrl,
-									isCertified: true,
+									isCertified: false,
 									name: item.commentUserName
 								},
 								publishTime: friendlyDate(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
@@ -152,11 +154,12 @@
 				this.$api.req.put(url, data, (res) =>{
 					console.log(res);
 					for (var i in userIds){
-						if (i == 0) {
-							this.post.user.isCertified = res.data[0];
-							continue;
+						if (this.post.user.id == userIds[i]) {
+							// 检验帖主本人是否认证
+							this.post.user.isCertified = res.data[i];
 						}
 						for (var comment of this.post.comments){
+							// 检验评论者们是否认证
 							if (comment.user.id == userIds[i]){
 								comment.user.isCertified = res.data[i];
 							}
@@ -228,6 +231,57 @@
 					}
 				})
 			},
+			setHelpOk(e) {
+				var index = e.currentTarget.dataset.index;
+				var commentSubmit = this.post.comments[index];
+				// 是帖主、积分不是0
+				console.log(index, this.post.helpUserId, this.$store.state.userInfo.id, commentSubmit.user.id, this.post.user.id);
+				if(this.post.helpUserId != -1){
+					uni.showToast({
+						icon: "none",
+						title: "帖子已经结贴了哦"
+					})
+				}
+				else if (this.$store.state.userInfo.id != this.post.user.id) {
+					uni.showToast({
+						icon: "none",
+						title: "非帖主不能结贴"
+					})
+				}
+				else if(commentSubmit.user.id == this.post.user.id) {
+					uni.showToast({
+						icon: "none",
+						title: "不能给自己设置帮助成功哦"
+					})
+				}
+				else if (this.post.points == 0){
+					uni.showToast({
+						icon: "none",
+						title: "积分为0不能设置帮助成功哦"
+					})
+				}
+				else {
+					var that = this;
+					uni.showModal({
+						title: "设置帮助成功",
+						content: "您确定选择"+commentSubmit.user.name+"帮助成功回答吗？他将获得所有帖子积分。",
+						success(res) {
+							if(res.confirm){
+								// 请求后端
+								var url = that.$api.urls.submitPost;
+								var data = { postId: that.post.id, submitCommentId: commentSubmit.id};
+								that.$api.req.post(url, data, (res) =>{
+									// console.log(res);
+									uni.showToast({
+										title: "结贴成功！"
+									})
+									that.getPostDetail();
+								})
+							}
+						}
+					})
+				}
+			},
 			getPostDetail() {
 				var url = this.$api.urls.getPostDetail + this.postDetail.postId;
 				var data = {};
@@ -242,7 +296,7 @@
 								user: {
 									id: item.userId,
 									headImg: item.headImageUrl,
-									isCertified: true,
+									isCertified: false,
 									name: item.commentUserName
 								},
 								publishTime: friendlyDate(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
@@ -257,7 +311,7 @@
 						user: {
 							id: resPost.userId,
 							headImg: resPost.headImageUrl,
-							isCertified: true,
+							isCertified: false,
 							name: resPost.userName
 						},
 						title: resPost.title,
@@ -276,6 +330,7 @@
 				})
 			}
 		},
+		
 		onPullDownRefresh() {
 			this.getPostDetail();
 			setTimeout(() => {

@@ -187,7 +187,7 @@ var mInput = function mInput() {return __webpack_require__.e(/*! import() | comp
 
           _api.default.req.get(urlLogin, dataLogin, function (resLogin) {
             if (resLogin.code === 0) {
-              _index.default.commit("login", resLogin.data);
+              _index.default.commit("login", resLogin.data, dataLogin.phone, dataLogin.password);
               uni.showToast({
                 icon: 'none',
                 title: '登陆成功' });

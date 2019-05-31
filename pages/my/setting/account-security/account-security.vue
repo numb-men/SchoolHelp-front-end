@@ -43,7 +43,7 @@
 
 		<view class="list-up">
 			<view class="center-list">
-				<view class="center-list-item border-bottom" @click="logoOut">
+				<view class="center-list-item border-bottom" @click="logout">
 					<text class="list-text">退出登录</text>
 				</view>
 			</view>
@@ -67,14 +67,15 @@
 			}
 		},
 		methods: {
-			...mapMutations(['logout']),
-			logoOut() {
+			...mapMutations(['logout', 'clearLastLoginData']),
+			logout() {
 				if (this.hasLogin) {
 					uni.showToast({
 						icon: 'none',
 						title: '注销成功',
 					});
 					this.logout();
+					this.clearLastLoginData();
 					uni.reLaunch({
 						url: '../../../../pages/my/my'
 					});

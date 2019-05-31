@@ -82,8 +82,11 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 
 {
-  onLaunch: function onLaunch() {
+  onShow: function onShow() {
     this.init();
+  },
+  onHide: function onHide() {
+    this.logout();
   },
   methods: {
     // 获取用户信息，检查是否登录，如果已经登录，存储登录状态token和用户信息
@@ -91,32 +94,32 @@ __webpack_require__.r(__webpack_exports__);
       /**
                                               * TODO 开发环境 测试使用
                                               */
-      this.$store.commit("logout");
-      this.$api.req.login("13067247166", "1515491ccc");
+      // this.$store.commit("logout");
+      // this.$api.req.login("13067247166", "1515491ccc");
       // this.$api.req.register("13078901271", "12345abc");
       /*
        * 
       **/
+      // this.$store.commit("clearLastLoginData");
+
       this.$store.commit("getSearchHistroy");
-      console.log(this.$store.state.searchHistroy, " at App.vue:20");
+      console.log(this.$store.state.searchHistroy, " at App.vue:25");
 
       uni.getStorage({
-        key: 'token',
+        key: 'lastLoginData',
         success: function success(res) {
-          console.log("已登录", " at App.vue:25");
-          _this.$store.commit("login", res.data);
-          uni.getStorage({
-            key: "userInfo",
-            success: function success(res2) {
-              _this.$store.commit("saveUserInfo", res2.data);
-            } });
-
+          // console.log(res);
+          console.log("之前登录过，用旧账号登录", " at App.vue:31");
+          _this.$api.req.login(res.data.phone, res.data.password);
         },
         fail: function fail(err) {
-          console.log("未登录", " at App.vue:35");
+          console.log("未登录过", " at App.vue:35");
           console.log(err, " at App.vue:36");
         } });
 
+    },
+    logout: function logout() {
+      this.$api.req.logout();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

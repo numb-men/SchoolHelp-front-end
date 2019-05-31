@@ -9,7 +9,7 @@ function friendlyDate(timestamp) {
 	};
 
 	var now = Date.now();
-	var seconds = Math.floor((now - timestamp) / 1000);
+	var seconds = Math.floor((now - timestamp) / 1000)+1;	//防止-1秒前
 	var minutes = Math.floor(seconds / 60);
 	var hours = Math.floor(minutes / 60);
 	var days = Math.floor(hours / 24);

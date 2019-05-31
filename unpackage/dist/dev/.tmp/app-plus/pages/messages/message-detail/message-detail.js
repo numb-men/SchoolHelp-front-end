@@ -131,6 +131,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园帮/SchoolHelp-front-end/common/util.js"); //
 //
 //
@@ -163,7 +166,12 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { myUserId: "", myHeadImg: "", messageInput: "", chat: { userName: "", userHeadImg: "", userId: "", isOnline: "", msgs: [] } };}, onLoad: function onLoad(option) {var detail = JSON.parse(option.detail);this.myUserId = this.$store.state.userInfo.id;this.chat.userId = detail.chatUserId;this.getEasyUserInfo();this.myHeadImg = this.$store.state.userInfo.headImageUrl;this.getMessageList();}, methods: { getEasyUserInfo: function getEasyUserInfo() {var _this = this;var url = this.$api.urls.getOtherUserInfo + this.chat.userId;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:66");
+//
+//
+//
+var _default = { data: function data() {return { myUserId: "", myHeadImg: "", messageInput: "", chat: { userName: "", userHeadImg: "", userId: "", isOnline: "", msgs: [] }, bottomId: '', scrollHeight: 900 };}, onLoad: function onLoad(option) {var device = uni.getSystemInfoSync();this.scrollHeight = device.windowHeight - 80;var detail = JSON.parse(option.detail);this.myUserId = this.$store.state.userInfo.id;this.chat.userId = detail.chatUserId;this.getEasyUserInfo();this.myHeadImg = this.$store.state.userInfo.headImageUrl;this.getMessageList();}, methods: { getEasyUserInfo: function getEasyUserInfo() {var _this = this;var url = this.$api.urls.getOtherUserInfo + this.chat.userId;var data = {};
+      this.$api.req.get(url, data, function (res) {
+        console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:74");
         _this.chat.userHeadImg = res.data.headImageUrl;
         _this.chat.userName = res.data.name;
         _this.chat.isOnline = res.data.online;
@@ -185,7 +193,7 @@ var _default = { data: function data() {return { myUserId: "", myHeadImg: "", me
       });
       if (data.messageId.length > 0) {
         this.$api.req.put(url, data, function (res) {
-          console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:88");
+          console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:96");
         });
       }
     },
@@ -203,13 +211,15 @@ var _default = { data: function data() {return { myUserId: "", myHeadImg: "", me
 
         });
         _this2.readAll();
+        _this2.bottomId = 'msg-' + _this2.chat.msgs[_this2.chat.msgs.length - 1].id;
+        console.log(_this2.bottomId, " at pages\\messages\\message-detail\\message-detail.vue:115");
       });
     },
     sendMessage: function sendMessage() {var _this3 = this;
       var url = this.$api.urls.sendMessage;
       var data = { messageContent: this.messageInput, accept: this.chat.userId };
       this.$api.req.post(url, data, function (res) {
-        console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:112");
+        console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:122");
         _this3.getMessageList();
         _this3.messageInput = "";
       });

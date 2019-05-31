@@ -519,4 +519,26 @@ page {
 .bottom-nav-item:active {
         background-color: #c9c9c9;
 }
+.points {
+		position: absolute;
+		top: 90rpx;
+        right: 55rpx;
+        /* width: 50upx; */
+        max-width: 300rpx;
+		border-width: 1rpx;
+		border-color: #FFFFFF;
+		border-style: solid;
+		-webkit-box-shadow: 1px 1px 5px #888888;
+		        box-shadow: 1px 1px 5px #888888;
+		background-color: #FFFFFF;
+		border-radius: 10rpx;
+		height: 50rpx;
+}
+.point-text {
+		width: 100%;
+		font-family: texticons;
+		font-size: 34rpx;
+		color: #555;
+		text-align: center;
+}
 

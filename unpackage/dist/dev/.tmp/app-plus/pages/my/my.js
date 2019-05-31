@@ -194,7 +194,26 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
-  computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']),
+  computed: _objectSpread({},
+  (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), {
+    pointText: function pointText() {
+      if (this.userInfo.points) {
+        if (this.userInfo.points > 100000000) {
+          return (this.userInfo.points / 10000000).toFixed(2) + '千万';
+        } else
+        if (this.userInfo.points > 1000000) {
+          return (this.userInfo.points / 1000000).toFixed(2) + '百万';
+        } else
+        if (this.userInfo.points > 10000) {
+          return (this.userInfo.points / 1000).toFixed(2) + '千';
+        } else
+        {
+          return this.userInfo.points;
+        }
+      }
+      return 0;
+    } }),
+
   data: function data() {
     return {};
   },

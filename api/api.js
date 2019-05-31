@@ -2,13 +2,14 @@ import store from "../store/index.js";
 
 // API 请求根路径
 // var root = "http://250r7838l8.qicp.vip"
-var root = "http://134.175.16.143:8080/schoolhelp-1.1.0";
+var root = "http://134.175.16.143:8080/schoolhelp-1.1.1";
 // var root = "/schoolhelp"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
 var urls = {
 	register: `${root}/register`,
 	login: `${root}/login`,
+	logout: `${root}/logout`, //登出
 	sendMessage: `${root}/user/message`,
 	updateUserInfo: `${root}/user`,
 	deleteCollect: `${root}/user/collect`,
@@ -41,6 +42,7 @@ var urls = {
 	getSelfHeadImg: `${root}/download/head`, //获取用户自己的头像
 	setMessageRead: `${root}/message/state`, //设置消息已读
 	checkCertified: `${root}/user/checkCertified`, //判断用户Id列表是否已经认证
+	submitPost: `${root}/post/submit`, //结贴
 	
 	/**********************************************/
 	
@@ -51,7 +53,7 @@ var urls = {
     getPostList: `${root}/post/pages`,
     changeUserInfomation: `${root}/user`,
     changePassword: `${root}/user/password`,
-    postHead: `${root}/uploadimg/head`
+    postHead: `${root}/uploadimg/head`,
 }
 
 // 封装请求方法
@@ -74,7 +76,7 @@ var req = {
 					// 打印错误提示
 					uni.showToast({
 						icon: "none",
-						title: res.data.msg
+						title: res.data.msg || "请求失败"
 					})
 					if (fail) fail(res.data);
 				}
@@ -113,7 +115,7 @@ var req = {
 		var url = urls.login;
 		var data = { phone, password };
 		this.get(url, data, (res) => {
-			store.commit("login", res.data);
+			store.commit("login", res.data, phone, password);
 			this.getUserInfo();
 		});
 	},
@@ -123,9 +125,18 @@ var req = {
 		var url = urls.register;
 		var data = { phone, password };
 		this.post(url, data, (res) => {
-			store.commit("login", res.data);
+			store.commit("login", res.data, phone, password);
 			this.getUserInfo();
 		});
+	},
+	
+	// 退出登录
+	logout(){
+		var url = urls.logout;
+		var data = {};
+		this.get(url, data, (res) =>{
+			store.commit("logout");
+		})
 	}
 }
 

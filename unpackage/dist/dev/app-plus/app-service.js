@@ -1159,7 +1159,7 @@ Z([[6],[[7],[3,'chat']],[3,'msgs']])
 Z([3,'id'])
 Z([3,'chat-box'])
 Z([[7],[3,'index']])
-Z([[6],[[7],[3,'msgItem']],[3,'id']])
+Z([[2,'+'],[1,'msg-'],[[6],[[7],[3,'msgItem']],[3,'id']]])
 Z([[2,'!'],[[6],[[7],[3,'msgItem']],[3,'isMe']]])
 Z([3,'auto-box'])
 Z([[6],[[7],[3,'msgItem']],[3,'isMe']])
@@ -1373,8 +1373,8 @@ var xC=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
 var oD=_v()
 _(xC,oD)
 if(_oz(z,2,e,s,gg)){oD.wxVkey=1
-cs.push("./components/m-input.wxml:block:1:383")
-cs.push("./components/m-input.wxml:m-icon:1:469")
+cs.push("./components/m-input.wxml:block:1:409")
+cs.push("./components/m-input.wxml:m-icon:1:495")
 var cF=_mz(z,'m-icon',['bind:click',3,'color',1,'data-event-opts',2,'size',3,'type',4],[],e,s,gg)
 cs.pop()
 _(oD,cF)
@@ -1383,8 +1383,8 @@ cs.pop()
 var fE=_v()
 _(xC,fE)
 if(_oz(z,8,e,s,gg)){fE.wxVkey=1
-cs.push("./components/m-input.wxml:block:1:604")
-cs.push("./components/m-input.wxml:m-icon:1:663")
+cs.push("./components/m-input.wxml:block:1:630")
+cs.push("./components/m-input.wxml:m-icon:1:689")
 var hG=_mz(z,'m-icon',['bind:click',9,'color',1,'data-event-opts',2,'size',3,'type',4],[],e,s,gg)
 cs.pop()
 _(fE,hG)
@@ -1504,29 +1504,29 @@ cs.push("./pages/messages/message-detail/message-detail.wxml:view:1:1")
 var h9=_mz(z,'view',['bind:__l',0,'class',1,'id',1],[],e,s,gg)
 var o0=_v()
 _(h9,o0)
-cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:58")
+cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:182")
 var cAB=function(lCB,oBB,aDB,gg){
-cs.push("./pages/messages/message-detail/message-detail.wxml:view:1:150")
+cs.push("./pages/messages/message-detail/message-detail.wxml:view:1:274")
 var eFB=_mz(z,'view',['class',7,'data-index',1,'id',2],[],lCB,oBB,gg)
 var bGB=_v()
 _(eFB,bGB)
 if(_oz(z,10,lCB,oBB,gg)){bGB.wxVkey=1
-cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:216")
+cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:347")
 cs.pop()
 }
-cs.push("./pages/messages/message-detail/message-detail.wxml:view:1:336")
+cs.push("./pages/messages/message-detail/message-detail.wxml:view:1:467")
 var xIB=_n('view')
 _rz(z,xIB,'class',11,lCB,oBB,gg)
 var oJB=_v()
 _(xIB,oJB)
 if(_oz(z,12,lCB,oBB,gg)){oJB.wxVkey=1
-cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:359")
+cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:490")
 cs.pop()
 }
 var fKB=_v()
 _(xIB,fKB)
 if(_oz(z,13,lCB,oBB,gg)){fKB.wxVkey=1
-cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:626")
+cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:757")
 cs.pop()
 }
 oJB.wxXCkey=1
@@ -1536,7 +1536,7 @@ _(eFB,xIB)
 var oHB=_v()
 _(eFB,oHB)
 if(_oz(z,14,lCB,oBB,gg)){oHB.wxVkey=1
-cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:702")
+cs.push("./pages/messages/message-detail/message-detail.wxml:block:1:833")
 cs.pop()
 }
 bGB.wxXCkey=1
@@ -1942,8 +1942,11 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 
 {
-  onLaunch: function onLaunch() {
+  onShow: function onShow() {
     this.init();
+  },
+  onHide: function onHide() {
+    this.logout();
   },
   methods: {
     // 获取用户信息，检查是否登录，如果已经登录，存储登录状态token和用户信息
@@ -1951,32 +1954,32 @@ __webpack_require__.r(__webpack_exports__);
       /**
                                               * TODO 开发环境 测试使用
                                               */
-      this.$store.commit("logout");
-      this.$api.req.login("13067247166", "1515491ccc");
+      // this.$store.commit("logout");
+      // this.$api.req.login("13067247166", "1515491ccc");
       // this.$api.req.register("13078901271", "12345abc");
       /*
        * 
       **/
+      // this.$store.commit("clearLastLoginData");
+
       this.$store.commit("getSearchHistroy");
-      console.log(this.$store.state.searchHistroy, " at App.vue:20");
+      console.log(this.$store.state.searchHistroy, " at App.vue:25");
 
       uni.getStorage({
-        key: 'token',
+        key: 'lastLoginData',
         success: function success(res) {
-          console.log("已登录", " at App.vue:25");
-          _this.$store.commit("login", res.data);
-          uni.getStorage({
-            key: "userInfo",
-            success: function success(res2) {
-              _this.$store.commit("saveUserInfo", res2.data);
-            } });
-
+          // console.log(res);
+          console.log("之前登录过，用旧账号登录", " at App.vue:31");
+          _this.$api.req.login(res.data.phone, res.data.password);
         },
         fail: function fail(err) {
-          console.log("未登录", " at App.vue:35");
+          console.log("未登录过", " at App.vue:35");
           console.log(err, " at App.vue:36");
         } });
 
+    },
+    logout: function logout() {
+      this.$api.req.logout();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -2276,13 +2279,14 @@ define('common/vendor.js',function(require, module, exports, window, document, f
 
 // API 请求根路径
 // var root = "http://250r7838l8.qicp.vip"
-var root = "http://134.175.16.143:8080/schoolhelp-1.1.0";
+var root = "http://134.175.16.143:8080/schoolhelp-1.1.1";
 // var root = "/schoolhelp"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
 var urls = (_urls = {
   register: "".concat(root, "/register"),
   login: "".concat(root, "/login"),
+  logout: "".concat(root, "/logout"), //登出
   sendMessage: "".concat(root, "/user/message"),
   updateUserInfo: "".concat(root, "/user"),
   deleteCollect: "".concat(root, "/user/collect"),
@@ -2315,6 +2319,7 @@ var urls = (_urls = {
   getSelfHeadImg: "".concat(root, "/download/head"), //获取用户自己的头像
   setMessageRead: "".concat(root, "/message/state"), //设置消息已读
   checkCertified: "".concat(root, "/user/checkCertified"), //判断用户Id列表是否已经认证
+  submitPost: "".concat(root, "/post/submit"), //结贴
 
   /**********************************************/
 
@@ -2341,20 +2346,20 @@ var req = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(res.data, method, url, " at api\\api.js:70");
+        console.log(res.data, method, url, " at api\\api.js:72");
         if (res.data.code == 0) {
           _success(res.data);
         } else {
           // 打印错误提示
           uni.showToast({
             icon: "none",
-            title: res.data.msg });
+            title: res.data.msg || "请求失败" });
 
           if (_fail) _fail(res.data);
         }
       },
       fail: function fail(err) {
-        console.log(method, url, "fail", " at api\\api.js:83");
+        console.log(method, url, "fail", " at api\\api.js:85");
         if (_fail) _fail(err); // 如果失败方法非空，执行失败方法
       } });
 
@@ -2387,7 +2392,7 @@ var req = {
     var url = urls.login;
     var data = { phone: phone, password: password };
     this.get(url, data, function (res) {
-      _index.default.commit("login", res.data);
+      _index.default.commit("login", res.data, phone, password);
       _this.getUserInfo();
     });
   },
@@ -2397,8 +2402,17 @@ var req = {
     var url = urls.register;
     var data = { phone: phone, password: password };
     this.post(url, data, function (res) {
-      _index.default.commit("login", res.data);
+      _index.default.commit("login", res.data, phone, password);
       _this2.getUserInfo();
+    });
+  },
+
+  // 退出登录
+  logout: function logout() {
+    var url = urls.logout;
+    var data = {};
+    this.get(url, data, function (res) {
+      _index.default.commit("logout");
     });
   } };var _default =
 
@@ -3426,7 +3440,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.friendlyDa
 
 
   var now = Date.now();
-  var seconds = Math.floor((now - timestamp) / 1000);
+  var seconds = Math.floor((now - timestamp) / 1000) + 1; //防止-1秒前
   var minutes = Math.floor(seconds / 60);
   var hours = Math.floor(minutes / 60);
   var days = Math.floor(hours / 24);
@@ -4037,7 +4051,7 @@ var store = new _vuex.default.Store({
 
   mutations: {
     // 保存登录状态
-    login: function login(state, token) {
+    login: function login(state, token, phone, password) {
       state.hasLogin = true;
       state.token = token;
       console.log("save token", token, " at store\\index.js:18");
@@ -4045,10 +4059,15 @@ var store = new _vuex.default.Store({
         key: 'token',
         data: token });
 
+      uni.setStorage({
+        key: 'lastLoginData',
+        data: { phone: phone, password: password } });
+
     },
     // 登出，清空登录状态，同时清空用户信息
     logout: function logout(state) {
       state.hasLogin = false;
+      console.log("退出登录", " at store\\index.js:31");
       this.commit("clearUserInfo");
       uni.removeStorage({
         key: 'token' });
@@ -4057,10 +4076,14 @@ var store = new _vuex.default.Store({
     // 保存用户信息
     saveUserInfo: function saveUserInfo(state, userInfo) {
       state.userInfo = userInfo;
-      console.log("save userInfo", userInfo, " at store\\index.js:35");
+      console.log("save userInfo", userInfo, " at store\\index.js:40");
       uni.setStorage({
         key: 'userInfo',
         data: userInfo });
+
+      uni.setStorage({
+        key: 'lastLoginData',
+        data: { phone: userInfo.phone, password: userInfo.password } });
 
     },
     // 清空用户信息
@@ -4070,9 +4093,20 @@ var store = new _vuex.default.Store({
         key: 'userInfo' });
 
     },
+    // 清空之前的登录信息
+    clearLastLoginData: function clearLastLoginData(state) {
+      console.log("清除上次登录信息", " at store\\index.js:59");
+      uni.removeStorage({
+        key: 'lastLoginData' });
+
+    },
     // 删除某条搜索历史
     deleteASearchHistroy: function deleteASearchHistroy(state, index) {
       state.searchHistroy.splice(index, 1);
+      uni.setStorage({
+        key: "searchHistroy",
+        data: state.searchHistroy });
+
     },
     // 获取搜索历史
     getSearchHistroy: function getSearchHistroy(state) {
@@ -4083,7 +4117,7 @@ var store = new _vuex.default.Store({
         },
         fail: function fail(err) {
           state.searchHistroy = [];
-          console.log(err, " at store\\index.js:61");
+          console.log(err, " at store\\index.js:81");
         } });
 
     },
@@ -12501,8 +12535,12 @@ define('components/m-input.js',function(require, module, exports, window, docume
 
       props: {
         /**
-                       * 输入类型
+                       * 输入长度
                        */
+        maxlength: 0,
+        /**
+                                     * 输入类型
+                                     */
         type: String,
         /**
                                      * 值
@@ -12993,8 +13031,8 @@ var _default = { data: function data() {return { scrollLeft: 0, currentTab: 0, t
           ' ').substring(0, 19)).getTime());}
         that.agents[that.currentTab].list = res.data.content;
         that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx';
-        uni.stopPullDownRefresh();
       }
+      uni.stopPullDownRefresh();
     }, function (fail) {
       setTimeout(function () {
         uni.hideLoading();
@@ -13495,6 +13533,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园帮/SchoolHelp-front-end/common/util.js"); //
 //
 //
@@ -13527,7 +13568,12 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { myUserId: "", myHeadImg: "", messageInput: "", chat: { userName: "", userHeadImg: "", userId: "", isOnline: "", msgs: [] } };}, onLoad: function onLoad(option) {var detail = JSON.parse(option.detail);this.myUserId = this.$store.state.userInfo.id;this.chat.userId = detail.chatUserId;this.getEasyUserInfo();this.myHeadImg = this.$store.state.userInfo.headImageUrl;this.getMessageList();}, methods: { getEasyUserInfo: function getEasyUserInfo() {var _this = this;var url = this.$api.urls.getOtherUserInfo + this.chat.userId;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:66");
+//
+//
+//
+var _default = { data: function data() {return { myUserId: "", myHeadImg: "", messageInput: "", chat: { userName: "", userHeadImg: "", userId: "", isOnline: "", msgs: [] }, bottomId: '', scrollHeight: 900 };}, onLoad: function onLoad(option) {var device = uni.getSystemInfoSync();this.scrollHeight = device.windowHeight - 80;var detail = JSON.parse(option.detail);this.myUserId = this.$store.state.userInfo.id;this.chat.userId = detail.chatUserId;this.getEasyUserInfo();this.myHeadImg = this.$store.state.userInfo.headImageUrl;this.getMessageList();}, methods: { getEasyUserInfo: function getEasyUserInfo() {var _this = this;var url = this.$api.urls.getOtherUserInfo + this.chat.userId;var data = {};
+      this.$api.req.get(url, data, function (res) {
+        console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:74");
         _this.chat.userHeadImg = res.data.headImageUrl;
         _this.chat.userName = res.data.name;
         _this.chat.isOnline = res.data.online;
@@ -13549,7 +13595,7 @@ var _default = { data: function data() {return { myUserId: "", myHeadImg: "", me
       });
       if (data.messageId.length > 0) {
         this.$api.req.put(url, data, function (res) {
-          console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:88");
+          console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:96");
         });
       }
     },
@@ -13567,13 +13613,15 @@ var _default = { data: function data() {return { myUserId: "", myHeadImg: "", me
 
         });
         _this2.readAll();
+        _this2.bottomId = 'msg-' + _this2.chat.msgs[_this2.chat.msgs.length - 1].id;
+        console.log(_this2.bottomId, " at pages\\messages\\message-detail\\message-detail.vue:115");
       });
     },
     sendMessage: function sendMessage() {var _this3 = this;
       var url = this.$api.urls.sendMessage;
       var data = { messageContent: this.messageInput, accept: this.chat.userId };
       this.$api.req.post(url, data, function (res) {
-        console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:112");
+        console.log(res, " at pages\\messages\\message-detail\\message-detail.vue:122");
         _this3.getMessageList();
         _this3.messageInput = "";
       });
@@ -14028,7 +14076,26 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));
 var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
-  computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']),
+  computed: _objectSpread({},
+  (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']), {
+    pointText: function pointText() {
+      if (this.userInfo.points) {
+        if (this.userInfo.points > 100000000) {
+          return (this.userInfo.points / 10000000).toFixed(2) + '千万';
+        } else
+        if (this.userInfo.points > 1000000) {
+          return (this.userInfo.points / 1000000).toFixed(2) + '百万';
+        } else
+        if (this.userInfo.points > 10000) {
+          return (this.userInfo.points / 1000).toFixed(2) + '千';
+        } else
+        {
+          return this.userInfo.points;
+        }
+      }
+      return 0;
+    } }),
+
   data: function data() {
     return {};
   },
@@ -14420,31 +14487,34 @@ var _util = __webpack_require__(/*! @/common/util.js */ "../../../../../校园�
 //
 //
 //
-var _default = { data: function data() {return { showAddComment: false, commentEnter: "", postDetail: {}, post: {} };}, methods: { showAddCommentBox: function showAddCommentBox() {this.showAddComment = true;}, hideAddCommentBox: function hideAddCommentBox() {this.showAddComment = false;}, goUserData: function goUserData(e) {console.log(e.currentTarget.dataset.userid, this.$store.state.userInfo.id, " at pages\\index\\post-detail\\post-detail.vue:96");if (e.currentTarget.dataset.userId != this.$store.state.userInfo.id) {// 非自身的用户
-        uni.navigateTo({ url: "../../otherUsers/otherUsers?userId=" + e.currentTarget.dataset.userid });}}, addComment: function addComment() {var _this = this;var url = this.$api.urls.addComment;var data = { postId: this.post.id, commentContent: this.commentEnter };console.log(data, " at pages\\index\\post-detail\\post-detail.vue:107");this.$api.req.post(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:109");_this.commentEnter = "";_this.updateComments();_this.hideAddCommentBox();});}, updateComments: function updateComments() {var _this2 = this;var url = this.$api.urls.getAllComments + this.post.id;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:119");var helpUserId = _this2.post.helpUserId;var comments = [];if (res.data) {comments = res.data.map(function (item) {return { id: item.commentId, user: { id: item.userId, headImg: item.headImageUrl, isCertified: true, name: item.commentUserName }, publishTime: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()), content: item.commentContent, helpOk: item.userId == helpUserId };});_this2.post.comments = comments;_this2.checkCertified();}});}, checkCertified: function checkCertified() {var _this3 = this;var url = this.$api.urls.checkCertified;var userIds = [];userIds.push(this.post.user.id);this.post.comments.map(function (comment) {if (!userIds.includes(comment.user.id)) userIds.push(comment.user.id);});
+var _default = { data: function data() {return { showAddComment: false, commentEnter: "", postDetail: {}, post: { points: 0 } };}, methods: { showAddCommentBox: function showAddCommentBox() {this.showAddComment = true;}, hideAddCommentBox: function hideAddCommentBox() {this.showAddComment = false;}, goUserData: function goUserData(e) {console.log(e.currentTarget.dataset.userid, this.$store.state.userInfo.id, " at pages\\index\\post-detail\\post-detail.vue:98");if (e.currentTarget.dataset.userId != this.$store.state.userInfo.id) {// 非自身的用户
+        uni.navigateTo({ url: "../../otherUsers/otherUsers?userId=" + e.currentTarget.dataset.userid });}}, addComment: function addComment() {var _this = this;var url = this.$api.urls.addComment;var data = { postId: this.post.id, commentContent: this.commentEnter };console.log(data, " at pages\\index\\post-detail\\post-detail.vue:109");this.$api.req.post(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:111");_this.commentEnter = "";_this.updateComments();_this.hideAddCommentBox();});}, updateComments: function updateComments() {var _this2 = this;var url = this.$api.urls.getAllComments + this.post.id;var data = {};this.$api.req.get(url, data, function (res) {console.log(res, " at pages\\index\\post-detail\\post-detail.vue:121");var helpUserId = _this2.post.helpUserId;var comments = [];if (res.data) {comments = res.data.map(function (item) {return { id: item.commentId, user: { id: item.userId, headImg: item.headImageUrl, isCertified: false, name: item.commentUserName }, publishTime: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()), content: item.commentContent, helpOk: item.userId == helpUserId };});_this2.post.comments = comments;_this2.checkCertified();}});}, checkCertified: function checkCertified() {var _this3 = this;var url = this.$api.urls.checkCertified;var userIds = [];userIds.push(this.post.user.id);this.post.comments.map(function (comment) {if (!userIds.includes(comment.user.id))
+        userIds.push(comment.user.id);
+      });
       var data = { userIds: userIds };
-      console.log(data, " at pages\\index\\post-detail\\post-detail.vue:151");
+      console.log(data, " at pages\\index\\post-detail\\post-detail.vue:153");
       this.$api.req.put(url, data, function (res) {
-        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:153");
+        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:155");
         for (var i in userIds) {
-          if (i == 0) {
-            _this3.post.user.isCertified = res.data[0];
-            continue;
+          if (_this3.post.user.id == userIds[i]) {
+            // 检验帖主本人是否认证
+            _this3.post.user.isCertified = res.data[i];
           }var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
             for (var _iterator = _this3.post.comments[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var comment = _step.value;
+              // 检验评论者们是否认证
               if (comment.user.id == userIds[i]) {
                 comment.user.isCertified = res.data[i];
               }
             }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
         }
-        console.log(_this3.post, " at pages\\index\\post-detail\\post-detail.vue:165");
+        console.log(_this3.post, " at pages\\index\\post-detail\\post-detail.vue:168");
       });
     },
     approvalPost: function approvalPost() {var _this4 = this;
       var url = this.$api.urls.approvalPost;
       var data = { postId: this.post.id };
       this.$api.req.post(url, data, function (res) {
-        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:172");
+        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:175");
         if (res.code == 0) {
           uni.showToast({
             icon: "none",
@@ -14503,11 +14573,62 @@ var _default = { data: function data() {return { showAddComment: false, commentE
         }
       });
     },
+    setHelpOk: function setHelpOk(e) {
+      var index = e.currentTarget.dataset.index;
+      var commentSubmit = this.post.comments[index];
+      // 是帖主、积分不是0
+      console.log(index, this.post.helpUserId, this.$store.state.userInfo.id, commentSubmit.user.id, this.post.user.id, " at pages\\index\\post-detail\\post-detail.vue:238");
+      if (this.post.helpUserId != -1) {
+        uni.showToast({
+          icon: "none",
+          title: "帖子已经结贴了哦" });
+
+      } else
+      if (this.$store.state.userInfo.id != this.post.user.id) {
+        uni.showToast({
+          icon: "none",
+          title: "非帖主不能结贴" });
+
+      } else
+      if (commentSubmit.user.id == this.post.user.id) {
+        uni.showToast({
+          icon: "none",
+          title: "不能给自己设置帮助成功哦" });
+
+      } else
+      if (this.post.points == 0) {
+        uni.showToast({
+          icon: "none",
+          title: "积分为0不能设置帮助成功哦" });
+
+      } else
+      {
+        var that = this;
+        uni.showModal({
+          title: "设置帮助成功",
+          content: "您确定选择" + commentSubmit.user.name + "帮助成功回答吗？他将获得所有帖子积分。",
+          success: function success(res) {
+            if (res.confirm) {
+              // 请求后端
+              var url = that.$api.urls.submitPost;
+              var data = { postId: that.post.id, submitCommentId: commentSubmit.id };
+              that.$api.req.post(url, data, function (res) {
+                // console.log(res);
+                uni.showToast({
+                  title: "结贴成功！" });
+
+                that.getPostDetail();
+              });
+            }
+          } });
+
+      }
+    },
     getPostDetail: function getPostDetail() {var _this7 = this;
       var url = this.$api.urls.getPostDetail + this.postDetail.postId;
       var data = {};
       this.$api.req.get(url, data, function (res) {
-        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:235");
+        console.log(res, " at pages\\index\\post-detail\\post-detail.vue:289");
         var helpUserId = res.data.post.helpUserId;
         var comments = [];
         if (res.data.comments) {
@@ -14517,7 +14638,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
               user: {
                 id: item.userId,
                 headImg: item.headImageUrl,
-                isCertified: true,
+                isCertified: false,
                 name: item.commentUserName },
 
               publishTime: (0, _util.friendlyDate)(new Date(item.commentTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
@@ -14532,7 +14653,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
           user: {
             id: resPost.userId,
             headImg: resPost.headImageUrl,
-            isCertified: true,
+            isCertified: false,
             name: resPost.userName },
 
           title: resPost.title,
@@ -14551,6 +14672,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
       });
     } },
 
+
   onPullDownRefresh: function onPullDownRefresh() {
     this.getPostDetail();
     setTimeout(function () {
@@ -14560,7 +14682,7 @@ var _default = { data: function data() {return { showAddComment: false, commentE
   onLoad: function onLoad(option) {
     this.postDetail = JSON.parse(option.query);
     for (var key in this.postDetail) {
-      console.log(key, "---", this.postDetail[key], " at pages\\index\\post-detail\\post-detail.vue:288");
+      console.log(key, "---", this.postDetail[key], " at pages\\index\\post-detail\\post-detail.vue:343");
     }
     this.getPostDetail();
   } };exports.default = _default;
@@ -14780,7 +14902,7 @@ var _default =
     bindTitleInput: function bindTitleInput(e) {
       this.post.title = e.target.value;
       this.post.titleWordCount = e.target.value.length;
-      console.log(this.post.title, this.post.titleWordCount, this.post.title.length, " at pages\\index\\add-post\\add-post.vue:73");
+      // console.log(this.post.title, this.post.titleWordCount, this.post.title.length);
     },
     bindContentInput: function bindContentInput(e) {
       this.post.content = e.target.value;
@@ -15814,7 +15936,7 @@ var _md = __webpack_require__(/*! ../../../api/md5.js */ "../../../../../校园�
 
       _api.default.req.get(url, data, function (res) {
         if (res.code === 0) {
-          _index.default.commit("login", res.data);
+          _index.default.commit("login", res.data, data.phone, data.password);
           uni.showToast({
             icon: 'none',
             title: '登陆成功' });
@@ -16145,7 +16267,7 @@ var _md = __webpack_require__(/*! ../../../api/md5.js */ "../../../../../校园�
 
           _api.default.req.get(urlLogin, dataLogin, function (resLogin) {
             if (resLogin.code === 0) {
-              _index.default.commit("login", resLogin.data);
+              _index.default.commit("login", resLogin.data, dataLogin.phone, dataLogin.password);
               uni.showToast({
                 icon: 'none',
                 title: '登陆成功' });
@@ -17983,14 +18105,15 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../api/api.js
 
   },
   methods: _objectSpread({},
-  (0, _vuex.mapMutations)(['logout']), {
-    logoOut: function logoOut() {
+  (0, _vuex.mapMutations)(['logout', 'clearLastLoginData']), {
+    logout: function logout() {
       if (this.hasLogin) {
         uni.showToast({
           icon: 'none',
           title: '注销成功' });
 
         this.logout();
+        this.clearLastLoginData();
         uni.reLaunch({
           url: '../../../../pages/my/my' });
 
@@ -18007,10 +18130,10 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../api/api.js
 
     },
     switch1Change: function switch1Change(e) {
-      console.log('switch1 发生 change 事件，携带值为', e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:94");
+      console.log('switch1 发生 change 事件，携带值为', e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:95");
     },
     bindPickerChange: function bindPickerChange(e) {
-      console.log('picker发送选择改变，携带值为：' + e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:97");
+      console.log('picker发送选择改变，携带值为：' + e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:98");
       this.index = e.target.value;
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
@@ -18827,7 +18950,7 @@ var mInput = function mInput() {return __webpack_require__.e(/*! import() | comp
 
           _api.default.req.get(urlLogin, dataLogin, function (resLogin) {
             if (resLogin.code === 0) {
-              _index.default.commit("login", resLogin.data);
+              _index.default.commit("login", resLogin.data, dataLogin.phone, dataLogin.password);
               uni.showToast({
                 icon: 'none',
                 title: '登陆成功' });
@@ -19155,35 +19278,36 @@ var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']
   methods: { goUploadImage: function goUploadImage() {uni.chooseImage({ count: 1, // 默认9
         sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-        success: function success(res) {var src = res.tempFilePaths[0];uni.redirectTo({ url: 'upload?src=' + src });} });}, saveChange: function saveChange() {if (this.userInfo.name.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '用户名不能为空' });return;} else if (this.userInfo.phone.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号不能为空' });return;} else if (this.userInfo.sex.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '性别不能为空' });return;} else if (this.userInfo.studentNum.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '学号不能为空' });return;} else if (this.userInfo.major.length == 0) {this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '专业不能为空' });
-
-        return;
-      } else if (this.userInfo.college.length == 0) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '学院不能为空' });
-
-        return;
-      } else if (this.userInfo.mail.length == 0) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '邮箱不能为空' });
-
-        return;
-      }
-      if (this.userInfo.phone.length != 11) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '手机号为11位数字' });
-
-        return;
-      }
+        success: function success(res) {var src = res.tempFilePaths[0];uni.redirectTo({ url: 'upload?src=' + src });} });}, saveChange: function saveChange() {if (this.userInfo.name.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '用户名不能为空' });return;} else if (this.userInfo.phone.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号不能为空' });return;} else if (this.userInfo.sex.length == 0) {this.loading = false;uni.showToast({ icon: 'none', title: '性别不能为空' });return;} //  else if (this.userInfo.studentNum.length == 0) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '学号不能为空'
+      //     });
+      //     return;
+      // } else if (this.userInfo.major.length == 0) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '专业不能为空'
+      //     });
+      //     return;
+      // } else if (this.userInfo.college.length == 0) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '学院不能为空'
+      //     });
+      //     return;
+      // } else if (this.userInfo.mail.length == 0) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '邮箱不能为空'
+      //     });
+      //     return;
+      // }
+      if (this.userInfo.phone.length != 11) {this.loading = false;uni.showToast({ icon: 'none', title: '手机号为11位数字' });return;}
       if (!/^1(3|4|5|7|8)\d{9}$/.test(this.userInfo.phone)) {
         this.loading = false;
         uni.showToast({
@@ -19198,26 +19322,26 @@ var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo', 'token']
           icon: 'none',
           title: '性别只能为“男”或“女”' });
 
-        console.log(this.userInfo.sex, " at pages\\my\\setting\\change-userInfo\\change-userInfo.vue:174");
+        console.log(this.userInfo.sex, " at pages\\my\\setting\\change-userInfo\\change-userInfo.vue:175");
         return;
       }
-      if (this.userInfo.studentNum.length != 9) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '请输入9位数正确学号' });
-
-        return;
-      }
-      var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
-      if (!reg.test(this.userInfo.mail)) {
-        this.loading = false;
-        uni.showToast({
-          icon: 'none',
-          title: '请输入有效邮箱地址' });
-
-        return;
-      }
+      // if (this.userInfo.studentNum.length != 9) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '请输入9位数正确学号'
+      //     });
+      //     return;
+      // }
+      // var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+      // if (!reg.test(this.userInfo.mail)) {
+      //     this.loading = false;
+      //     uni.showToast({
+      //         icon: 'none',
+      //         title: '请输入有效邮箱地址'
+      //     });
+      //     return;
+      // }
       var that = this;
       var url = _api.default.urls.changeUserInfomation;
       var data = {
@@ -19787,93 +19911,120 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 
 var _index = _interopRequireDefault(__webpack_require__(/*! ../../store/index.js */ "../../../../../校园帮/SchoolHelp-front-end/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { computed: (0, _vuex.mapState)(['hasLogin', 'userInfo']), data: function data() {return { targetUserInfo: {}, targetUserId: '' };}, onLoad: function onLoad(option) {this.targetUserId = option.userId;var url = _api.default.urls.getOtherUserInfo + option.userId;var data = {};var that = this;_api.default.req.get(url, data, function (res) {if (res.code === 0) {that.targetUserInfo = res.data;} else {uni.showModal({ content: res.msg, showCancel: false });}});}, methods: { follow: function follow() {if (this.hasLogin) {if (!this.targetUserInfo.hasFollow) {var that = this;var url = _api.default.urls.attentionSomeone;var data = { beAttentionUserId: that.targetUserId // beAttentionUserId: 225
-          };_api.default.req.post(url, data, function (res) {if (res.code === 0) {that.targetUserInfo.followerNum = that.targetUserInfo.followerNum + 1;uni.showToast({ title: '关注成功', icon: 'success', duration: 1000 });that.targetUserInfo.hasFollow = true;} else {uni.showModal({ content: res.msg, showCancel: false });}});} else {var that = this;var url = _api.default.urls.cancelAttention;var data = { beAttentionUserId: that.targetUserId // beAttentionUserId: 225
-          };_api.default.req.del(url, data, function (res) {if (res.code === 0) {that.targetUserInfo.followerNum = that.targetUserInfo.followerNum - 1;uni.showToast({ title: '取关成功', icon: 'success', duration: 1000 });that.targetUserInfo.hasFollow = false;} else {uni.showModal({ content: res.msg, showCancel: false });}});}} else {uni.showModal({ content: "关注需要登录，您想马上登录吗？", success: function success(res) {if (res.confirm) {uni.navigateTo({ url: '../../pages/my/login/login' });
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../api/api.js */ "../../../../../校园帮/SchoolHelp-front-end/api/api.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+{
+  computed: _objectSpread({},
+  (0, _vuex.mapState)(['hasLogin', 'userInfo']), {
+
+    pointText: function pointText() {
+      if (this.targetUserInfo.points) {
+        if (this.targetUserInfo.points > 100000000) {
+          return (this.targetUserInfo.points / 10000000).toFixed(1) + '千万';
+        } else
+        if (this.targetUserInfo.points > 10000000) {
+          return (this.targetUserInfo.points / 1000000).toFixed(1) + '百万';
+        } else
+        if (this.targetUserInfo.points > 10000) {
+          return (this.targetUserInfo.points / 1000).toFixed(1) + '千';
+        } else
+        {
+          return this.targetUserInfo.points;
+        }
+      }
+      return 0;
+    } }),
+
+  data: function data() {
+    return {
+      targetUserInfo: {
+        hasFollow: false },
+
+      targetUserId: '' };
+
+  },
+  onLoad: function onLoad(option) {
+    this.targetUserId = option.userId;
+    var url = _api.default.urls.getOtherUserInfo + option.userId;
+    var data = {};
+    var that = this;
+    _api.default.req.get(url, data, function (res) {
+      if (res.code === 0) {
+        that.targetUserInfo = res.data;
+      } else {
+        uni.showModal({
+          content: res.msg,
+          showCancel: false });
+
+      }
+    });
+  },
+  methods: {
+    follow: function follow() {
+      if (this.hasLogin) {
+        if (!this.targetUserInfo.hasFollow) {
+          var that = this;
+          var url = _api.default.urls.attentionSomeone;
+          var data = {
+            beAttentionUserId: that.targetUserId
+            // beAttentionUserId: 225
+          };
+          _api.default.req.post(url, data, function (res) {
+            if (res.code === 0) {
+              that.targetUserInfo.followerNum = that.targetUserInfo.followerNum + 1;
+              uni.showToast({
+                title: '关注成功',
+                icon: 'success',
+                duration: 1000 });
+
+              that.targetUserInfo.hasFollow = true;
+            } else {
+              uni.showModal({
+                content: res.msg,
+                showCancel: false });
+
+            }
+          });
+        } else {
+          var that = this;
+          var url = _api.default.urls.cancelAttention;
+          var data = {
+            beAttentionUserId: that.targetUserId
+            // beAttentionUserId: 225
+          };
+          _api.default.req.del(url, data, function (res) {
+            if (res.code === 0) {
+              that.targetUserInfo.followerNum = that.targetUserInfo.followerNum - 1;
+              uni.showToast({
+                title: '取关成功',
+                icon: 'success',
+                duration: 1000 });
+
+              that.targetUserInfo.hasFollow = false;
+            } else {
+              uni.showModal({
+                content: res.msg,
+                showCancel: false });
+
+            }
+          });
+        }
+      } else {
+        uni.showModal({
+          content: "关注需要登录，您想马上登录吗？",
+          success: function success(res) {
+            if (res.confirm) {
+              uni.navigateTo({
+                url: '../../pages/my/login/login' });
 
             } else if (res.cancel) {
               return;

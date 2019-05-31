@@ -1,6 +1,6 @@
 <template>
 	<view class="m-input-view">
-		<input :focus="focus_" :type="inputType" :value="value" @input="onInput" class="m-input-input" :placeholder="placeholder"
+		<input :focus="focus_" :type="inputType" :value="value" @input="onInput" class="m-input-input" :placeholder="placeholder" :maxlength="maxlength"
 		 :password="type==='password'&&!showPassword" @focus="onFocus" @blur="onBlur" />
 		<!-- 优先显示密码可见按钮 -->
 		<view v-if="clearable_&&!displayable_&&value.length" class="m-input-icon">
@@ -20,6 +20,10 @@
 			mIcon
 		},
 		props: {
+			/**
+			 * 输入长度
+			 */
+			maxlength: 0,
 			/**
 			 * 输入类型
 			 */
@@ -118,8 +122,10 @@
 	}
 
 	.m-input-input {
+		height: 90upx;
 		flex: 1;
 		width: 100%;
+		font-size: 30upx;
 	}
 
 	.m-input-icon {

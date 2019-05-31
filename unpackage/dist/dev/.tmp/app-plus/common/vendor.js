@@ -12,13 +12,14 @@
 
 // API 请求根路径
 // var root = "http://250r7838l8.qicp.vip"
-var root = "http://134.175.16.143:8080/schoolhelp-1.1.0";
+var root = "http://134.175.16.143:8080/schoolhelp-1.1.1";
 // var root = "/schoolhelp"; // h5测试使用，使用了manifest.json中的h5代理配置
 
 // API url路径
 var urls = (_urls = {
   register: "".concat(root, "/register"),
   login: "".concat(root, "/login"),
+  logout: "".concat(root, "/logout"), //登出
   sendMessage: "".concat(root, "/user/message"),
   updateUserInfo: "".concat(root, "/user"),
   deleteCollect: "".concat(root, "/user/collect"),
@@ -51,6 +52,7 @@ var urls = (_urls = {
   getSelfHeadImg: "".concat(root, "/download/head"), //获取用户自己的头像
   setMessageRead: "".concat(root, "/message/state"), //设置消息已读
   checkCertified: "".concat(root, "/user/checkCertified"), //判断用户Id列表是否已经认证
+  submitPost: "".concat(root, "/post/submit"), //结贴
 
   /**********************************************/
 
@@ -77,20 +79,20 @@ var req = {
         'token': _index.default.state.token //默认携带token，未登录时，token为''
       },
       success: function success(res) {
-        console.log(res.data, method, url, " at api\\api.js:70");
+        console.log(res.data, method, url, " at api\\api.js:72");
         if (res.data.code == 0) {
           _success(res.data);
         } else {
           // 打印错误提示
           uni.showToast({
             icon: "none",
-            title: res.data.msg });
+            title: res.data.msg || "请求失败" });
 
           if (_fail) _fail(res.data);
         }
       },
       fail: function fail(err) {
-        console.log(method, url, "fail", " at api\\api.js:83");
+        console.log(method, url, "fail", " at api\\api.js:85");
         if (_fail) _fail(err); // 如果失败方法非空，执行失败方法
       } });
 
@@ -123,7 +125,7 @@ var req = {
     var url = urls.login;
     var data = { phone: phone, password: password };
     this.get(url, data, function (res) {
-      _index.default.commit("login", res.data);
+      _index.default.commit("login", res.data, phone, password);
       _this.getUserInfo();
     });
   },
@@ -133,8 +135,17 @@ var req = {
     var url = urls.register;
     var data = { phone: phone, password: password };
     this.post(url, data, function (res) {
-      _index.default.commit("login", res.data);
+      _index.default.commit("login", res.data, phone, password);
       _this2.getUserInfo();
+    });
+  },
+
+  // 退出登录
+  logout: function logout() {
+    var url = urls.logout;
+    var data = {};
+    this.get(url, data, function (res) {
+      _index.default.commit("logout");
     });
   } };var _default =
 
@@ -1162,7 +1173,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.friendlyDa
 
 
   var now = Date.now();
-  var seconds = Math.floor((now - timestamp) / 1000);
+  var seconds = Math.floor((now - timestamp) / 1000) + 1; //防止-1秒前
   var minutes = Math.floor(seconds / 60);
   var hours = Math.floor(minutes / 60);
   var days = Math.floor(hours / 24);
@@ -1773,7 +1784,7 @@ var store = new _vuex.default.Store({
 
   mutations: {
     // 保存登录状态
-    login: function login(state, token) {
+    login: function login(state, token, phone, password) {
       state.hasLogin = true;
       state.token = token;
       console.log("save token", token, " at store\\index.js:18");
@@ -1781,10 +1792,15 @@ var store = new _vuex.default.Store({
         key: 'token',
         data: token });
 
+      uni.setStorage({
+        key: 'lastLoginData',
+        data: { phone: phone, password: password } });
+
     },
     // 登出，清空登录状态，同时清空用户信息
     logout: function logout(state) {
       state.hasLogin = false;
+      console.log("退出登录", " at store\\index.js:31");
       this.commit("clearUserInfo");
       uni.removeStorage({
         key: 'token' });
@@ -1793,10 +1809,14 @@ var store = new _vuex.default.Store({
     // 保存用户信息
     saveUserInfo: function saveUserInfo(state, userInfo) {
       state.userInfo = userInfo;
-      console.log("save userInfo", userInfo, " at store\\index.js:35");
+      console.log("save userInfo", userInfo, " at store\\index.js:40");
       uni.setStorage({
         key: 'userInfo',
         data: userInfo });
+
+      uni.setStorage({
+        key: 'lastLoginData',
+        data: { phone: userInfo.phone, password: userInfo.password } });
 
     },
     // 清空用户信息
@@ -1806,9 +1826,20 @@ var store = new _vuex.default.Store({
         key: 'userInfo' });
 
     },
+    // 清空之前的登录信息
+    clearLastLoginData: function clearLastLoginData(state) {
+      console.log("清除上次登录信息", " at store\\index.js:59");
+      uni.removeStorage({
+        key: 'lastLoginData' });
+
+    },
     // 删除某条搜索历史
     deleteASearchHistroy: function deleteASearchHistroy(state, index) {
       state.searchHistroy.splice(index, 1);
+      uni.setStorage({
+        key: "searchHistroy",
+        data: state.searchHistroy });
+
     },
     // 获取搜索历史
     getSearchHistroy: function getSearchHistroy(state) {
@@ -1819,7 +1850,7 @@ var store = new _vuex.default.Store({
         },
         fail: function fail(err) {
           state.searchHistroy = [];
-          console.log(err, " at store\\index.js:61");
+          console.log(err, " at store\\index.js:81");
         } });
 
     },

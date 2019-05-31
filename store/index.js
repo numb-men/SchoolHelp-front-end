@@ -12,7 +12,7 @@ const store = new Vuex.Store({
 	},
 	mutations: {
 		// 保存登录状态
-		login(state, token) {
+		login(state, token, phone, password) {
 			state.hasLogin = true
 			state.token = token
 			console.log("save token", token)
@@ -20,10 +20,15 @@ const store = new Vuex.Store({
 				key: 'token',
 				data: token
 			})
+			uni.setStorage({
+				key: 'lastLoginData',
+				data: { phone, password }
+			})
 		},
 		// 登出，清空登录状态，同时清空用户信息
 		logout(state) {
 			state.hasLogin = false
+			console.log("退出登录");
 			this.commit("clearUserInfo")
 			uni.removeStorage({
 				key: 'token'
@@ -37,6 +42,10 @@ const store = new Vuex.Store({
 				key: 'userInfo',
 				data: userInfo
 			})
+			uni.setStorage({
+				key: 'lastLoginData',
+				data: { phone:userInfo.phone, password:userInfo.password }
+			})
 		},
 		// 清空用户信息
 		clearUserInfo(state) {
@@ -45,9 +54,20 @@ const store = new Vuex.Store({
 				key: 'userInfo'
 			})
 		},
+		// 清空之前的登录信息
+		clearLastLoginData(state) {
+			console.log("清除上次登录信息");
+			uni.removeStorage({
+				key: 'lastLoginData'
+			})
+		},
 		// 删除某条搜索历史
 		deleteASearchHistroy(state, index) {
 			state.searchHistroy.splice(index, 1);
+			uni.setStorage({
+				key: "searchHistroy",
+				data: state.searchHistroy
+			});
 		},
 		// 获取搜索历史
 		getSearchHistroy(state) {

@@ -158,7 +158,7 @@
                 };
                 api.req.get(url, data, (res) => {
                     if (res.code === 0) {
-                        store.commit("login", res.data);
+                        store.commit("login", res.data, data.phone, data.password);
                         uni.showToast({
                             icon: 'none',
                             title: '登陆成功',

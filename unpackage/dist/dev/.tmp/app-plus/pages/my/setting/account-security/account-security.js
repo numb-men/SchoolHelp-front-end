@@ -167,14 +167,15 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../api/api.js
 
   },
   methods: _objectSpread({},
-  (0, _vuex.mapMutations)(['logout']), {
-    logoOut: function logoOut() {
+  (0, _vuex.mapMutations)(['logout', 'clearLastLoginData']), {
+    logout: function logout() {
       if (this.hasLogin) {
         uni.showToast({
           icon: 'none',
           title: '注销成功' });
 
         this.logout();
+        this.clearLastLoginData();
         uni.reLaunch({
           url: '../../../../pages/my/my' });
 
@@ -191,10 +192,10 @@ var _api = _interopRequireDefault(__webpack_require__(/*! ../../../../api/api.js
 
     },
     switch1Change: function switch1Change(e) {
-      console.log('switch1 发生 change 事件，携带值为', e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:94");
+      console.log('switch1 发生 change 事件，携带值为', e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:95");
     },
     bindPickerChange: function bindPickerChange(e) {
-      console.log('picker发送选择改变，携带值为：' + e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:97");
+      console.log('picker发送选择改变，携带值为：' + e.target.value, " at pages\\my\\setting\\account-security\\account-security.vue:98");
       this.index = e.target.value;
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
