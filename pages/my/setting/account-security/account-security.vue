@@ -76,9 +76,12 @@
                     });
                     this.$api.req.logout();
                     this.$store.commit("clearLastLoginData");
-                    uni.reLaunch({
-                        url: '../../../../pages/my/my'
-                    });
+					setTimeout(()=>{
+						uni.reLaunch({
+						    url: '../../../../pages/my/my'
+						});
+					}, 1500);
+                    
                 } else {
                     uni.showToast({
                         icon: 'none',

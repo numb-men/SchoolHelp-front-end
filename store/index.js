@@ -12,19 +12,21 @@ const store = new Vuex.Store({
     },
     mutations: {
         // 保存登录状态
-        login(state, token, phone, password) {
+        login(state, data) {
+			console.log(data);
             state.hasLogin = true
-            state.token = token
-            console.log("save token", token)
+            state.token = data.token
+            console.log("save token", data.token)
             uni.setStorage({
                 key: 'token',
-                data: token
+                data: data.token
             })
+			console.log("save lastLogin data", data.phone, data.password);
             uni.setStorage({
                 key: 'lastLoginData',
                 data: {
-                    phone,
-                    password
+                    phone: data.phone,
+                    password: data.password
                 }
             })
         },
@@ -46,13 +48,6 @@ const store = new Vuex.Store({
                 key: 'userInfo',
                 data: userInfo
             })
-            // uni.setStorage({
-            //     key: 'lastLoginData',
-            //     data: {
-            //         phone: userInfo.phone,
-            //         password: userInfo.password
-            //     }
-            // })
         },
         // 清空用户信息
         clearUserInfo(state) {

@@ -119,7 +119,8 @@ var req = {
             password
         };
         this.get(url, data, (res) => {
-            store.commit("login", res.data, phone, password);
+			let token = res.data;
+            store.commit("login", {token, phone, password});
             this.getUserInfo();
         });
     },
@@ -132,7 +133,8 @@ var req = {
             password
         };
         this.post(url, data, (res) => {
-            store.commit("login", res.data, phone, password);
+			let token = res.data;
+            store.commit("login", {token, phone, password});
             this.getUserInfo();
         });
     },

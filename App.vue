@@ -27,7 +27,7 @@
 				uni.getStorage({
 					key: 'lastLoginData',
 					success: (res) =>{
-						// console.log(res);
+						console.log(res);
 						console.log("之前登录过，用旧账号登录");
 						this.$api.req.login(res.data.phone, res.data.password);
 					},
