@@ -1,0 +1,1 @@
+<view class="center" bind:__l="__l"><view class="logo"><image class="logo-img" src="{{appUrl}}"></image><text class="title">校园帮</text></view><view class="center-list"><view class="center-list-item border-bottom"><text class="list-text">版本更新</text><view><button class="update">更新</button><text class="list-text-version">v1.0.0</text></view></view></view></view>

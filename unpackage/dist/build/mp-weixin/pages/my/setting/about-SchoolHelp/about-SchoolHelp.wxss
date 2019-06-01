@@ -1,0 +1,123 @@
+
+page,
+view {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+page {
+	background-color: #f2f2f2;
+}
+.center {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	background-color: #f2f2f2;
+}
+.list-text {
+	margin-left: 20rpx;
+	height: 90rpx;
+	line-height: 90rpx;
+	font-size: 34rpx;
+	color: #555;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+	text-align: left;
+}
+.title {
+	height: 90rpx;
+	line-height: 90rpx;
+	font-size: 40rpx;
+	color: #555;
+	text-align: center;
+}
+.list-text-version {
+	margin-left: 10rpx;
+	margin-right: 10rpx;
+	height: 90rpx;
+	line-height: 90rpx;
+	font-size: 34rpx;
+	color: #555;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+	text-align: left;
+}
+.update {
+	height: 70rpx;
+	/* line-height: 30upx; */
+	vertical-align: middle;
+	font-size: 28rpx;
+	color: #FFFFFF;
+	text-align: center;
+	background-color: #00BFFF;
+	margin-top: 10rpx;
+	/* padding-top: -10upx; */
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.img {
+	width: 150rpx;
+	height: 150rpx;
+	/* justify-content: center; */
+}
+.logo-img {
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 50%;
+}
+.logo {
+	width: 750rpx;
+	height: 240rpx;
+	padding: 30rpx 0;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	/* box-sizing: border-box; */
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #FFCC66, #FF0066);
+	/* Opera 11.1 - 12.0 */
+	/* Firefox 3.6 - 15 */
+	background: -webkit-gradient(linear, right top, left top, from(#FFCC66), to(#FF0066));
+	background: linear-gradient(right, #FFCC66, #FF0066);
+	/* 标准的语法（必须放在最后） */
+       
+	/* text-align: center; */
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	/* justify-content: center; */
+}
+.center-list {
+	background-color: #FFFFFF;
+	width: 750rpx;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.center-list-item {
+	height: 90rpx;
+	width: 750rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	/* padding: 0upx 20upx; */
+	/* vertical-align: middle; */
+	/* justify-content: space-between; */
+}
+

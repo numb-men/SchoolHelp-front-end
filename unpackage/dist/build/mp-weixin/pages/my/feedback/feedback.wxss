@@ -1,0 +1,32 @@
+
+page {
+		background-color: #efeff4;
+}
+view {
+		font-size: 25rpx;
+}
+.word-count {
+		text-align: right;
+		padding: 5rpx;
+		color: #a9a9a9;
+}
+.feedback-body {
+		background: #fff;
+}
+.feedback-textare {
+		height: 500rpx;
+		font-size: 34rpx;
+		line-height: 50rpx;
+		width: 750rpx;
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box;
+		padding: 20rpx 30rpx 0;
+}
+.feedback-submit {
+		background-color: #00bfff;
+		color: #ffffff;
+		margin: 50rpx;
+		border-radius: 150rpx;
+		font-size: 35rpx;
+}
+

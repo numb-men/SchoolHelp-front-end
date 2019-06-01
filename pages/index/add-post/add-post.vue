@@ -159,7 +159,7 @@
 							icon: "none",
 							title: "发帖成功"
 						});
-						setTimeout(()=>{this.goBack()}, 1500);
+						setTimeout(()=>{this.goBack()}, 500);
 					}
 				})
 			}

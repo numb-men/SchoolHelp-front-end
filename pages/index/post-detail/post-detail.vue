@@ -115,6 +115,7 @@
 				})
 			},
 			updateComments() {
+                this.post.comments = [];
 				var url = this.$api.urls.getAllComments + this.post.id;
 				var data = {};
 				this.$api.req.get(url, data, (res) =>{

@@ -27,7 +27,7 @@
             <swiper :current="currentTab" @change="swiperTab" :style="{height: isHeight}">
                 <swiper-item v-for="(item,index) in agents" :key="index">
                     <view class='content'>
-                        <view class='card' v-for="(listItem,listIndex) in item.list" v-if="item.list.length > 0" :key="listIndex"
+                        <view class='card' v-for="(listItem,listIndex) in item.list" v-show="item.list.length > 0" :key="listIndex"
                             :data-index="listIndex" @click="goDetail">
                             <view class="media-title">
                                 <text class="media-title-text">{{listItem.title}}</text>
@@ -36,8 +36,8 @@
                                 <text class="media-preview-text">{{listItem.content}}</text>
                             </view>
                             <view class="media-head-image">
-                                <image v-if="listItem.headImageUrl" :src="listItem.headImageUrl" class="media-head-image-detail"></image>
-                                <image v-else class="media-head-image-detail" src="../../static/icons/logo.png"></image>
+                                <image v-show="listItem.headImageUrl" :src="listItem.headImageUrl" class="media-head-image-detail"></image>
+                                <!-- <image v-else class="media-head-image-detail" src="../../static/icons/logo.png"></image> -->
                             </view>
                             <view class="media-name">
                                 <text class="media-name-text">{{listItem.userName}}</text>
@@ -173,7 +173,7 @@
                     postType: that.currentTab
                 };
                 api.req.get(url, data, (res) => {
-                    if (res.code === 0 && res.data.empty == false) {
+                    if (res.code === 0) {
                         for (var i = 0; i < res.data.content.length; i++)
                             res.data.content[i].issueTime = friendlyDate(new Date(res.data.content[i].issueTime
                                 .replace(/\-/g, '/').replace(/\T/g,
@@ -194,7 +194,7 @@
             },
             // swiper 滑动
             swiperTab: function(e) {
-                console.log(e)
+                // console.log(e)
                 var index = e.detail.current //获取索引
                 this.isHeight = this.agents[index].list.length * 300 + 160 + 'rpx' //设置swiper高度
                 this.isLeft = index * this.isWidth //设置下划线位置
@@ -209,34 +209,32 @@
                 if (this.currentTab == 1 || this.currentTab == 0) {
                     this.scrollLeft = 0
                 }
-                if (this.agents[index].list.length === 0) {
-                    var that = this
-                    var url = api.urls.getPostList;
-                    var data = {
-                        num: 0,
-                        postType: that.currentTab
-                    };
-                    api.req.get(url, data, (res) => {
-                        if (res.code === 0 && res.data.empty == false) {
-                            for (var i = 0; i < res.data.content.length; i++)
-                                res.data.content[i].issueTime = friendlyDate(new Date(res.data.content[i].issueTime
-                                    .replace(/\-/g, '/').replace(
-                                        /\T/g,
-                                        ' ').substring(0, 19)).getTime())
-                            that.agents[that.currentTab].list = res.data.content
-                            that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx'
-                        }
-                    }, (fail) => {
-                        setTimeout(() => {
-                            uni.hideLoading()
-                            uni.stopPullDownRefresh()
-                            uni.showToast({
-                                icon: 'none',
-                                title: '刷新失败，请稍后再试'
-                            });
-                        }, 4000)
-                    });
-                }
+                var that = this
+                var url = api.urls.getPostList;
+                var data = {
+                    num: 0,
+                    postType: that.currentTab
+                };
+                api.req.get(url, data, (res) => {
+                    if (res.code === 0) {
+                        for (var i = 0; i < res.data.content.length; i++)
+                            res.data.content[i].issueTime = friendlyDate(new Date(res.data.content[i].issueTime
+                                .replace(/\-/g, '/').replace(
+                                    /\T/g,
+                                    ' ').substring(0, 19)).getTime())
+                        that.agents[that.currentTab].list = res.data.content
+                        that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx'
+                    }
+                }, (fail) => {
+                    setTimeout(() => {
+                        uni.hideLoading()
+                        uni.stopPullDownRefresh()
+                        uni.showToast({
+                            icon: 'none',
+                            title: '刷新失败，请稍后再试'
+                        });
+                    }, 4000)
+                });
             }
         },
         onPullDownRefresh() {
@@ -248,7 +246,7 @@
                 postType: that.currentTab 
             };
             api.req.get(url, data, (res) => {
-                if (res.code === 0 && res.data.empty == false) {
+                if (res.code === 0) {
                     for (var i = 0; i < res.data.content.length; i++)
                         res.data.content[i].issueTime = friendlyDate(new Date(res.data.content[i].issueTime.replace(
                             /\-/g, '/').replace(
@@ -327,7 +325,7 @@
                 postType: that.currentTab
             };
             api.req.get(url, data, (res) => {
-                if (res.code === 0 && res.data.empty == false) {
+                if (res.code === 0) {
                     for (var i = 0; i < res.data.content.length; i++)
                         res.data.content[i].issueTime = friendlyDate(new Date(res.data.content[i].issueTime.replace(
                             /\-/g, '/').replace(
@@ -524,8 +522,8 @@
 
     .media-title-text {
         font-size: 38upx;
-		line-height: 45upx;
-		font-weight: bold;
+        line-height: 45upx;
+        font-weight: bold;
         color: #343131;
         width: 450upx;
         overflow: hidden;
@@ -537,7 +535,7 @@
         position: relative;
         top: 40upx;
         left: 30upx;
-		margin-top: 15upx;
+        margin-top: 15upx;
     }
 
     .media-preview-text {
@@ -546,7 +544,7 @@
 
         width: 700upx;
         height: 100upx;
-		word-break: break-all;
+        word-break: break-all;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
@@ -571,7 +569,7 @@
         position: relative;
         top: -10upx;
         left: 115upx;
-		line-height: 50upx;
+        line-height: 50upx;
     }
 
     .media-name-text {
@@ -585,7 +583,7 @@
         position: relative;
         top: -30upx;
         left: 420upx;
-		line-height: 50upx;
+        line-height: 50upx;
     }
 
 
@@ -593,7 +591,7 @@
         position: relative;
         top: -60upx;
         left: 510upx;
-		line-height: 50upx;
+        line-height: 50upx;
     }
 
     .media-points-view-comment-text {
@@ -617,7 +615,7 @@
     .media-time-text {
         text-align: left;
         font-size: 28upx;
-		line-height: 45upx;
+        line-height: 45upx;
         color: #c9c9c9;
     }
 
