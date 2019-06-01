@@ -120,35 +120,36 @@
                         title: '性别不能为空'
                     });
                     return;
-                } else if (this.userInfo.studentNum.length == 0) {
-                    this.loading = false;
-                    uni.showToast({
-                        icon: 'none',
-                        title: '学号不能为空'
-                    });
-                    return;
-                } else if (this.userInfo.major.length == 0) {
-                    this.loading = false;
-                    uni.showToast({
-                        icon: 'none',
-                        title: '专业不能为空'
-                    });
-                    return;
-                } else if (this.userInfo.college.length == 0) {
-                    this.loading = false;
-                    uni.showToast({
-                        icon: 'none',
-                        title: '学院不能为空'
-                    });
-                    return;
-                } else if (this.userInfo.mail.length == 0) {
-                    this.loading = false;
-                    uni.showToast({
-                        icon: 'none',
-                        title: '邮箱不能为空'
-                    });
-                    return;
-                }
+				}
+                //  else if (this.userInfo.studentNum.length == 0) {
+                //     this.loading = false;
+                //     uni.showToast({
+                //         icon: 'none',
+                //         title: '学号不能为空'
+                //     });
+                //     return;
+                // } else if (this.userInfo.major.length == 0) {
+                //     this.loading = false;
+                //     uni.showToast({
+                //         icon: 'none',
+                //         title: '专业不能为空'
+                //     });
+                //     return;
+                // } else if (this.userInfo.college.length == 0) {
+                //     this.loading = false;
+                //     uni.showToast({
+                //         icon: 'none',
+                //         title: '学院不能为空'
+                //     });
+                //     return;
+                // } else if (this.userInfo.mail.length == 0) {
+                //     this.loading = false;
+                //     uni.showToast({
+                //         icon: 'none',
+                //         title: '邮箱不能为空'
+                //     });
+                //     return;
+                // }
                 if (this.userInfo.phone.length != 11) {
                     this.loading = false;
                     uni.showToast({
@@ -174,23 +175,23 @@
                     console.log(this.userInfo.sex)
                     return;
                 }
-                if (this.userInfo.studentNum.length != 9) {
-                    this.loading = false;
-                    uni.showToast({
-                        icon: 'none',
-                        title: '请输入9位数正确学号'
-                    });
-                    return;
-                }
-                var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
-                if (!reg.test(this.userInfo.mail)) {
-                    this.loading = false;
-                    uni.showToast({
-                        icon: 'none',
-                        title: '请输入有效邮箱地址'
-                    });
-                    return;
-                }
+                // if (this.userInfo.studentNum.length != 9) {
+                //     this.loading = false;
+                //     uni.showToast({
+                //         icon: 'none',
+                //         title: '请输入9位数正确学号'
+                //     });
+                //     return;
+                // }
+                // var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+                // if (!reg.test(this.userInfo.mail)) {
+                //     this.loading = false;
+                //     uni.showToast({
+                //         icon: 'none',
+                //         title: '请输入有效邮箱地址'
+                //     });
+                //     return;
+                // }
                 var that = this
                 var url = api.urls.changeUserInfomation;
                 var data = {

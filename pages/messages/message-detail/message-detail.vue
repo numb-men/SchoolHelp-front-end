@@ -1,31 +1,34 @@
 <template>
 	<view id="message-detail" class="content">
-		<block v-for="(msgItem, index) in chat.msgs" :key="msgItem.id">
-			<view class="chat-box" :data-index="index" :id="msgItem.id">
-				<!-- 对方发的消息 头像在左边 -->
-				<image v-if="!msgItem.isMe" :src="myHeadImg" class="chat-user-head-img-left" mode=""></image>
-				<view class="auto-box">
-					<view v-if="msgItem.isMe" class="no-use"></view>
-					<view class="chat-content">
-						<!-- 消息内容 -->
-						<view :class="msgItem.isMe ? 'msg-content-me':'msg-content-user'">
-							{{msgItem.msgContent}}
+		<scroll-view scroll-y :scroll-into-view="bottomId" class="scroll-messages" :style="{height: scrollHeight+'px'}">
+			<block v-for="(msgItem, index) in chat.msgs" :key="msgItem.id">
+				<view class="chat-box" :data-index="index" :id="'msg-'+msgItem.id">
+					<!-- 对方发的消息 头像在左边 -->
+					<image v-if="!msgItem.isMe" :src="chat.userHeadImg" class="chat-user-head-img-left" mode=""></image>
+					<view class="auto-box">
+						<view v-if="msgItem.isMe" class="no-use"></view>
+						<view class="chat-content">
+							<!-- 消息内容 -->
+							<view :class="msgItem.isMe ? 'msg-content-me':'msg-content-user'">
+								{{msgItem.msgContent}}
+							</view>
+							<!-- 发送时间 -->
+							<view class="msg-send-time">
+								{{msgItem.sendTime}}
+							</view>
 						</view>
-						<!-- 发送时间 -->
-						<view class="msg-send-time">
-							{{msgItem.sendTime}}
-						</view>
+						<view v-if="!msgItem.isMe" class="no-use"></view>
 					</view>
-					<view v-if="!msgItem.isMe" class="no-use"></view>
+					<!-- 本人发的消息 头像在右边 -->
+					<image v-if="msgItem.isMe" :src="myHeadImg" class="chat-user-head-img-right" mode=""></image>
 				</view>
-				<!-- 本人发的消息 头像在右边 -->
-				<image v-if="msgItem.isMe" :src="chat.userHeadImg" class="chat-user-head-img-right" mode=""></image>
-			</view>
-		</block>
+			</block>
+		</scroll-view>
+		
 		<view class="end"></view>
 		<view class="msg-input-box">
 			<input class="msg-input" maxlength="200" placeholder="输入..." v-model="messageInput"/>
-			<image class="msg-input-icon" src="/static/icons/send.png" @click="sendMessage"></image>
+			<image class="msg-input-icon" src="/static/icons/send.png" @click.stop="sendMessage"></image>
 		</view>
 	</view>
 </template>
@@ -47,30 +50,52 @@
 					userId: "",
 					isOnline: "",
 					msgs: []
-				}
+				},
+				bottomId: '',
+				scrollHeight: 900
 			}
 		},
 		onLoad: function(option) {
+			const device = uni.getSystemInfoSync();
+			this.scrollHeight = device.windowHeight - 80;
+			
 			var detail = JSON.parse(option.detail);
 			this.myUserId = this.$store.state.userInfo.id;
-			this.chat.userHeadImg = detail.chatUserHeadImg;
-			this.chat.userName = detail.chatUserName;
 			this.chat.userId = detail.chatUserId;
-			this.chat.isOnline = detail.chatUser.online;
-			console.log(detail.chatUser.online);
-			this.getSelfHeadImg();
+			this.getEasyUserInfo();
+			this.myHeadImg = this.$store.state.userInfo.headImageUrl;
 			this.getMessageList();
-			uni.setNavigationBarTitle({
-				title: this.chat.userName + `（${this.chat.isOnline?"在线":"离线"}）`
-			});
 		},
 		methods: {
-			getSelfHeadImg() {
-				var url = this.$api.urls.getSelfHeadImg;
+			getEasyUserInfo() {
+				var url = this.$api.urls.getOtherUserInfo + this.chat.userId;
 				var data = {};
 				this.$api.req.get(url, data, (res) =>{
-					this.myHeadImg = "http://"+res.data;
+					console.log(res);
+					this.chat.userHeadImg = res.data.headImageUrl;
+					this.chat.userName = res.data.name;
+					this.chat.isOnline = res.data.online;
+					uni.setNavigationBarTitle({
+						title: this.chat.userName + `（${this.chat.isOnline?"在线":"离线"}）`
+					});
 				})
+			},
+			readAll() {
+				var url = this.$api.urls.setMessageRead;
+				var data = {messageId: []};
+				this.chat.msgs.map((item) =>{
+					if (!item.isMe){
+						if (!item.state) {
+							// 如果对方发的帖子我方未读
+							data.messageId.push(item.id);
+						}
+					}
+				})
+				if (data.messageId.length > 0){
+					this.$api.req.put(url, data, (res) =>{
+						console.log(res);
+					})
+				}
 			},
 			getMessageList() {
 				var url = this.$api.urls.getMessageListForUser;
@@ -78,12 +103,16 @@
 				this.$api.req.get(url, data, (res) =>{
 					this.chat.msgs = res.data.map((item, index) =>{
 						return {
-								id: index,
+								id: item.messageId,
 								sendTime: friendlyDate(new Date(item.sendTime.replace(/\-/g, '/').replace(/\T/g, ' ').substring(0, 19)).getTime()),
 								isMe: item.send==this.myUserId,
-								msgContent: item.messageContent
+								msgContent: item.messageContent,
+								state: item.state
 							}
 					})
+					this.readAll();
+					this.bottomId = 'msg-' + this.chat.msgs[this.chat.msgs.length-1].id;
+					console.log(this.bottomId);
 				})
 			},
 			sendMessage() {
@@ -92,6 +121,7 @@
 				this.$api.req.post(url, data, (res) =>{
 					console.log(res);
 					this.getMessageList();
+					this.messageInput = "";
 				})
 			}
 		}
@@ -100,6 +130,9 @@
 
 <style lang="scss">
 	@import "@/app.scss";
+	.scroll-messages {
+		width: 750upx;
+	}
 	.no-use {
 		width: 80upx;
 	}

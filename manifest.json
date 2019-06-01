@@ -44,7 +44,7 @@
             "sdkConfigs" : {},
             "icons" : {
                 "ios" : {
-                    "appstore" : "C:/Users/le/Desktop/schoolhelp-logo.png",
+                    "appstore" : "C:/Users/ZPC/Desktop/schoolhelp-logo.png",
                     "ipad" : {
                         "app" : "unpackage/res/icons/76x76.png",
                         "app@2x" : "unpackage/res/icons/152x152.png",
@@ -82,30 +82,32 @@
     "quickapp" : {},
     /* 快应用特有相关 */
     "mp-weixin" : {
-        /* 小程序特有相关 */
-        "appid" : "",
+        "appid" : "wx7612a18e94cfd1a7",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "minified" : true
         },
         "usingComponents" : true
     },
     "h5" : {
         "router" : {
-            "base" : "/demo/news/website/"
+            "base" : "/"
         },
         "template" : "h5.template.html",
-		
-		// 配置h5跨域请求
-		"devServer": {
-		    "port": 8000,
-		    "disableHostCheck": true,
-		    "proxy": {
-		        "/schoolhelp": {
-		            "target": "http://134.175.16.143:8080",
-		            "changeOrigin": true,
-		            "secure": false
-		        }
-		    }
-		}
+        // 配置h5跨域请求
+        "devServer" : {
+            "port" : 8002,
+            "disableHostCheck" : true,
+            "proxy" : {
+                "/schoolhelp" : {
+                    "pathRewrite" : {
+                        "^/schoolhelp" : ""
+                    },
+                    "target" : "http://localhost:8080",
+                    "changeOrigin" : true,
+                    "secure" : false
+                }
+            }
+        }
     }
 }

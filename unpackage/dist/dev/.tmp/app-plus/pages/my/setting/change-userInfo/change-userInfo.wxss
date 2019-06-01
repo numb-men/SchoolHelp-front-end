@@ -187,4 +187,8 @@
       text-align: right;
       font-weight: normal;
 }
+.userInfo .primary {
+    margin-top: 25rpx;
+    width: 100%;
+}
 

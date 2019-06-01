@@ -3,7 +3,7 @@
         <view class="head"></view>
         <view class="head-nav">
             <text class="head-title">校园帮</text>
-            <image src="/static/icons/searchMirror.png" class="head-search" @click="goSearch()"></image>
+            <image src="/static/icons/search-white.png" class="head-search" @click="goSearch()"></image>
         </view>
 
         <view class="index-body">
@@ -18,16 +18,17 @@
 				</view> -->
             </view>
             <view class="news" v-show="currentTab==0">
-                <swiper class="slider" indicator-dots="false" autoplay="true" interval="2000" duration="1000">
-                    <swiper-item class="frame" v-for="(img,index) in imageList" :key="index">
-                        <image class="image" resize="cover" :src="img.src"></image>
+                <swiper class="slider" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
+                    :duration="duration">
+                    <swiper-item v-for="(img,index) in imageList" :key="index" class="frame">
+                        <image class="image" :src="img.imageUrl"></image>
                     </swiper-item>
                 </swiper>
             </view>
             <swiper :current="currentTab" @change="swiperTab" :style="{height: isHeight}">
                 <swiper-item v-for="(item,index) in agents" :key="index">
                     <view class='content'>
-                        <view class='card' v-for="(listItem,listIndex) in item.list" v-if="item.list.length > 0" :key="listIndex"
+                        <view class='card' v-for="(listItem,listIndex) in item.list" v-show="item.list.length > 0" :key="listIndex"
                             :data-index="listIndex" @click="goDetail">
                             <view class="media-title">
                                 <text class="media-title-text">{{listItem.title}}</text>
@@ -36,8 +37,8 @@
                                 <text class="media-preview-text">{{listItem.content}}</text>
                             </view>
                             <view class="media-head-image">
-                                <image v-if="listItem.headImageUrl" :src="listItem.headImageUrl" class="media-head-image-detail"></image>
-                                <image v-else class="media-head-image-detail" src="../../static/icons/logo.png"></image>
+                                <image v-show="listItem.headImageUrl" :src="listItem.headImageUrl" class="media-head-image-detail"></image>
+                                <!-- <image v-else class="media-head-image-detail" src="../../static/icons/logo.png"></image> -->
                             </view>
                             <view class="media-name">
                                 <text class="media-name-text">{{listItem.userName}}</text>
@@ -58,9 +59,6 @@
             </swiper>
         </view>
 
-        <!-- <view class="index-body" :style="{height:isHeight}"> -->
-        <!-- </view> -->
-
         <!-- 新建帖子 -->
         <image src="../../static/icons/add.png" mode="" class="add-post" @click="goAddPost"></image>
     </view>
@@ -76,6 +74,10 @@
     export default {
         data() {
             return {
+                indicatorDots: true,
+                autoplay: true,
+                interval: 2000,
+                duration: 500,
                 scrollLeft: 0,
                 currentTab: 0,
                 tabClick: 0,
@@ -113,19 +115,7 @@
                     pages: 0
                 }],
                 isWidth: 0,
-                imageList: [{
-                        src: '../../static/images/news-1.png'
-                    },
-                    {
-                        src: '../../static/images/news-2.png'
-                    },
-                    {
-                        src: '../../static/images/news-3.png'
-                    },
-                    {
-                        src: '../../static/images/news-4.png'
-                    }
-                ]
+                imageList: []
             }
         },
         mounted() {
@@ -173,7 +163,7 @@
                     postType: that.currentTab
                 };
                 api.req.get(url, data, (res) => {
-                    if (res.code === 0 && res.data.empty == false) {
+                    if (res.code === 0) {
                         for (var i = 0; i < res.data.content.length; i++)
                             res.data.content[i].issueTime = friendlyDate(new Date(res.data.content[i].issueTime
                                 .replace(/\-/g, '/').replace(/\T/g,
@@ -194,7 +184,7 @@
             },
             // swiper 滑动
             swiperTab: function(e) {
-                console.log(e)
+                // console.log(e)
                 var index = e.detail.current //获取索引
                 this.isHeight = this.agents[index].list.length * 300 + 160 + 'rpx' //设置swiper高度
                 this.isLeft = index * this.isWidth //设置下划线位置
@@ -209,46 +199,54 @@
                 if (this.currentTab == 1 || this.currentTab == 0) {
                     this.scrollLeft = 0
                 }
-                if (this.agents[index].list.length === 0) {
-                    var that = this
-                    var url = api.urls.getPostList;
-                    var data = {
-                        num: 0,
-                        postType: that.currentTab
-                    };
-                    api.req.get(url, data, (res) => {
-                        if (res.code === 0 && res.data.empty == false) {
-                            for (var i = 0; i < res.data.content.length; i++)
-                                res.data.content[i].issueTime = friendlyDate(new Date(res.data.content[i].issueTime
-                                    .replace(/\-/g, '/').replace(
-                                        /\T/g,
-                                        ' ').substring(0, 19)).getTime())
-                            that.agents[that.currentTab].list = res.data.content
-                            that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx'
-                        }
-                    }, (fail) => {
-                        setTimeout(() => {
-                            uni.hideLoading()
-                            uni.stopPullDownRefresh()
-                            uni.showToast({
-                                icon: 'none',
-                                title: '刷新失败，请稍后再试'
-                            });
-                        }, 4000)
-                    });
-                }
+                var that = this
+                var url = api.urls.getPostList;
+                var data = {
+                    num: 0,
+                    postType: that.currentTab
+                };
+                api.req.get(url, data, (res) => {
+                    if (res.code === 0) {
+                        for (var i = 0; i < res.data.content.length; i++)
+                            res.data.content[i].issueTime = friendlyDate(new Date(res.data.content[i].issueTime
+                                .replace(/\-/g, '/').replace(
+                                    /\T/g,
+                                    ' ').substring(0, 19)).getTime())
+                        that.agents[that.currentTab].list = res.data.content
+                        that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx'
+                    }
+                }, (fail) => {
+                    setTimeout(() => {
+                        uni.hideLoading()
+                        uni.stopPullDownRefresh()
+                        uni.showToast({
+                            icon: 'none',
+                            title: '刷新失败，请稍后再试'
+                        });
+                    }, 4000)
+                });
             }
         },
         onPullDownRefresh() {
             console.log(`刷新第${this.currentTab}项`)
             var that = this
+            var urlImg = api.urls.getRollImage
+            var dataImg = {
+                imagePosition: 'true'
+            }
+            api.req.get(urlImg, dataImg, (resImg) => {
+                console.log(resImg)
+                if (resImg.code == 0) {
+                    that.imageList = resImg.data
+                }
+            });
             var url = api.urls.getPostList;
             var data = {
                 num: 0,
                 postType: that.currentTab
             };
             api.req.get(url, data, (res) => {
-                if (res.code === 0 && res.data.empty == false) {
+                if (res.code === 0) {
                     for (var i = 0; i < res.data.content.length; i++)
                         res.data.content[i].issueTime = friendlyDate(new Date(res.data.content[i].issueTime.replace(
                             /\-/g, '/').replace(
@@ -256,8 +254,8 @@
                             ' ').substring(0, 19)).getTime())
                     that.agents[that.currentTab].list = res.data.content
                     that.isHeight = that.agents[that.currentTab].list.length * 300 + 160 + 'rpx'
-                    uni.stopPullDownRefresh()
                 }
+                uni.stopPullDownRefresh()
             }, (fail) => {
                 setTimeout(() => {
                     uni.hideLoading()
@@ -321,13 +319,23 @@
         },
         onShow() {
             var that = this
+            var urlImg = api.urls.getRollImage
+            var dataImg = {
+                imagePosition: 'true'
+            }
+            api.req.get(urlImg, dataImg, (resImg) => {
+                console.log(resImg)
+                if (resImg.code == 0) {
+                    that.imageList = resImg.data
+                }
+            });
             var url = api.urls.getPostList;
             var data = {
                 num: 0,
                 postType: that.currentTab
             };
             api.req.get(url, data, (res) => {
-                if (res.code === 0 && res.data.empty == false) {
+                if (res.code === 0) {
                     for (var i = 0; i < res.data.content.length; i++)
                         res.data.content[i].issueTime = friendlyDate(new Date(res.data.content[i].issueTime.replace(
                             /\-/g, '/').replace(
@@ -372,7 +380,7 @@
         position: fixed;
         top: 60upx;
         width: 750upx;
-        background-color: #D3D3D3;
+        background-color: #2F85FC;
         height: 140upx;
         /* padding-top: 60upx; */
         z-index: 9990;
@@ -381,21 +389,21 @@
 
     .head-title {
         position: relative;
-        top: 30upx;
-        font-size: 60upx;
+        top: 32upx;
+        font-size: 58upx;
         text-align: left;
         font-weight: bold;
         height: 160upx;
-        color: #7d7c7c;
+        color: #fefefe;
         margin-left: 40upx;
     }
 
     .head-search {
         position: relative;
-        top: -45upx;
-        height: 80upx;
-        width: 80upx;
-        margin-left: 640upx;
+        top: -37upx;
+        height: 70upx;
+        width: 70upx;
+        margin-left: 630upx;
     }
 
     .index-body {
@@ -517,15 +525,17 @@
 
     .media-title {
         position: relative;
-        top: 30upx;
+        top: 25upx;
         left: 30upx;
         width: 100px;
     }
 
     .media-title-text {
-        font-size: 45upx;
-        color: #555555;
-        width: 100px;
+        font-size: 38upx;
+        line-height: 45upx;
+        font-weight: bold;
+        color: #343131;
+        width: 450upx;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -535,14 +545,16 @@
         position: relative;
         top: 40upx;
         left: 30upx;
+        margin-top: 15upx;
     }
 
     .media-preview-text {
-        font-size: 35upx;
-        color: #999999;
+        font-size: 32upx;
+        color: #666666;
 
-        width: 300px;
-        height: 48px;
+        width: 700upx;
+        height: 100upx;
+        word-break: break-all;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
@@ -553,7 +565,7 @@
 
     .media-head-image {
         position: relative;
-        top: 50upx;
+        top: 60upx;
         left: 30upx;
     }
 
@@ -566,32 +578,35 @@
     .media-name {
         position: relative;
         top: -10upx;
-        left: 100upx;
+        left: 115upx;
+        line-height: 50upx;
     }
 
     .media-name-text {
         text-align: left;
-        color: #AF94FF;
-        font-size: 30upx;
+        color: #2F85FC;
+        font-size: 32upx;
     }
 
 
     .media-points {
         position: relative;
         top: -30upx;
-        left: 400upx;
+        left: 420upx;
+        line-height: 50upx;
     }
 
 
     .media-points-view-comment {
         position: relative;
         top: -60upx;
-        left: 490upx;
+        left: 510upx;
+        line-height: 50upx;
     }
 
     .media-points-view-comment-text {
-        font-size: 30upx;
-        color: #555555;
+        font-size: 28upx;
+        color: #666;
     }
 
     .media-points-text {
@@ -603,22 +618,23 @@
 
     .media-time {
         position: relative;
-        top: -300upx;
-        left: 600upx;
+        top: -330upx;
+        left: 620upx;
     }
 
     .media-time-text {
         text-align: left;
-        font-size: 30upx;
-        color: #555555;
+        font-size: 28upx;
+        line-height: 45upx;
+        color: #c9c9c9;
     }
 
     .add-post {
-        width: 90upx;
-        height: 90upx;
+        width: 100upx;
+        height: 100upx;
         border-radius: 50%;
         position: fixed;
-        bottom: 80upx;
-        right: 30upx;
+        bottom: 90upx;
+        right: 40upx;
     }
 </style>

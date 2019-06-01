@@ -38,9 +38,9 @@
                     zoom: 8,
                     cut: {
                         x: (width - 295) / 2,
-                        y: (height - 413) / 2,
+                        y: (height - 295) / 2,
                         width: 295,
-                        height: 413
+                        height: 295
                     }
                 },
                 weCropper: ''

@@ -103,7 +103,7 @@
                         };
                         api.req.get(urlLogin, dataLogin, (resLogin) => {
                             if (resLogin.code === 0) {
-                                store.commit("login", resLogin.data);
+                                store.commit("login", resLogin.data, dataLogin.phone, dataLogin.password);
                                 uni.showToast({
                                     icon: 'none',
                                     title: '登陆成功',
@@ -117,8 +117,7 @@
                                         api.req.get(urlHead, dataHead, (resHead) => {
                                             if (resHead.code === 0) {
                                                 let userInfoAndHead = resInfo.data;
-                                                userInfoAndHead.headUrl = 'http://' +
-                                                    resHead.data;
+                                                userInfoAndHead.headUrl = resHead.data;
                                                 delete userInfoAndHead.password;
                                                 store.commit("saveUserInfo",
                                                     userInfoAndHead);

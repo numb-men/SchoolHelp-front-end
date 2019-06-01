@@ -25,8 +25,8 @@
                     <image @click="goEditInformation()" class="logo-edit" src="../../static/icons/edit_information.png"></image>
                 </view>
                 <view class="points" @click="goPoints">
-                    <text v-if="userInfo.points" class="point-text">${{userInfo.points}}积分&#xe65e;</text>
-                    <text v-else class="point-text">$0积分&#xe65e;</text>
+                    <text v-if="userInfo.points" class="point-text">${{pointText}}积分</text><!-- &#xe65e; -->
+                    <text v-else class="point-text">$0积分</text><!-- &#xe65e; -->
                 </view>
             </view>
             <view class="body">
@@ -94,7 +94,26 @@
     import store from "../../store/index.js";
     import api from "../../api/api.js";
     export default {
-        computed: mapState(['hasLogin', 'userInfo', 'token']),
+        computed: {
+			...mapState(['hasLogin', 'userInfo', 'token']),
+			pointText() {
+				if (this.userInfo.points){
+					if (this.userInfo.points > 100000000){
+						return (this.userInfo.points/10000000).toFixed(1) + '千万';
+					}
+					else if (this.userInfo.points > 1000000){
+						return (this.userInfo.points/1000000).toFixed(1) + '百万';
+					}
+					else if (this.userInfo.points > 10000){
+						return (this.userInfo.points/1000).toFixed(1) + '千';
+					}
+					else {
+						return this.userInfo.points;
+					}
+				}
+				return 0;
+			}
+		},
         data() {
             return {}
         },
@@ -402,9 +421,9 @@
     .points {
         position: absolute;
         top: 90upx;
-        left: 510upx;
+        right: 55upx;
         /* width: 50upx; */
-        max-width: 200upx;
+        max-width: 300upx;
         border-width: 1upx;
         border-color: #FFFFFF;
         border-style: solid;
@@ -418,7 +437,7 @@
         width: 100%;
         font-family: texticons;
         font-size: 34upx;
-        color: #555;
+        color: #FFCC00;
         text-align: center;
     }
 

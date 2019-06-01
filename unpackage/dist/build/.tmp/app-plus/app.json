@@ -17,7 +17,6 @@
     "pages/my/my-collects/my-collects",
     "pages/my/feedback/feedback",
     "pages/my/setting/setting",
-    "pages/my/my-data/my-data",
     "pages/my/my-comments/my-comments",
     "pages/my/my-post/my-post",
     "pages/my/setting/account-security/account-security",
@@ -25,7 +24,9 @@
     "pages/my/setting/help/help",
     "pages/my/setting/about-SchoolHelp/about-SchoolHelp",
     "pages/my/setting/account-security/change-password/change-password",
-    "pages/my/setting/change-userInfo/change-userInfo"
+    "pages/my/setting/change-userInfo/change-userInfo",
+    "pages/my/setting/change-userInfo/upload",
+    "pages/otherUsers/otherUsers"
   ],
   "subPackages": [],
   "window": {

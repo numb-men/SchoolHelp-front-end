@@ -51,4 +51,9 @@
 			@include font(30upx, 45upx, $align: right, $color: #343131);
 		}
 	}
+	
+	.primary {
+		margin-top: 25upx;
+		width: 100%;
+	}
 }

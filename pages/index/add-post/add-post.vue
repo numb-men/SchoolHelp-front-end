@@ -6,13 +6,13 @@
 			<input type="text" :value="post.postTitle" placeholder="输入标题" placeholder-class="title-placeholder"
 				class="post-title" maxlength="15" focus="true" confirm-type="done" @input="bindTitleInput"/>
 			<view class="devide-line"></view>
-			<textarea :value="post.postContent" placeholder="添加内容(至少10个字)" maxlength="400" 
+			<textarea :value="post.postContent" placeholder="添加内容(至少15个字)" maxlength="400" 
 				class="post-content" placeholder-class="content-placeholder" @input="bindContentInput"/>
 		</view>
 		<view class="content-word-count">{{post.contentWordCount}}/400</view>
 		<!-- 标签盒 -->
 		<view class="tags-box">
-			<view class="tag" @click="showTagInputBox">添加标签</view>
+			<view class="tag" @click.stop="showTagInputBox">添加标签</view>
 			<view class="tag" v-for="(tag, index) in post.tags" :key="index" :id="'tag'+index">
 				{{tag}}
 			</view>
@@ -20,21 +20,21 @@
 		<!-- 标签输入盒 -->
 		<view class="tag-input-box" v-if="showTagInput">
 			<input class="tag-input-box-input" type="text" v-model="tagInputContent" placeholder="七个字以内" maxlength="7">
-			<view class="tag-input-box-add-btn" @click="addTag">添加</view>
-			<image src="/static/icons/delete-gray.png" class="tag-input-box-icon-cancel" @click="hideTagInputBox"></image>
+			<view class="tag-input-box-add-btn" @click.stop="addTag">添加</view>
+			<image src="/static/icons/delete-gray.png" class="tag-input-box-icon-cancel" @click.stop="hideTagInputBox"></image>
 		</view>
 		<!-- 底部操作栏 -->
 		<view class="add-post-bottom">
 			<view class="row-left">
-				<picker class="set-points" :range="pointsRange" :value="pointsSelected" @change="selectPoints">设置分数</picker>
+				<picker class="set-points" :range="pointsRange" :value="pointsSelected" @change.stop="selectPoints">设置分数</picker>
 				<view class="post-points" v-show="post.points!=-1">{{post.points}}</view>
-				<picker class="set-sort" :range="postTypeRange"  :value="postTypeSelected" @change="selectPostType">设置分类</picker>
+				<picker class="set-sort" :range="postTypeRange"  :value="postTypeSelected" @change.stop="selectPostType">设置分类</picker>
 				<view class="post-sorted" v-show="post.postType!=-1">{{postTypeComputed}}</view>
 			</view>
 			<view class="row-right">
 				<image src="/static/icons/emoji.png" class="normal-icon" mode=""></image>
 				<image src="/static/icons/pic.png" class="normal-icon" mode=""></image>
-				<view class="send" @tap="sendPost">发送</view>
+				<view class="send" @click.stop="sendPost">发送</view>
 			</view>
 		</view>
     </view>
@@ -47,7 +47,7 @@
 				post: {
 					title: "",
 					content: "",
-					tags: ["标签1", "标签2", "标签3"],
+					tags: [],
 					titleWordCount: 0,
 					contentWordCount: 0,
 					points: -1,
@@ -70,7 +70,7 @@
 			bindTitleInput: function(e){
 				this.post.title = e.target.value;
 				this.post.titleWordCount = e.target.value.length;
-				console.log(this.post.title, this.post.titleWordCount, this.post.title.length);
+				// console.log(this.post.title, this.post.titleWordCount, this.post.title.length);
 			},
 			bindContentInput: function(e){
 				this.post.content = e.target.value;
@@ -159,7 +159,7 @@
 							icon: "none",
 							title: "发帖成功"
 						});
-						setTimeout(()=>{this.goBack()}, 1500);
+						setTimeout(()=>{this.goBack()}, 500);
 					}
 				})
 			}

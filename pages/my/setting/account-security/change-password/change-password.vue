@@ -19,7 +19,7 @@
             </view>
         </view>
         <view class="btn-row">
-            <button type="primary" class="primary" formType="submit">注册</button>
+            <button type="primary" class="primary" formType="submit">修改</button>
         </view>
     </form>
 </template>
@@ -87,11 +87,7 @@
                         };
                         api.req.get(urlLogin, dataLogin, (resLogin) => {
                             if (resLogin.code === 0) {
-                                store.commit("login", resLogin.data);
-                                uni.showToast({
-                                    icon: 'none',
-                                    title: '登陆成功',
-                                });
+                                store.commit("login", resLogin.data, dataLogin.phone, dataLogin.password);
                                 var urlInfo = api.urls.getSelfUserInfo;
                                 var dataInfo = {};
                                 api.req.get(urlInfo, dataInfo, (resInfo) => {
@@ -101,8 +97,7 @@
                                         api.req.get(urlHead, dataHead, (resHead) => {
                                             if (resHead.code === 0) {
                                                 let userInfoAndHead = resInfo.data;
-                                                userInfoAndHead.headUrl = 'http://' +
-                                                    resHead.data;
+                                                userInfoAndHead.headUrl = resHead.data;
                                                 delete userInfoAndHead.password;
                                                 store.commit("saveUserInfo",
                                                     userInfoAndHead);
@@ -122,7 +117,6 @@
                                         })
                                     }
                                 });
-                                uni.navigateBack();
                             } else {
                                 uni.showModal({
                                     content: resLogin.msg,

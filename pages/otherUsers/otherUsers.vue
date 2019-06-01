@@ -70,10 +70,15 @@
                 </div>
             </view> -->
             <view class="bottom-nav">
-                <text type="primary" class="bottom-nav-item" @click="follow()">关注</text>
-                <text type="primary" class="bottom-nav-item" @click="goChat()">发消息</text>
+                <text type="primary" class="bottom-nav-item" @click="follow">{{targetUserInfo.hasFollow?"取消关注":"关注"}}</text>
+                <text type="primary" class="bottom-nav-item" @click="goChat">发消息</text>
             </view>
         </view>
+		
+		<view class="points">
+		    <text v-if="targetUserInfo.points" class="point-text">${{pointText}}积分</text>
+		    <text v-else class="point-text">$0积分</text>
+		</view>
     </view>
 </template>
 
@@ -85,21 +90,38 @@
     import store from "../../store/index.js";
     import api from "../../api/api.js";
     export default {
-        computed: mapState(['hasLogin', 'userInfo']),
+        computed: {
+			...mapState(['hasLogin', 'userInfo']),
+			
+			pointText() {
+				if (this.targetUserInfo.points){
+					if (this.targetUserInfo.points > 100000000){
+						return (this.targetUserInfo.points/10000000).toFixed(1) + '千万';
+					}
+					else if (this.targetUserInfo.points > 10000000){
+						return (this.targetUserInfo.points/1000000).toFixed(1) + '百万';
+					}
+					else if (this.targetUserInfo.points > 10000){
+						return (this.targetUserInfo.points/1000).toFixed(1) + '千';
+					}
+					else {
+						return this.targetUserInfo.points;
+					}
+				}
+				return 0;
+			}
+		},
         data() {
             return {
-                targetUserInfo: {},
+                targetUserInfo: {
+					hasFollow: false
+				},
                 targetUserId: ''
             }
         },
-        onShow(id) {
-            // let {
-            //     id
-            // } = option
-            // console.log(option.id)
-            //id为点击头像传进来的id
-            this.targetUserId = id
-            var url = api.urls.getOtherUserInfo + id
+        onLoad(option) {
+            this.targetUserId = option.userId
+            var url = api.urls.getOtherUserInfo + option.userId
             var data = {}
             var that = this
             api.req.get(url, data, (res) => {
@@ -178,11 +200,15 @@
                     });
                 }
             },
-            goChat() {
+            goChat(e) {
                 if (this.hasLogin) {
-                    uni.navigateTo({
-                        url: '../../pages/messages/message-detail/message-detail'
-                    })
+					if (this.targetUserId != this.$store.state.userInfo.id){
+						// 和非自身的用户发消息
+						uni.navigateTo({
+							url: "../messages/message-detail/message-detail?detail=" + encodeURIComponent(JSON.stringify(
+								{chatUserId: this.targetUserId}))
+						})
+					}
                 } else {
                     uni.showModal({
                         content: "发消息需要登录，您想马上登录吗？",
@@ -631,14 +657,36 @@
     }
 
     .bottom-nav-item {
-        font-size: 45upx;
+        font-size: 36upx;
         color: #555;
         width: 50%;
-        padding-top: 20upx;
+        padding-top: 26upx;
         border-right: 1px solid #D3D3D3;
     }
 
     .bottom-nav-item:active {
-        background-color: #00BFFF;
+        background-color: #c9c9c9;
     }
+	
+	.points {
+		position: absolute;
+		top: 90upx;
+        right: 55upx;
+        /* width: 50upx; */
+        max-width: 300upx;
+		border-width: 1upx;
+		border-color: #FFFFFF;
+		border-style: solid;
+		box-shadow: 1px 1px 5px #888888;
+		background-color: #FFFFFF;
+		border-radius: 10upx;
+		height: 50upx;
+	}
+	.point-text {
+		width: 100%;
+		font-family: texticons;
+		font-size: 34upx;
+		color: #555;
+		text-align: center;
+	}
 </style>

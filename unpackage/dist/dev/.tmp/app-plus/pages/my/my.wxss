@@ -237,9 +237,9 @@ page {
 .points {
         position: absolute;
         top: 90rpx;
-        left: 510rpx;
+        right: 55rpx;
         /* width: 50upx; */
-        max-width: 200rpx;
+        max-width: 300rpx;
         border-width: 1rpx;
         border-color: #FFFFFF;
         border-style: solid;
@@ -253,7 +253,7 @@ page {
         width: 100%;
         font-family: texticons;
         font-size: 34rpx;
-        color: #555;
+        color: #FFCC00;
         text-align: center;
 }
 .center-list {

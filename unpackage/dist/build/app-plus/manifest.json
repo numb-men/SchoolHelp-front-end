@@ -46,7 +46,7 @@
     "distribute": {
       "icons": {
         "ios": {
-          "appstore": "C:/Users/le/Desktop/schoolhelp-logo.png",
+          "appstore": "C:/Users/ZPC/Desktop/schoolhelp-logo.png",
           "ipad": {
             "app": "unpackage/res/icons/76x76.png",
             "app@2x": "unpackage/res/icons/152x152.png",
