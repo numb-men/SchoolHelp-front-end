@@ -46,13 +46,13 @@ const store = new Vuex.Store({
                 key: 'userInfo',
                 data: userInfo
             })
-            uni.setStorage({
-                key: 'lastLoginData',
-                data: {
-                    phone: userInfo.phone,
-                    password: userInfo.password
-                }
-            })
+            // uni.setStorage({
+            //     key: 'lastLoginData',
+            //     data: {
+            //         phone: userInfo.phone,
+            //         password: userInfo.password
+            //     }
+            // })
         },
         // 清空用户信息
         clearUserInfo(state) {
