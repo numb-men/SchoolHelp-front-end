@@ -253,7 +253,7 @@ page {
         width: 100%;
         font-family: texticons;
         font-size: 34rpx;
-        color: #555;
+        color: #FFCC00;
         text-align: center;
 }
 .center-list {

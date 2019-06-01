@@ -18,9 +18,10 @@
 				</view> -->
             </view>
             <view class="news" v-show="currentTab==0">
-                <swiper class="slider" indicator-dots="false" autoplay="true" interval="2000" duration="1000">
-                    <swiper-item class="frame" v-for="(img,index) in imageList" :key="index">
-                        <image class="image" resize="cover" :src="img.src"></image>
+                <swiper class="slider" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
+                    :duration="duration">
+                    <swiper-item v-for="(img,index) in imageList" :key="index" class="frame">
+                        <image class="image" :src="img.imageUrl"></image>
                     </swiper-item>
                 </swiper>
             </view>
@@ -58,9 +59,6 @@
             </swiper>
         </view>
 
-        <!-- <view class="index-body" :style="{height:isHeight}"> -->
-        <!-- </view> -->
-
         <!-- 新建帖子 -->
         <image src="../../static/icons/add.png" mode="" class="add-post" @click="goAddPost"></image>
     </view>
@@ -76,6 +74,10 @@
     export default {
         data() {
             return {
+                indicatorDots: true,
+                autoplay: true,
+                interval: 2000,
+                duration: 500,
                 scrollLeft: 0,
                 currentTab: 0,
                 tabClick: 0,
@@ -113,19 +115,7 @@
                     pages: 0
                 }],
                 isWidth: 0,
-                imageList: [{
-                        src: '../../static/images/news-1.png'
-                    },
-                    {
-                        src: '../../static/images/news-2.png'
-                    },
-                    {
-                        src: '../../static/images/news-3.png'
-                    },
-                    {
-                        src: '../../static/images/news-4.png'
-                    }
-                ]
+                imageList: []
             }
         },
         mounted() {
@@ -240,6 +230,16 @@
         onPullDownRefresh() {
             console.log(`刷新第${this.currentTab}项`)
             var that = this
+            var urlImg = api.urls.getRollImage
+            var dataImg = {
+                imagePosition: 'true'
+            }
+            api.req.get(urlImg, dataImg, (resImg) => {
+                console.log(resImg)
+                if (resImg.code == 0) {
+                    that.imageList = resImg.data
+                }
+            });
             var url = api.urls.getPostList;
             var data = {
                 num: 0,
@@ -319,6 +319,16 @@
         },
         onShow() {
             var that = this
+            var urlImg = api.urls.getRollImage
+            var dataImg = {
+                imagePosition: 'true'
+            }
+            api.req.get(urlImg, dataImg, (resImg) => {
+                console.log(resImg)
+                if (resImg.code == 0) {
+                    that.imageList = resImg.data
+                }
+            });
             var url = api.urls.getPostList;
             var data = {
                 num: 0,

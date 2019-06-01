@@ -25,8 +25,8 @@
                     <image @click="goEditInformation()" class="logo-edit" src="../../static/icons/edit_information.png"></image>
                 </view>
                 <view class="points" @click="goPoints">
-                    <text v-if="userInfo.points" class="point-text">${{pointText}}积分&#xe65e;</text>
-                    <text v-else class="point-text">$0积分&#xe65e;</text>
+                    <text v-if="userInfo.points" class="point-text">${{pointText}}积分</text><!-- &#xe65e; -->
+                    <text v-else class="point-text">$0积分</text><!-- &#xe65e; -->
                 </view>
             </view>
             <view class="body">
@@ -437,7 +437,7 @@
         width: 100%;
         font-family: texticons;
         font-size: 34upx;
-        color: #555;
+        color: #FFCC00;
         text-align: center;
     }
 

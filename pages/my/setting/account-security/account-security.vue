@@ -1,8 +1,8 @@
 <template>
     <view class="center">
-        <view class="logo" :hover-class="!hasLogins ? 'logo-hover' : ''">
+        <view class="logo">
             <view class="img" v-show="hasLogin">
-                <image class="logo-img" :src="userInfo.headUrl"></image>
+                <image class="logo-img" :src="userInfo.headImageUrl"></image>
             </view>
             <view class="logo-title">
                 <view v-if="!hasLogin" class="uer-name">您还没有登录哟</view>
