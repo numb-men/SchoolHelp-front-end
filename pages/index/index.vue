@@ -245,7 +245,7 @@
             var url = api.urls.getPostList;
             var data = {
                 num: 0,
-                postType: that.currentTab
+                postType: that.currentTab 
             };
             api.req.get(url, data, (res) => {
                 if (res.code === 0 && res.data.empty == false) {
