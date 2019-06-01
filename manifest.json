@@ -44,7 +44,7 @@
             "sdkConfigs" : {},
             "icons" : {
                 "ios" : {
-                    "appstore" : "C:/Users/ZPC/Desktop/schoolhelp-logo.png",
+                    "appstore" : "C:/Users/le/Desktop/校园帮/schoolhelp-logo.png",
                     "ipad" : {
                         "app" : "unpackage/res/icons/76x76.png",
                         "app@2x" : "unpackage/res/icons/152x152.png",
@@ -82,7 +82,7 @@
     "quickapp" : {},
     /* 快应用特有相关 */
     "mp-weixin" : {
-        "appid" : "wx7612a18e94cfd1a7",
+        "appid" : "",
         "setting" : {
             "urlCheck" : false,
             "minified" : true
@@ -108,6 +108,7 @@
                     "secure" : false
                 }
             }
-        }
+        },
+        "domain" : "http://134.175.16.143:8080/schoolhelp-1.1.1"
     }
 }

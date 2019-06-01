@@ -170,9 +170,10 @@ var mInput = function mInput() {return __webpack_require__.e(/*! import() | comp
       }
       var that = this;
       var url = _api.default.urls.changePassword;
+      that.password = (0, _md.hex_md5)(that.password);
       var data = {
         oldPassword: (0, _md.hex_md5)(that.oldPassword),
-        newPassword: (0, _md.hex_md5)(that.password) };
+        newPassword: that.password };
 
       _api.default.req.put(url, data, function (res) {
         if (res.code === 0) {
@@ -183,11 +184,15 @@ var mInput = function mInput() {return __webpack_require__.e(/*! import() | comp
           var urlLogin = _api.default.urls.login;
           var dataLogin = {
             phone: _this.userInfo.phone,
-            password: (0, _md.hex_md5)(that.password) };
+            password: that.password };
 
           _api.default.req.get(urlLogin, dataLogin, function (resLogin) {
             if (resLogin.code === 0) {
-              _index.default.commit("login", resLogin.data, dataLogin.phone, dataLogin.password);
+              _index.default.commit("login", {
+                token: resLogin.data,
+                phone: dataLogin.phone,
+                password: dataLogin.password });
+
               var urlInfo = _api.default.urls.getSelfUserInfo;
               var dataInfo = {};
               _api.default.req.get(urlInfo, dataInfo, function (resInfo) {
